@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_role_random_name"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_role_random_nameBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_type" property="q_type" jdbcType="INTEGER" />
+	<result column="q_value" property="q_value" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_role_random_name
+  </select>
+</mapper> 

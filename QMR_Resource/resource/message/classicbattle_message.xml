@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.classicbattle" id="165">
+	<!-- bean定义 -->
+	<bean name="ClassicBattleInfo" explain="战役信息">
+		<field class="String" name="monsterlist" explain="怪物列表"></field>
+		<field class="String" name="firstrewards" explain="首次通关奖励列表"></field>
+		<field class="byte" name="isfirst" explain="是否首次通关，0否，1通关可领取,2通关并已经领取奖励"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResClassicBattleInfoToClient" explain="经典战役面板内容消息">
+		<field class="int" name="darenum" explain="挑战次数"></field>
+		<field class="int" name="clearancelayer" explain="已经过关层数"></field>
+		<list class="ClassicBattleInfo" name="classicbattleInfolist" explain="战役信息"></list>
+	</message>
+	
+	<message id="102" type="SC" name="ResClassicBattleInfoTokenLackToClient" explain="禁地令牌不足弹出面板">
+		<field class="int" name="itemmodelid" explain="道具ID"></field>
+		<field class="int" name="lacknum" explain="缺少的数量"></field>
+		<field class="int" name="sum" explain="需要的总数量"></field>
+		<field class="int" name="currlayers" explain="当前层数"></field>
+	</message>
+	
+	
+	<message id="103" type="SC" name="ResClassicBattleSuccessToClient" explain="通知前端当前层挑战成功">
+		<field class="int" name="monmodlid" explain="BOSS怪物ID"></field>
+		<field class="int" name="currlayers" explain="当前层数"></field>
+	</message>
+	
+	
+	<message id="104" type="SC" name="ResClassicBattleFirstToClient" explain="首次通关弹出奖励面板">
+		<field class="String" name="firstrewards" explain="首次通关奖励列表"></field>
+		<field class="int" name="currlayers" explain="当前层数"></field>
+	</message>
+
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqClassicBattleInfoToServer" explain="客户端请求打开经典战役面板">
+	
+	</message>
+	
+	<message id="202" type="CS" name="ReqClassicBattleReceiveToServer" explain="领取首通奖励">
+		<field class="int" name="currlayers" explain="当前层数"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqClassicBattleYBMoveToServer" explain="元宝购买令牌">
+	
+	</message>
+	
+	<message id="204" type="CS" name="ReqClassicBattleEnterMapToServer" explain="进入副本">
+		<field class="int" name="type" explain="进入类型，0使用元宝，1使用铜币"></field>
+	</message>
+	
+	<message id="205" type="CS" name="ReqClassicBattleEnterNextToServer" explain="进入下一层">
+		
+	</message>
+</messages>

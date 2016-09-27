@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.gift" id="129">
+	<!-- bean定义 -->
+	<bean name="GiftInfo" explain="礼包信息">
+		<field class="int" name="giftid" explain="礼包id"></field>
+		<field class="byte" name="gifttype" explain="礼包类型(1-蓝钻每日 2-年费蓝钻每日 3-蓝钻新手 4-蓝钻成长 5-3366每日)"></field>
+		<field class="int" name="value" explain="礼包相关数据"></field>
+		<field class="byte" name="canreceive" explain="是否可领取 0-可领取 1-未达成不可领 2-已领取不可领"></field>
+		<list class="com.game.backpack.bean.ItemInfo" name="iteminfos" explain="奖励道具信息"></list>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResSendGiftItemsToClient" explain="发送礼包物品">
+		<list class="com.game.backpack.bean.ItemInfo" name="items" explain="礼包物品列表"></list>
+	</message>
+	
+	<message id="102" type="SC" name="ResSendGiftInfoToClient" explain="发送其他礼包信息">
+		<list class="GiftInfo" name="gifts" explain="礼包信息列表"></list>
+	</message>
+	
+	<message id="103" type="SC" name="ResPlatformGiftList" explain="发送平台礼包信息">
+		<list class="GiftInfo" name="gifts" explain="礼包信息列表"></list>
+		<field class="String" name="tag" explain="面板标识"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResGetPlatformGift" explain="发送领取结果">
+		<field class="int" name="giftid" explain="礼包id"></field>
+		<field class="int" name="result" explain="礼包领取结果 0-成功  1-失败"></field>
+	</message>
+	
+	
+	<message id="105" type="SC" name="ResShuffleRaffle" explain="翻牌抽奖，发送道具列表">
+		<list class="com.game.backpack.bean.ItemInfo" name="iteminfos" explain="奖励道具信息"></list>
+		<field class="int" name="type" explain="0发送翻牌前的列表，1发送翻牌后的道具"></field>
+		<field class="String" name="itemid" explain="道具唯一ID"></field>
+	</message>
+	
+	
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqGetGiftItemsToServer" explain="请求获得普通礼包物品">
+		<field class="long" name="giftid" explain="要打开的礼包id"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqGetOtherGiftItemsToServer" explain="请求获得其他礼包物品">
+		<field class="long" name="giftid" explain="要打开的礼包id"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqGetPlatformGift" explain="请求领取平台礼包">
+		<field class="String" name="platform" explain="平台名称"></field>	
+		<field class="int" name="giftid" explain="礼包id"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqPlatformGiftList" explain="请求平台礼包列表">
+		<field class="String" name="platform" explain="平台名称"></field>
+		<field class="String" name="tag" explain="面板标识"></field>
+	</message>
+	
+	<message id="205" type="CS" name="ReqStartShuffleRaffle" explain="开始翻牌抽奖">
+		<field class="String" name="itemid" explain="道具唯一ID"></field>
+	</message>
+	
+	
+</messages>

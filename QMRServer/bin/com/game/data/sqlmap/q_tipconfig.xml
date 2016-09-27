@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_tipconfig"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_tipconfigBean" >
+	<result column="tipsID" property="tipsID" jdbcType="VARCHAR" />
+	<result column="classID" property="classID" jdbcType="VARCHAR" />
+	<result column="width" property="width" jdbcType="INTEGER" />
+	<result column="heigth" property="heigth" jdbcType="INTEGER" />
+	<result column="html" property="html" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_tipconfig
+  </select>
+</mapper> 

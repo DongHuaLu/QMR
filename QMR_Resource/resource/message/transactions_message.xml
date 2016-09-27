@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.transactions" id="122">
+	<!-- bean定义 -->
+	<bean name="RoleModeInfo" explain="角色造型信息">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="int" name="playerlv" explain="玩家等级"></field>
+		<field class="com.game.player.bean.PlayerAppearanceInfo" name="appearanceInfo" explain="造型信息"></field>
+	</bean>
+
+
+	<bean name="TmpYuanbaoLogInfo" explain="临时元宝日志信息">
+		<field class="long" name="playerid" explain="和本人交易的玩家ID"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="byte" name="type" explain="交易类型"></field>
+		<field class="int" name="time" explain="交易时间"></field>
+		<field class="com.game.backpack.bean.ItemInfo" name="iteminfo" explain="道具信息"></field>
+		<field class="int" name="num" explain="交易的道具数量"></field>
+		<field class="int" name="goldnum" explain="获得金币数量"></field>
+		<field class="int" name="yuanbaonum" explain="获得元宝数量"></field>
+	</bean>
+
+
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResTransactionsLaunch" explain="发给B玩家交易请求">
+		<field class="RoleModeInfo" name="rolemodeinfo" explain="A交易玩家造型信息"></field>
+		<field class="int" name="launchtime" explain="发起交易时间"></field>
+		<field class="long" name="transid" explain="交易ID"></field>
+	</message>
+	
+	<message id="102" type="SC" name="ResTransactionsCanceled" explain="取消（打断）交易">
+	</message>
+	
+	<message id="103" type="SC" name="ResTransactionsStart" explain="B玩家同意，开始交易">
+		<field class="RoleModeInfo" name="arolemodeinfo" explain="A交易玩家造型信息"></field>
+		<field class="RoleModeInfo" name="brolemodeinfo" explain="B交易玩家造型信息"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResTransactionsIntoItem" explain="放入道具">
+		<field class="long" name="playerid" explain="放入道具的玩家ID"></field>
+		<field class="short" name="itemposition" explain="放入交易框的位置"></field>
+		<field class="com.game.backpack.bean.ItemInfo" name="iteminfo" explain="道具信息"></field>
+	</message>
+
+	<message id="105" type="SC" name="ResTransactionsRemoveItem" explain="移除交易框道具">
+		<field class="long" name="playerid" explain="移除交易的玩家ID"></field>
+		<field class="long" name="itemid" explain="道具唯一ID"></field>
+	</message>
+	
+	<message id="106" type="SC" name="ResTransactionsChangeGold" explain="发送金币改变">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="gold" explain="金币数量"></field>
+	</message>
+	
+	<message id="107" type="SC" name="ResTransactionsChangeYuanbao" explain="发送元宝改变">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="yuanbao" explain="元宝数量"></field>
+	</message>	
+	
+	
+	<message id="108" type="SC" name="ResTransactionsSetState" explain="设置交易状态">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="state" explain="0交易中，1锁定，2确定交易"></field>
+	</message>
+	
+	<message id="109" type="SC" name="ResTransactionsSuccess" explain="交易成功">
+		<field class="long" name="tsexp" explain="交易获得经验"></field>
+	</message>
+
+	<message id="110" type="SC" name="ResCanreceiveYuanbao" explain="发送可领取元宝">
+		<field class="int" name="canryuanbao" explain="可领取元宝"></field>
+	</message>
+	
+	<message id="111" type="SC" name="ResTransactionsError" explain="错误消息">
+		<field class="int" name="errorid" explain="错误id（1放入道具异常，2金币量超出，3元宝量超出）"></field>
+	</message>
+	
+	<message id="112" type="SC" name="ResTmpYuanbaoLog" explain="发送临时元宝日志">
+		<field class="String" name="exchange" explain="汇率"></field>
+		<field class="String" name="web" explain="网址"></field>
+		<field class="int" name="canryuanbao" explain="可领取元宝"></field>
+		<list class="TmpYuanbaoLogInfo" name="tpmyuanbaolonginfo" explain="临时元宝日志列表"></list>
+	</message>
+	
+	
+	
+	
+	
+	
+	
+	<!-- 服务器接收消息 -->
+	
+	<message id="201" type="CS" name="ReqTransactionsLaunch" explain="A玩家发起交易">
+		<field class="long" name="playerid" explain="B交易玩家ID"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqTransactionsAccept" explain="B玩家接受交易请求">
+		<field class="long" name="transid" explain="交易ID"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqTransactionsRefuse" explain="B玩家拒绝交易请求,给A发文字消息">
+		<field class="long" name="transid" explain="交易ID"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqTransactionsCanceled" explain="取消（打断）交易">
+	</message>
+	
+	<message id="205" type="CS" name="ReqTransactionsIntoItem" explain="往交易框放入道具">
+		<field class="short" name="itemposition" explain="放入交易框的位置"></field>
+		<field class="long" name="itemid" explain="道具唯一ID"></field>
+	</message>
+	
+	<message id="206" type="CS" name="ReqTransactionsRemoveItem" explain="移除交易框道具">
+		<field class="long" name="itemid" explain="道具唯一ID"></field>
+	</message>
+	
+	<message id="207" type="CS" name="ReqTransactionsChangeGold" explain="金币改变">
+		<field class="int" name="gold" explain="金币数量"></field>
+	</message>
+	
+	<message id="208" type="CS" name="ReqTransactionsChangeYuanbao" explain="元宝改变">
+		<field class="int" name="yuanbao" explain="元宝数量"></field>
+	</message>	
+	
+	<message id="209" type="CS" name="ReqTransactionsSetState" explain="设置交易状态" queue="Server">
+		<field class="byte" name="state" explain="0交易中，1锁定，2确定交易"></field>
+	</message>
+	
+	<message id="210" type="CS" name="ReqCanreceiveYuanbao" explain="请求 可领取元宝">
+	</message>
+	
+	<message id="211" type="CS" name="ReqAutorefusaldeal" explain="自动拒绝交易">
+		<field class="byte" name="state" explain="0默认不拒绝，1自动拒绝"></field>
+	</message>
+	
+	<message id="212" type="CS" name="ReqOpenTmpYuanbaoPanel" explain="打开临时元宝面板">
+	</message>
+	
+	<message id="213" type="CS" name="ReqGetTmpYuanbao" explain="取出临时元宝">
+	</message>
+	
+	
+	
+	
+	
+</messages>
+
+
+
+
+
+

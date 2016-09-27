@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<!-- 37wan -->
+<md5key id="md5key">test37wankey5weufo580toUYUIksadhu</md5key>
+<!-- 360 -->
+<!-- <md5key id="md5key">3604fsodfj5t7y*&amp;*kjshefl5f897WYEFUIH</md5key>  -->
+<losttime id="losttime">3600000</losttime>
+<token id="token">72233064d1d3ae313f21705232ebcabc</token>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_energy_prize"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_energy_prizeBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_type" property="q_type" jdbcType="INTEGER" />
+	<result column="q_level_min" property="q_level_min" jdbcType="INTEGER" />
+	<result column="q_level_max" property="q_level_max" jdbcType="INTEGER" />
+	<result column="q_expend" property="q_expend" jdbcType="INTEGER" />
+	<result column="q_prize" property="q_prize" jdbcType="VARCHAR" />
+	<result column="q_para" property="q_para" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_energy_prize
+  </select>
+</mapper> 

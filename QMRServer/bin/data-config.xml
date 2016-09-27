@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+<configuration>
+  <environments default="development"> 
+      <environment id="development"> 
+      <transactionManager type="JDBC"/> 
+      <dataSource type="POOLED"> 
+        <property name="driver" value="com.mysql.jdbc.Driver"/> 
+        <property name="url" value="jdbc:mysql://192.168.1.121/game_data"/> 
+        <property name="username" value="game"/> 
+        <property name="password" value="game"/>
+      </dataSource> 
+    </environment> 
+  </environments>
+<mappers>
+<mapper resource="com/game/data/sqlmap/q_backpack_grid.xml"/>
+<mapper resource="com/game/data/sqlmap/q_character.xml"/>
+<mapper resource="com/game/data/sqlmap/q_item.xml"/>
+<mapper resource="com/game/data/sqlmap/q_shop.xml"/>
+<mapper resource="com/game/data/sqlmap/q_npc.xml"/>
+<mapper resource="com/game/data/sqlmap/q_equip_append.xml"/>
+<mapper resource="com/game/data/sqlmap/q_skill_model.xml"/>
+<mapper resource="com/game/data/sqlmap/q_global.xml"/>
+<mapper resource="com/game/data/sqlmap/q_version.xml"/>
+<mapper resource="com/game/data/sqlmap/q_map.xml"/>
+<mapper resource="com/game/data/sqlmap/q_map_block.xml"/>
+<mapper resource="com/game/data/sqlmap/q_monster_dropgroup.xml"/>
+<mapper resource="com/game/data/sqlmap/q_monster_dropprob.xml"/>
+<mapper resource="com/game/data/sqlmap/q_buff.xml"/>
+<mapper resource="com/game/data/sqlmap/q_monster.xml"/>
+<mapper resource="com/game/data/sqlmap/q_scene_monster.xml"/>
+<mapper resource="com/game/data/sqlmap/q_skill_realm.xml"/>
+<mapper resource="com/game/data/sqlmap/q_filterword.xml"/>
+<mapper resource="com/game/data/sqlmap/q_boss_drop.xml"/>
+<mapper resource="com/game/data/sqlmap/q_rank.xml"/>
+<mapper resource="com/game/data/sqlmap/q_transfer.xml"/>
+<mapper resource="com/game/data/sqlmap/q_task_main.xml"/>
+<mapper resource="com/game/data/sqlmap/q_task_conquer.xml"/>
+<mapper resource="com/game/data/sqlmap/q_task_daily_cond.xml"/>
+<mapper resource="com/game/data/sqlmap/q_task_daily_rewards.xml"/>
+<mapper resource="com/game/data/sqlmap/q_task_extra_rewards.xml"/>
+<mapper resource="com/game/data/sqlmap/q_scheduler.xml"/>
+<mapper resource="com/game/data/sqlmap/q_script.xml"/>
+<mapper resource="com/game/data/sqlmap/q_item_strength.xml"/>
+<mapper resource="com/game/data/sqlmap/q_role_random_name.xml"/>
+<mapper resource="com/game/data/sqlmap/q_clone_activity.xml"/>
+<mapper resource="com/game/data/sqlmap/q_longyuan_exp.xml"/>
+<mapper resource="com/game/data/sqlmap/q_longyuan.xml"/>
+<mapper resource="com/game/data/sqlmap/q_minimapshow.xml"/>
+<mapper resource="com/game/data/sqlmap/q_scene_monster_area.xml"/>
+<mapper resource="com/game/data/sqlmap/q_pets.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horse_basic.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horse_skills.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horse_addition.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horse_skill_exp.xml"/>
+<mapper resource="com/game/data/sqlmap/q_chapter_append.xml"/>
+<mapper resource="com/game/data/sqlmap/q_rangevalue.xml"/>
+<mapper resource="com/game/data/sqlmap/q_guildbanner.xml"/>
+<mapper resource="com/game/data/sqlmap/q_gem_activation.xml"/>
+<mapper resource="com/game/data/sqlmap/q_gem_up.xml"/>
+<mapper resource="com/game/data/sqlmap/q_newrole_defaultvalue.xml"/>
+<mapper resource="com/game/data/sqlmap/q_spirittree_packet.xml"/>
+<mapper resource="com/game/data/sqlmap/q_spirittree_kiwi.xml"/>
+<mapper resource="com/game/data/sqlmap/q_spirittree_pack_con.xml"/>
+<mapper resource="com/game/data/sqlmap/q_newfunc.xml"/>
+<mapper resource="com/game/data/sqlmap/q_tipconfig.xml"/>
+<mapper resource="com/game/data/sqlmap/q_gift.xml"/>
+<mapper resource="com/game/data/sqlmap/q_bulletin.xml"/>
+<mapper resource="com/game/data/sqlmap/q_petinfo.xml"/>
+<mapper resource="com/game/data/sqlmap/q_petattribute.xml"/>
+<mapper resource="com/game/data/sqlmap/q_evencut.xml"/>
+<mapper resource="com/game/data/sqlmap/q_task_explorepalace.xml"/>
+<mapper resource="com/game/data/sqlmap/q_explorepalace_map.xml"/>
+<mapper resource="com/game/data/sqlmap/q_explorepalace_rewards.xml"/>
+<mapper resource="com/game/data/sqlmap/q_title.xml"/>
+<mapper resource="com/game/data/sqlmap/q_jiaochang.xml"/>
+<mapper resource="com/game/data/sqlmap/q_toplistchest.xml"/>
+<mapper resource="com/game/data/sqlmap/q_vip.xml"/>
+<mapper resource="com/game/data/sqlmap/q_scene_obj.xml"/>
+<mapper resource="com/game/data/sqlmap/q_special_event.xml"/>
+<mapper resource="com/game/data/sqlmap/q_activities.xml"/>
+<mapper resource="com/game/data/sqlmap/q_fourjinsuo.xml"/>
+<mapper resource="com/game/data/sqlmap/q_qingfengguyun.xml"/>
+<mapper resource="com/game/data/sqlmap/q_arrow.xml"/>
+<mapper resource="com/game/data/sqlmap/q_arrow_star.xml"/>
+<mapper resource="com/game/data/sqlmap/q_arrow_bow.xml"/>
+<mapper resource="com/game/data/sqlmap/q_task_rank.xml"/>
+<mapper resource="com/game/data/sqlmap/q_sign_wage.xml"/>
+<mapper resource="com/game/data/sqlmap/q_fightspirit.xml"/>
+<mapper resource="com/game/data/sqlmap/q_panel_data.xml"/>
+<mapper resource="com/game/data/sqlmap/q_collect.xml"/>
+<mapper resource="com/game/data/sqlmap/q_meting_random.xml"/>
+<mapper resource="com/game/data/sqlmap/q_meihuaxuanwu.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horseweapon_attr.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horseweapon.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horseweapon_skill.xml"/>
+<mapper resource="com/game/data/sqlmap/q_platformgift.xml"/>
+<mapper resource="com/game/data/sqlmap/q_restw.xml"/>
+<mapper resource="com/game/data/sqlmap/q_activities_drop.xml"/>
+<mapper resource="com/game/data/sqlmap/q_realm_break.xml"/>
+<mapper resource="com/game/data/sqlmap/q_realm_basic.xml"/>
+<mapper resource="com/game/data/sqlmap/q_hiddenweapon_attr.xml"/>
+<mapper resource="com/game/data/sqlmap/q_hiddenweapon.xml"/>
+<mapper resource="com/game/data/sqlmap/q_hiddenweapon_skill.xml"/>
+<mapper resource="com/game/data/sqlmap/q_phone_update.xml"/>
+<mapper resource="com/game/data/sqlmap/q_energy_prize.xml"/>
+</mappers>
+</configuration>

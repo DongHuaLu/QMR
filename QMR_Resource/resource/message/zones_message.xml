@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.zones" id="128">
+	<!-- bean定义 -->
+		
+	<bean name="RaidZoneInfo" explain="副本扫荡信息">
+		<field class="int" name="zoneid" explain="副本编号"></field>
+		<field class="int" name="throughtime" explain="最快通关时间（时间秒）"></field>
+		<field class="int" name="ranking" explain="当前副本排名"></field>
+		<field class="byte" name="manualmun" explain="手动扫荡次数"></field>
+		<field class="byte" name="automun" explain="自动扫荡次数"></field>
+		<field class="byte" name="starnum" explain="星星数量，评价（0表示没通关）"></field>
+		<field class="int" name="fulltime" explain="全服最快通关时间（时间秒）"></field>
+		<field class="String" name="fullname" explain="全服最快通关者名字"></field>
+		<field class="byte" name="clearance" explain="今日是否通关，2是通关，1是未通关，0是未进入"></field>
+		<field class="int" name="zhanhunnum" explain="战魂搜索次数"></field>
+	</bean>
+		
+	<bean name="ZoneMonstrInfo" explain="副本怪物信息">
+		<field class="int" name="monstrmodid" explain="怪物id"></field>
+		<field class="int" name="monstrnum" explain="怪物数量"></field>
+	</bean>	
+	
+	<bean name="ZoneRewardNumInfo" explain="副本奖励信息">
+		<field class="int" name="zoneid" explain="副本id"></field>
+		<field class="int" name="num" explain="奖励可领数量"></field>
+	</bean>	
+	
+	<bean name="ZoneTeamInfo" explain="多人副本展示信息">
+  		<field class="int" name="zoneid" explain="副本编号"></field>
+		<field class="byte" name="clearancestatus" explain="次数用完后通关状态，1已参与，2已通关"></field>
+		<field class="int" name="enternum" explain="进入次数"></field>
+		<field class="byte" name="isopen" explain="0关闭，1开启"></field>
+	</bean>	
+	
+	
+	<bean name="ZoneApplyDataInfo" explain="副本报名名单">
+		<field class="int" name="zoneid" explain="副本id"></field>
+		<list class="String" name="playernamelist" explain="玩家名字列表"></list>
+		<list class="int" name="playerlvlist" explain="玩家等级列表"></list>
+	</bean>
+	
+	
+	<bean name="BfStructsInfo" explain="4v4战场个人信息">
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="int" name="playerlevel" explain="玩家等级"></field>
+		<field class="int" name="camp" explain="玩家阵营"></field>
+		<field class="int" name="deathnum" explain="死亡次数"></field>
+		<field class="int" name="killnum" explain="杀敌次数"></field>
+		<field class="int" name="totalexp" explain="累计得到经验"></field>
+		<field class="int" name="totalzhenqi" explain="累计得到真气"></field>
+		<field class="int" name="seizeflag" explain="夺旗次数"></field>
+		<field class="byte" name="online" explain="是否在线，1表示离线"></field>
+		<field class="short" name="x" explain="坐标X"></field>
+		<field class="short" name="y" explain="坐标Y"></field>
+	</bean>
+	
+	
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResZonePanelSelect" explain="返回当前副本信息">
+		<field class="RaidZoneInfo" name="raidzoneinfolist" explain="返回当前副本信息"></field>
+		<field class="int" name="manualstatus" explain="手动可领取状态，1有奖励，0没有"></field>
+		<field class="int" name="autostatus" explain="自动扫荡可领取状态，1有奖励，0没有"></field>
+	</message>	
+	
+	<message id="102" type="SC" name="ResZoneTimer" explain="副本内过关计时器（进入副本后开始）">
+		<field class="int" name="zoneid" explain="副本编号"></field>
+		<field class="int" name="monstrssum" explain="怪物总数"></field>
+		<field class="int" name="monstrsnum" explain="当前怪物数量"></field>
+		<field class="int" name="deathnum" explain="死亡次数"></field>
+		<field class="int" name="surplustime" explain="剩余时间"></field>
+		<field class="byte" name="status" explain="面板开关，0结束时关闭，1开启"></field>
+		<list class="ZoneMonstrInfo" name="zoenmonstrinfolist" explain="副本怪物信息列表"></list>
+	</message>
+		
+	<message id="103" type="SC" name="ResZonePassShow" explain="副本通关奖励展示（已经打乱的）">
+		<list class="com.game.backpack.bean.ItemInfo" name="itemlist" explain="道具奖励列表"></list>
+		<field class="byte" name="type" explain="类型:0手动，1自动扫荡"></field>
+		<field class="int" name="zoneid" explain="副本编号"></field>
+		<field class="int" name="deathnum" explain="死亡次数"></field>
+		<field class="int" name="time" explain="通关时间"></field>
+		<field class="int" name="killmonstrnum" explain="杀怪数量"></field>
+		<field class="int" name="throughtime" explain="最快通关时间（时间秒）"></field>
+		<field class="int" name="isfirst" explain="是否第一次，0不是，1是第一次"></field>
+	</message>
+		
+	<message id="104" type="SC" name="ResZoneSelectAward" explain="翻牌-副本通关奖励信息">
+		<field class="com.game.backpack.bean.ItemInfo" name="iteminfo" explain="单个道具奖励列表"></field>
+		<field class="byte" name="num" explain="选择次数"></field>
+		<field class="byte" name="type" explain="类型:0手动，1自动扫荡"></field>
+	</message>	
+	
+	
+	<message id="105" type="SC" name="ResZoneClearance" explain="通知前端-已经通关">
+		<field class="int" name="zoneid" explain="副本编号"></field>
+	</message>	
+	
+	<message id="106" type="SC" name="ResAllRaidZoneInfo" explain="发送所有扫荡副本信息">
+		<list class="RaidZoneInfo" name="raidzoneinfolist" explain="所有扫荡副本信息"></list>
+	</message>	
+	
+	<message id="107" type="SC" name="ResAutoRaidInfo" explain="发送自动扫荡时间信息">
+		<field class="int" name="surplustime" explain="剩余时间（秒）"></field>
+		<field class="int" name="zoneid" explain="副本编号"></field>
+	</message>	
+	
+	<message id="108" type="SC" name="ResZoneNoticeReward" explain="通知前端-可领取奖励">
+		<list class="ZoneRewardNumInfo" name="zoneRewardnuminfo" explain="通知可领取奖励数量"></list>
+	</message>
+	
+	<message id="109" type="SC" name="ResZoneKillProgressRate" explain="副本杀怪进度">
+		<field class="int" name="zoneid" explain="副本编号"></field>
+		<field class="int" name="monstrssum" explain="怪物总数"></field>
+		<field class="int" name="monstrsnum" explain="当前怪物数量"></field>
+		<field class="int" name="deathnum" explain="死亡次数"></field>
+		<field class="byte" name="status" explain="面板开关，0结束时关闭，1开启"></field>
+		<field class="ZoneMonstrInfo" name="zoenmonstrinfo" explain="副本怪物信息"></field>
+	</message>
+	
+	<message id="110" type="SC" name="ResZoneLifeTime" explain="计时器显示，副本存在时间">
+		<field class="int" name="surplustime" explain="剩余时间（秒）"></field>
+		<field class="int" name="zoneid" explain="副本编号"></field>
+	</message>
+	
+		
+	<message id="111" type="SC" name="ResZoneBossAppear" explain="BOSS出现">
+		<field class="ZoneMonstrInfo" name="zoenmonstrinfo" explain="副本怪物信息"></field>
+	</message>
+	
+	<message id="112" type="WC" name="ResZoneTimeRecordNotice" explain="时间破记录公告">
+		<field class="int" name="fulltime" explain="全服最快通关时间（时间秒）"></field>
+		<field class="String" name="fullname" explain="全服最快通关者名字"></field>
+		<field class="int" name="zoneid" explain="副本编号"></field>
+		<field class="long" name="playerid" explain="全服最快通关者id"></field>
+	</message>
+	
+	<message id="113" type="SC" name="ResZoneSurplusSum" explain="扫荡剩余总次数">
+		<field class="int" name="num" explain="单人战役剩余次数"></field>
+		<field class="int" name="qiyaonum" explain="七曜战将剩余次数"></field>
+		<field class="int" name="qiyaozoneid" explain="最近的可挑战七曜战将副本"></field>
+	</message>
+	
+	<message id="114" type="SC" name="ResZoneContinuousRaids" explain="连续扫荡信息">
+		<field class="int" name="sumtime" explain="总时间（秒）"></field>
+		<field class="int" name="passedime" explain="已经过去的时间（秒）"></field>
+		<field class="int" name="rewardnum" explain="可领取的奖励次数"></field>
+		<field class="int" name="zonenum" explain="当前扫荡的副本数量"></field>
+		<field class="int" name="zonetype" explain="类型，1剧情副本，4七曜战将"></field>
+	</message>
+	
+	<message id="115" type="SC" name="ResZoneContinuousRaidsEnd" explain="连续扫荡完成">
+		<field class="int" name="zoneid" explain="当前完成的副本编号"></field>
+		<field class="byte" name="type" explain="1表示全部完成，2表示停止扫荡"></field>
+		<field class="int" name="zonetype" explain="类型，1剧情副本，4七曜战将"></field>
+	</message>
+	
+	<!-- 新加多人副本活动 -->
+	
+	<message id="116" type="SC" name="ResZoneTeamShowToClient" explain="展示副本活动信息">
+		<list class="ZoneTeamInfo" name="zoneteaminfo" explain="多人副本信息"></list>
+	</message>
+	
+	<message id="117" type="SC" name="ResZoneTeamNoticeToClient" explain="组队多人进入副本通知队员" >
+		<field class="long" name="leaderid" explain="队长ID"></field>
+		<field class="String" name="leadername" explain="队长名字"></field>
+		<field class="int" name="zoneid" explain="副本ID"></field>
+		<field class="int" name="waittime" explain="等待选择倒计时"></field>
+		<field class="int" name="entertime" explain="进入倒计时"></field>
+	</message>
+	
+	<message id="118" type="SC" name="ResZoneTeamNoticeSelectToClient" explain="组队多人副本进入选择通知其他队员" >
+		<field class="byte" name="select" explain="选项（默认是0等待选择），1拒绝，2同意"></field>
+		<field class="long" name="memberid" explain="队员ID"></field>
+		<field class="int" name="zoneid" explain="副本ID"></field>
+	</message>
+
+	<message id="119" type="SC" name="ResZoneTeamOpenBullToClient" explain="组队副本开放时，国家公告" >
+		<field class="int" name="zonemodelid" explain="副本模版编号"></field>
+	</message>
+
+
+	<message id="120" type="SC" name="ResZoneApplyDataInfoToClient" explain="发送多人副本报名名单（单个人报名）" >
+		<field class="ZoneApplyDataInfo" name="zoneapplydatainfo" explain="多人副本报名名单"></field>
+		<field class="int" name="type" explain="类型：0第一次报名，1其他人加入，2人数足够"></field>
+	</message>
+
+
+	<message id="121" type="SC" name="ResBf4v4infoToClient" explain="发送4v4副本战场战况列表" >
+		<list class="BfStructsInfo" name="BfStructsInfolist" explain="战场战况列表"></list>
+		<field class="int" name="time" explain="倒计时（秒）"></field>
+		<field class="int" name="seizeflag_a" explain="阵营A当前占旗数量"></field>
+		<field class="int" name="seizeflag_b" explain="阵营B当前占旗数量"></field>
+	</message>
+
+
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqZonePanelSelect" explain="在副本面板进行选择">
+		<field class="int" name="zoneid" explain="配置的副本编号"></field>
+	</message>	
+	
+	<message id="202" type="CS" name="ReqZoneInto" explain="进入副本">
+		<field class="int" name="zoneid" explain="副本编号"></field>
+		<field class="byte" name="isauto" explain="是否自动：0手动进入，1自动扫荡"></field>
+	</message>	
+
+	<message id="203" type="CS" name="ReqSelectAward" explain="通关选择奖励-翻牌">
+		<field class="int" name="idx" explain="翻牌编号（0-11）"></field>
+		<field class="byte" name="type" explain="类型:0手动，1自动扫荡"></field>
+	</message>
+		
+	<message id="204" type="CS" name="ReqZoneOut" explain="放弃（离开副本）">
+	
+	</message>	
+	
+	<message id="205" type="CS" name="ReqZoneImmediately" explain="自动扫荡立即完成（使用元宝）">
+		<field class="byte" name="type" explain="类型:1战役，4七曜战将"></field>
+	</message>	
+	
+	<message id="206" type="CS" name="ReqZoneOpenPanel" explain="打开世界地图面板">
+		
+	</message>	
+	
+	<message id="207" type="CS" name="ReqZoneReceiveawards" explain="前端手动请求领取奖励">
+		<field class="byte" name="type" explain="类型:0手动，1自动扫荡"></field>
+		<field class="int" name="zid" explain="副本ID，0没选中"></field>
+	</message>	
+	
+	
+	<message id="208" type="CS" name="ReqZoneContinuousRaids" explain="开始连续扫荡">
+		<field class="int" name="zonetype" explain="类型，1剧情副本，4七曜战将"></field>
+	</message>
+	
+	<message id="209" type="CS" name="ReqZoneContinuousRaidsYB" explain="用元宝一键完成连续扫荡">
+		<field class="int" name="zonetype" explain="类型，1剧情副本，4七曜战将"></field>
+	</message>
+
+	<message id="210" type="CS" name="ReqZoneContinuousRaidsStop" explain="停止连续扫荡">
+		<field class="int" name="zonetype" explain="类型，1剧情副本，4七曜战将"></field>
+	</message>
+
+	<!-- 新加多人副本活动 -->
+	
+	
+	<message id="211" type="CS" name="ReqZoneTeamEnterToGame" explain="多人副本进入方式">
+		<field class="byte" name="entertype" explain="进入方式，0单人，1组队，2报名,3队伍报名"></field>
+		<field class="int" name="zoneid" explain="副本ID"></field>
+	</message>
+
+	<message id="212" type="CS" name="ReqZoneTeamSelectToGame" explain="组队多人队员选择" >
+		<field class="byte" name="select" explain="选项，1拒绝，2同意"></field>
+		<field class="int" name="zoneid" explain="副本ID"></field>
+	</message>
+
+	<message id="213" type="CS" name="ReqZoneTeamOpenToGame" explain="打开多人副本活动面板" >
+	</message>
+
+	<message id="214" type="CS" name="ReqZoneAutoAwardToGame" explain="战役一键自动领奖励" >
+		<field class="int" name="zonetype" explain="类型，1剧情副本，4七曜战将"></field>
+	</message>
+	
+	<message id="215" type="CS" name="ReqZoneImmediatelyByCost" explain="花费元宝立刻完成多人副本" >
+		<field class="int" name="zoneid" explain="副本ID"></field>
+	</message>
+		
+	
+	<message id="216" type="CS" name="ReqZoneCancelSignupToGame" explain="取消报名" >
+		<field class="int" name="type" explain="类型，1取消单人报名，2取消组队报名"></field>
+		<field class="int" name="zoneid" explain="副本ID"></field>
+	</message>
+		
+		
+	<!-- 服务器内部消息 -->
+	<message id="301" type="WS" name="ResfastestClearanceToGame" explain="通知游戏服务器地图副本最快通关记录,广播" >
+		<field class="String" name="zonetopjsonstr" explain="第一名玩家数据"></field>
+	</message>
+
+	<message id="302" type="SW" name="ReqZoneTeamEnterToWorld" explain="组队进入副本" >
+		<field class="long" name="playerid" explain="队长id"></field>
+		<field class="int" name="zone" explain="副本"></field>
+	</message>
+	
+	<message id="303" type="WS" name="ResZoneTeamEnterToGame" explain="组队进入副本" >
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="zone" explain="副本"></field>
+	</message>
+	
+	<message id="304" type="SW" name="ReqZoneTeamSelectToWorld" explain="组队多人队员选择" >
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="byte" name="select" explain="选项，1拒绝，2同意"></field>
+	</message>
+	
+	<message id="305" type="WS" name="ResZoneCreateToGame" explain="通知队长创建多人副本" >
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="zone" explain="副本"></field>
+	</message>
+	
+	<message id="306" type="SW" name="ReqZoneCreateToWorld" explain="通知世界服副本创建成功" >
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="zone" explain="副本"></field>
+		<field class="int" name="country" explain="副本所在country"></field>
+	</message>
+	
+	<message id="307" type="WS" name="ResZoneEnterToGame" explain="通知玩家进入副本" >
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="zone" explain="副本"></field>
+		<field class="int" name="country" explain="副本所在country"></field>
+	</message>
+		
+</messages>
+		

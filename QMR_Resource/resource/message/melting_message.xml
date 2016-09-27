@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.melting" id="154">
+
+	<!-- bean定义 -->
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResMeltingItemToClient" explain="发送熔炼结果">
+		<field class="com.game.backpack.bean.ItemInfo" name="equipInfo" explain="装备详细信息"></field>
+		<field class="byte" name="idx" explain="替换的位置"></field>
+		<field class="com.game.backpack.bean.GoodsAttribute" name="repattr" explain="替换的属性"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqMeltingItemToServer" explain="对指定道具进行熔炼操作">
+		<field class="long" name="itemid" explain="要熔炼的道具唯一ID"></field>
+		<field class="long" name="metingid" explain="熔炼石id"></field>
+		<field class="byte" name="type" explain="类型：0手动，1自动"></field>
+	</message>
+</messages>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.server" id="300">
+	<!-- bean定义 -->
+	<bean name="ServerInfo" explain="服务器信息">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="int" name="country" explain="服务器国家"></field>
+		<field class="String" name="createTime" explain="服务器开启时间"></field>
+		<list class="int" name="servers" explain="合服服务器列表"></list>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="WC" name="ResCloseServer" explain="服务器关闭消息">
+		<field class="int" name="time" explain="关服剩余时间"></field>
+	</message>
+	
+	<message id="102" type="SC" name="ResDiscardMsg" explain="被丢弃的消息">
+		<field class="String" name="msgcont" explain="消息内容"></field>
+		<field class="int" name="msgid" explain="消息ID"></field>
+	</message>
+	
+	<message id="103" type="GC" name="ResUnionServer" explain="是否联服">
+		<field class="int" name="union" explain="是否联服 0-不是 1-是"></field>
+	</message>
+	
+
+	<!-- 服务器接收消息 -->
+
+	<!-- 服务器之间消息 -->
+	<message id="301" type="SG" name="ReqRegisterGate" explain="服务器注册网关请求">
+		<field class="ServerInfo" name="serverInfo" explain="服务器信息"></field>
+	</message>
+	
+	<message id="302" type="GS" name="ResRegisterGate" explain="服务器注册网关返回" queue="Local">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="serverName" explain="服务器名字"></field>
+	</message>
+	
+	<message id="303" type="SW" name="ReqRegisterWorld" explain="服务器注册世界服务器请求">
+		<field class="ServerInfo" name="serverInfo" explain="服务器信息"></field>
+	</message>
+	
+	<message id="304" type="WS" name="ResRegisterWorld" explain="服务器注册世界服务器返回" queue="Local">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="serverName" explain="服务器名字"></field>
+	</message>
+	
+	<message id="305" type="GW" name="ReqRegisterWorldForGate" explain="网关注册世界服务器请求">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="serverName" explain="服务器名字"></field>
+	</message>
+	
+	<message id="306" type="WG" name="ResRegisterWorldForGate" explain="网关注册世界服务器返回">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="serverName" explain="服务器名字"></field>
+	</message>
+	
+	<message id="307" type="WS" name="ReqCloseForGame" explain="关闭游戏服务器">
+	</message>
+	
+	<message id="308" type="WG" name="ReqCloseForGate" explain="关闭网关服务器">
+	</message>
+	
+	<message id="309" type="SW" name="ResCloseSucessForGame" explain="关闭游戏服务器成功">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="serverName" explain="服务器名字"></field>
+	</message>
+	
+	<message id="310" type="GW" name="ResCloseSucessForGate" explain="关闭网关服务器成功">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="serverName" explain="服务器名字"></field>
+	</message>
+	
+	<message id="311" type="CS" name="ReqRegisterGameForPublic" explain="游戏服务器请求注册公共服务器">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="serverName" explain="服务器名字"></field>
+		<field class="String" name="webName" explain="平台名字"></field>
+		<field class="int" name="version" explain="服务器版本"></field>
+	</message>
+	
+	<message id="312" type="CS" name="ResRegisterGameForPublic" explain="游戏服务器请求注册公共服务器返回">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="serverName" explain="服务器名字"></field>
+		<field class="String" name="webName" explain="平台名字"></field>
+	</message>
+	
+	<message id="313" type="GS" name="ReqCheckToGame" explain="作弊">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="check" explain="作弊类型"></field>
+		<field class="long" name="para" explain="作弊参数"></field>
+	</message>
+	
+	<message id="314" type="WS" name="ResServerInfos" explain="返回服务器列表信息" queue="Local">
+		<list class="ServerInfo" name="serverInfos" explain="服务器列表"></list>
+	</message>
+</messages>

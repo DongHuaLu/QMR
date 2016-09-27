@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.shop" id="105">
+	<!-- bean定义 -->
+	<bean name="ShopItemInfo" explain="商品动态信息">
+		<field class="int" name="sellId" explain="商品ID"></field>
+		<field class="int" name="modelId" explain="物品模型ID"></field>
+		<field class="int" name="index" explain="排序号"></field>
+		<field class="byte" name="moneyType" explain="货币类型 1游戏币，2元宝，4绑定元宝，6元宝与绑定元宝可购买，7三种货币均可购买"></field>
+		<field class="int" name="coin" explain="金币价格"></field>
+		<field class="int" name="gold" explain="元宝价格"></field>
+		<field class="int" name="bindgold" explain="绑定元宝价格"></field>
+		<field class="int" name="originalCoin" explain="原金币价格"></field>
+		<field class="int" name="originalGold" explain="原元宝价格"></field>
+		<field class="int" name="originalBindGold" explain="原绑定元宝价格"></field>
+		<field class="byte" name="hot" explain="热销标识 0无热销，1热销中，2折扣，3热销+折扣"></field>
+		<field class="int" name="strengthen" explain="物品强化等级定义"></field>
+		<field class="String" name="append" explain="物品附加属性定义（类型|百分比的分子;类型|百分比的分子"></field>
+		<field class="String" name="lostTime" explain="过期时间 点（格式 yyyy-mm-dd hh:mm:ss）"></field>
+		<field class="int" name="duration" explain="购买后离自动失效前的存在时间（单位：秒）"></field>
+		<field class="byte" name="buybind" explain="购买时是否立刻绑定（0不是，1是立刻绑定）" ></field>	
+	</bean>
+	
+	<bean name="ShopBuyResultItemBean" explain="购买返回信息">
+		<field class="long" name="goodsid" explain="物品ID"></field>
+		<field class="int" name="num" explain="物品数量"></field>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResNotSale" explain="下架商品列表">
+		<field class="int" name="sellId" explain="销售Id"></field>
+		<list class="int" name="itemIds" explain="下架商品列表"></list>
+	</message>
+	
+	<message id="102" type="SC" name="ResSaleSuccess" explain="销售成功消息">
+		<field class="long" name="itemId" explain="物品Id"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResRebuySuccess" explain="回购成功消息">
+		<field class="long" name="itemId" explain="物品Id"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResRebuyItemInfos" explain="回购物品列表">
+		<list class="com.game.backpack.bean.ItemInfo" name="items" explain="物品信息列表"></list>
+	</message>
+	<message id="105" type="SC" name="ResShopItemList" explain="商品列表">
+		<field class="int" name="shopModelId" explain="模型编号"></field>
+		<field class="byte" name="page" explain="页号"></field>
+		<list class="ShopItemInfo" name="shopItemList" explain="指定页的列表"></list>
+	</message>
+	<message id="106" type="SC" name="ResBuyItemResult" explain="购买成功消息">
+		<field class="int" name="sellId" explain="销售Id"></field>
+		<field class="int" name="costType" explain="花费类型"></field>
+		<list class="ShopBuyResultItemBean" name="goodsinfo" explain="物品列表"></list>
+	</message>
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="BuyItem" explain="购买物品">
+		<field class="int" name="npcId" explain="NPC Id"></field>
+		<field class="int" name="sellId" explain="销售Id"></field>
+		<field class="int" name="num" explain="物品数量"></field>
+		<field class="int" name="costType" explain="花费类型"></field>
+		<field class="int" name="modelId" explain="物品模型ID"></field>
+		<field class="int" name="coin" explain="金币价格"></field>
+		<field class="int" name="gold" explain="元宝价格"></field>
+		<field class="int" name="bindgold" explain="绑定元宝价格"></field>
+		<field class="int" name="originalCoin" explain="原金币价格"></field>
+		<field class="int" name="originalGold" explain="原元宝价格"></field>
+		<field class="int" name="originalBindGold" explain="原绑定元宝价格"></field>
+	</message>
+	
+	<message id="202" type="CS" name="SellItem" explain="出售物品">
+		<field class="long" name="itemId" explain="物品Id"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqNotSale" explain="请求下架商品">
+		<field class="int" name="sellId" explain="销售Id"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqRebuy" explain="回购物品">
+		<field class="long" name="itemId" explain="物品Id"></field>
+	</message>
+	
+	<message id="205" type="CS" name="ReqRebuyList" explain="回购列表">
+	</message>
+	
+	<message id="206" type="CS" name="ReqShopList" explain="请求商店出售物品列表">
+		<field class="int" name="shopModelId" explain="模型编号"></field>
+		<field class="byte" name="page" explain="页号"></field>
+		<field class="byte" name="gradeLimit" explain="是否显示高于玩家等级的商品1 显示 0 不显示"></field>
+	</message>
+	
+	<message id="207" type="CS" name="ReqSellItems" explain="出售物品列表">
+		<list class="long" name="itemId" explain="物品Id"></list>
+	</message>
+</messages>

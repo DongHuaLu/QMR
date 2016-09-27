@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+	<db-config>db-config.xml</db-config>
+	<java-project>QMRServer</java-project>
+	<java-excel-package>com.game.data</java-excel-package>
+	<java-excel-pool>com.game.data.manager.DataManager</java-excel-pool>
+	<as-project>QMR_Resource</as-project>
+	<as-recourse>resource.data</as-recourse>
+	<as-excel-package>datasets</as-excel-package>
+</configs>

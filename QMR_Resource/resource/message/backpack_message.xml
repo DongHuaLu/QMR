@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.backpack" id="104">
+	<!-- bean定义 -->
+	<bean name="ItemInfo" explain="物品信息类">
+		<field class="long" name="itemId" explain="角色Id"></field>
+		<field class="int" name="itemModelId" explain="物品模板Id"></field>
+		<field class="int" name="num" explain="物品数量"></field>
+		<field class="int" name="gridId" explain="角色所在格子Id"></field>
+		<field class="byte" name="isbind" explain="是否绑定 1是 0否 "></field>
+		<field class="byte" name="intensify" explain="强化等级"></field>
+		<field class="byte" name="attributs" explain="扩展属性数量"></field>
+		<field class="byte" name="isFullAppend" explain="是否顶级附加 1是 0否"></field>
+		<field class="int" name="lostTime" explain="过期时间"></field>
+		<list class="GoodsAttribute" name="goodAttributes" explain="扩展属性"/>
+		<field class="String" name="parameters" explain="参数，额外信息"></field>
+	</bean>
+	<bean name="GoodsAttribute" explain="物品附加项">
+		<field class="int" name="type" explain="属性类型"></field>
+		<field class="int" name="value" explain="属性值"></field>
+	</bean>
+	<bean name="ItemReasonsInfo" explain="获得物品原因信息">
+		<field class="long" name="itemId" explain="物品唯一id"></field>
+		<field class="int" name="itemModelId" explain="物品模板Id"></field>
+		<field class="int" name="itemNum" explain="物品数量"></field>
+		<field class="int" name="itemReasons" explain="获得物品原因"></field>
+	</bean>
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResItemInfos" explain="物品信息列表">
+		<field class="int" name="cellnum" explain="已开格子数量"></field>
+		<list class="ItemInfo" name="items" explain="物品信息列表"></list>
+	</message>
+
+	<message id="102" type="SC" name="ResItemAdd" explain="物品信息增加">
+		<field class="ItemInfo" name="item" explain="物品信息"></field>
+		<field class="byte" name="reason" explain="获取方式"></field>
+	</message>
+
+	<message id="103" type="SC" name="ResItemChange" explain="物品信息修正">
+		<field class="ItemInfo" name="item" explain="物品信息"></field>
+	</message>
+
+	<message id="104" type="SC" name="ResItemRemove" explain="物品删除">
+		<field class="long" name="itemId" explain="物品Id"></field>
+	</message>
+
+	<message id="105" type="SC" name="ResMoneyChange" explain="游戏币变化">
+		<field class="int" name="money" explain="游戏币数量"></field>
+	</message>
+
+	<message id="106" type="SC" name="ResGoldChange" explain="元宝变化">
+		<field class="int" name="gold" explain="元宝数量"></field>
+	</message>
+
+	<message id="107" type="SC" name="ResUseItemSuccess" explain="使用物品成功">
+		<field class="long" name="itemId" explain="物品Id"></field>
+	</message>
+
+	<message id="108" type="SC" name="ResOpenCellInfo" explain="打开格子所需条件以及奖励信息">
+		<field class="int" name="cellId" explain="格子编号"></field>
+		<field class="int" name="timeRemaining" explain="剩余时间(秒)"></field>
+		<field class="int" name="gold" explain="所需元宝数"></field>
+		<field class="int" name="exp" explain="开启后获得的经验数"></field>
+		<field class="int" name="maxhp" explain="增大的最大血量"></field>
+	</message>
+
+	<message id="109" type="SC" name="ResCellTime" explain="打开格子所需时间">
+		<field class="int" name="cellId" explain="格子编号"></field>
+		<field class="int" name="timeRemaining" explain="剩余时间(秒)"></field>
+	</message>
+
+	<message id="110" type="SC" name="ResOpenCellResult" explain="打开格子结果">
+		<field class="int" name="cellId" explain="格子编号"></field>
+		<field class="int" name="isSuccess" explain="1成功 0失败"></field>
+	</message>
+	
+	<message id="111" type="SC" name="ResBindGoldChange" explain="绑定元宝变化">
+		<field class="int" name="bindgold" explain="元宝数量"></field>
+	</message>
+	
+	<message id="112" type="SC" name="ResNotEnoughGoldChange" explain="元宝不足">
+		<field class="int" name="gold" explain="缺少元宝数量"></field>
+	</message>
+	
+	<message id="113" type="SC" name="ResClearTimeSet" explain="清除整理CD">
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqGetItems" explain="背包物品请求">
+	</message>
+
+	<message id="202" type="CS" name="ReqMoveItem" explain="移动物品">
+		<field class="long" name="itemId" explain="物品Id"></field>
+		<field class="int" name="toGridId" explain="移动到格子Id"></field>
+		<field class="int" name="num" explain="移动数量"></field>
+	</message>
+
+	<message id="203" type="CS" name="ReqUseItem" explain="使用物品">
+		<field class="long" name="itemId" explain="物品Id"></field>
+		<field class="int" name="num" explain="使用数量"></field>
+	</message>
+
+	<message id="204" type="CS" name="ReqDelItem" explain="删除物品">
+		<field class="long" name="itemId" explain="物品Id"></field>
+	</message>
+
+	<message id="205" type="CS" name="ReqClearUpGoods" explain="整理物品">
+	</message>
+
+	<message id="207" type="CS" name="ReqOpenCell" explain="花元宝打开格子申请">
+		<field class="int" name="cellId" explain="格子编号"></field>
+	</message>
+
+	<message id="208" type="CS" name="ReqCellTimeQuery" explain="格子开启剩余时间查询">
+		<field class="int" name="cellId" explain="格子编号"></field>
+	</message>
+	
+	<message id="209" type="CS" name="ReqDiscard" explain="物品丢弃">
+		<field class="int" name="cellId" explain="格子编号"></field>
+	</message>
+	<message id="210" type="CS" name="ReqDestroy" explain="物品销毁">
+		<field class="int" name="cellId" explain="格子编号"></field>
+	</message>
+	
+	<message id="211" type="CS" name="ReqTakeUp" explain="拾取">
+		<field class="long" name="goodsId" explain="掉落ID"></field>
+	</message>
+	
+	<message id="212" type="SC" name="ResTakeUpSuccess" explain="拾取成功">
+		<field class="long" name="goodsId" explain="物品ID"></field>
+		<field class="int" name="goodModelId" explain="物品模型ID"></field>
+		<field class="int" name="effectType" explain="产生效果类型"></field>
+		<field class="int" name="effectValue" explain="产生效果值"></field>
+	</message>
+	
+	<message id="213" type="CS" name="ReqOpenTimeCell" explain="时间到打开格子申请">
+		<field class="byte" name="type" explain="0 包裹  2仓库"></field>
+	</message>
+	
+	<message id="214" type="SC" name="ResGetItemReasons" explain="获得物品原因">
+		<field class="int" name="itemReasons" explain="获得物品原因"></field>
+		<list class="ItemReasonsInfo" name="itemReasonsInfoList" explain="物品列表"></list>
+	</message>
+	
+</messages>

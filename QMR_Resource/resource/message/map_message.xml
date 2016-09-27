@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.map" id="101">
+	<!-- bean定义 -->
+	<bean name="PlayerInfo" explain="角色信息类">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="int" name="webvip" explain="平台VIP"></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="byte" name="sex" explain="角色性别 1-男 2-女"></field>
+		<field class="int" name="level" explain="角色等级"></field>
+		<field class="int" name="mapId" explain="角色所在地图"></field>
+		<field class="short" name="x" explain="角色所在X"></field>
+		<field class="short" name="y" explain="角色所在Y"></field>
+		<field class="int" name="hp" explain="角色HP"></field>
+		<field class="int" name="maxHp" explain="角色最大HP"></field>
+		<field class="int" name="mp" explain="角色MP"></field>
+		<field class="int" name="maxMp" explain="角色最大MP"></field>
+		<field class="int" name="sp" explain="角色SP"></field>
+		<field class="int" name="maxSp" explain="角色最大SP"></field>
+		<field class="int" name="speed" explain="角色速度"></field>
+		<field class="int" name="state" explain="角色状态"></field>
+		<field class="int" name="weapon" explain="武器模板id"></field>
+		<field class="byte" name="weaponStreng" explain="武器模板强化等级"></field>
+		<field class="int" name="armor" explain="衣服模板id"></field>
+		<field class="int" name="avatar" explain="头像模板id"></field>
+		<field class="byte" name="dir" explain="人物面对方向"></field>
+		<field class="long" name="team" explain="队伍ID"></field>
+		<field class="long" name="guild" explain="帮派ID"></field>
+		<list class="byte" name="positions" explain="跑步坐标集合"></list>
+		<list class="com.game.buff.bean.BuffInfo" name="buffs" explain="buff集合"></list>
+		<field class="short" name="horseid" explain="当前坐骑阶数"></field>
+		<field class="short" name="horseweaponid" explain="当前骑战兵器阶数"></field>
+		<field class="byte" name="dazuoState" explain="打坐状态 0 未打座 1单人打座 2与待宠双修 3与玩家双修"></field>
+		<list class="long" name="sxpets" explain="参与双修的宠物唯一ID"></list>
+		<field class="long" name="sxroleid" explain="双修的玩家ID"></field>
+		<field class="short" name="sxtargetx" explain="双修玩家对方的坐标X"></field>
+		<field class="short" name="sxtargety" explain="双修玩家对方的坐标Y"></field>
+		<field class="byte" name="ranklevel" explain="军衔等级"></field>
+		<field class="int" name="arrowid" explain="弓箭ID" ></field>
+		<field class="int" name="realmlevel" explain="境界等级" ></field>
+		<field class="short" name="hiddenweaponid" explain="当前暗器阶数"></field>
+		<field class="short" name="horseduangu" explain="坐骑锻骨草使用数量"></field>
+		<field class="int" name="amuletModel" explain="当前护身符model"></field>
+		<field class="int" name="spouseAmuletModel" explain="配偶护身符model"></field>
+		<field class="String" name="webname" explain="平台标识"></field>
+		<field class="int" name="cloakModel" explain="披风model"></field>
+	</bean>
+
+	<bean name="MonsterInfo" explain="怪物信息类">
+		<field class="long" name="monsterId" explain="怪物Id"></field>
+		<field class="int" name="monsterModelId" explain="怪物模板Id"></field>
+		<field class="String" name="monsterName" explain="怪物名字"></field>
+		<field class="String" name="monsterRes" explain="怪物资源造型"></field>
+		<field class="String" name="monsterIcon" explain="怪物头像造型"></field>
+		<field class="byte" name="friend" explain="怪物敌对类型 0-全体玩家敌对， 1-全体玩家友好， 2-帮派敌对"></field>
+		<field class="String" name="friendPara" explain="怪物敌对参数"></field>
+		<field class="int" name="level" explain="怪物等级"></field>
+		<field class="int" name="mapId" explain="怪物所在地图"></field>
+		<field class="short" name="x" explain="怪物所在X"></field>
+		<field class="short" name="y" explain="怪物所在Y"></field>
+		<field class="int" name="hp" explain="怪物HP"></field>
+		<field class="int" name="maxHp" explain="怪物最大HP"></field>
+		<field class="int" name="mp" explain="怪物MP"></field>
+		<field class="int" name="maxMp" explain="怪物最大MP"></field>
+		<field class="int" name="sp" explain="怪物SP"></field>
+		<field class="int" name="maxSp" explain="怪物最大SP"></field>
+		<field class="int" name="speed" explain="怪物速度"></field>
+		<field class="int" name="morph" explain="变身类型"></field>
+		<field class="byte" name="dir" explain="怪物面对方向"></field>
+		<list class="byte" name="positions" explain="跑步坐标集合"></list>
+		<list class="com.game.buff.bean.BuffInfo" name="buffs" explain="buff集合"></list>
+	</bean>
+
+	<bean name="PetInfo" explain="宠物信息类">
+		<field class="long" name="petId" explain="宠物Id"></field>
+		<field class="int" name="petModelId" explain="宠物模板Id"></field>
+		<field class="long" name="ownerId" explain="所有者ID "></field>
+		<field class="String" name="ownerName" explain="所有者名称"></field>
+		<field class="int" name="level" explain="宠物等级"></field>
+		<field class="int" name="mapId" explain="宠物所在地图"></field>
+		<field class="short" name="x" explain="宠物所在X"></field>
+		<field class="short" name="y" explain="宠物所在Y"></field>
+		<field class="int" name="hp" explain="宠物HP"></field>
+		<field class="int" name="maxHp" explain="宠物最大HP"></field>
+		<field class="int" name="mp" explain="宠物MP"></field>
+		<field class="int" name="maxMp" explain="宠物最大MP"></field>
+		<field class="int" name="sp" explain="宠物SP"></field>
+		<field class="int" name="maxSp" explain="宠物最大SP"></field>
+		<field class="int" name="speed" explain="宠物速度"></field>
+		<field class="byte" name="dir" explain="宠物面对方向"></field>
+		<list class="byte" name="positions" explain="跑步坐标集合"></list>
+		<list class="com.game.buff.bean.BuffInfo" name="buffs" explain="buff集合"></list>
+		<field class="byte" name="sxstate" explain="双修状态 1与玩家双修 2玩家与玩家双修并出战宠物"></field>
+	</bean>
+
+	<bean name="DropGoodsInfo" explain="掉落物品信息">
+		<field class="long" name="dropGoodsId" explain="物品Id"></field>
+		<field class="int" name="itemModelId" explain="物品模板Id"></field>
+		<field class="int" name="num" explain="数量"></field>
+		<field class="long" name="ownerId" explain="所有者ID 无主为0"></field>
+		<field class="long" name="dropTime" explain="掉落时间"></field>
+		<field class="byte" name="intensify" explain="强化等级"></field>
+		<field class="byte" name="attributs" explain="扩展属性数量"></field>
+		<field class="byte" name="isFullAppend" explain="是否顶级附加 1是 0否"></field>
+		<field class="byte" name="isFullStrength" explain="是否满强化 1是 0否"></field>
+		<field class="short" name="x" explain="坐标X"></field>
+		<field class="short" name="y" explain="坐标Y"></field>
+	</bean>
+
+	<bean name="NpcInfo" explain="NPC信息">
+		<field class="long" name="npcId" explain="NPCID"></field>
+		<field class="int" name="npcModelId" explain="NPC模型ID"></field>
+		<field class="String" name="npcName" explain="NPC名字"></field>
+		<field class="String" name="npcRes" explain="NPC资源造型"></field>
+		<field class="String" name="npcIcon" explain="NPC头像造型"></field>
+		<field class="byte" name="dir" explain="方向"></field>
+		<field class="short" name="x" explain="坐标X"></field>
+		<field class="short" name="y" explain="坐标Y"></field>
+		<field class="byte" name="state" explain="NPC状态"></field>
+	</bean>
+
+	<bean name="EffectInfo" explain="场景效果信息">
+		<field class="long" name="effectId" explain="EffectID"></field>
+		<field class="int" name="effectModelId" explain="Effect模型ID"></field>
+		<field class="byte" name="type" explain="播放类型"></field>
+		<field class="short" name="x" explain="坐标X"></field>
+		<field class="short" name="y" explain="坐标Y"></field>
+		<field class="int" name="play" explain="播放时间"></field>
+		<field class="long" name="target" explain="对象"></field>
+	</bean>
+	
+	<bean name="CartoonInfo" explain="场景动画信息">
+		<field class="long" name="cartoonId" explain="动画ID"></field>
+		<field class="int" name="cartoonModelId" explain="动画模型ID"></field>
+		<field class="byte" name="type" explain="播放类型， 0-播放一次然后回复原型， 1-播放一次，维持最后一帧"></field>
+		<field class="short" name="x" explain="坐标X"></field>
+		<field class="short" name="y" explain="坐标Y"></field>
+		<field class="int" name="direction" explain="方向"></field>
+		<field class="int" name="sourceType" explain="实施者类型 1-玩家 2-npc 3-怪物"></field>
+		<field class="long" name="source" explain="实施者"></field>
+		<field class="int" name="targetType" explain="对象类型"></field>
+		<field class="long" name="target" explain="对象"></field>
+	</bean>
+
+	<bean name="GridCoordinate" explain="格子坐标">
+		<field class="short" name="x" explain="坐标X"></field>
+		<field class="short" name="y" explain="坐标Y"></field>
+	</bean>
+
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResRoundPlayer" explain="周围玩家">
+		<field class="PlayerInfo" name="player" explain="周围玩家信息"></field>
+	</message>
+
+	<message id="102" type="SC" name="ResRoundMonster" explain="周围怪物">
+		<field class="MonsterInfo" name="monster" explain="周围怪物信息"></field>
+	</message>
+
+	<message id="103" type="SC" name="ResRoundGoods" explain="周围掉落物品">
+		<field class="DropGoodsInfo" name="goods" explain="周围掉落物品信息"></field>
+	</message>
+
+	<message id="104" type="SC" name="ResRoundPet" explain="周围宠物">
+		<field class="PetInfo" name="pet" explain="周围宠物信息"></field>
+	</message>
+
+	<message id="105" type="SC" name="ResRoundPlayerDisappear" explain="周围消失角色">
+		<list class="long" name="playerIds" explain="消失角色列表"></list>
+	</message>
+
+	<message id="106" type="SC" name="ResRoundMonsterDisappear" explain="周围消失怪物">
+		<list class="long" name="monstersIds" explain="消失怪物列表"></list>
+	</message>
+
+	<message id="107" type="SC" name="ResRoundGoodsDisappear" explain="周围消失物品">
+		<list class="long" name="goodsIds" explain="消失物品列表"></list>
+	</message>
+
+	<message id="108" type="SC" name="ResRoundPetDisappear" explain="周围消失宠物">
+		<list class="long" name="petIds" explain="消失宠物列表"></list>
+	</message>
+
+	<message id="109" type="SC" name="ResSetPosition" explain="角色坐标修正">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="修正坐标"></field>
+	</message>
+	
+	<message id="110" type="SC" name="ResRunPositions" explain="角色跑步坐标广播">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="人物当前坐标"></field>
+		<list class="byte" name="positions" explain="跑步坐标集合"></list>
+	</message>
+
+	<message id="111" type="SC" name="ResMonsterRunPositions" explain="怪物跑步坐标广播">
+		<field class="long" name="monsterId" explain="怪物Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="当前坐标"></field>
+		<list class="byte" name="positions" explain="跑步坐标集合"></list>
+	</message>
+
+	<message id="112" type="SC" name="ResPlayerJumpPositions" explain="角色跳跃坐标广播">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="byte" name="state" explain="角色状态"></field>
+		<field class="int" name="time" explain="跳跃剩余时间"></field>
+		<list class="com.game.structs.Position" name="positions" explain="跳跃坐标集合"></list>
+	</message>
+
+	<message id="113" type="SC" name="ResStartBlock" explain="开始格挡">
+		<field class="long" name="personId" explain="角色Id"></field>
+	</message>
+
+	<message id="114" type="SC" name="ResStopBlock" explain="停止格挡">
+		<field class="long" name="personId" explain="角色Id"></field>
+	</message>
+
+	<message id="115" type="SC" name="ResMonsterStop" explain="怪物停止移动">
+		<field class="long" name="monsterId" explain="角色Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="修正坐标"></field>
+	</message>
+
+	<message id="116" type="SC" name="ResPlayerStop" explain="玩家停止移动">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="修正坐标"></field>
+	</message>
+
+	<message id="117" type="SC" name="ResChangeMap" explain="切换地图返回">
+		<field class="byte" name="type" explain="切换地图类型"></field>
+		<field class="int" name="mapId" explain="地图Id"></field>
+	</message>
+
+	<message id="118" type="SC" name="ResWeaponChange" explain="武器换装">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="weaponId" explain="武器模板Id"></field>
+		<field class="byte" name="weaponStreng" explain="武器等级"></field>
+	</message>
+
+	<message id="119" type="SC" name="ResArmorChange" explain="装备换装">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="armorId" explain="衣服模板Id"></field>
+	</message>
+
+	<message id="120" type="SC" name="ResEnterMap" explain="切换地图返回">
+		<field class="int" name="line" explain="所在线"></field>
+		<field class="com.game.structs.Position" name="pos" explain="坐标"></field>
+	</message>
+
+	<message id="121" type="SC" name="ResPetStop" explain="宠物停止移动">
+		<field class="long" name="petId" explain="宠物Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="修正坐标"></field>
+	</message>
+
+	<message id="122" type="SC" name="ResPetRunPositions" explain="宠物跑步度座标">
+		<field class="long" name="petId" explain="宠物Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="当前坐标"></field>
+		<list class="byte" name="positions" explain="跑步坐标集合"></list>
+	</message>
+
+	<message id="123" type="SC" name="ResPlayerRunEnd" explain="玩家跑步结束">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="修正坐标"></field>
+	</message>
+
+	<message id="124" type="SC" name="ResSendLines" explain="发送当前线数量">
+		<list class="int" name="lines" explain="线列表"></list>
+	</message>
+
+	<message id="125" type="SC" name="ResRoundObjects" explain="周围情况变化">
+		<list class="PlayerInfo" name="player" explain="周围玩家信息"></list>
+		<list class="long" name="playerIds" explain="消失角色列表"></list>
+		<list class="MonsterInfo" name="monster" explain="周围怪物信息"></list>
+		<list class="long" name="monstersIds" explain="消失怪物列表"></list>
+		<list class="DropGoodsInfo" name="goods" explain="周围掉落物品信息"></list>
+		<list class="long" name="goodsIds" explain="消失物品列表"></list>
+		<list class="PetInfo" name="pets" explain="周围宠物信息"></list>
+		<list class="long" name="petIds" explain="消失物品列表"></list>
+		<list class="NpcInfo" name="npcs" explain="NPC信息"></list>
+		<list class="long" name="npcid" explain="消失的"></list>
+		<list class="EffectInfo" name="Effect" explain="周围效果信息"></list>
+		<list class="long" name="effectid" explain="消失的效果信息"></list>
+	</message>
+
+	<message id="126" type="SC" name="ResChangeMapFailed" explain="切换地图失败">
+	</message>
+
+	<message id="127" type="SC" name="ResChangeDirect" explain="变换方面">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="byte" name="dir" explain="人物面对方向"></field>
+	</message>
+
+	<message id="128" type="SC" name="ResChangePosition" explain="角色改变坐标">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="改变坐标"></field>
+	</message>
+
+	<message id="129" type="SC" name="ResRoundNpc" explain="周围NPC">
+		<field class="NpcInfo" name="npc" explain="周围NPC信息"></field>
+	</message>
+	<message id="130" type="SC" name="ResRoundNpcDisappear" explain="周围消失NPC">
+		<list class="long" name="npcids" explain="消失NPC列表"></list>
+	</message>
+	<message id="131" type="SC" name="ResRoundEffect" explain="周围效果">
+		<field class="EffectInfo" name="Effect" explain="周围效果信息"></field>
+	</message>
+	<message id="132" type="SC" name="ResRoundEffectDisappear" explain="周围消失效果">
+		<list class="long" name="effectid" explain="消失效果列表"></list>
+	</message>
+	<message id="133" type="SC" name="ResPetJumpPositions" explain="角色跳跃坐标广播">
+		<field class="long" name="petId" explain="侍宠Id"></field>
+		<field class="byte" name="state" explain="跳跃状态 0 一跳  1 二跳"></field>
+		<field class="int" name="time" explain="跳跃剩余时间"></field>
+		<list class="com.game.structs.Position" name="positions" explain="跳跃坐标集合 只有两个元素 起点 终点"></list>
+	</message>
+	
+	<message id="134" type="SC" name="ResPetTranMove" explain="宠物传送">
+		<field class="long" name="petId" explain="侍宠Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="坐标"></field>
+	</message>
+
+	<message id="135" type="SC" name="ResJumpSetPosition" explain="角色跳跃坐标修正">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="修正坐标"></field>
+	</message>
+	<message id="136" type="SC" name="ResDynamicgrids" explain="动态格子列表">
+		<list class="GridCoordinate" name="grids" explain="格子坐标列表"></list>
+		<field class="int" name="type" explain="格子类型，0取消阻挡，1变成阻挡禁止跳跃"></field>
+		<field class="int" name="all" explain="是否全部都存在"></field>
+	</message>
+	<message id="137" type="SC" name="ResBoradcastCartoon" explain="播放动画">
+		<field class="CartoonInfo" name="cartoon" explain="动画信息"></field>
+	</message>
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqRunning" explain="玩家跑步信息">
+		<field class="com.game.structs.Position" name="position" explain="当前坐标"></field>
+		<list class="byte" name="positions" explain="跑步坐标集合"></list>
+		<field class="int" name="force" explain="是否后端强制"></field>
+	</message>
+
+	<message id="202" type="CS" name="ReqJump" explain="玩家跳跃信息">
+		<field class="int" name="type" explain="跳跃类型"></field>
+		<list class="com.game.structs.Position" name="positions" explain="跳跃坐标集合"></list>
+		<field class="int" name="force" explain="是否后端强制"></field>
+	</message>
+
+	<message id="203" type="CS" name="ReqStartBlock" explain="开始格挡">
+	</message>
+
+	<message id="204" type="CS" name="ReqStopBlock" explain="停止格挡">
+	</message>
+
+	<message id="205" type="CS" name="ReqPlayerStop" explain="停止移动">
+		<field class="com.game.structs.Position" name="position" explain="修正坐标"></field>
+	</message>
+
+	<message id="206" type="CS" name="ReqChangeMapByMove" explain="切换地图">
+		<field class="int" name="line" explain="切换线路"></field>
+		<field class="int" name="tranId" explain="传送点Id"></field>
+	</message>
+
+	<message id="207" type="CG" name="ReqLoadFinishForChangeMap" explain="切换地图加载完成">
+		<field class="int" name="width" explain="屏幕宽度"></field>
+		<field class="int" name="height" explain="屏幕高度"></field>
+	</message>
+
+	<message id="208" type="CS" name="ReqEnterMap" explain="进入地图请求">
+		<field class="int" name="width" explain="屏幕宽度"></field>
+		<field class="int" name="height" explain="屏幕高度"></field>
+	</message>
+
+	<message id="209" type="CS" name="ReqNpcTrans" explain="NPC传送">
+		<field class="int" name="npcId" explain="NPC序号"></field>
+		<field class="int" name="mapId" explain="地图序号"></field>
+		<field class="com.game.structs.Position" name="pos" explain="坐标"></field>
+	</message>
+
+	<message id="210" type="CS" name="ReqGoldMapTrans" explain="世界地图元宝传送">
+		<field class="int" name="mapId" explain="地图序号"></field>
+	</message>
+
+	<message id="211" type="CS" name="ReqGetLines" explain="获取地图当前线数量">
+	</message>
+
+	<message id="212" type="CS" name="ReqSelectLine" explain="选线">
+		<field class="int" name="line" explain="线编号"></field>
+	</message>
+
+	<message id="213" type="CS" name="ReqChangeDirect" explain="变换方面">
+		<field class="byte" name="dir" explain="人物面对方向"></field>
+	</message>
+	<message id="214" type="CS" name="ReqMonsterInfo" explain="变换方面">
+		<field class="long" name="monsterId" explain="怪物唯一ID"></field>
+	</message>
+
+	<!-- 服务器之间消息 -->
+	<message id="301" type="GS" name="ReqLoadFinishForChangeMapToGame" explain="向游戏服务器切换地图加载完成"
+		queue="Local">
+		<field class="int" name="gateId" explain="网关编号"></field>
+		<field class="byte" name="isadult" explain="1成年,0未成年,-1未知"></field>
+		<field class="int" name="width" explain="屏幕宽度"></field>
+		<field class="int" name="height" explain="屏幕高度"></field>
+	</message>
+	
+	<message id="302" type="SW" name="ReqSyncMapInfoToWorld" explain="同步地图信息到世界服">
+		<field class="int" name="serverid" explain="服务器id"></field>
+		<field class="String" name="jsonStr" explain="地图信息json字符串"></field>
+	</message>
+
+	<!-- 测试消息 -->
+	<message id="701" type="SC" name="ResSynPlayerPosition" explain="玩家当前坐标">
+		<field class="com.game.structs.Position" name="position" explain="修正坐标"></field>
+	</message>
+
+	<message id="702" type="SC" name="ResSynMonsterPosition" explain="怪物当前坐标">
+		<field class="long" name="monsterId" explain="角色Id"></field>
+		<field class="com.game.structs.Position" name="position" explain="修正坐标"></field>
+	</message>
+
+	<message id="703" type="SC" name="ResMapBlocks" explain="阻挡点信息">
+		<list class="int" name="blocks" explain="阻挡点集合"></list>
+	</message>
+</messages>

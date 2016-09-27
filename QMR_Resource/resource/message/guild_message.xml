@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.guild" id="121" explain="行会消息定义" handler="com.game.guild.GuildWorldManager" msgsuper="com.game.message.Message" beansuper="com.game.message.Bean">
+	<!-- bean定义 -->
+	<bean name="GuildInfo" explain="帮会信息">
+		<field class="long" name="guildId" explain="帮会id"></field>
+		<field class="String" name="guildName" explain="帮会名"></field>
+		<field class="String" name="guildBanner" explain="帮会旗帜"></field>
+		<field class="int" name="guildCountry" explain="帮会国家"></field>
+		<field class="long" name="bangZhuid" explain="帮主id"></field>
+		<field class="String" name="bangZhuName" explain="帮主名字"></field>
+		<field class="short" name="bangZhuLevel" explain="帮主等级"></field>
+		<field class="byte" name="bangZhuOnline" explain="帮主是否在线"></field>
+		<field class="long" name="viceBangZhuid" explain="副帮主id"></field>
+		<field class="String" name="viceBangZhuName" explain="副帮主名字"></field>
+		<field class="short" name="viceBangZhuLevel" explain="副帮主等级"></field>
+		<field class="byte" name="viceBangZhuOnline" explain="副帮主是否在线"></field>
+		<field class="int" name="bannerIcon" explain="旗帜造型"></field>
+		<field class="byte" name="bannerLevel" explain="旗帜等级"></field>
+		<field class="String" name="guildBulletin" explain="帮会公告"></field>
+		<field class="int" name="dragon" explain="青龙令牌数"></field>
+		<field class="int" name="whiteTiger" explain="白虎令牌数"></field>
+		<field class="int" name="suzaku" explain="朱雀令牌数"></field>
+		<field class="int" name="basaltic" explain="玄武令牌数"></field>
+		<field class="long" name="stockGold" explain="库存元宝"></field>
+		<list class="DiplomaticInfo" name="friendGuildList" explain="友好帮会列表"></list>
+		<list class="DiplomaticInfo" name="enemyGuildList" explain="敌对帮会列表"></list>
+		<field class="byte" name="activeValue" explain="今日活跃值"></field>
+		<field class="byte" name="warningValue" explain="解散警告值"></field>
+		<field class="byte" name="autoGuildAgreeAdd" explain="自动同意加入帮会的申请"></field>
+		<field class="byte" name="memberNum" explain="成员数量"></field>
+		<field class="int" name="memberFightPower" explain="成员战斗力之和"></field>
+		<list class="int" name="ownMapList" explain="占领地图列表"></list>
+		<field class="byte" name="ownKingCity" explain="拥有王城"></field>
+		<field class="byte" name="ownEmperorCity" explain="拥有皇城"></field>
+		<field class="int" name="createTime" explain="帮会创建时间"></field>
+		<field class="String" name="createIp" explain="帮会创建IP"></field>
+		<field class="int" name="lastGuildBulletinTime" explain="帮会公告最后更新时间"></field>
+	</bean>
+	<bean name="MemberInfo" explain="成员信息">
+		<field class="long" name="userId" explain="玩家id"></field>
+		<field class="String" name="userName" explain="玩家名"></field>
+		<field class="long" name="guildId" explain="帮会id"></field>
+		<field class="String" name="guildName" explain="帮会名"></field>
+		<field class="int" name="mapId" explain="所在地图Id"></field>
+		<field class="short" name="level" explain="玩家等级"></field>
+		<field class="byte" name="guildPowerLevel" explain="帮会职位等级 1 帮主 2 副帮主 3 长老 4 堂主 5 舵主"></field>
+		<field class="String" name="nickName" explain="昵称"></field>
+		<field class="String" name="groupName" explain="分组名"></field>
+		<field class="int" name="contributionPoint" explain="贡献点"></field>
+		<field class="int" name="contributionPointHistory" explain="历史贡献点"></field>
+		<field class="int" name="addTime" explain="入会时间"></field>
+		<field class="int" name="lastOnlineTime" explain="上次在线时间"></field>
+		<field class="byte" name="mountLevel" explain="坐骑阶数"></field>
+		<field class="byte" name="arrowLevel" explain="弓箭阶数"></field>
+		<field class="byte" name="tianyuanLevel" explain="天元阶数"></field>
+		<field class="int" name="prestigePoint" explain="声望点"></field>
+		<field class="int" name="achievementPoint" explain="成就点"></field>
+		<field class="int" name="fightPower" explain="战斗力"></field>
+		<field class="int" name="dragonHistory" explain="历史青龙令牌数"></field>
+		<field class="int" name="whiteTigerHistory" explain="历史白虎令牌数"></field>
+		<field class="int" name="suzakuHistory" explain="历史朱雀令牌数"></field>
+		<field class="int" name="basalticHistory" explain="历史玄武令牌数"></field>
+		<field class="long" name="stockGoldHistory" explain="历史库存元宝"></field>
+	</bean>
+	<bean name="EventInfo" explain="事件信息">
+		<field class="long" name="eventId" explain="事件id"></field>
+		<field class="long" name="guildId" explain="帮会id"></field>
+		<field class="String" name="guildName" explain="帮会名"></field>
+		<field class="int" name="messageTime" explain="消息时间"></field>
+		<field class="String" name="messageType" explain="消息类型"></field>
+		<field class="String" name="message" explain="消息内容"></field>
+	</bean>
+	<bean name="BannerInfo" explain="帮旗信息">
+		<field class="long" name="guildId" explain="帮会id"></field>
+		<field class="String" name="guildName" explain="帮会名"></field>
+		<field class="String" name="guildBanner" explain="帮会旗帜"></field>
+		<field class="String" name="bangZhuName" explain="帮主名字"></field>
+		<field class="int" name="bannerIcon" explain="旗帜造型"></field>
+		<field class="byte" name="bannerLevel" explain="旗帜等级"></field>
+		<field class="int" name="createTime" explain="帮会创建时间"></field>
+	</bean>
+	<bean name="PlayerModeInfo" explain="玩家造型信息">
+		<field class="long" name="userId" explain="玩家id"></field>
+		<field class="int" name="icon" explain="玩家头像icon"></field>
+	</bean>
+	<bean name="DiplomaticInfo" explain="外交关系信息">
+		<field class="long" name="guildId" explain="帮会id"></field>
+		<field class="int" name="diplomaticTime" explain="外交建立时间"></field>
+	</bean>
+	<bean name="GuildShortInfo" explain="帮会简略信息">
+		<field class="long" name="guildId" explain="帮会id"></field>
+		<field class="int" name="guildCountry" explain="帮会国家"></field>
+		<field class="String" name="guildName" explain="帮会名字"></field>
+	</bean>
+	<bean name="OtherGuildInfo" explain="查看其他帮会信息">
+		<field class="BannerInfo" name="guildBanner" explain="帮会旗帜"></field>
+		<field class="byte" name="guildPowerLevel" explain="帮会职位等级"></field>
+	</bean>
+	<bean name="FriendGuild" explain="友好帮会信息">
+		<field class="long" name="guildId" explain="帮会id"></field>
+		<list class="long" name="friendGuilds" explain="友好帮会列表"></list>
+	</bean>
+	
+	<!-- 世界服务器发送消息 -->
+	<message id="101" type="WC" name="ResGuildCreateToClient" explain="创建公会返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="102" type="WC" name="ResGuildAutoArgeeAddGuildToClient" explain="玩家修改自动同意加入帮会设置返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>  
+	<message id="103" type="WC" name="ResGuildGetGuildListToClient" explain="获取帮会列表返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<list class="GuildInfo" name="guildList" explain="所有帮会列表"></list>
+	</message>
+	<message id="104" type="WC" name="ResGuildApplyAddDoingToClient" explain="申请加入帮会发给帮会操作人">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="long" name="userId" explain="被操作玩家ID（申请人）"></field>
+		<field class="String" name="applyName" explain="申请人名字"></field>
+		<field class="short" name="applyLevel" explain="申请人等级"></field>
+		<field class="com.game.friend.bean.FriendModeInfo" name="applyModeInfo" explain="申请人造型信息"></field>
+	</message>
+	<message id="105" type="WC" name="ResGuildInviteAddDoingToClient" explain="邀请加入帮会发给被操作玩家">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="String" name="guildName" explain="帮会名字"></field>
+		<field class="String" name="inviteName" explain="邀请人名字"></field>
+		<field class="short" name="inviteLevel" explain="邀请人等级"></field>
+		<field class="com.game.friend.bean.FriendModeInfo" name="inviteModeInfo" explain="邀请人造型信息"></field>
+	</message>
+	<message id="106" type="WC" name="ResGuildGetMemberListToClient" explain="获取成员列表返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<list class="MemberInfo" name="memberList" explain="所有成员列表"></list>
+	</message>
+	<message id="107" type="WC" name="ResGuildAddMemberToClient" explain="添加帮会成员返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="108" type="WC" name="ResGuildQuitToClient" explain="退出帮会返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="109" type="WC" name="ResGuildChangeNickNameToClient" explain="修改昵称返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="110" type="WC" name="ResGuildChangePowerLevelToClient" explain="修改职权返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="111" type="WC" name="ResGuildDeleteMemberToClient" explain="删除帮会成员返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="112" type="WC" name="ResGuildAutoGuildArgeeAddToClient" explain="帮主修改自动同意申请加入设置返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="113" type="WC" name="ResGuildChangeBulletinToClient" explain="修改公告返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="114" type="WC" name="ResGuildSubmitItemToClient" explain="提交帮会贡献物品返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="115" type="WC" name="ResGuildChangeBannerIconToClient" explain="更换帮旗造型返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="116" type="WC" name="ResGuildChangeBannerNameToClient" explain="更换帮旗名字返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="117" type="WC" name="ResGuildBannerLevelUpToClient" explain="帮旗升级返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="118" type="WC" name="ResGuildAddDiplomaticToClient" explain="添加外交关系返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="byte" name="diplomaticType" explain="外交关系类型"></field>
+		<field class="long" name="applyGuildId" explain="申请操作帮会Id"></field>
+	</message>
+	<message id="119" type="WC" name="ResGuildDeleteDiplomaticToClient" explain="删除外交关系返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="byte" name="diplomaticType" explain="外交关系类型"></field>
+		<field class="long" name="applyGuildId" explain="申请操作帮会Id"></field>
+	</message>
+	<message id="120" type="WC" name="ResGuildDeleteGuildToClient" explain="解散帮会返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="121" type="WC" name="ResGuildGetEventListToClient" explain="获取帮会事件列表返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<list class="EventInfo" name="eventList" explain="帮会事件列表"></list>
+	</message>
+	<message id="122" type="WC" name="ResGuildGetGuildShortInfoListToClient" explain="获取帮会简略信息列表返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<list class="GuildShortInfo" name="guildShortInfoList" explain="帮会简略信息列表"></list>
+	</message>
+	<message id="123" type="SC" name="ResPlayerGuildToClient" explain="广播玩家帮会信息">
+		<field class="long" name="playerId" explain="玩家Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="teamId" explain="队伍Id"></field>
+	</message>
+	
+	<!-- 游戏服务器接收消息 -->
+	<message id="201" type="CS" name="ReqGuildCreateToServer" explain="创建公会" handler="com.game.guild.GuildServerManager">
+		<field class="String" name="guildName" explain="公会名字"></field>
+		<field class="String" name="guildBanner" explain="公会旗帜"></field>
+		<field class="int" name="guildBannerIcon" explain="公会旗帜造型"></field>
+	</message>
+	<message id="202" type="CS" name="ReqGuildAutoArgeeAddGuildToServer" explain="玩家修改自动同意加入帮会设置" handler="com.game.guild.GuildServerManager">
+		<field class="byte" name="autoArgeeAddGuild" explain="自动同意参数"></field>
+	</message>
+	<message id="203" type="CS" name="ReqGuildGetGuildListToServer" explain="获取帮会列表" handler="com.game.guild.GuildServerManager">
+	</message>
+	<message id="204" type="CS" name="ReqGuildApplyAddToServer" explain="申请加入帮会" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="205" type="CS" name="ReqGuildInviteAddToServer" explain="邀请加入帮会" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="userId" explain="被操作玩家ID"></field>
+	</message>
+	<message id="206" type="CS" name="ReqGuildGetMemberListToServer" explain="获取成员列表" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="207" type="CS" name="ReqGuildAddMemberToServer" explain="添加帮会成员" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="userId" explain="被操作玩家ID"></field>
+		<field class="byte" name="argee" explain="是否同意"></field>
+	</message>
+	<message id="208" type="CS" name="ReqGuildQuitToServer" explain="退出帮会" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="209" type="CS" name="ReqGuildChangeNickNameToServer" explain="修改昵称" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="userId" explain="被操作玩家ID"></field>
+		<field class="String" name="nickName" explain="昵称"></field>
+		<field class="String" name="groupName" explain="分组名"></field>
+	</message>
+	<message id="210" type="CS" name="ReqGuildChangePowerLevelToServer" explain="修改职权" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="userId" explain="被操作玩家ID"></field>
+		<field class="byte" name="newPowerLevel" explain="新职权"></field>
+	</message>
+	<message id="211" type="CS" name="ReqGuildDeleteMemberToServer" explain="删除帮会成员" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="userId" explain="被操作玩家ID"></field>
+	</message>
+	<message id="212" type="CS" name="ReqGuildAutoGuildArgeeAddToServer" explain="帮主修改自动同意申请加入设置" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="byte" name="autoGuildAgreeAdd" explain="自动同意加入帮会的申请"></field>
+	</message>
+	<message id="213" type="CS" name="ReqGuildChangeBulletinToServer" explain="修改公告" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="String" name="guildBulletin" explain="帮会公告"></field>
+	</message>
+	<message id="214" type="CS" name="ReqGuildSubmitItemToServer" explain="提交帮会贡献物品" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="byte" name="itemType" explain="物品类型"></field>
+		<field class="int" name="itemNum" explain="物品数目"></field>
+	</message>
+	<message id="215" type="CS" name="ReqGuildChangeBannerIconToServer" explain="更换帮旗造型" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="int" name="bannerIcon" explain="旗帜造型"></field>
+	</message>
+	<message id="216" type="CS" name="ReqGuildChangeBannerNameToServer" explain="更换帮旗名字" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="String" name="bannerName" explain="旗帜名字"></field>
+	</message>
+	<message id="217" type="CS" name="ReqGuildBannerLevelUpToServer" explain="帮旗升级" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="218" type="CS" name="ReqGuildAddDiplomaticToServer" explain="添加外交关系" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="byte" name="diplomaticType" explain="外交关系类型"></field>
+		<field class="long" name="otherGuildId" explain="被操作帮会Id"></field>
+		<field class="byte" name="argee" explain="是否同意"></field>
+	</message>
+	<message id="219" type="CS" name="ReqGuildDeleteDiplomaticToServer" explain="删除外交关系" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="byte" name="diplomaticType" explain="外交关系类型"></field>
+		<field class="long" name="otherGuildId" explain="被操作帮会Id"></field>
+		<field class="byte" name="argee" explain="是否同意"></field>
+	</message>
+	<message id="220" type="CS" name="ReqGuildDeleteGuildToServer" explain="解散帮会" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="221" type="CS" name="ReqGuildGetEventListToServer" explain="获取帮会事件列表" handler="com.game.guild.GuildServerManager">
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	
+	<!-- 服务器内部消息 游戏服务器发送到世界服务器 -->
+	<message id="301" type="SW" name="ReqInnerGuildCreateToWorld" explain="通知世界服务器创建公会">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="String" name="guildName" explain="公会名字"></field>
+		<field class="String" name="guildBanner" explain="公会旗帜"></field>
+		<field class="int" name="guildBannerIcon" explain="公会旗帜造型"></field>
+	</message>
+	<message id="302" type="SW" name="ReqInnerGuildAutoArgeeAddGuildToWorld" explain="通知世界服务器玩家修改自动同意加入帮会设置">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="byte" name="autoArgeeAddGuild" explain="自动同意参数"></field>
+	</message>
+	<message id="303" type="SW" name="ReqInnerGuildGetGuildListToWorld" explain="通知世界服务器获取帮会列表">
+		<field class="long" name="playerId" explain="角色Id"></field>
+	</message>
+	<message id="304" type="SW" name="ReqInnerGuildApplyAddToWorld" explain="通知世界服务器申请加入帮会">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="305" type="SW" name="ReqInnerGuildInviteAddToWorld" explain="通知世界服务器邀请加入帮会">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="userId" explain="被操作玩家ID"></field>
+	</message>
+	
+	<message id="306" type="SW" name="ReqInnerGuildGetMemberListToWorld" explain="通知世界服务器获取成员列表">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="307" type="SW" name="ReqInnerGuildAddMemberToWorld" explain="通知世界服务器添加帮会成员">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="userId" explain="被操作玩家ID"></field>
+		<field class="byte" name="argee" explain="是否同意"></field>
+	</message>
+	<message id="308" type="SW" name="ReqInnerGuildQuitToWorld" explain="通知世界服务器退出帮会">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="309" type="SW" name="ReqInnerGuildChangeNickNameToWorld" explain="通知世界服务器修改昵称">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="userId" explain="被操作玩家ID"></field>
+		<field class="String" name="nickName" explain="昵称"></field>
+		<field class="String" name="groupName" explain="分组名"></field>
+	</message>
+	<message id="310" type="SW" name="ReqInnerGuildChangePowerLevelToWorld" explain="通知世界服务器修改职权">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="userId" explain="被操作玩家ID"></field>
+		<field class="byte" name="newPowerLevel" explain="新职权"></field>
+	</message>
+	<message id="311" type="SW" name="ReqInnerGuildDeleteMemberToWorld" explain="通知世界服务器删除帮会成员">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="long" name="userId" explain="被操作玩家ID"></field>
+	</message>
+	<message id="312" type="SW" name="ReqInnerGuildAutoGuildArgeeAddToWorld" explain="通知世界服务器帮主修改自动同意申请加入设置">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="byte" name="autoGuildAgreeAdd" explain="自动同意加入帮会的申请"></field>
+	</message>
+	<message id="313" type="SW" name="ReqInnerGuildChangeBulletinToWorld" explain="通知世界服务器修改公告">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="String" name="guildBulletin" explain="帮会公告"></field>
+	</message>
+	<message id="314" type="SW" name="ReqInnerGuildSubmitItemToWorld" explain="通知世界服务器提交帮会贡献物品">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="byte" name="itemType" explain="物品类型"></field>
+		<field class="int" name="itemNum" explain="物品数目"></field>
+	</message>
+	<message id="315" type="SW" name="ReqInnerGuildChangeBannerIconToWorld" explain="通知世界服务器更换帮旗造型">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="int" name="bannerIcon" explain="旗帜造型"></field>
+	</message>
+	<message id="316" type="SW" name="ReqInnerGuildChangeBannerNameToWorld" explain="通知世界服务器更换帮旗名字">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="String" name="bannerName" explain="旗帜名字"></field>
+	</message>
+	<message id="317" type="SW" name="ReqInnerGuildBannerLevelUpToWorld" explain="通知世界服务器帮旗升级">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="318" type="SW" name="ReqInnerGuildAddDiplomaticToWorld" explain="通知世界服务器添加外交关系">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="byte" name="diplomaticType" explain="外交关系类型"></field>
+		<field class="long" name="otherGuildId" explain="被操作帮会Id"></field>
+		<field class="byte" name="argee" explain="是否同意"></field>
+	</message>
+	<message id="319" type="SW" name="ReqInnerGuildDeleteDiplomaticToWorld" explain="通知世界服务器删除外交关系">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+		<field class="byte" name="diplomaticType" explain="外交关系类型"></field>
+		<field class="long" name="otherGuildId" explain="被操作帮会Id"></field>
+		<field class="byte" name="argee" explain="是否同意"></field>
+	</message>
+	<message id="320" type="SW" name="ReqInnerGuildDeleteGuildToWorld" explain="通知世界服务器解散帮会">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="321" type="SW" name="ReqInnerGuildGetEventListToWorld" explain="通知世界服务器获取帮会事件列表">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	<message id="322" type="SW" name="ReqInnerGuildNotifyToWorld" explain="通知世界服务器帮会通知">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="int" name="notifytype" explain="通知类型"></field>
+		<field class="String" name="guildNotify" explain="帮会通知内容"></field>
+	</message>
+	<message id="323" type="SW" name="ReqInnerKingCityEventToWorld" explain="通知世界服务器王城事件通知">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="int" name="eventtype" explain="事件类型"></field>
+		<field class="String" name="guildevent" explain="帮会事件内容"></field>
+	</message>
+	
+	<message id="324" type="SW" name="ReqGuildStrMessageToWorld" explain="帮派公告通知">
+		<field class="long" name="guildId" explain="帮派Id"></field>
+		<field class="String" name="content" explain="帮会通知内容"></field>
+	</message>
+	
+	<message id="325" type="WS" name="ResFriendGuildListToGame" explain="帮派友好列表">
+		<list class="FriendGuild" name="friend" explain="友好帮派"></list>
+	</message>
+	
+	<message id="326" type="WS" name="ResFriendGuildToGame" explain="帮派友好">
+		<field class="FriendGuild" name="friend" explain="友好帮派"></field>
+	</message>
+
+	<!-- 服务器内部消息 世界服务器发送到游戏服务器 -->
+	<message id="380" type="WS" name="ResInnerGuildAloneGuildInfoToServer" explain="通知游戏服务器单独帮会信息" handler="com.game.guild.GuildServerManager">
+		<field class="byte" name="notifyType" explain="通知类型 0 创建 1 添加或更新 2 删除 等"></field>
+		<field class="GuildInfo" name="guildInfo" explain="单独帮会信息"></field>
+	</message>
+	<message id="381" type="WS" name="ResInnerGuildAloneMemberInfoToServer" explain="通知游戏服务器单独成员信息" handler="com.game.guild.GuildServerManager">
+		<field class="byte" name="notifyType" explain="通知类型 0 创建 1 添加或更新 2 删除 等"></field>
+		<field class="MemberInfo" name="memberInfo" explain="单独成员信息"></field>
+	</message>
+	
+	<!-- 游戏服务器发送消息 -->
+	<message id="390" type="SC" name="ResGuildAloneGuildInfoToClient" explain="发送单独帮会信息给客户端">
+		<field class="byte" name="notifyType" explain="通知类型 0 创建 1 添加或更新 2 删除 等"></field>
+		<field class="GuildInfo" name="guildInfo" explain="单独帮会信息"></field>
+	</message>
+	<message id="391" type="SC" name="ResGuildAloneMemberInfoToClient" explain="发送单独成员信息给客户端">
+		<field class="byte" name="notifyType" explain="通知类型 0 创建 1 添加或更新 2 删除 等"></field>
+		<field class="MemberInfo" name="memberInfo" explain="单独成员信息"></field>
+	</message>
+	<message id="392" type="SC" name="ResGuildDeleteInfoRoundToClient" explain="同步删除帮会信息给客户端">
+		<field class="long" name="playerid" explain="被通知的玩家"></field>
+		<field class="long" name="guildid" explain="被通知的帮会id"></field>
+	</message>
+</messages>

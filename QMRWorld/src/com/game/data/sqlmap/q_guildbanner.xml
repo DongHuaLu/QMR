@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="q_guildbanner"> 
+	<resultMap id="bean" type="com.game.data.bean.Q_guildbannerBean" >
+		<result column="guildbannerlv" property="guildbannerlv" jdbcType="INTEGER" />
+		<result column="monsterlist" property="monsterlist" jdbcType="LONGVARCHAR" />
+		<result column="shuxing" property="shuxing" jdbcType="LONGVARCHAR" />
+		<result column="changname" property="changname" jdbcType="LONGVARCHAR" />
+		<result column="changicon" property="changicon" jdbcType="LONGVARCHAR" />
+		<result column="levelup" property="levelup" jdbcType="LONGVARCHAR" />
+		<result column="successcof" property="successcof" jdbcType="INTEGER" />
+		<result column="buffid" property="buffid" jdbcType="INTEGER" />
+		<result column="expcof" property="expcof" jdbcType="INTEGER" />
+		<result column="dazuocof" property="dazuocof" jdbcType="INTEGER" />
+	</resultMap>
+  
+	<select id="select" resultMap="bean">
+		select * from q_guildbanner
+	</select>
+  
+	<insert id="insert" parameterType="com.game.data.bean.Q_guildbannerBean" >
+		insert into q_guildbanner (
+		guildbannerlv,
+		monsterlist,
+		shuxing,
+		changname,
+		changicon,
+		levelup,
+		successcof,
+		buffid,
+		expcof,
+		dazuocof
+		)
+		values (
+		#{ guildbannerlv,jdbcType=INTEGER },
+		#{ monsterlist,jdbcType=LONGVARCHAR },
+		#{ shuxing,jdbcType=LONGVARCHAR },
+		#{ changname,jdbcType=LONGVARCHAR },
+		#{ changicon,jdbcType=LONGVARCHAR },
+		#{ levelup,jdbcType=LONGVARCHAR },
+		#{ successcof,jdbcType=INTEGER },
+		#{ buffid,jdbcType=INTEGER },
+		#{ expcof,jdbcType=INTEGER },
+		#{ dazuocof,jdbcType=INTEGER }
+		)
+	</insert>
+
+	<update id="update" parameterType="com.game.data.bean.Q_guildbannerBean" >
+		update q_guildbanner set 
+		monsterlist = #{ monsterlist,jdbcType=LONGVARCHAR },
+		shuxing = #{ shuxing,jdbcType=LONGVARCHAR },
+		changname = #{ changname,jdbcType=LONGVARCHAR },
+		changicon = #{ changicon,jdbcType=LONGVARCHAR },
+		levelup = #{ levelup,jdbcType=LONGVARCHAR },
+		successcof = #{ successcof,jdbcType=INTEGER },
+		buffid = #{ buffid,jdbcType=INTEGER },
+		expcof = #{ expcof,jdbcType=INTEGER },
+		dazuocof = #{ dazuocof,jdbcType=INTEGER }
+		where guildbannerlv = #{ guildbannerlv,jdbcType=INTEGER }
+	</update>
+
+<!--
+
+<select id="selectTemplate" parameterType="long" resultMap="bean">
+	select * from guildbanner where roleid = #{ roleid,jdbcType=BIGINT }
+<select>
+
+<select id="selectAllTemplate" parameterType="long" resultMap="bean">
+	select 
+		guildbannerlv,
+		monsterlist,
+		shuxing,
+		changname,
+		changicon,
+		levelup,
+		successcof,
+		buffid,
+		expcof,
+		dazuocof,
+	from guildbanner where roleid = #{ roleid,jdbcType=BIGINT }
+<select>
+
+<insert id="insertTemplate" parameterType="com.game.db.bean.GuildbannerBean" >
+	insert into guildbanner (
+		guildbannerlv,
+		monsterlist,
+		shuxing,
+		changname,
+		changicon,
+		levelup,
+		successcof,
+		buffid,
+		expcof,
+		dazuocof,
+	)
+	values (
+		#{ guildbannerlv,jdbcType=INTEGER },
+		#{ monsterlist,jdbcType=LONGVARCHAR },
+		#{ shuxing,jdbcType=LONGVARCHAR },
+		#{ changname,jdbcType=LONGVARCHAR },
+		#{ changicon,jdbcType=LONGVARCHAR },
+		#{ levelup,jdbcType=LONGVARCHAR },
+		#{ successcof,jdbcType=INTEGER },
+		#{ buffid,jdbcType=INTEGER },
+		#{ expcof,jdbcType=INTEGER },
+		#{ dazuocof,jdbcType=INTEGER },
+	)
+</insert>
+
+<update id="update" parameterType="com.game.db.bean.GuildbannerBean" >
+	update guildbanner set 
+		guildbannerlv = #{ guildbannerlv,jdbcType=INTEGER },
+		monsterlist = #{ monsterlist,jdbcType=LONGVARCHAR },
+		shuxing = #{ shuxing,jdbcType=LONGVARCHAR },
+		changname = #{ changname,jdbcType=LONGVARCHAR },
+		changicon = #{ changicon,jdbcType=LONGVARCHAR },
+		levelup = #{ levelup,jdbcType=LONGVARCHAR },
+		successcof = #{ successcof,jdbcType=INTEGER },
+		buffid = #{ buffid,jdbcType=INTEGER },
+		expcof = #{ expcof,jdbcType=INTEGER },
+		dazuocof = #{ dazuocof,jdbcType=INTEGER },
+	where roleid = #{ roleid,jdbcType=BIGINT }
+</update>
+
+-->
+</mapper> 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_toplistchest"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_toplistchestBean" >
+	<result column="q_chest_id" property="q_chest_id" jdbcType="INTEGER" />
+	<result column="q_chest_type" property="q_chest_type" jdbcType="INTEGER" />
+	<result column="q_recieve_cont" property="q_recieve_cont" jdbcType="INTEGER" />
+	<result column="q_gift" property="q_gift" jdbcType="INTEGER" />
+	<result column="q_receive_description" property="q_receive_description" jdbcType="VARCHAR" />
+	<result column="q_notcompleted_description" property="q_notcompleted_description" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_toplistchest
+  </select>
+</mapper> 

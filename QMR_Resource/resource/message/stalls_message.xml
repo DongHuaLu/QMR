@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.stalls" id="123">
+	<!-- bean定义 -->
+	
+	<bean name="StallsInfo" explain="摊位信息（发送前端）">
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="stallslv" explain="摊位等级，0，1，2，3"></field>
+		<field class="String" name="stallsname" explain="摊位名字"></field>
+		<list class="StallsGoodsInfo" name="stallsgoodsinfo" explain="摊位物品信息列表"></list>
+	</bean>
+	
+	<bean name="StallsGoodsInfo" explain="摊位物品信息">
+		<field class="int" name="pricegold" explain="金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="元宝价格"></field>
+		<field class="com.game.backpack.bean.ItemInfo" name="iteminfo" explain="出售的道具信息"></field>
+	</bean>
+
+	<bean name="StallsLogInfo" explain="摊位交易日志列表（发送前端）">
+		<list class="StallsSingleLogInfo" name="stallsloglist" explain="摊位物品信息列表（最大20条）"></list>
+	</bean>
+	
+	<bean name="StallsSingleLogInfo" explain="摊位单个交易日志">
+		<field class="int" name="transactiontime" explain="交易时间（秒）"></field>
+		<field class="byte" name="transactiontype" explain="交易类型，0出售，1购买"></field>
+		<field class="String" name="tradersname" explain="交易者名字"></field>
+		<field class="long" name="tradersid" explain="交易者ID"></field>
+		<field class="int" name="pricegold" explain="金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="元宝价格"></field>
+		<field class="com.game.backpack.bean.ItemInfo" name="iteminfo" explain="道具信息"></field>
+	</bean>
+
+
+
+
+	<bean name="StallsBriefList" explain="全部摊位简要信息列表（供前端排序用）">
+		<field class="int" name="indexlittle" explain="索引起点"></field>
+		<field class="int" name="indexLarge" explain="索引终点"></field>
+		<field class="short" name="stallssnum" explain="本国在线摊位总数"></field>
+		<field class="byte" name="type" explain="按照类型排序，0，不做处理，1，玩家等级从大到小，2，物品数量，3在售货币，4玩家等级从小到大，5搜索结果"></field>
+		<list class="StallsBriefInfo" name="stallsbrieflist" explain="摊位物品信息列表"></list>
+	</bean>
+	
+	<bean name="StallsBriefInfo" explain="单个摊位简要信息">
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="short" name="playerlv" explain="玩家等级"></field>
+		<field class="int" name="stallsid" explain="摊位号（只用于排序）"></field>
+		<field class="byte" name="stallslv" explain="摊位等级，0，1，2，3"></field>
+		<field class="String" name="stallsname" explain="摊位名字(如果为空，前端自行组合)"></field>
+		<field class="int" name="sellgold" explain="出售金币数量"></field>
+		<field class="int" name="sellyuanbao" explain="出售元宝数量"></field>
+		<field class="byte" name="sellgoodsnum" explain="出售道具数量"></field>
+	</bean>
+
+
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="WC" name="ResStallsOpenUp" explain="响应打开摊位面板">
+		<field class="StallsBriefList" name="stallsbrieflist" explain="所有摊位简要信息"></field>
+	</message>
+	
+	<message id="102" type="WC" name="ResStallsPlayerIdLook" explain="点击某个摊位，进行看摊">
+		<field class="StallsInfo" name="stallsinfo" explain="查看指定摊位信息"></field>
+	</message>
+	
+	<message id="103" type="WC" name="ResStallsSort" explain="摊位条件排序（目前是前端做排序，这里返回新数据给前端）">
+		<field class="StallsBriefList" name="stallsbrieflist" explain="所有摊位简要信息"></field>
+	</message>
+	
+	<message id="104" type="WC" name="ResStallsBuy" explain="购买商品后，更新列表">
+		<field class="StallsInfo" name="stallsinfo" explain="查看指定摊位信息"></field>
+		<field class="byte" name="israting" explain="是否允许评分，0允许，1不允许"></field>
+	</message>
+
+	<message id="105" type="WC" name="ResStallsProductWasAdded" explain="商品上架后，更新列表">
+		<field class="StallsInfo" name="stallsinfo" explain="查看指定摊位信息"></field>
+	</message>
+	
+	<message id="106" type="WC" name="ResStallsAdjustPrices" explain="商品调整完成，更新列表">
+		<field class="StallsInfo" name="stallsinfo" explain="查看指定摊位信息"></field>
+	</message>
+	
+	<message id="107" type="WC" name="ResStallsOffShelf" explain="响应商品下架，更新列表">
+		<field class="StallsInfo" name="stallsinfo" explain="查看指定摊位信息"></field>
+	</message>
+	
+	<message id="108" type="WC" name="ResStallsSearch" explain="摊位搜索结果">
+		<field class="StallsBriefList" name="stallsbrieflist" explain="符合条件的摊位简要信息"></field>
+	</message>
+	
+	<message id="109" type="SC" name="ResStallsLooklog" explain="个人摊位交易日志">
+		<field class="StallsLogInfo" name="stallslogInfo" explain="摊位交易日志列表"></field>
+	</message>
+
+	<message id="110" type="WC" name="ResChangeStallsName" explain="修改摊位名字">
+		<field class="String" name="name" explain="摊位名字"></field>
+		<field class="byte" name="status" explain="修改结果，0成功1失败"></field>
+	</message>
+	
+	<message id="111" type="WC" name="ResStallsError" explain="错误信息">
+		<field class="long" name="playerid" explain="玩家ID，或者摊位号"></field>
+		<field class="byte" name="type" explain="错误类型，1摊位不存在"></field>
+	</message>
+	
+	<message id="112" type="SC" name="ResStallsExp" explain="摆摊交易经验获得">
+		<field class="int" name="exp" explain="摆摊交易经验"></field>
+	</message>
+	
+	
+	<!-- 服务器接收消息 -->
+	
+	<message id="201" type="CS" name="ReqStallsOpenUp" explain="打开摊位列表面板">
+		<field class="int" name="indexlittle" explain="索引起点"></field>
+		<field class="int" name="indexLarge" explain="索引终点"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqStallsPlayerIdLook" explain="点击某个摊位，进行看摊">
+		<field class="long" name="playerid" explain="摆摊的玩家ID"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqStallsSort" explain="摊位条件排序（目前是前端做排序，这里返回新数据给前端）">
+		<field class="byte" name="type" explain="按照类型排序，0，不做处理，1，玩家等级从大到小，2，物品数量，3在售货币，4玩家等级从小到大，5搜索结果"></field>
+		<field class="int" name="indexlittle" explain="索引起点"></field>
+		<field class="int" name="indexLarge" explain="索引终点"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqStallsBuy" explain="购买商品" >
+		<field class="long" name="playerid" explain="摆摊的玩家ID"></field>
+		<field class="int" name="pricegold" explain="商品金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="商品元宝价格"></field>
+		<field class="long" name="goodsid" explain="商品道具唯一ID，-1金币，-2元宝"></field>
+	</message>
+
+	<message id="205" type="CS" name="ReqStallsProductWasAdded" explain="商品上架" >
+		<field class="long" name="goodsid" explain="道具唯一ID，-1金币，-2元宝"></field>
+		<field class="int" name="pricegold" explain="金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="元宝价格"></field>
+		<field class="int" name="num" explain="要上架的道具数量"></field>
+		<field class="int" name="goodsnum" explain="商品总数"></field>
+	</message>
+	
+	<message id="206" type="CS" name="ReqStallsAdjustPrices" explain="商品调整" >
+		<field class="long" name="goodsid" explain="道具唯一ID，-1金币，-2元宝"></field>
+		<field class="int" name="goodsmodelid" explain="道具模版ID，-1金币，-2元宝"></field>
+		<field class="int" name="pricegold" explain="金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="元宝价格"></field>
+		<field class="int" name="pos" explain="新位置"></field>
+		<field class="int" name="num" explain="新的数量"></field>
+		<field class="int" name="currentnum" explain="原始数量（只是用来检测，后端另有验证）"></field>
+	</message>
+	
+	<message id="207" type="CS" name="ReqStallsOffShelf" explain="商品下架" >
+		<field class="long" name="goodsid" explain="道具唯一ID，-1金币，-2元宝"></field>
+		<field class="int" name="num" explain="下架道具数量"></field>
+	</message>
+	
+	<message id="208" type="CS" name="ReqStallsSearch" explain="摊位搜索">
+		<field class="String" name="goodsname" explain="道具名称"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="byte" name="goldyuanbao" explain="搜索金币或者元宝，0不搜索，1金币，2元宝，3两个都搜索"></field>
+	</message>
+	
+	<message id="209" type="CS" name="ReqStallsLooklog" explain="查看摊位交易日志">
+	</message>
+	
+	<message id="211" type="CS" name="ReqChangeStallsName" explain="修改摊位名字">
+		<field class="String" name="name" explain="摊位名字"></field>
+	</message>
+	
+	
+	
+	<!-- 服务器之间消息 -->
+	
+	<message id="301" type="SW" name="ReqStallsOpenUpToWorld" explain="打开摊位列表面板">
+		<field class="long" name="playerid" explain="角色ID"></field>
+		<field class="int" name="indexlittle" explain="索引起点"></field>
+		<field class="int" name="indexLarge" explain="索引终点"></field>
+	</message>
+	
+	
+	<message id="302" type="SW" name="ReqStallsPlayerIdLookToWorld" explain="点击某个摊位，进行看摊">
+		<field class="long" name="playerid" explain="角色ID"></field>
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+	</message>
+	
+	<message id="303" type="SW" name="ReqStallsSortToWorld" explain="摊位条件排序（目前是前端做排序，这里返回新数据给前端）">
+		<field class="long" name="playerid" explain="角色ID"></field>
+		<field class="byte" name="type" explain="按照类型排序，0，摊位星级，1，玩家等级，2，物品数量，3在售货币"></field>
+		<field class="int" name="indexlittle" explain="索引起点"></field>
+		<field class="int" name="indexLarge" explain="索引终点"></field>
+	</message>
+	
+	
+	
+	
+	<message id="304" type="SW" name="ReqStallsBuycheckToWorld" explain="发起购买商品,先检查世界服务器">
+		<field class="long" name="playerid" explain="购买者角色ID"></field>
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="int" name="pricegold" explain="商品金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="商品元宝价格"></field>
+		<field class="long" name="goodsid" explain="商品道具唯一ID，-1金币，-2元宝"></field>
+	</message>
+	
+	<message id="305" type="WS" name="ResStallsBuycheckToGame" explain="返回购买商品检查结果，如果商品正常，则扣钱">
+		<field class="long" name="playerid" explain="购买者角色ID"></field>
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="int" name="pricegold" explain="商品金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="商品元宝价格"></field>
+		<field class="long" name="goodsid" explain="商品道具唯一ID，-1金币，-2元宝"></field>
+		<field class="byte" name="status" explain="成功返回0，失败返回1"></field>
+	</message>
+	
+	<message id="306" type="SW" name="ReqStallsBuyToWorld" explain="购买商品,扣钱后发送消息到世界服务器">
+		<field class="long" name="playerid" explain="购买者角色ID"></field>
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="int" name="pricegold" explain="商品金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="商品元宝价格"></field>
+		<field class="long" name="goodsid" explain="商品道具唯一ID，-1金币，-2元宝"></field>
+	</message>
+
+	
+	<message id="307" type="WS" name="ResStallsBuyDeductingToGame" explain="购买商品，发送道具给玩家">
+		<field class="long" name="playerid" explain="购买者角色ID"></field>
+		<field class="String" name="playername" explain="购买者角色名字"></field>
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="String" name="stallsplayername" explain="摆摊的玩家名字"></field>
+		<field class="int" name="pricegold" explain="商品金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="商品元宝价格"></field>
+		<field class="long" name="goodsid" explain="商品道具唯一ID，-1金币，-2元宝"></field>
+		<field class="String" name="item" explain="序列化的道具"></field>
+		<field class="long" name="tradersid" explain="交易号"></field>
+		
+	</message>
+
+	<message id="308" type="WS" name="ResStallsBuyAddMoneyToGame" explain="购买商品，给摊主加钱">
+		<field class="long" name="playerid" explain="购买者角色ID"></field>
+		<field class="String" name="playername" explain="购买者角色名字"></field>
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="String" name="stallsplayername" explain="摆摊的玩家名字"></field>
+		<field class="int" name="pricegold" explain="商品金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="商品元宝价格"></field>
+		<field class="long" name="goodsid" explain="商品道具唯一ID，-1金币，-2元宝"></field>
+		<field class="String" name="item" explain="序列化的道具"></field>
+		<field class="long" name="tradersid" explain="交易号"></field>
+	</message>
+
+
+	<message id="309" type="WS" name="ResStallsBuyDeductingFailToGame" explain="购买商品失败，返还钱">
+		<field class="long" name="playerid" explain="购买者角色ID"></field>
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="int" name="pricegold" explain="商品金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="商品元宝价格"></field>
+		<field class="long" name="goodsid" explain="商品道具唯一ID，-1金币，-2元宝"></field>
+	</message>
+	
+	
+	<message id="310" type="SW" name="ReqStallsProductWasAddedToWorld" explain="商品上架" >
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="long" name="goodsid" explain="道具唯一ID，-1金币，-2元宝"></field>
+		<field class="int" name="pricegold" explain="金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="元宝价格"></field>
+		<field class="String" name="item" explain="序列化的道具"></field>
+	</message>
+	
+	<message id="311" type="WS" name="ResStallsProductWasAddedFailToGame" explain="商品上架失败返还" >
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="long" name="goodsid" explain="道具唯一ID，-1金币，-2元宝"></field>
+		<field class="int" name="pricegold" explain="金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="元宝价格"></field>
+		<field class="String" name="item" explain="序列化的道具"></field>
+	</message>
+	
+	
+	
+	<message id="312" type="SW" name="ReqStallsAdjustPricesToWorld" explain="商品调整，进行新的设置" >
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="long" name="goodsid" explain="道具唯一ID，-1金币，-2元宝"></field>
+		<field class="int" name="goodsmodelid" explain="道具模版ID，-1金币，-2元宝"></field>
+		<field class="int" name="pricegold" explain="金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="元宝价格"></field>
+		<field class="int" name="pos" explain="新位置"></field>
+		<field class="int" name="num" explain="新的数量"></field>
+		<field class="int" name="currentnum" explain="原始数量"></field>
+	</message>
+
+
+	<message id="314" type="SW" name="ReqStallsOffShelfToWorld" explain="商品下架" >
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="int" name="num" explain="下架道具数量"></field>
+		<field class="long" name="goodsid" explain="道具唯一ID，-1金币，-2元宝"></field>
+	</message>
+	
+	<message id="315" type="WS" name="ResStallsOffShelfToGame" explain="商品下架，世界服务器发送给game" >
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="String" name="item" explain="序列化的道具"></field>
+	</message>	
+
+
+
+	<message id="316" type="SW" name="ReqStallsSearchToWorld" explain="摊位搜索">
+		<field class="long" name="playerid" explain="角色ID"></field>
+		<field class="String" name="goodsname" explain="道具名称"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="byte" name="goldyuanbao" explain="搜索金币或者元宝，0不搜索，1金币，2元宝，3两个都搜索"></field>
+	</message>
+
+	<message id="317" type="SW" name="ReqChangeStallsNameToWorld" explain="修改摊位名字">
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="String" name="name" explain="摊位名字"></field>
+	</message>
+
+
+
+	<message id="318" type="SW" name="ReqStallsAdjustPricesCheckToWorld" explain="商品调整，检查世界服务器数据（暂时无用）" >
+		<field class="long" name="stallsplayerid" explain="摆摊的玩家ID"></field>
+		<field class="long" name="goodsid" explain="道具唯一ID，-1金币，-2元宝"></field>
+		<field class="int" name="goodsmodelid" explain="道具模版ID，-1金币，-2元宝"></field>
+		<field class="int" name="pricegold" explain="金币价格"></field>
+		<field class="int" name="priceyuanbao" explain="元宝价格"></field>
+		<field class="int" name="pos" explain="新位置"></field>
+		<field class="int" name="num" explain="新的数量"></field>
+		<field class="int" name="currentnum" explain="原始数量"></field>
+	</message>	
+
+
+
+
+
+</messages>
+
+
+
+
+
+

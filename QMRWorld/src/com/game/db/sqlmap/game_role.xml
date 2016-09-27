@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="game_role"> 
+  <resultMap id="role_brief" type="com.game.db.bean.Role" >
+    <id column="roleid" property="roleid" jdbcType="BIGINT" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="locate" property="locate" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="role" type="com.game.db.bean.Role" extends="game_role.role_brief" >
+    <result column="data" property="data" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="selectByUser" parameterType="java.util.Map" resultMap="role_brief">
+  	select roleid, userid, locate, level, name, sex from role where userid = #{userid,jdbcType=VARCHAR} and create_server = #{server,jdbcType=INTEGER} and deleted = 0
+  </select>
+  
+  <select id="selectDelByUser" parameterType="java.util.Map" resultMap="role_brief">
+  	select roleid, userid, locate, level, name, sex from role where userid = #{userid,jdbcType=VARCHAR} and create_server = #{server,jdbcType=INTEGER} and deleted = 1
+  </select>
+  
+  <select id="selectById" parameterType="Long" resultMap="role_brief">
+  	select roleid, userid, locate, level, name, sex from role where roleid = #{roleid,jdbcType=BIGINT} and deleted = 0
+  </select>
+  
+  <select id="selectByName" parameterType="String" resultType="int">
+  	select count(roleid) from role where name = #{name,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getcountbylv" parameterType="INTEGER" resultType="int">
+  	select count(level) from role where ((level >= #{level,jdbcType=INTEGER} and deleted = 0 and logintime > UNIX_TIMESTAMP(NOW())*1000-15*24*60*60*1000) or (level >= 60 and deleted = 0))
+  </select>
+  
+  <select id="selectbylv" parameterType="INTEGER" resultMap="role">
+  	select roleid, userid, locate, level, name, sex, data from role where ((level >= #{level,jdbcType=INTEGER} and deleted = 0 and logintime>UNIX_TIMESTAMP(NOW())*1000-15*24*60*60*1000) or (level >= 60 and deleted = 0))
+  </select>
+  
+  <select id="selectbeginandendbylv" parameterType="java.util.Map" resultMap="role">
+  	select roleid, userid, locate, level, name, sex, data from role where ((level >= #{level,jdbcType=INTEGER} and deleted = 0 and logintime>UNIX_TIMESTAMP(NOW())*1000-15*24*60*60*1000) or (level >= 60 and deleted = 0)) limit #{beginidx,jdbcType=INTEGER}, #{endidx,jdbcType=INTEGER}
+  </select>
+  
+   <update id="update" parameterType="Long" >
+    update role
+      set deleted = 1 
+    where roleid = #{roleid,jdbcType=BIGINT}
+  </update>
+  
+   <update id="updateName" parameterType="Long" >
+    update role
+      set name = #{name,jdbcType=VARCHAR}
+    where roleid = #{roleid,jdbcType=BIGINT}
+  </update>
+  
+</mapper>

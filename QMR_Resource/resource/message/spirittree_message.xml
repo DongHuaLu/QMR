@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.spirittree" id="133">
+	<!-- bean定义 -->
+	<bean name="FruitInfo" explain="果实信息">
+		<field class="long" name="fruitid" explain="果实ID"></field>
+		<field class="byte" name="type" explain="果实类型：0普通果实，1银色奇异果，2金色奇异果"></field>
+		<field class="int" name="timeleft" explain="果实成熟剩余时间(秒)，-1表示成熟"></field>
+		<field class="byte" name="isarid" explain="是否干旱，0否，1是"></field>
+		<list class="int" name="groupidlist" explain="组包ID列表"></list>
+		<list class="FruitRewardinfo" name="fruitrewardinfo" explain="果实奖励"></list>
+		<field class="int" name="yield" explain="剩余产量"></field>
+		<field class="long" name="hostid" explain="果实主人ID"></field>
+		<field class="String" name="hostname" explain="果实主人名字"></field>
+	</bean>
+	
+	
+	<bean name="FruitRewardinfo" explain="单个果实奖励">
+		<field class="int" name="index" explain="奖励数据索引"></field>
+		<field class="int" name="itemModelid" explain="道具模型ID，-1铜币，-2元宝，-3经验，-4真气"></field>
+		<field class="int" name="num" explain="当前数量"></field>
+		<field class="int" name="sum" explain="总数量"></field>
+		<field class="int" name="strenglevel" explain="道具强化等级"></field>
+		<list class="TempAttributes" name="tempAttributes" explain="奖励道具附加属性"></list>
+	</bean>
+	
+	
+	<bean name="TempAttributes" explain="奖励道具附加属性">
+		<field class="byte" name="attributeType" explain="附加属性类型"></field>
+		<field class="int" name="attributeValue" explain="附加属性值"></field>
+	</bean>
+	
+	<bean name="Rewardbriefinfo" explain="奖励道具简要信息（连续催熟时用）">
+		<field class="int" name="itemmodelid" explain="道具ID"></field>
+		<field class="int" name="itemnum" explain="道具数量"></field>
+	</bean>
+	
+	
+	<bean name="GuildFruitLog" explain="帮会神树操作日志">
+		<field class="int" name="time" explain="时间（秒）"></field>
+		<field class="int" name="groupid" explain="操作的组包ID（果实名称）"></field>
+		<field class="byte" name="type" explain="类型： 0抢收，1被抢收，2互助（浇水），3互助（被浇水）"></field>
+		<field class="int" name="exp" explain="浇水得到经验 或者 被偷补偿奖励"></field>
+		<field class="long" name="otherid" explain="对方ID"></field>
+		<field class="String" name="othername" explain="对方名字"></field>
+		<field class="byte" name="isonline" explain="是否在线，0不在线，1在线"></field>
+		<field class="int" name="itemmodelid" explain="最终奖励ID，-1铜币，-2元宝，-3真气，-4经验，>0道具"></field>
+		<field class="int" name="itemnum" explain="偷取的数量（ID为经验才需要显示）"></field>
+	</bean>
+
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="WC" name="ResGetAllFruitInfoToClient" explain="发送个人灵树全部果实消息">
+		<list class="FruitInfo" name="fruitinfo" explain="果实信息列表"></list>
+		<field class="int" name="nexttime" explain="下一个果实成熟的时间"></field>
+		<field class="int" name="nextdew" explain="下次仙露浇灌时间"></field>
+		<field class="int" name="dewnum" explain="仙露浇灌次数"></field>
+	</message>
+
+	<message id="102" type="WC" name="ResGetSingleFruitInfoToClient" explain="发送灵树单个果实消息">
+		<field class="FruitInfo" name="fruitinfo" explain="果实信息"></field>
+		<field class="byte" name="type" explain="类型：0刷新，1保底，2浇水"></field>
+		<field class="int" name="exp" explain="浇水获得经验"></field>
+		<field class="int" name="num" explain="摘取数量"></field>
+	</message>
+	
+	<message id="103" type="WC" name="ResOpenGuildFruitToClient" explain="发送行会灵树消息">
+		<list class="FruitInfo" name="fruitinfo" explain="成熟果实信息列表"></list>
+		<list class="FruitInfo" name="aridfruitinfo" explain="干旱果实列表"></list>
+		<field class="int" name="theftnum" explain="抢摘次数"></field>
+	</message>
+	
+	<message id="104" type="WC" name="ResShowToRewardListToClient" explain="摘果实，奖励展示">
+		<field class="long" name="fruitid" explain="果实ID"></field>
+		<field class="byte" name="type" explain="果实类型：0普通果实，1银色奇异果，2金色奇异果"></field>
+		<field class="int" name="index" explain="奖励数据索引"></field>
+	</message>
+
+	<message id="105" type="WC" name="ResShowGuildMatureClient" explain="显示行会灵树上一棵和下一棵果实成熟时间信息">
+		<field class="String" name="lastname" explain="上一个果实成熟的玩家名字"></field>
+		<field class="int" name="lasttime" explain="上一个果实成熟时间（当前时间-成熟时间）"></field>
+		<field class="String" name="nextname" explain="下一个果实成熟的玩家名字"></field>
+		<field class="int" name="nexttime" explain="下一个果实成熟时间（当前时间-成熟时间）"></field>
+	</message>
+	
+
+	<message id="106" type="WC" name="ResRipeningDecYBToClient" explain="催熟果实成功后通知前端">
+		<field class="long" name="fruitid" explain="果实ID"></field>
+		<field class="int" name="yuanbao" explain="需要的元宝数量"></field>
+		<field class="byte" name="type" explain="类型：1扣元宝成功，0失败"></field>
+	</message>
+	
+
+	<message id="107" type="WC" name="ResGuildFruitLogToClient" explain="帮会神树操作日志">
+		<list class="GuildFruitLog" name="guildfruitlog" explain="帮会神树操作日志列表"></list>
+	</message>
+	
+	
+	<message id="108" type="WC" name="ResFruitErrorToClient" explain="灵树错误信息">
+		<field class="byte" name="type" explain="错误类型"></field>
+	</message>
+	
+	<message id="109" type="WC" name="ResFruitTheftNumToClient" explain="灵树抢摘次数信息">
+		<field class="int" name="theftnum" explain="抢摘次数"></field>
+	</message>
+	
+	<message id="110" type="WC" name="ResContinuousRipeningToClient" explain="连续催熟返回奖励消息">
+		<list class="Rewardbriefinfo" name="rewardbriefinfo" explain="奖励道具简要信息"></list>
+	</message>
+	
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqGetAllFruitInfoToGame" explain="请求获取个人全部灵树果实信息">
+	</message>
+
+	<message id="202" type="CS" name="ReqGetSingleFruitInfoToGame" explain="请求获取单个灵树果实信息">
+		<field class="byte" name="type" explain="类型：0查看，1浇水，2，浇仙露，3采摘"></field>
+		<field class="long" name="fruitid" explain="果实ID"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqRipeningFruitToGame" explain="催熟奇异果">
+		<field class="long" name="fruitid" explain="果实ID"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqOpenGuildFruitToGame" explain="打开行会灵树">
+	</message>
+	
+	
+	<message id="205" type="CS" name="ReqGuildFruitOperatingToGame" explain="行会灵树操作">
+		<field class="byte" name="type" explain="类型：1浇水，2采摘"></field>
+		<field class="long" name="fruitid" explain="果实ID"></field>
+		<field class="long" name="hostid" explain="果实主人ID"></field>
+	</message>
+	
+	<message id="206" type="CS" name="ReqGuildFruitLogToGame" explain="请求获取行会灵树日志">
+	</message>
+
+	<message id="207" type="CS" name="ReqContinuousRipeningToGame" explain="连续催熟果实">
+		<field class="byte" name="type" explain="果实类型：0普通果实，1银色奇异果，2金色奇异果"></field>
+		<field class="int" name="num" explain="连续催熟果实次数"></field>
+	</message>
+
+	
+	<!--服务器之间消息-->
+	<message id="301" type="SW" name="ReqGetAllFruitInfoToWorld" explain="请求灵树信息到世界服务器">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		
+	</message>
+	
+	<message id="302" type="SW" name="ReqGetSingleFruitInfoToWorld" explain="世界服务器收到前端请求单个信息">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="type" explain="类型：0查看，1浇水，2，浇仙露，3采摘"></field>
+		<field class="long" name="fruitid" explain="果实ID"></field>
+	</message>
+	
+	<message id="303" type="WS" name="ResGameMakeFruitInfo" explain="发送给GAME产生道具奖励，找不到玩家就发邮件">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="long" name="fruitid" explain="果实ID"></field>
+		<field class="byte" name="type" explain="果实类型：0普通果实，1银色奇异果，2金色奇异果"></field>
+		<field class="String" name="jsFruitdata" explain="序列化的果实奖励数据"></field>
+		<field class="long" name="hostid" explain="果实主人ID"></field>
+		<field class="long" name="eventid" explain="事件ID"></field>
+	</message>
+	
+	<message id="304" type="SW" name="ReqRipeningFruitToWorld" explain="催熟果实">
+		<field class="long" name="fruitid" explain="果实ID"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+	
+	
+	<message id="305" type="SW" name="ReqOpenGuildFruitToWorld" explain="开打行会灵树ToWorld">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+	
+	<message id="306" type="SW" name="ReqGuildFruitOperatingToWorld" explain="行会灵树操作ToWorld">
+		<field class="byte" name="type" explain="类型：1浇水，2抢摘"></field>
+		<field class="long" name="fruitid" explain="果实ID"></field>
+		<field class="long" name="playerid" explain="操作的玩家ID"></field>
+		<field class="long" name="hostid" explain="果实主人ID"></field>
+	</message>
+	
+	
+	<message id="307" type="WS" name="ResFruitOperatingToGame" explain="灵树浇水得到经验ToGame">
+		<field class="byte" name="type" explain="类型：1浇水，2浇仙露"></field>
+		<field class="long" name="fruitid" explain="果实ID"></field>
+		<field class="long" name="playerid" explain="操作的玩家ID"></field>
+		<field class="long" name="hostid" explain="果实主人ID"></field>
+		<field class="int" name="exp" explain="浇水获得经验"></field>
+	</message>
+	
+		
+	<message id="308" type="WS" name="ReqRipeningDecYBToGame" explain="催熟果实扣除元宝，请求game删除元宝">
+		<field class="long" name="fruitid" explain="果实ID"></field>
+		<field class="long" name="playerid" explain="操作的玩家ID"></field>
+		<field class="int" name="yuanbao" explain="需要的元宝数量"></field>
+	</message>
+	
+	<message id="309" type="SW" name="ResRipeningDecYBToWorld" explain="催熟果实扣除元宝后返回">
+		<field class="long" name="fruitid" explain="果实ID"></field>
+		<field class="long" name="playerid" explain="操作的玩家ID"></field>
+		<field class="int" name="yuanbao" explain="需要的元宝数量"></field>
+		<field class="byte" name="type" explain="类型：1扣元宝成功，0失败"></field>
+	</message>
+	
+	<message id="310" type="SW" name="ReqGuildFruitLogToWorld" explain="请求获取行会灵树日志ToWorld">
+		<field class="long" name="playerid" explain="操作的玩家ID"></field>
+	</message>
+	
+	<message id="311" type="WS" name="ResGuildAccExpToWorld" explain="被偷果实补偿经验">
+		<field class="long" name="playerid" explain="操作的玩家ID"></field>
+		<field class="int" name="exp" explain="经验"></field>
+	</message>
+	
+	<message id="312" type="SW" name="ReqGuildGMToWorld" explain="GM命令">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="type" explain="类型，1当前玩家所有果实成熟"></field>
+	</message>
+
+	<message id="313" type="SW" name="ReqActivityCheckFruitToWorld" explain="活动检查果实是否成熟">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="type" explain="果实类型，1银色奇异果，2金色奇异果"></field>
+	</message>
+	
+	<message id="314" type="WS" name="ResActivityReturnFruitToGame" explain="返回果实是否成熟，收取道具">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="type" explain="果实类型，1银色奇异果，2金色奇异果"></field>
+		<field class="byte" name="status" explain="0未成熟，1成熟"></field>
+		<field class="long" name="fruitid" explain="果实ID"></field>
+	</message>
+	
+	<message id="315" type="SW" name="ReqUrgeRipeToWorld" explain="使用道具对果实催熟">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="type" explain="果实类型，1银色奇异果，2金色奇异果"></field>
+		<field class="long" name="fruitid" explain="果实ID"></field>
+	</message>
+	
+	
+	<message id="316" type="SW" name="ReqContinuousRipeningToWorld" explain="连续催熟果到世界服务器">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="type" explain="果实类型：0普通果实，1银色奇异果，2金色奇异果"></field>
+		<field class="int" name="num" explain="连续催熟果实次数"></field>
+	</message>
+	
+	
+	
+	
+</messages>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

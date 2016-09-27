@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_realm_break"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_realm_breakBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_explain" property="q_explain" jdbcType="VARCHAR" />
+	<result column="q_panel_res" property="q_panel_res" jdbcType="INTEGER" />
+	<result column="q_scene_res" property="q_scene_res" jdbcType="INTEGER" />
+	<result column="q_scene_effect" property="q_scene_effect" jdbcType="INTEGER" />
+	<result column="q_break_level" property="q_break_level" jdbcType="INTEGER" />
+	<result column="q_break_money" property="q_break_money" jdbcType="INTEGER" />
+	<result column="q_break_item" property="q_break_item" jdbcType="VARCHAR" />
+	<result column="q_success_min" property="q_success_min" jdbcType="INTEGER" />
+	<result column="q_success_max" property="q_success_max" jdbcType="INTEGER" />
+	<result column="q_cipher_random" property="q_cipher_random" jdbcType="INTEGER" />
+	<result column="q_fail_blessing_min" property="q_fail_blessing_min" jdbcType="INTEGER" />
+	<result column="q_fail_blessing_max" property="q_fail_blessing_max" jdbcType="INTEGER" />
+	<result column="q_fail_blessing_limit" property="q_fail_blessing_limit" jdbcType="INTEGER" />
+	<result column="q_fail_general_exp" property="q_fail_general_exp" jdbcType="VARCHAR" />
+	<result column="q_fail_crit_exp" property="q_fail_crit_exp" jdbcType="VARCHAR" />
+	<result column="q_fail_maxcrit_exp" property="q_fail_maxcrit_exp" jdbcType="VARCHAR" />
+	<result column="q_fail_limit_exp" property="q_fail_limit_exp" jdbcType="INTEGER" />
+	<result column="q_isbulletin" property="q_isbulletin" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_realm_break
+  </select>
+</mapper> 

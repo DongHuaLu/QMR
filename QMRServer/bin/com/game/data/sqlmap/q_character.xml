@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_character"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_characterBean" >
+	<result column="q_level" property="q_level" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_defense" property="q_defense" jdbcType="INTEGER" />
+	<result column="q_crit" property="q_crit" jdbcType="INTEGER" />
+	<result column="q_dodge" property="q_dodge" jdbcType="INTEGER" />
+	<result column="q_hp" property="q_hp" jdbcType="INTEGER" />
+	<result column="q_mp" property="q_mp" jdbcType="INTEGER" />
+	<result column="q_sp" property="q_sp" jdbcType="INTEGER" />
+	<result column="q_attackspeed" property="q_attackspeed" jdbcType="INTEGER" />
+	<result column="q_speed" property="q_speed" jdbcType="INTEGER" />
+	<result column="q_skill" property="q_skill" jdbcType="INTEGER" />
+	<result column="q_exp" property="q_exp" jdbcType="BIGINT" />
+	<result column="q_dazuoexp" property="q_dazuoexp" jdbcType="INTEGER" />
+	<result column="q_dazuozq" property="q_dazuozq" jdbcType="INTEGER" />
+	<result column="q_dazuohp" property="q_dazuohp" jdbcType="INTEGER" />
+	<result column="q_dazuomp" property="q_dazuomp" jdbcType="INTEGER" />
+	<result column="q_dazuosp" property="q_dazuosp" jdbcType="INTEGER" />
+	<result column="q_eurpt_day_prob" property="q_eurpt_day_prob" jdbcType="INTEGER" />
+	<result column="q_erupt_day_exp" property="q_erupt_day_exp" jdbcType="INTEGER" />
+	<result column="q_erupt_day_zq" property="q_erupt_day_zq" jdbcType="INTEGER" />
+	<result column="q_erupt_night_prob" property="q_erupt_night_prob" jdbcType="INTEGER" />
+	<result column="q_erupt_night_exp" property="q_erupt_night_exp" jdbcType="INTEGER" />
+	<result column="q_erupt_night_zq" property="q_erupt_night_zq" jdbcType="INTEGER" />
+	<result column="q_pet_sxexp" property="q_pet_sxexp" jdbcType="INTEGER" />
+	<result column="q_pet_sxzq" property="q_pet_sxzq" jdbcType="INTEGER" />
+	<result column="q_pet_sxhp" property="q_pet_sxhp" jdbcType="INTEGER" />
+	<result column="q_pet_sxmp" property="q_pet_sxmp" jdbcType="INTEGER" />
+	<result column="q_pet_sxsp" property="q_pet_sxsp" jdbcType="INTEGER" />
+	<result column="q_petdaysx_prob" property="q_petdaysx_prob" jdbcType="INTEGER" />
+	<result column="q_petdaysx_exp" property="q_petdaysx_exp" jdbcType="INTEGER" />
+	<result column="q_petdaysx_zq" property="q_petdaysx_zq" jdbcType="INTEGER" />
+	<result column="q_petnightsx_prob" property="q_petnightsx_prob" jdbcType="INTEGER" />
+	<result column="q_petnightsx_exp" property="q_petnightsx_exp" jdbcType="INTEGER" />
+	<result column="q_petnightsx_zq" property="q_petnightsx_zq" jdbcType="INTEGER" />
+	<result column="q_role_sxexp" property="q_role_sxexp" jdbcType="INTEGER" />
+	<result column="q_role_sxzq" property="q_role_sxzq" jdbcType="INTEGER" />
+	<result column="q_role_sxhp" property="q_role_sxhp" jdbcType="INTEGER" />
+	<result column="q_role_sxmp" property="q_role_sxmp" jdbcType="INTEGER" />
+	<result column="q_role_sxsp" property="q_role_sxsp" jdbcType="INTEGER" />
+	<result column="q_roledaysx_prob" property="q_roledaysx_prob" jdbcType="INTEGER" />
+	<result column="q_roledaysx_exp" property="q_roledaysx_exp" jdbcType="INTEGER" />
+	<result column="q_roledaysx_zq" property="q_roledaysx_zq" jdbcType="INTEGER" />
+	<result column="q_rolenightsx_prob" property="q_rolenightsx_prob" jdbcType="INTEGER" />
+	<result column="q_rolenightsx_exp" property="q_rolenightsx_exp" jdbcType="INTEGER" />
+	<result column="q_rolenightsx_zq" property="q_rolenightsx_zq" jdbcType="INTEGER" />
+	<result column="q_spirittree_arid_exp" property="q_spirittree_arid_exp" jdbcType="INTEGER" />
+	<result column="q_spirittree_dew_exp" property="q_spirittree_dew_exp" jdbcType="INTEGER" />
+	<result column="q_spirittree_exp_limit" property="q_spirittree_exp_limit" jdbcType="INTEGER" />
+	<result column="q_batter_atk" property="q_batter_atk" jdbcType="INTEGER" />
+	<result column="q_basis_exp" property="q_basis_exp" jdbcType="INTEGER" />
+	<result column="q_basis_money" property="q_basis_money" jdbcType="INTEGER" />
+	<result column="q_basis_zhenqi" property="q_basis_zhenqi" jdbcType="INTEGER" />
+	<result column="q_basis_bindgold" property="q_basis_bindgold" jdbcType="INTEGER" />
+	<result column="q_auto_recover_hp" property="q_auto_recover_hp" jdbcType="INTEGER" />
+	<result column="q_auto_recover_mp" property="q_auto_recover_mp" jdbcType="INTEGER" />
+	<result column="q_auto_recover_sp" property="q_auto_recover_sp" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_character
+  </select>
+</mapper> 

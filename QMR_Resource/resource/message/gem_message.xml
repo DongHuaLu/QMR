@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.gem" id="132">
+	<!-- bean定义 -->
+	<bean name="GemInfo" explain="单个宝石信息">
+		<field class="long" name="id" explain="宝石唯一ID"></field>
+		<field class="byte" name="level" explain="宝石等级"></field>
+		<field class="byte" name="type" explain="宝石类型"></field>
+		<field class="int" name="exp" explain="当前经验值"></field>
+		<field class="byte" name="grid" explain="宝石位置（0-4）"></field>
+		<field class="byte" name="isact" explain="当前宝石是否激活"></field>
+	</bean>
+	
+	<bean name="PosGemInfo" explain="每个部位宝石信息">
+		<field class="byte" name="pos" explain="装备部位（0-9）"></field>
+		<list class="GemInfo" name="geminfo" explain="每个部位宝石信息（最多5个）"></list>
+	</bean>
+
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResOpenGemPanel" explain="返回客户端全部宝石信息">
+		<list class="PosGemInfo" name="posallgeminfo" explain="装备部位全部宝石信息"></list>
+	</message>
+	
+	<message id="102" type="SC" name="ResGemInto" explain="告诉前端要升级或激活的宝石">
+		<field class="byte" name="pos" explain="装备部位"></field>
+		<field class="GemInfo" name="geminfo" explain="升级的宝石信息"></field>
+		<field class="byte" name="type" explain="类型：0激活，1升级"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResGemActivationORUp" explain="宝石激活或者升级结果">
+		<field class="byte" name="pos" explain="装备部位"></field>
+		<field class="GemInfo" name="geminfo" explain="升级的宝石信息"></field>
+		<field class="byte" name="result" explain="结果，0失败，1成功"></field>
+		<field class="byte" name="type" explain="类型：0激活，1升级"></field>
+		<field class="int" name="exp" explain="获得的经验(升级才有用)"></field>
+		<field class="byte" name="exptype" explain="经验类型(升级才有用)：0普通，1小暴击，2大暴击"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResGemExtraExp" explain="经验溢出后给另外一颗宝石加经验">
+		<field class="byte" name="pos" explain="装备部位"></field>
+		<field class="GemInfo" name="geminfo" explain="升级的宝石信息"></field>
+		<field class="int" name="exp" explain="获得的经验"></field>
+	</message>
+	
+	<message id="105" type="SC" name="ResGemErrorInfo" explain="错误消息">
+		<field class="byte" name="type" explain="错误类型"></field>
+		<field class="int" name="intnum" explain="数值"></field>
+	</message>
+	
+	<message id="106" type="SC" name="ResGemStrengthenPanel" explain="弹出强化石面板">
+		<field class="int" name="itemmodelid" explain="宝石强化符模型ID"></field>
+		<field class="long" name="itemid" explain="宝石强化符唯一ID"></field>
+	</message>
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqOpenGemPanel" explain="打开宝石面板">
+	</message>
+
+	<message id="202" type="CS" name="ReqGemInto" explain="放入宝石装备部位">
+		<field class="byte" name="pos" explain="装备部位"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqGemActivationORUp" explain="点击宝石激活或者升级">
+		<field class="byte" name="pos" explain="装备部位"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqGemUseStrengthen" explain="使用宝石强化符">
+		<field class="long" name="itemid" explain="宝石强化符唯一ID"></field>
+		<field class="int" name="itemmodelid" explain="宝石强化符模型ID"></field>
+	</message>
+	
+	
+</messages>
+
+
+
+
+
+
+	

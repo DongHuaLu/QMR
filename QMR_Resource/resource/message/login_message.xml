@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.login" id="100" explain="登陆消息定义" handler="com.game.login.PlayerLoginManager" msgsuper="com.game.message.Message" beansuper="com.game.message.Bean">
+	<!-- bean定义 -->
+	<bean name="CharacterInfo" explain="角色信息类">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="int" name="level" explain="角色等级"></field>
+		<field class="byte" name="sex" explain="角色性别"></field>
+		<field class="int" name="longintime" explain="最后登录时间"></field>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="GC" name="ResCharacterInfos" explain="角色信息列表">
+		<list class="CharacterInfo" name="characters" explain="角色信息列表"></list>
+	</message>
+	
+	<message id="102" type="SC" name="ResLoginSuccess" explain="登陆成功">
+		<field class="int" name="mapId" explain="角色所在地图"></field>
+	</message>
+	
+	<message id="103" type="GC" name="ResSubstitute" explain="被顶替下线信息">
+		<field class="String" name="ip" explain="ip地址"></field>
+	</message>
+	
+	<message id="104" type="GC" name="ResCreateFailed" explain="创建角色失败" cover="1">
+		<field class="byte" name="reason" explain="失败原因 1-名字长度不对 2-名字含有非法字符 3-名字含有禁止词汇 4-重名"></field>
+	</message>
+	
+	<message id="105" type="GC" name="ResDeleteSuccess" explain="删除角色成功">
+		<field class="long" name="playerId" explain="角色id"></field>
+	</message>
+	
+	<message id="106" type="GC" name="ResLoginFailed" explain="登陆角色失败">
+		<field class="byte" name="reason" explain="失败原因 1-服务器未开启 等"></field>
+	</message>
+	
+	<message id="107" type="GC" name="ResQuit" explain="退出游戏">
+	</message>
+	
+	<message id="108" type="GC" name="ResHeart" explain="心跳消息">
+		<field class="int" name="time" explain="当前时间"></field>
+		<field class="int" name="time2" explain="服务器启动时间"></field>
+		<field class="int" name="reset" explain="0-无需重置， 1-必须重置"></field>
+	</message>
+	
+	<message id="109" type="GC" name="ResDelPlayerStatusToClient" explain="删除玩家后返回给前端">
+		<field class="long" name="playerId" explain="角色ID"></field>
+		<field class="String" name="userId" explain="用户ID"></field>
+		<field class="int" name="createServer" explain="服务器ID"></field>
+		<field class="byte" name="type" explain="类型： 0人物不存在（或已删），1删除成功，2删除失败（删除角色达到4人），3需要退出帮会才可以删除"></field>
+	</message>
+	
+	<message id="110" type="GC" name="ResCreateUser" explain="创建账号后返回给前端">
+		<field class="String" name="userId" explain="用户ID"></field>
+	</message>
+	
+	<message id="111" type="GC" name="ResRolesCreateReportToClient" explain="通知网关角色创建回报消息">
+		<field class="String" name="playername" explain="角色名字"></field>
+		<field class="long" name="playerId" explain="角色id"></field>
+	</message>
+	
+	<message id="112" type="GC" name="ResHeartCopyToClient" explain="心跳消息">
+	</message>
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CG" name="ReqLogin" explain="登陆" cover="1">
+		<field class="int" name="serverId" explain="服务器Id"></field>
+		<field class="String" name="name" explain="玩家用户名"></field>
+		<field class="String" name="password" explain="玩家用户名"></field>
+	</message>
+	
+	<message id="202" type="CG" name="ReqSelectCharacter" explain="选择角色">
+		<field class="long" name="playerId" explain="角色Id"></field>
+	</message>
+	
+	<message id="203" type="CG" name="ReqCreateCharacter" explain="创建角色">
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="byte" name="sex" explain="角色性别 1-男 2-女"></field>
+		<field class="byte" name="auto" explain="是否自动生成"></field>
+		<field class="String" name="icon" explain="角色头像"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqLoadFinish" explain="加载完成">
+		<field class="byte" name="type" explain="类别"></field>
+		<field class="int" name="width" explain="屏幕宽度"></field>
+		<field class="int" name="height" explain="屏幕高度"></field>
+	</message>
+	
+	<message id="205" type="CG" name="ReqQuit" explain="退出游戏">
+	</message>
+	
+	<message id="206" type="CG" name="ReqHeart" explain="心跳消息">
+		<field class="int" name="time" explain="当前时间"></field>
+	</message>
+	
+	<message id="207" type="CG" name="ReqDelete" explain="删除消息">
+		<field class="long" name="playerId" explain="角色id"></field>
+	</message>
+	
+	<message id="208" type="CG" name="ReqLoginForPlatform" explain="登陆">
+		<field class="String" name="serverId" explain="服务器Id"></field>
+		<field class="String" name="username" explain="玩家用户名"></field>
+		<field class="String" name="agent" explain="平台标识"></field>
+		<field class="String" name="ad" explain="服务器Id"></field>
+		<field class="String" name="time" explain="平台服务器的LINUX时间戳(为长整数, 单位为秒)"></field>
+		<field class="String" name="isadult" explain="1成年,0未成年,-1未知"></field>
+		<field class="String" name="sign" explain="全小写MD5验证码"></field>
+		<field class="String" name="localref" explain=""></field>
+		<field class="String" name="reserva1" explain=""></field>
+		<field class="String" name="reserva2" explain=""></field>
+		<field class="String" name="logintype" explain="登陆类型"></field>
+		<field class="String" name="agentPlusdata" explain="平台数据"></field>
+		<field class="String" name="agentColdatas" explain="平台数据"></field>
+		<field class="String" name="adregtime" explain="平台数据"></field>
+	</message>
+	
+	<message id="209" type="CG" name="ReqLoginForNoUser" explain="无账号登陆">
+		<field class="String" name="serverId" explain="服务器Id"></field>
+		<field class="String" name="username" explain="玩家用户名"></field>
+		<field class="String" name="agent" explain="平台标识"></field>
+		<field class="String" name="ad" explain="服务器Id"></field>
+		<field class="String" name="time" explain="平台服务器的LINUX时间戳(为长整数, 单位为秒)"></field>
+		<field class="String" name="isadult" explain="1成年,0未成年,-1未知"></field>
+		<field class="String" name="sign" explain="全小写MD5验证码"></field>
+		<field class="String" name="localref" explain=""></field>
+		<field class="String" name="reserva1" explain=""></field>
+		<field class="String" name="reserva2" explain=""></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="byte" name="sex" explain="角色性别 1-男 2-女"></field>
+		<field class="String" name="icon" explain="角色头像"></field>
+	</message>
+	
+	<message id="211" type="CG" name="ReqJustCreateCharacter" explain="创建角色,不进入场景">
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="byte" name="sex" explain="角色性别 1-男 2-女"></field>
+		<field class="byte" name="auto" explain="是否自动生成"></field>
+		<field class="String" name="icon" explain="角色头像"></field>
+	</message>
+	
+	<message id="212" type="CG" name="ReqResetCommandTime" explain="重置命令时间">
+	</message>
+	
+	<message id="213" type="CG" name="ReqHeartCopyToClient" explain="心跳消息">
+	</message>
+	
+	
+	<!-- 服务器之间消息 -->
+	<message id="301" type="GS" name="ReqLoginCharacterToGame" explain="向游戏服务器登录请求" queue="Local">
+		<field class="int" name="gateId" explain="网关编号"></field>
+		<field class="String" name="userName" explain="用户名字"></field>
+		<field class="int" name="serverId" explain="创建服务器编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="byte" name="isAdult" explain="1成年,0未成年,-1未知"></field>
+		<field class="String" name="loginIp" explain="登录 IP"></field>
+		<field class="int" name="logintype" explain="登陆类型"></field>
+		<field class="String" name="agent" explain="用户平台"></field>
+	</message>
+	
+	<message id="302" type="SG" name="ResLoginSuccessToGate" explain="通知网关服务器登录成功">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="int" name="createServerId" explain="服务器编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="country" explain="角色国家"></field>
+		<field class="int" name="mapId" explain="地图模板id"></field>
+		<field class="int" name="union" explain="是否联服 0-不是 1-是"></field>
+	</message>
+	
+	<message id="303" type="SW" name="ResLoginSuccessToWorld" explain="通知世界服务器登录成功">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="int" name="gateId" explain="网关编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="String" name="username" explain="用户名"></field>
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="byte" name="isAdult" explain="1成年,0未成年,-1未知"></field>
+		<field class="String" name="loginIp" explain="登录 IP"></field>
+		<field class="int" name="logintype" explain="登陆类型"></field>
+		<field class="int" name="createServerId" explain="服务器ID"></field>
+	</message>
+	
+	<message id="304" type="GS" name="ReqCreateCharacterToGame" explain="向游戏服务器请求创建角色" queue="Local">
+		<field class="int" name="gateId" explain="网关编号"></field>
+		<field class="int" name="createServer" explain="创建服务器id"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="String" name="userName" explain="用户名字"></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="byte" name="sex" explain="角色性别 1-男 2-女"></field>
+		<field class="byte" name="auto" explain="是否自动生成"></field>
+		<field class="String" name="icon" explain="角色头像"></field>
+		<field class="byte" name="isAdult" explain="1成年,0未成年,-1未知"></field>
+		<field class="byte" name="isGuest" explain="1是,0否"></field>
+		<field class="String" name="optIp" explain="操作IP"></field>
+		<field class="int" name="logintype" explain="登陆类型"></field>
+		<field class="String" name="agent" explain="平台标识"></field>
+		<field class="String" name="ad" explain="服务器Id"></field>
+		<field class="String" name="agentPlusdata" explain="平台数据"></field>
+		<field class="String" name="agentColdatas" explain="平台数据"></field>
+	</message>
+	
+	<message id="305" type="GS" name="ReqQuitToGame" explain="退出游戏">
+		<field class="byte" name="force" explain="是否强制退出"></field>
+	</message>
+	
+	<message id="306" type="SG" name="ResRemoveCharacterToGate" explain="通知网关服务器移除人物信息">
+		<field class="long" name="playerId" explain="角色id"></field>
+	</message>
+	
+	<message id="307" type="SW" name="ResRemoveCharacterToWorld" explain="通知世界服务器移除人物信息">
+		<field class="long" name="playerId" explain="角色id"></field>
+	</message>
+	
+	<message id="308" type="WS" name="ResPlayerWorldInfo" explain="世界服务器通知游戏服务器玩家部分信息">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="long" name="teamId" explain="队伍Id"></field>
+		<field class="long" name="guildId" explain="帮会Id"></field>
+	</message>
+	
+	<message id="309" type="SG" name="ResCreateCharacterFailed" explain="创建玩家失败">
+		<field class="int" name="createServerId" explain="服务器编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="byte" name="reason" explain="失败原因 1-名字长度不对 2-名字含有非法字符"></field>
+	</message>
+	
+	<message id="310" type="WS" name="ResPlayerNonageToGame" explain="同步防沉迷状态到游戏服务器">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="nonage" explain="防沉迷状态 0：0-3小时 1：3-5小时 2：大于5小时"></field>
+	</message>
+	
+	<message id="311" type="SG" name="ResLoginCharacterFailed" explain="登陆玩家失败">
+		<field class="int" name="createServerId" explain="服务器编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="byte" name="reason" explain="失败原因"></field>
+	</message>
+	
+	<message id="312" type="SG" name="ResReloginCharacter" explain="登陆玩家失败">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="createServerId" explain="服务器编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="byte" name="isAdult" explain="1成年,0未成年,-1未知"></field>
+	</message>
+	
+	<message id="313" type="WG" name="ReqKickPlayer" explain="踢出玩家">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="createServerId" explain="服务器编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+	</message>
+	
+	<message id="314" type="SG" name="ResRolesCreateReportToGate" explain="通知网关角色创建回报消息">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="int" name="createServerId" explain="服务器编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="mapId" explain="地图模板id"></field>
+		<field class="String" name="playername" explain="角色名字"></field>
+	</message>
+	
+	<message id="315" type="GS" name="ReqJustCreateCharacterToGame" explain="向游戏服务器请求创建角色,不进入场景" queue="Local">
+		<field class="int" name="gateId" explain="网关编号"></field>
+		<field class="int" name="createServer" explain="创建服务器id"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="String" name="userName" explain="用户名字"></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="byte" name="sex" explain="角色性别 1-男 2-女"></field>
+		<field class="byte" name="auto" explain="是否自动生成"></field>
+		<field class="String" name="icon" explain="角色头像"></field>
+		<field class="byte" name="isAdult" explain="1成年,0未成年,-1未知"></field>
+		<field class="byte" name="isGuest" explain="1是,0否"></field>
+		<field class="String" name="optIp" explain="操作IP"></field>
+		<field class="int" name="logintype" explain="登陆类型"></field>
+		<field class="String" name="agent" explain="平台标识"></field>
+		<field class="String" name="ad" explain="服务器Id"></field>
+		<field class="String" name="agentPlusdata" explain="平台数据"></field>
+		<field class="String" name="agentColdatas" explain="平台数据"></field>
+	</message>
+	
+	
+</messages>

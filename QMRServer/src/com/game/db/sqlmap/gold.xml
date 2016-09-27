@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="game_gold">
+
+	<resultMap id="gold" type="com.game.db.bean.Gold" >
+		<id column="userId" property="userId" jdbcType="VARCHAR" />
+		<id column="serverId" property="serverId" jdbcType="INTEGER" />
+		<result column="totalGold" property="totalGold" jdbcType="INTEGER" />
+		<result column="gold" property="gold" jdbcType="INTEGER" />
+		<result column="costGold" property="costGold" jdbcType="INTEGER" />
+		<result column="twgmadd" property="twgmadd" jdbcType="INTEGER" />
+		<result column="ybxiajiaadd" property="ybxiajiaadd" jdbcType="INTEGER" />
+		<result column="huokuanAdd" property="huokuanAdd" jdbcType="INTEGER" />
+		<result column="jiaoyiybadd" property="jiaoyiybadd" jdbcType="INTEGER" />
+		<result column="faildrollBackadd" property="faildrollBackadd" jdbcType="INTEGER"/>
+		<result column="gettempybadd" property="gettempybadd" jdbcType="INTEGER" />
+		<result column="jiaoyiresume" property="jiaoyiresume" jdbcType="INTEGER" />
+		<result column="shangjiaresume" property="shangjiaresume" jdbcType="INTEGER"/>
+		<result column="buyitemresume" property="buyitemresume" jdbcType="INTEGER"/>
+<!--		<result column="isinner" property="isinner" jdbcType="INTEGER"/>-->
+	</resultMap>
+
+	<insert id="insert" parameterType="com.game.db.bean.Gold" >
+		insert into gold (
+				userId,
+				serverId,
+				totalGold,
+				gold,
+				costGold,
+				twgmadd,
+				ybxiajiaadd,
+				huokuanAdd,
+				jiaoyiybadd,
+				faildrollBackadd,
+				gettempybadd,
+				jiaoyiresume,
+				shangjiaresume,
+				buyitemresume
+			) values (
+				#{userId,jdbcType=VARCHAR},
+				#{serverId,jdbcType=INTEGER},
+				#{totalGold,jdbcType=INTEGER},
+				#{gold,jdbcType=INTEGER},
+				#{costGold,jdbcType=INTEGER}, 
+				#{twgmadd,jdbcType=INTEGER},
+				#{ybxiajiaadd,jdbcType=INTEGER},
+				#{huokuanAdd,jdbcType=INTEGER},
+				#{jiaoyiybadd,jdbcType=INTEGER},
+				#{faildrollBackadd,jdbcType=INTEGER},
+				#{gettempybadd,jdbcType=INTEGER},
+				#{jiaoyiresume,jdbcType=INTEGER},
+				#{shangjiaresume,jdbcType=INTEGER}, 
+				#{buyitemresume,jdbcType=INTEGER}
+			)
+	</insert>
+
+	<select id="select" parameterType="HashMap" resultMap="gold">
+		select 	userId,
+				serverId,
+				totalGold,
+				gold,
+				costGold,
+				twgmadd,
+				ybxiajiaadd,
+				huokuanAdd,
+				jiaoyiybadd,
+				faildrollBackadd,
+				gettempybadd,
+				jiaoyiresume,
+				shangjiaresume,
+				buyitemresume
+	from gold 
+		where 
+			userId=	#{userId,jdbcType=VARCHAR} 
+		and serverId = #{serverId,jdbcType=INTEGER}
+	</select>
+
+	<update id="update" parameterType="com.game.db.bean.Gold" >
+		update gold set 
+			totalGold = totalGold + #{totalGold,jdbcType=INTEGER},
+			gold = gold + #{gold,jdbcType=INTEGER},
+			costGold = costGold + #{costGold,jdbcType=INTEGER},
+			twgmadd = twgmadd + #{twgmadd,jdbcType=INTEGER},
+			ybxiajiaadd = ybxiajiaadd + #{ybxiajiaadd,jdbcType=INTEGER},
+			huokuanAdd = huokuanAdd + #{huokuanAdd,jdbcType=INTEGER},
+			jiaoyiybadd = jiaoyiybadd + #{jiaoyiybadd,jdbcType=INTEGER},
+			faildrollBackadd = faildrollBackadd + #{faildrollBackadd,jdbcType=INTEGER},
+			gettempybadd = gettempybadd + #{gettempybadd,jdbcType=INTEGER},
+			jiaoyiresume = jiaoyiresume + #{jiaoyiresume,jdbcType=INTEGER},
+			shangjiaresume = shangjiaresume + #{shangjiaresume,jdbcType=INTEGER}, 
+			buyitemresume = buyitemresume + #{buyitemresume,jdbcType=INTEGER}
+		where 
+			userId = #{userId,jdbcType=VARCHAR}
+		and
+			serverId = #{serverId,jdbcType=INTEGER}
+	</update>
+</mapper> 

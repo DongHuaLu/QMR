@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<servers>
+	<server>
+		<server-id>10000</server-id>
+		<server-web>37wan</server-web>
+		<server-ip>192.168.2.57</server-ip>
+		<server-port>8000</server-port>
+		<server-sslport>8001</server-sslport>
+	</server>
+</servers>

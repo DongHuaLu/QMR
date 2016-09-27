@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_bulletin"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_bulletinBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_content" property="q_content" jdbcType="LONGVARCHAR" />
+	<result column="q_time" property="q_time" jdbcType="LONGVARCHAR" />
+	<result column="q_country" property="q_country" jdbcType="INTEGER" />
+	<result column="q_type" property="q_type" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_bulletin
+  </select>
+</mapper> 

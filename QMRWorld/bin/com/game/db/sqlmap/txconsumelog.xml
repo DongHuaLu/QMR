@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="txconsumelog" >
+	<resultMap id="log" type="com.game.db.bean.TxConsumeLog" >
+		<result column="oid" property="oid" jdbcType="VARCHAR" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="userid" property="userid" jdbcType="VARCHAR" />
+		<result column="roleid" property="roleid" jdbcType="VARCHAR" />
+		<result column="serverid" property="serverid" jdbcType="VARCHAR" />
+		<result column="items" property="items" jdbcType="VARCHAR" />
+		<result column="consume" property="consume" jdbcType="INTEGER" />
+		<result column="state" property="state" jdbcType="INTEGER" />
+		<result column="times" property="times" jdbcType="BIGINT" />
+		<result column="date" property="date" jdbcType="VARCHAR"/>
+		<result column="content" property="content" jdbcType="VARCHAR"></result>
+		<result column="desc" property="desc" jdbcType="VARCHAR"></result>
+		<result column="ret" property="ret" jdbcType="VARCHAR"></result>
+		<result column="msg" property="msg" jdbcType="VARCHAR"></result>
+		<result column="isconfirm" property="isconfirm" jdbcType="INTEGER"></result>
+		<result column="callbackurl" property="callbackurl" jdbcType="VARCHAR"></result>
+	</resultMap>
+	<select id="selectByOid" resultMap="log" parameterType="String">
+		SELECT `oid`, `username`, `userid`, `roleid`, `serverid`, `items`, `consume`, `state`, `times`, `date`, `content`, `desc`, `ret`, `msg`, `isconfirm`, `callbackurl`, `confirmmsg` FROM txconsumelog WHERE oid=#{oid, jdbcType=VARCHAR}
+	</select>
+	<select id="selectByUseridServerid" resultMap="log" parameterType="com.game.db.bean.TxConsumeLog">
+		SELECT `oid`, `username`, `userid`, `roleid`, `serverid`, `items`, `consume`, `state`, `times`, `date`, `content`, `desc`, `ret`, `msg`, `isconfirm`, `callbackurl`, `confirmmsg` FROM txconsumelog WHERE userid=#{userid, jdbcType=VARCHAR} AND serverid=#{serverid, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectByIsconfirmTime" resultMap="log" parameterType="java.util.Map">
+		SELECT `oid`, `username`, `userid`, `roleid`, `serverid`, `items`, `consume`, `state`, `times`, `date`, `content`, `desc`, `ret`, `msg`, `isconfirm`, `callbackurl`, `confirmmsg` FROM txconsumelog WHERE isconfirm=#{isconfirm, jdbcType=INTEGER} AND times>=#{times, jdbcType=BIGINT}
+	</select>
+	
+	<update id="update" parameterType="com.game.db.bean.TxConsumeLog">
+		UPDATE txconsumelog
+		SET `username`    = #{username, jdbcType=VARCHAR},
+			`userid`      = #{userid,jdbcType=VARCHAR},
+			`roleid`      = #{roleid,jdbcType=VARCHAR},
+			`serverid`    = #{serverid,jdbcType=VARCHAR},
+			`items`       = #{items,jdbcType=VARCHAR},
+			`consume`     = #{consume,jdbcType=INTEGER} ,
+			`state`       = #{state,jdbcType=INTEGER},
+			`times`       = #{times,jdbcType=BIGINT},
+			`date`        = #{date,jdbcType=VARCHAR},
+			`content`     = #{content,jdbcType=VARCHAR},
+			`desc`	   	  = #{desc,jdbcType=VARCHAR},
+			`ret`	   	  = #{ret,jdbcType=VARCHAR},
+			`msg`	      = #{msg,jdbcType=VARCHAR},
+			`isconfirm`   = #{isconfirm,jdbcType=INTEGER},
+			`callbackurl` = #{callbackurl,jdbcType=VARCHAR},
+			`confirmmsg`  = #{confirmmsg,jdbcType=VARCHAR}
+		WHERE oid=#{oid,jdbcType=VARCHAR}
+	</update>
+	
+	<insert id="insert" parameterType="com.game.db.bean.TxConsumeLog">
+		INSERT INTO txconsumelog (
+			`oid`,
+			`username`,
+			`userid`,
+			`roleid`,
+			`serverid`,
+			`items`,
+			`consume`,
+			`state`,
+			`times`,
+			`date`,
+			`content`,
+			`desc`,
+			`ret`,
+			`msg`,
+			`isconfirm`,
+			`callbackurl`,
+			`confirmmsg`
+		) values (
+			#{oid,jdbcType=VARCHAR},
+			#{username, jdbcType=VARCHAR},
+			#{userid,jdbcType=VARCHAR},
+			#{roleid,jdbcType=VARCHAR}, 
+			#{serverid,jdbcType=VARCHAR},
+			#{items,jdbcType=VARCHAR},
+			#{consume,jdbcType=INTEGER},
+			#{state,jdbcType=INTEGER},
+			#{times,jdbcType=BIGINT},
+			#{date,jdbcType=VARCHAR},
+			#{content,jdbcType=VARCHAR},
+			#{desc,jdbcType=VARCHAR},
+			#{ret,jdbcType=VARCHAR},
+			#{msg,jdbcType=VARCHAR},
+			#{isconfirm,jdbcType=INTEGER},
+			#{callbackurl,jdbcType=VARCHAR},
+			#{confirmmsg,jdbcType=VARCHAR}
+		)
+	</insert>
+</mapper>

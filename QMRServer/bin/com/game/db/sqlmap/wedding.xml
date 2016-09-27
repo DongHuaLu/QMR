@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="wedding"> 
+	<resultMap id="bean" type="com.game.db.bean.WeddingBean" >
+		<result column="id" property="id" jdbcType="BIGINT" />
+		<result column="data" property="data" jdbcType="LONGVARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="INTEGER" />
+	</resultMap>
+  
+	<select id="select" resultMap="bean">
+		select id,data,deleted  from wedding
+		where  deleted = 0
+	</select>
+  
+  	<select id="selectsingle" parameterType="Long" resultMap="bean">
+		select id,data  from wedding
+		where id = #{ id,jdbcType=BIGINT } and deleted = 0 
+	</select>
+  
+  
+	<insert id="insert" parameterType="com.game.db.bean.WeddingBean" >
+		insert into wedding (
+		id,
+		data,
+		deleted
+		)
+		values (
+		#{ id,jdbcType=BIGINT },
+		#{ data,jdbcType=LONGVARCHAR },
+		#{ deleted,jdbcType=INTEGER }
+		)
+	</insert>
+
+	<update id="update" parameterType="com.game.db.bean.WeddingBean" >
+		update wedding set 
+		data = #{ data,jdbcType=LONGVARCHAR },
+		deleted = #{ deleted,jdbcType=INTEGER }
+		where id = #{ id,jdbcType=BIGINT }
+	</update>
+	
+	<delete id="delete" parameterType="Long" >
+		delete from wedding
+		where id = #{ id,jdbcType=BIGINT }
+	</delete>
+
+ 	
+</mapper>
+
+

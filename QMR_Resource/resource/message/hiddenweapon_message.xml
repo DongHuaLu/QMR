@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.hiddenweapon" id="162">
+
+	<!-- bean定义 -->
+	<bean name="HiddenWeaponInfo" explain="暗器信息">
+		<field class="short" name="layer" explain="当前最高暗器阶层"></field>
+		<field class="short" name="curlayer" explain="当前使用的暗器阶层"></field>
+		<field class="byte" name="status" explain="是否装备，1装备，0卸下"></field>
+		<field class="int" name="time" explain="剩余过期时间"></field>
+		<field class="int" name="bless" explain="当前祝福值"></field>
+		<field class="HiddenWeaponSkillIco" name="ico" explain="暗器技能ico"></field>
+		<list class="HiddenWeaponSkillInfo" name="skills" explain="技能"></list>
+	</bean>
+	
+	<bean name="HiddenWeaponSkillInfo" explain="暗器技能信息">
+		<field class="byte" name="index" explain="格子编号,从1开始"></field>
+		<field class="int" name="skill" explain="技能"></field>
+		<field class="int" name="level" explain="等级"></field>
+	</bean>
+	
+	<bean name="OthersHiddenWeaponInfo" explain="查看他人暗器详细信息">
+		<field class="short" name="layer" explain="当前最高暗器阶层"></field>
+		<field class="short" name="curlayer" explain="当前使用的暗器阶层"></field>
+		<list class="HiddenWeaponSkillInfo" name="skills" explain="技能"></list>
+	</bean>
+	
+	<bean name="HiddenWeaponSkillIco" explain="暗器技能ICO">
+		<field class="int" name="skill" explain="技能"></field>
+		<field class="int" name="times" explain="当前投掷数"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResHiddenWeaponInfo" explain="返回客户端暗器信息">
+		<field class="long" name="playerid" explain="暗器使用者ID"></field>
+		<field class="HiddenWeaponInfo" name="info" explain="暗器信息"></field>
+	</message>
+
+	<message id="102" type="SC" name="ResWearHiddenWeaponState" explain="发送暗器装备状态">
+		<field class="long" name="playerid" explain="暗器使用者ID"></field>
+		<field class="short" name="curlayer" explain="当前使用的暗器阶层"></field>
+		<field class="byte" name="status" explain="是否装备，1装备，0卸下"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResHiddenWeaponStageUpPanel" explain="发送暗器升阶面板信息">
+		<field class="int" name="exp" explain="当前升阶经验"></field>
+	</message>
+
+	<message id="104" type="SC" name="ResHiddenWeaponStageUpResult" explain="发送暗器升阶结果">
+		<field class="byte" name="type" explain="升阶结果，0未升级，1升级"></field>
+		<field class="int" name="bless" explain="当前祝福值"></field>
+		<field class="int" name="gotbless" explain="获得祝福值"></field>
+		<field class="int" name="gotexp" explain="获得经验"></field>
+		<field class="byte" name="crit" explain="是否暴击经验，0正常，1小暴击，2大暴击"></field>
+	</message>
+
+	<message id="105" type="SC" name="ResOthersHiddenWeaponInfo" explain="返回他人暗器消息">
+		<field class="long" name="playerid" explain="暗器使用者ID"></field>
+		<field class="OthersHiddenWeaponInfo" name="info" explain="暗器信息"></field>
+	</message>
+	
+	<message id="106" type="SC" name="ResHiddenWeaponError" explain="返回暗器升级失败">
+		<field class="byte" name="type" explain="错误类型"></field>
+		<field class="int" name="errint" explain="错误int内容"></field>
+		<field class="String" name="errstr" explain="错误字符内容"></field>
+	</message>
+	
+	<message id="107" type="SC" name="ResHiddenWeaponLevelUpSkill" explain="学习暗器技能之后的技能列表">
+		<field class="byte" name="index" explain="新学的技能所在的格子编号,从1开始"></field>
+		<list class="HiddenWeaponSkillInfo" name="skills" explain="技能"></list>
+	</message>
+	
+	<message id="108" type="SC" name="ResHiddenWeaponSkillIco" explain="暗器技能Ico">
+		<field class="HiddenWeaponSkillIco" name="ico" explain="暗器技能ico"></field>
+	</message>
+	
+	<message id="109" type="SC" name="ResHiddenWeaponSkillTrigger" explain="暗器技能触发">
+		<field class="int" name="skill" explain="暗器技能id"></field>
+		<field class="int" name="level" explain="暗器技能等级"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+	</message>
+	
+	<message id="110" type="SC" name="ResHiddenWeaponSkillRestriction" explain="玩家抵抗暗器技能">
+		<field class="int" name="skill" explain="暗器技能id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+	</message>
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqGetHiddenWeaponInfo" explain="前端请求暗器信息">
+	</message>
+	
+	<message id="202" type="CS" name="ReqWearHiddenWeaponState" explain="改变暗器装备状态">
+		<field class="short" name="curlayer" explain="当前使用的暗器阶层"></field>
+		<field class="byte" name="status" explain="是否装备，1装备，0卸下"></field>
+	</message>
+
+	<message id="203" type="CS" name="ReqHiddenWeaponStageUpPanel" explain="打开暗器升阶面板">
+	</message>
+
+	<message id="204" type="CS" name="ReqHiddenWeaponStageUpStart" explain="开始暗器升阶">
+		<field class="byte" name="type" explain="0手动进阶，1自动进阶"></field>
+	</message>
+	
+	<message id="205" type="CS" name="ReqHiddenWeaponStudySkill" explain="使用道具学习技能">
+		<field class="long" name="item" explain="道具唯一ID"></field>
+	</message>
+</messages>

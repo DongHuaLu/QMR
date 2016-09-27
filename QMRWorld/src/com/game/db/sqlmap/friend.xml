@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="friend"> 
+  <resultMap id="friend" type="com.game.db.bean.Friend" >
+    <id column="roleid" property="roleid" jdbcType="BIGINT" />
+    <result column="friendlist" property="friendlist" jdbcType="LONGVARCHAR" />
+    <result column="enemylist" property="enemylist" jdbcType="LONGVARCHAR" />
+    <result column="recentcontactpersonlist" property="recentcontactpersonlist" jdbcType="LONGVARCHAR" />
+    <result column="blacklist" property="blacklist" jdbcType="LONGVARCHAR" />
+    <result column="attentionlist" property="attentionlist" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.game.db.bean.Friend" >
+    insert into friend (roleid, friendlist, enemylist, recentcontactpersonlist, blacklist, 
+      attentionlist
+      )
+    values (#{roleid,jdbcType=BIGINT}, #{friendlist,jdbcType=LONGVARCHAR}, #{enemylist,jdbcType=LONGVARCHAR}, #{recentcontactpersonlist,jdbcType=LONGVARCHAR}, #{blacklist,jdbcType=LONGVARCHAR}, 
+      #{attentionlist,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  
+  <select id="select" parameterType="java.util.Map" resultMap="friend">
+  	select roleid, friendlist, enemylist, recentcontactpersonlist, blacklist, attentionlist from friend
+  </select>
+  
+  <select id="selectById" parameterType="long" resultMap="friend">
+  	select roleid, friendlist, enemylist, recentcontactpersonlist, blacklist, attentionlist from friend where roleid = #{roleid,jdbcType=BIGINT}
+  </select>
+  
+  <update id="update" parameterType="com.game.db.bean.Friend" >
+     update friend
+      set friendlist = #{friendlist,jdbcType=LONGVARCHAR},
+      enemylist = #{enemylist,jdbcType=LONGVARCHAR},
+      recentcontactpersonlist = #{recentcontactpersonlist,jdbcType=LONGVARCHAR},
+      blacklist = #{blacklist,jdbcType=LONGVARCHAR},
+      attentionlist = #{attentionlist,jdbcType=LONGVARCHAR}
+    where roleid = #{roleid,jdbcType=BIGINT}
+  </update>
+</mapper>

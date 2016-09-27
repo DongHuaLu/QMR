@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.wine" id="159">
+	<!-- bean定义 -->
+	<bean name="WineConfig" explain="配置信息">
+		<field class="byte" name="maxTimes" explain="掷骰子的次数上限"></field>
+		<field class="byte" name="maxMoneyTimes" explain="铜币改运的次数上限"></field>
+		<field class="int" name="money" explain="转运需要的铜币数量"></field>
+		<field class="int" name="gold" explain="转运需要的元宝数量"></field>
+	</bean>
+	<bean name="WineUpdate" explain="变动信息">
+		<!-- 状态信息 -->
+		<field class="byte" name="times" explain="掷骰子次数"></field>
+		<field class="byte" name="moneyTimes" explain="铜币转运次数"></field>
+		<field class="byte" name="nowWine" explain="本次投掷的点数"></field>
+		<field class="byte" name="wine" explain="投掷点数合计"></field>
+		<field class="int" name="detail" explain="本次投掷的结果(111111:表示投掷的6个都是酒)"></field>
+		<!-- 奖励信息 -->
+		<field class="int" name="zhenqi" explain="当前可获得奖励真气"></field>
+		<field class="int" name="exp" explain="当前可获得奖励经验"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResWineInfo" explain="活动信息">
+		<field class="WineConfig" name="config" explain="配置信息"></field>
+		<field class="WineUpdate" name="update" explain="变动信息"></field>
+	</message>
+	<message id="102" type="SC" name="ResWineUpdate" explain="变动信息">
+		<field class="WineUpdate" name="update" explain="变动信息"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqWineShowPanel" explain="打开面板(请求青梅煮酒信息)">
+	</message>
+
+	<message id="202" type="CS" name="ReqWineRandom" explain="掷骰子">
+	</message>
+
+	<message id="203" type="CS" name="ReqWineMoneyChange" explain="铜币转运">
+	</message>
+
+	<message id="204" type="CS" name="ReqWineGoldChange" explain="元宝转运">
+	</message>
+
+	<message id="205" type="CS" name="ReqWineGetPrize" explain="领取奖励">
+	</message>
+</messages>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.country" id="146">
+	<!-- bean定义 -->
+	<bean name="CountryWarInfo" explain="攻城战即时信息">
+		<field class="long" name="holderguildid" explain="玉玺持有人帮会ID"></field>
+		<field class="long" name="holderid" explain="玉玺持有人ID"></field>
+		<field class="String" name="holdername" explain="玉玺持有人名字"></field>
+		<field class="short" name="mx" explain="玉玺持有人坐标X"></field>
+		<field class="short" name="my" explain="玉玺持有人坐标Y"></field>
+		<field class="int" name="holdertime" explain="玉玺持有时间（秒）"></field>
+		<field class="int" name="warendtime" explain="攻城战结束剩余时间（秒）"></field>
+	</bean>
+	
+	<bean name="WarRewardInfo" explain="攻城战个人在线奖励信息">
+		<field class="int" name="zhenqi" explain="奖励真气"></field>
+		<field class="int" name="exp" explain="奖励经验"></field>
+		<field class="int" name="remaintime" explain="停留时间（秒）"></field>
+	</bean>
+
+
+	<bean name="CountryStructureInfo" explain="王城结构信息">
+		<field class="int" name="country" explain="国家ID"></field>
+		<field class="String" name="Siegetime" explain="攻城时间"></field>
+		<field class="long" name="guildid" explain="王城帮会ID"></field>
+		<field class="String" name="guildname" explain="王城帮会名字"></field>
+		<list class="CountryMemberInfo" name="countrymemberInfolist" explain="王城成员信息列表"></list>
+	</bean>
+	
+	
+	<bean name="CountryMemberInfo" explain="王城成员信息">
+		<field class="byte" name="post" explain="职位：1城主，2列侯，3丞相，4太尉，5御史大夫，6夫人"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="int" name="sex" explain="玩家性别"></field>
+	</bean>
+		
+	<bean name="PlayerDamageInfo" explain="角色信息类">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="byte" name="sex" explain="角色性别 1-男 2-女"></field>
+		<field class="short" name="x" explain="角色所在X"></field>
+		<field class="short" name="y" explain="角色所在Y"></field>
+		<field class="int" name="hp" explain="角色HP"></field>
+		<field class="int" name="maxHp" explain="角色最大HP"></field>
+		<field class="int" name="state" explain="角色状态"></field>
+		<field class="int" name="weapon" explain="武器模板id"></field>
+		<field class="int" name="armor" explain="衣服模板id"></field>
+		<field class="int" name="avatar" explain="头像模板id"></field>
+		<field class="byte" name="dir" explain="人物面对方向"></field>
+		<field class="long" name="guild" explain="帮派ID"></field>
+		<field class="short" name="horseid" explain="当前坐骑阶数"></field>
+		<field class="int" name="damage" explain="伤害数值"></field>
+	</bean>
+	
+	<bean name="JobAwardInfo" explain="职位领奖信息">
+		<field class="int" name="level" explain="职位"></field>
+		<field class="int" name="status" explain="是否可领奖，1可领，0不可"></field>
+	</bean>
+	
+	<bean name="CountryTopInfo" explain="王城战排行榜信息">
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="String" name="guildname" explain="帮会名字"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="playerlevel" explain="玩家等级"></field>
+		<field class="int" name="kill" explain="杀敌数量"></field>
+		<field class="int" name="death" explain="死亡次数"></field>
+		<field class="int" name="hurt" explain="总伤害输出"></field>
+		<field class="int" name="beenhurt" explain="被伤害总数"></field>
+		<field class="int" name="ranking" explain="排名"></field>
+	</bean>
+	
+	<bean name="CountryName" explain="国家名称信息">
+		<field class="int" name="country" explain="国家"></field>
+		<field class="String" name="name" explain="名称"></field>
+	</bean>
+		
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ReqCountrySiegeSelectToClient" explain="发送是否参与攻城询问">
+	</message>
+	
+	<message id="102" type="SC" name="ResCountrySiegeUpYuxiToClient" explain="全服广播拔起玉玺">
+		<field class="long" name="playerid" explain="拔起玉玺的人ID"></field>
+		<field class="String" name="playername" explain="玉拔起玉玺的人名字"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResCountrySiegeHomingYuxiToClient" explain="全服广播玉玺归位">
+	</message>
+	
+	<message id="104" type="SC" name="ResCountrySiegeYuXiImmediateToClient" explain="地图广播攻城玉玺即时消息">
+		<field class="CountryWarInfo" name="countrywarinfo" explain="攻城玉玺消息"></field>
+	</message>
+
+	<message id="105" type="WC" name="ResCountryStructureInfoToClient" explain="请求王城结构信息（打开面板）">
+		<list class="CountryStructureInfo" name="countrystructureInfo" explain="王城结构信息"></list>
+	</message>
+
+
+	<message id="106" type="SC" name="ResCountryArtilleryLocusToClient" explain="地图广播炮弹轨迹">
+		<field class="byte" name="type" explain="炮弹类型"></field>
+		<field class="int" name="endx" explain="终点坐标X"></field>
+		<field class="int" name="endy" explain="终点坐标Y"></field>
+		<field class="long" name="playerid" explain="开炮玩家ID"></field>
+	</message>
+	
+	<message id="107" type="SC" name="ResCountrySiegeWarStateToClient" explain="攻城战状态">
+		<field class="byte" name="state" explain="0没有攻城战，1攻城战进行中"></field>
+	</message>
+	
+	<message id="108" type="SC" name="ResKingCityChestPanelShowToClient" explain="王城宝箱奖励显示">
+		<list class="com.game.backpack.bean.ItemInfo" name="itemlist" explain="道具奖励列表"></list>
+	</message>
+	
+	<message id="109" type="SC" name="ResKingCityChestSelectToClient" explain="王城宝箱奖励选择">
+		<field class="com.game.backpack.bean.ItemInfo" name="iteminfo" explain="选择的道具奖励信息"></field>
+		<field class="int" name="num" explain="选择次数"></field>
+	</message>
+
+	<message id="110" type="SC" name="ResKingCityTimeRewardToClient" explain="在线时间奖励">
+		<field class="WarRewardInfo" name="warrewardinfo" explain="在线奖励"></field>
+	</message>
+	
+	<message id="111" type="SC" name="ResKingCityYuXiCoordinateToClient" explain="玉玺坐标">
+		<field class="short" name="mx" explain="玉玺持有人坐标X"></field>
+		<field class="short" name="my" explain="玉玺持有人坐标Y"></field>
+	</message>
+
+	<message id="112" type="SC" name="ResCountryWarCarDamageToClient" explain="炮弹击中人物信息">
+		<field class="short" name="x" explain="攻击坐标X"></field>
+		<field class="short" name="y" explain="攻击坐标Y"></field>
+		<list class="PlayerDamageInfo" name="damageinfo" explain="地图人物信息"></list>
+	</message>
+	
+	<message id="113" type="SC" name="ResCountryJobAwardInfoToClient" explain="王城职位领奖消息">
+		<list class="JobAwardInfo" name="damageinfo" explain="职位奖励领取情况"></list>
+	</message>
+	
+	<message id="114" type="SC" name="ResCountryTopInfoToClient" explain="王城战排行榜信息">
+		<list class="CountryTopInfo" name="countryTopInfolist" explain="王城战排行榜信息"></list>
+	</message>
+	
+	<message id="115" type="SC" name="ResCountryVoteingToClient" explain="投票中票数变化">
+		<list class="int" name="buffmodelid" explain="BUFFID"></list>
+		<list class="int" name="votenum" explain="票数"></list>
+		<field class="int" name="ms" explain="倒计时（秒）"></field>
+	</message>
+	
+	<message id="116" type="SC" name="ResCountryOpenVoteResultToClient" explain="通知玩家投票结果">
+		<field class="int" name="buffmodelid" explain="BUFFID"></field>
+		<field class="int" name="votenum" explain="票数"></field>
+		<field class="int" name="ms" explain="倒计时（秒）"></field>
+	</message>
+	
+	<message id="117" type="WC" name="ResCountryChangeNameSuccess" explain="更改国家名称成功">
+	</message>
+	
+	<message id="118" type="SC" name="ResCountrySyncName" explain="同步国家名称">
+		<list class="CountryName" name="countryName" explain="国家名称列表"></list>
+	</message>
+	
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ResCountrySiegeSelectToGame" explain="玩家选择是否参与攻城">
+		<field class="byte" name="type" explain="是否参与，1参与攻城"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqCountryWarCarToGame" explain="玩家使用战车攻击">
+		<field class="int" name="npcid" explain="NPCid"></field>
+		<field class="byte" name="type" explain="战车类型"></field>
+		<field class="int" name="x" explain="攻击坐标X"></field>
+		<field class="int" name="y" explain="攻击坐标Y"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqCountryStructureInfoToGame" explain="请求王城结构信息">
+	</message>
+	
+	<message id="204" type="CS" name="ReqCountrysalaryToGame" explain="领取俸禄">
+	</message>
+	
+	<message id="205" type="CS" name="ReqKingCityChestSelectToGame" explain="王城宝箱奖励选择">
+		<field class="int" name="idx" explain="选择编号"></field>
+	</message>
+	
+	<message id="206" type="CS" name="ReqCountryWarCarInAdvanceToGame" explain="战车攻击提前移动镜像观察">
+		<field class="int" name="npcid" explain="NPCid"></field>
+		<field class="byte" name="type" explain="战车类型"></field>
+		<field class="int" name="x" explain="攻击坐标X"></field>
+		<field class="int" name="y" explain="攻击坐标Y"></field>
+	</message>
+	
+	
+	<message id="207" type="CS" name="ReqCountryOpenTopToGame" explain="打开排行榜">
+	</message>
+	
+	<message id="208" type="CS" name="ReqCountryVoteToGame" explain="玩家选择BUFF投票">
+		<field class="int" name="buffmodelid" explain="选择的BUFFID"></field>
+	</message>
+	
+	<message id="209" type="CS" name="ReqCountryOpenVoteToGame" explain="玩家打开投票面板">
+	</message>
+
+	<message id="210" type="CS" name="ReqCountryChangeName" explain="更改国家名称">
+		<field class="String" name="name" explain="名称"></field>
+	</message>
+	
+	<!-- 服务器之间消息 -->
+	<message id="300" type="SW" name="ReqCountryStructureInfoToWorid" explain="请求王城结构信息to世界">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="long" name="guildid" explain="王城帮会ID"></field>
+		<field class="String" name="Siegetime" explain="攻城时间"></field>
+	</message>
+	
+	<message id="301" type="SW" name="ReqCountrySyncKingCityToWorid" explain="王帮信息到世界服">
+		<field class="int" name="countryid" explain="国家ID"></field>
+		<field class="String" name="jsonStr" explain="王帮信息"></field>
+	</message>	
+	
+	<message id="302" type="WS" name="ResCountrySyncKingCityToGame" explain="同步王帮信息到游戏服">
+		<field class="int" name="countryid" explain="国家ID(为0的时候表示全部)"></field>
+		<field class="String" name="jsonStr" explain="王帮信息"></field>
+	</message>	
+		
+	<message id="303" type="SW" name="ReqCountryChangeNameToWorld" explain="国家改名">
+		<field class="long" name="playerId" explain="秦王id"></field>
+		<field class="int" name="country" explain="国家ID"></field>
+		<field class="String" name="name" explain="名称"></field>
+	</message>
+	
+	<message id="304" type="WS" name="ResCountryChangeNameToGame" explain="国家改名成功">
+		<field class="String" name="playerName" explain="秦王名称"></field>
+		<field class="int" name="country" explain="国家ID"></field>
+		<field class="String" name="name" explain="名称"></field>
+	</message>
+	
+	<message id="305" type="WS" name="ResCountrySyncNameToGame" explain="同步国家名称">
+		<list class="CountryName" name="countryName" explain="国家名称列表"></list>
+	</message>
+	
+	<message id="306" type="SW" name="ReqCountryChangeNameStateToGame" explain="国家改名状态">
+		<field class="int" name="country" explain="国家id"></field>
+		<field class="byte" name="type" explain="0:可以改名 1:不能改名"></field>
+	</message>
+	
+	<message id="307" type="SW" name="ReqCountryVoteToWorld" explain="通知世界服务器选择投票BUFF" >
+		<field class="int" name="buffmodelid" explain="选择的BUFFID"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="308" type="WS" name="ResCountryVoteToGame" explain="通知游戏服务器选择投票BUFF" >
+		<field class="int" name="buffmodelid" explain="选择的BUFFID"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>	
+	
+	<message id="309" type="SW" name="ReqUniversalStateToWorld" explain="通知世界服务器设置活动状态" >
+		<field class="int" name="state" explain="状态"></field>
+		<field class="int" name="type" explain="活动类型"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="310" type="WS" name="ResUniversalStateToGame" explain="通知游戏服务器设置活动状态" >
+		<field class="int" name="state" explain="状态"></field>
+		<field class="int" name="type" explain="活动类型"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	
+	
+</messages>
+		

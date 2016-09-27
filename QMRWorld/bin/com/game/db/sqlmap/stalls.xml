@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="stalls"> 
+	<resultMap id="bean" type="com.game.db.bean.StallsBean" >
+		<result column="roleid" property="roleid" jdbcType="BIGINT" />
+		<result column="stallsdata" property="stallsdata" jdbcType="LONGVARCHAR" />
+	</resultMap>
+  
+	<select id="select" resultMap="bean">
+		select * from stalls
+	</select>
+  
+  	<select id="selectsingle" parameterType="Long" resultMap="bean">
+		select roleid,stallsdata  from stalls
+		where roleid = #{ roleid,jdbcType=BIGINT }
+	</select>
+  
+  
+	<insert id="insert" parameterType="com.game.db.bean.StallsBean" >
+		insert into stalls (
+		roleid,
+		stallsdata
+		)
+		values (
+		#{ roleid,jdbcType=BIGINT },
+		#{ stallsdata,jdbcType=LONGVARCHAR }
+		)
+	</insert>
+
+	<update id="update" parameterType="com.game.db.bean.StallsBean" >
+		update stalls set 
+		stallsdata = #{ stallsdata,jdbcType=LONGVARCHAR }
+		where roleid = #{ roleid,jdbcType=BIGINT }
+	</update>
+	
+	<delete id="delete" parameterType="Long" >
+		delete from stalls
+		where roleid = #{ roleid,jdbcType=BIGINT }
+	</delete>
+</mapper>
+
+

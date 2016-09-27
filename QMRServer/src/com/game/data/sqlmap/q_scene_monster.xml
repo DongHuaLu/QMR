@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_scene_monster"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_scene_monsterBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_mapid" property="q_mapid" jdbcType="INTEGER" />
+	<result column="q_monster_model" property="q_monster_model" jdbcType="INTEGER" />
+	<result column="q_x" property="q_x" jdbcType="INTEGER" />
+	<result column="q_y" property="q_y" jdbcType="INTEGER" />
+	<result column="q_relive" property="q_relive" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_patrol_time" property="q_patrol_time" jdbcType="INTEGER" />
+	<result column="q_patrol_pro" property="q_patrol_pro" jdbcType="INTEGER" />
+	<result column="q_whether_display" property="q_whether_display" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_scene_monster
+  </select>
+</mapper> 

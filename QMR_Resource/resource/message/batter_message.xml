@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.batter" id="141">
+	<!-- 服务器发送消息 -->
+	
+	<message id="101" type="SC" name="ResMonsterBatterToClient" explain="连击消息">
+		<field class="byte" name="type" explain="类型：1普通怪连斩，2BOSS连击"></field>
+		<field class="int" name="countdowntime" explain="连击倒计时（秒）"></field>
+		<field class="int" name="atk" explain="增加攻击力"></field>
+		<field class="int" name="num" explain="连击次数"></field>
+	</message>
+
+	<message id="102" type="SC" name="ResMomentKillToClient" explain="上线发送连斩次数">
+		<field class="int" name="evencutatk" explain="连斩攻击"></field>
+		<field class="int" name="batteratk" explain="连击攻击"></field>
+	</message>
+
+
+</messages>

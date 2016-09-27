@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_meting_random"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_meting_randomBean" >
+	<result column="q_metingid" property="q_metingid" jdbcType="VARCHAR" />
+	<result column="q_itemlv" property="q_itemlv" jdbcType="INTEGER" />
+	<result column="q_attrtype" property="q_attrtype" jdbcType="INTEGER" />
+	<result column="q_num" property="q_num" jdbcType="INTEGER" />
+	<result column="q_random" property="q_random" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_meting_random
+  </select>
+</mapper> 

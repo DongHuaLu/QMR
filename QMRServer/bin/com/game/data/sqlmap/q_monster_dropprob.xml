@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_monster_dropprob"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_monster_dropprobBean" >
+	<result column="q_monsterid" property="q_monsterid" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_goods1" property="q_goods1" jdbcType="VARCHAR" />
+	<result column="q_goods2" property="q_goods2" jdbcType="VARCHAR" />
+	<result column="q_goods3" property="q_goods3" jdbcType="VARCHAR" />
+	<result column="q_goods4" property="q_goods4" jdbcType="VARCHAR" />
+	<result column="q_goods5" property="q_goods5" jdbcType="VARCHAR" />
+	<result column="q_goods6" property="q_goods6" jdbcType="VARCHAR" />
+	<result column="q_goods7" property="q_goods7" jdbcType="VARCHAR" />
+	<result column="q_goods8" property="q_goods8" jdbcType="VARCHAR" />
+	<result column="q_goods9" property="q_goods9" jdbcType="VARCHAR" />
+	<result column="q_goods10" property="q_goods10" jdbcType="VARCHAR" />
+	<result column="q_goods11" property="q_goods11" jdbcType="VARCHAR" />
+	<result column="q_goods12" property="q_goods12" jdbcType="VARCHAR" />
+	<result column="q_goods13" property="q_goods13" jdbcType="VARCHAR" />
+	<result column="q_goods14" property="q_goods14" jdbcType="VARCHAR" />
+	<result column="q_goods15" property="q_goods15" jdbcType="VARCHAR" />
+	<result column="q_goods16" property="q_goods16" jdbcType="VARCHAR" />
+	<result column="q_goods17" property="q_goods17" jdbcType="VARCHAR" />
+	<result column="q_goods18" property="q_goods18" jdbcType="VARCHAR" />
+	<result column="q_goods19" property="q_goods19" jdbcType="VARCHAR" />
+	<result column="q_goods20" property="q_goods20" jdbcType="VARCHAR" />
+	<result column="q_goods21" property="q_goods21" jdbcType="VARCHAR" />
+	<result column="q_goods22" property="q_goods22" jdbcType="VARCHAR" />
+	<result column="q_goods23" property="q_goods23" jdbcType="VARCHAR" />
+	<result column="q_goods24" property="q_goods24" jdbcType="VARCHAR" />
+	<result column="q_goods25" property="q_goods25" jdbcType="VARCHAR" />
+	<result column="q_goods26" property="q_goods26" jdbcType="VARCHAR" />
+	<result column="q_goods27" property="q_goods27" jdbcType="VARCHAR" />
+	<result column="q_goods28" property="q_goods28" jdbcType="VARCHAR" />
+	<result column="q_goods29" property="q_goods29" jdbcType="VARCHAR" />
+	<result column="q_goods30" property="q_goods30" jdbcType="VARCHAR" />
+	<result column="q_goods31" property="q_goods31" jdbcType="VARCHAR" />
+	<result column="q_goods32" property="q_goods32" jdbcType="VARCHAR" />
+	<result column="q_goods33" property="q_goods33" jdbcType="VARCHAR" />
+	<result column="q_goods34" property="q_goods34" jdbcType="VARCHAR" />
+	<result column="q_goods35" property="q_goods35" jdbcType="VARCHAR" />
+	<result column="q_goods36" property="q_goods36" jdbcType="VARCHAR" />
+	<result column="q_goods37" property="q_goods37" jdbcType="VARCHAR" />
+	<result column="q_goods38" property="q_goods38" jdbcType="VARCHAR" />
+	<result column="q_goods39" property="q_goods39" jdbcType="VARCHAR" />
+	<result column="q_goods40" property="q_goods40" jdbcType="VARCHAR" />
+	<result column="q_goods41" property="q_goods41" jdbcType="VARCHAR" />
+	<result column="q_goods42" property="q_goods42" jdbcType="VARCHAR" />
+	<result column="q_goods43" property="q_goods43" jdbcType="VARCHAR" />
+	<result column="q_goods44" property="q_goods44" jdbcType="VARCHAR" />
+	<result column="q_goods45" property="q_goods45" jdbcType="VARCHAR" />
+	<result column="q_goods46" property="q_goods46" jdbcType="VARCHAR" />
+	<result column="q_goods47" property="q_goods47" jdbcType="VARCHAR" />
+	<result column="q_goods48" property="q_goods48" jdbcType="VARCHAR" />
+	<result column="q_goods49" property="q_goods49" jdbcType="VARCHAR" />
+	<result column="q_goods50" property="q_goods50" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_monster_dropprob
+  </select>
+</mapper> 

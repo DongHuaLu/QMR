@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_equip_append"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_equip_appendBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_attack_min" property="q_attack_min" jdbcType="INTEGER" />
+	<result column="q_attack_max" property="q_attack_max" jdbcType="INTEGER" />
+	<result column="q_defence" property="q_defence" jdbcType="INTEGER" />
+	<result column="q_defence_min" property="q_defence_min" jdbcType="INTEGER" />
+	<result column="q_defence_max" property="q_defence_max" jdbcType="INTEGER" />
+	<result column="q_crit" property="q_crit" jdbcType="INTEGER" />
+	<result column="q_crit_min" property="q_crit_min" jdbcType="INTEGER" />
+	<result column="q_crit_max" property="q_crit_max" jdbcType="INTEGER" />
+	<result column="q_dodge" property="q_dodge" jdbcType="INTEGER" />
+	<result column="q_dodge_min" property="q_dodge_min" jdbcType="INTEGER" />
+	<result column="q_dodge_max" property="q_dodge_max" jdbcType="INTEGER" />
+	<result column="q_hp" property="q_hp" jdbcType="INTEGER" />
+	<result column="q_hp_min" property="q_hp_min" jdbcType="INTEGER" />
+	<result column="q_hp_max" property="q_hp_max" jdbcType="INTEGER" />
+	<result column="q_mp" property="q_mp" jdbcType="INTEGER" />
+	<result column="q_mp_min" property="q_mp_min" jdbcType="INTEGER" />
+	<result column="q_mp_max" property="q_mp_max" jdbcType="INTEGER" />
+	<result column="q_sp" property="q_sp" jdbcType="INTEGER" />
+	<result column="q_sp_min" property="q_sp_min" jdbcType="INTEGER" />
+	<result column="q_sp_max" property="q_sp_max" jdbcType="INTEGER" />
+	<result column="q_attackspeed" property="q_attackspeed" jdbcType="INTEGER" />
+	<result column="q_attackspeed_min" property="q_attackspeed_min" jdbcType="INTEGER" />
+	<result column="q_attackspeed_max" property="q_attackspeed_max" jdbcType="INTEGER" />
+	<result column="q_speed" property="q_speed" jdbcType="INTEGER" />
+	<result column="q_speed_min" property="q_speed_min" jdbcType="INTEGER" />
+	<result column="q_speed_max" property="q_speed_max" jdbcType="INTEGER" />
+	<result column="q_luck" property="q_luck" jdbcType="INTEGER" />
+	<result column="q_luck_min" property="q_luck_min" jdbcType="INTEGER" />
+	<result column="q_luck_max" property="q_luck_max" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_equip_append
+  </select>
+</mapper> 

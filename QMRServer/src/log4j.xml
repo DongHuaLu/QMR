@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="ALL" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- {1}参数 是只输出类名 需要输出包名时将这个参数去掉即可 -->
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss:SSS} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<logger name="MONSTER" additivity="false">
+		<level value="off" />
+	</logger>
+	<logger name="SERVERFLOW">
+		<level value="off" />
+	</logger>
+	<logger name="DBLOGCONSUMING">
+		<level value="off" />
+	</logger>
+	<logger name="SERVERSTEP">
+		<level value="off" />
+	</logger>
+	<logger name="com.game.server.thread.ServerThread">
+		<level value="debug" />
+	</logger>
+	<logger name="com.game.map.timer.MapCountTimer">
+		<level value="off" />
+	</logger>
+	<logger name="com.game.pet.timer.PetStepTimer">
+		<level value="off" />
+	</logger>
+	<!--	############################################################################################################-->
+	<logger name="com.game.chat.manager.ChatManager" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncChatERRORLogAppender"/>-->
+	</logger>
+	<!--充值日志-->
+	<logger name="RECHARGE" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncRechargeLogAppender"/>-->
+	</logger>
+	<!-- 聊天日志-->
+	<logger name="CHATLOG" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncChatLogAppender"/>-->
+	</logger>
+	<logger name="com.game.chat.manager.ChatManager" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncChatERRORLogAppender"/>-->
+	</logger>
+
+	<logger name="com.game.log.handler.LogInfoHandler" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncClientLogAppender"/>-->
+	</logger>
+	<logger name="com.game.server.thread.SaveGoldThread" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncGoldLogAppender"/>-->
+	</logger>
+	<logger name="SAVEGOLDFAILED" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncSaveGoldFailedLogAppender"/>-->
+	</logger>
+	<logger name="SAVEMAILFAILED" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncSaveMailFailedLogAppender"/>-->
+	</logger>
+	<logger name="SERVERFLOW" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncFlowLogAppender"/>-->
+	</logger>
+	<logger name="DROPCOMMAND" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncDropCommandLogAppender"/>-->
+	</logger>
+	<logger name="com.game.cache.executor.OrderedQueuePoolExecutor" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncFlowLogAppender"/>-->
+	</logger>
+	<logger name="SERVERSTEP" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncStepLogAppender"/>-->
+	</logger>
+	<logger name="com.game.map.timer.MapCountTimer" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncMapLogAppender"/>-->
+	</logger>
+	<logger name="SERVERPLAYER" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncPlayerLogAppender"/>-->
+	</logger>
+	<logger name="SERVERSESSIONCLOSE" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncSessionCloseLogAppender"/>-->
+	</logger>
+	<logger name="DBLOGCONSUMING" additivity="false">
+		<level value="OFF" />
+<!--		<appender-ref ref="AsyncPlayerLogAppender"/>-->
+	</logger>
+	
+	<logger name="java.sql">
+		<level value="error" />
+	</logger>
+	<logger name="org.quartz">
+		<level value="error" />
+	</logger>
+	<logger name="com.ibatis">
+		<level value="error" />
+	</logger>
+	<logger name="org.apache.mina">
+		<level value="error" />
+	</logger>
+	<logger name="com.mchange">
+		<level value="error" />
+	</logger>
+	<root>
+		<level value="info" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+</log4j:configuration>

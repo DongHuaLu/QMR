@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.card" id="137">
+	<!-- bean定义 -->
+	
+	<!-- 游戏服务器接收消息 -->
+	<message id="101" type="CS" name="ReqCardToServer" explain="请求签证CDKEY">
+		<field class="String" name="card" explain="CDKEY"></field>
+	</message>
+	<message id="102" type="CS" name="ReqCardPhoneToServer" explain="请求手机绑定">
+		<field class="String" name="account" explain="账号"></field>
+		<field class="long" name="playerid" explain="角色id"></field>
+		<field class="String" name="phone" explain="电话"></field>
+	</message>
+	
+	<!-- 客户端接收消息 -->
+	<message id="151" type="SC" name="ResCardToClient" explain="请求签证CDKEY返回">
+		<field class="byte" name="errorcode" explain="错误代码"></field>
+		<field class="int" name="agid" explain="平台id"></field>
+		<field class="int" name="type" explain="礼包类型"></field>
+		<field class="int" name="giftid" explain="礼包编号"></field>
+	</message>
+	
+	<!-- 服务器内部消息 游戏服务器发送到世界服务器 -->
+	<message id="201" type="SW" name="ReqInnerCardToWorld" explain="内部请求签证CDKEY给世界服务器">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="String" name="card" explain="CDKEY"></field>
+		<field class="String" name="arguserName" explain="平台账号名字"></field>
+		<field class="String" name="argzoneName" explain="平台区服务器标识"></field>
+		<field class="String" name="argName" explain="平台名字标识"></field>
+	</message>
+	<message id="202" type="SW" name="ReqInnerCardPhoneToWorld" explain="内部请求手机绑定给世界服务器">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="String" name="account" explain="账号"></field>
+		<field class="long" name="playerid" explain="角色id"></field>
+		<field class="String" name="phone" explain="电话"></field>
+	</message>
+	
+	<!-- 世界到客户端接收消息 -->
+	<message id="251" type="WC" name="ResCardPhoneToClient" explain="请求手机绑定返回">
+		<field class="byte" name="errorcode" explain="错误代码"></field>
+		<field class="byte" name="status" explain="状态"></field>
+		<field class="String" name="account" explain="账号"></field>
+		<field class="long" name="playerid" explain="角色id"></field>
+		<field class="String" name="phone" explain="电话"></field>
+		<field class="int" name="agid" explain="平台id"></field>
+		<field class="int" name="type" explain="礼包类型"></field>
+		<field class="String" name="vercode" explain="验证码"></field>
+		<field class="int" name="phonevernum" explain="手机验证次数，每天只有3次"></field>
+		<field class="int" name="vererrornum" explain="验证码错误次数，根据每个手机的更换清除"></field>
+	</message>
+
+	<!-- 服务器内部消息 世界服务器发送到游戏服务器 -->
+	<message id="301" type="WS" name="ResInnerCardToServer" explain="内部返回请求签证CDKEY结果给游戏服务器">
+		<field class="byte" name="errorcode" explain="错误代码"></field>
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="int" name="agid" explain="平台id"></field>
+		<field class="int" name="type" explain="礼包类型"></field>
+		<field class="int" name="giftid" explain="礼包编号"></field>
+	</message>
+</messages>

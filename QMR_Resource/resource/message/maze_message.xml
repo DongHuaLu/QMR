@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.maze" id="145">
+	<!-- bean定义 -->
+	
+	
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResChangeFloor" explain="发送换层消息">
+		<field class="int" name="type" explain="换层类型 0-未换层， 1-成功 2-后退 3-最后一层"></field>
+		<field class="int" name="floor" explain="现在层数"></field>
+		<field class="int" name="remain" explain="剩余层数"></field>
+	</message>	
+	
+	
+	<message id="102" type="SC" name="ResReward" explain="发送奖励消息">
+		<field class="long" name="npc" explain="NPC ID"></field>
+		<field class="int" name="sort" explain="排名"></field>
+		<field class="int" name="time" explain="花费时间"></field>
+		<field class="int" name="bindgold" explain="礼金"></field>
+		<field class="int" name="exp" explain="经验"></field>
+		<field class="int" name="zhenqi" explain="真气"></field>
+	</message>	
+
+
+	<!-- 服务器接收消息 -->
+	
+</messages>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<threads>
+	<thread>
+		<thread-name>Main</thread-name>
+		<thread-heart>50</thread-heart>
+	</thread>
+</threads>

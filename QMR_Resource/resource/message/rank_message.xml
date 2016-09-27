@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.rank" id="117">
+	<!-- bean定义 -->
+	<bean name="Rankinfo" explain="军衔保存信息">
+		<field class="int" name="ranklevel" explain="军衔等级"></field>
+		<field class="int" name="rankexp" explain="军功数量"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResRankinfoToClient" explain="军衔信息发送到客户端">
+		<field class="Rankinfo" name="rankinfo" explain="军衔保存信息"></field>
+		<field class="int" name="dayrankexp" explain="今日得到的军功值"></field>
+	</message>
+
+	<message id="102" type="SC" name="ResRankExpToClient" explain="获得军功改变">
+		<field class="int" name="ranksum" explain="当前总军功值"></field>
+		<field class="int" name="rankexp" explain="本次得到的军功值"></field>
+		<field class="int" name="dayrankexp" explain="今日得到的军功值"></field>
+	</message>
+
+	<message id="103" type="SC" name="ResRankUPToClient" explain="军衔改变广播">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="Rankinfo" name="rankinfo" explain="军衔保存信息"></field>
+	</message>
+
+	
+
+
+
+
+
+</messages>

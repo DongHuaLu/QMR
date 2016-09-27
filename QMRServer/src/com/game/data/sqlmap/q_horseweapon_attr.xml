@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_horseweapon_attr"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_horseweapon_attrBean" >
+	<result column="q_id" property="q_id" jdbcType="VARCHAR" />
+	<result column="q_rank" property="q_rank" jdbcType="INTEGER" />
+	<result column="q_level" property="q_level" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_defence" property="q_defence" jdbcType="INTEGER" />
+	<result column="q_critical" property="q_critical" jdbcType="INTEGER" />
+	<result column="q_doge" property="q_doge" jdbcType="INTEGER" />
+	<result column="q_hp" property="q_hp" jdbcType="INTEGER" />
+	<result column="q_mp" property="q_mp" jdbcType="INTEGER" />
+	<result column="q_sp" property="q_sp" jdbcType="INTEGER" />
+	<result column="q_attack_speed" property="q_attack_speed" jdbcType="INTEGER" />
+	<result column="q_move_speed" property="q_move_speed" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_horseweapon_attr
+  </select>
+</mapper> 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.offline" id="150">
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResRetreatInfo" explain="返回闭关信息">
+		<field class="int" name="notifyType" explain="通知类型"></field>
+		<field class="int" name="curTime" explain="当前闭关时间"></field>
+		<field class="int" name="curExp" explain="当前闭关经验"></field>
+		<field class="int" name="curZhenqi" explain="当前闭关真气"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqRetreatInfo" explain="前端请求闭关信息">
+	</message>
+	
+	<message id="202" type="CS" name="ReqGetRetreatAward" explain="前端请求闭关奖励">
+		<field class="int" name="getType" explain="领取类型，0单倍 1双倍 2自动双倍"></field>
+	</message>
+
+</messages>

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.team" id="118">
+	<!-- bean定义 -->
+	<bean name="TeamMemberInfo" explain="队员信息">
+		<field class="long" name="memberid" explain="队员ID"></field>
+		<field class="String" name="membername" explain="队员名字"></field>
+		<field class="int" name="memberlevel" explain="队员等级"></field>
+		<field class="int" name="membermapid" explain="队员所在地图"></field>
+		<field class="int" name="memberline" explain="队员所在线路"></field>
+		<field class="short" name="mx" explain="队员所在坐标X"></field>
+		<field class="short" name="my" explain="队员所在坐标Y"></field>
+		<field class="long" name="membermaponlyid" explain="地图唯一ID"></field>
+		<field class="com.game.player.bean.PlayerAppearanceInfo" name="appearanceInfo" explain="造型信息"></field>
+	</bean>
+	
+	<bean name="TeamInfo" explain="组队信息类">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="byte" name="autoIntoteamapply" explain="自动接受入队申请 1自动"></field>
+		<list class="TeamMemberInfo" name="memberinfo" explain="队伍列表"></list>
+	</bean>
+		
+		
+	<bean name="MapTeamInfo" explain="当前地图队伍信息类">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="captainid" explain="队长Id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="String" name="captainname" explain="队长名字"></field>
+		<field class="byte" name="teamnum" explain="队伍人数"></field>
+		<field class="short" name="captainlv" explain="队长等级"></field>
+		<field class="short" name="highestlv" explain="最高等级"></field>
+		<field class="short" name="averagelv" explain="平均等级"></field>
+		<field class="byte" name="line" explain="所在线路"></field>
+	</bean>
+		
+		
+	<bean name="MapPlayerInfo" explain="当前地图玩家信息类">
+		<field class="long" name="playerid" explain="玩家Id"></field>
+		<field class="short" name="playerlv" explain="玩家等级"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="byte" name="teamstate" explain="组队状态，0未组队，1已组队"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="String" name="guildname" explain="帮会名字"></field>
+		<field class="byte" name="line" explain="所在线路"></field>
+	</bean>	
+
+
+	<bean name="SearchPlayerInfo" explain="通用搜索玩家信息">
+		<field class="long" name="playerid" explain="玩家Id"></field>
+		<field class="short" name="playerlv" explain="玩家等级"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="byte" name="line" explain="线路"></field>
+	</bean>	
+	
+
+		
+	<!-- 服务器发送消息 -->
+	<message id="101" type="WC" name="ResTeamClientRefresh" explain="更新队伍信息（通用）">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<list class="TeamMemberInfo" name="memberinfo" explain="队伍列表"></list>
+	</message>	
+	
+	<message id="102" type="WC" name="ResApplyClient" explain="入队申请-通知队长做选择">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="TeamMemberInfo" name="newmemberinfo" explain="新队员信息"></field>
+	</message>
+	
+	
+	<message id="103" type="WC" name="ResInviteClient" explain="邀请入队-通知玩家做选择">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="TeamMemberInfo" name="captaininfo" explain="队长信息"></field>
+		<field class="int" name="type" explain="0普通邀请，1跨服战队邀请"></field>
+	</message>
+
+	<message id="104" type="WC" name="ResAppointClient" explain="任命新队长-通知玩家做选择">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="TeamMemberInfo" name="captaininfo" explain="队长信息"></field>
+	</message>
+	
+	<message id="105" type="SC" name="ResTeamExteriorClient" explain="更新人物组队外观（视野内群发）">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家Id"></field>
+	</message>
+	
+	<message id="106" type="SC" name="ResAutoTeaminvitedClient" explain="自动组队邀请">
+		<field class="byte" name="autoTeaminvited" explain="0手动，1自动邀请"></field>
+	</message>
+
+	<message id="107" type="SC" name="ResAutoIntoTeamApplyClient" explain="自动接受入队申请">
+		<field class="byte" name="autointoteamapply" explain="0手动，1自动接受"></field>
+	</message>
+	
+	<message id="108" type="WC" name="ResMapSearchTeamInfoClient" explain="前端请求搜索本地图队伍信息">
+		<list class="MapTeamInfo" name="mapteaminfo" explain="当前地图队伍列表"></list>
+	</message>
+	
+	<message id="109" type="WC" name="ResMapSearchPlayerInfoClient" explain="前端请求搜索本地图玩家信息">
+		<list class="MapPlayerInfo" name="mapplayerinfo" explain="当前地图玩家列表"></list>
+	</message>
+	
+	<message id="110" type="WC" name="ResMapSearchMemberNameClient" explain="前端请求队员名字列表">
+		<list class="String" name="membernamelist" explain="队员名字列表"></list>
+		<list class="short" name="membernamelv" explain="队员等级列表"></list>
+		<list class="byte" name="membernameline" explain="队员线路列表"></list>
+	</message>
+	
+	<message id="111" type="WC" name="ResGenericSearchToClient" explain="搜索到的玩家列表，返回给前端">
+		<list class="SearchPlayerInfo" name="playerinfolist" explain="玩家列表"></list>
+		<field class="byte" name="paneltype" explain="面板类型(返回给前端)，1组队，2好友，3行会，4聊天"></field>
+		<field class="byte" name="sort" explain="排序，1按照等级"></field>
+	</message>
+	
+	<message id="112" type="SC" name="ResTeammateMoveToClient" explain="队友移动XY，显示在小地图，返回给前端">
+		<field class="long" name="memberid" explain="队员ID"></field>
+		<field class="short" name="mx" explain="队员所在坐标X"></field>
+		<field class="short" name="my" explain="队员所在坐标Y"></field>
+		<field class="byte" name="type" explain="类型：0移动，1首次坐标"></field>
+	</message>
+	
+	<message id="113" type="SC" name="ResTeamSetToClient" explain="把组队设置发送给前端">
+		<field class="byte" name="autoIntoteamapply" explain="自动接受入队申请 ，0手动 1自动申请"></field>
+		<field class="byte" name="autoTeaminvited" explain="自动接受组队邀请，0手动 1自动邀请"></field>
+	</message>
+	
+	<message id="114" type="WC" name="ResTeamRespondToClient" explain="组队回应">
+		<field class="long" name="playerid" explain="玩家Id"></field>
+		<field class="int" name="type" explain="1邀请组队，2申请加入"></field>
+		<field class="byte" name="respond" explain="1同意，2拒绝"></field>
+	</message>
+	
+	<message id="115" type="WC" name="ResTeamleaveToClient" explain="玩家离队（跨服需要用到这个消息）">
+		<field class="long" name="playerid" explain="玩家Id"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+	</message>
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqCreateateamGame" explain="单独-创建队伍">
+	</message>
+	
+	
+	<message id="202" type="CS" name="ReqApplyGame" explain="玩家申请入队">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqApplyGameSelect" explain="申请入队-队长选择">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="select" explain="0同意，1拒绝"></field>
+	</message>
+	
+	
+	<message id="204" type="CS" name="ReqInviteGame" explain="邀请入队">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="type" explain="0普通邀请，1跨服战队邀请"></field>
+	</message>
+	
+	<message id="205" type="CS" name="ReqInviteGameSelect" explain="邀请入队-玩家选择">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="captainid" explain="邀请人ID"></field>
+		<field class="byte" name="select" explain="0同意，1拒绝"></field>
+		
+	</message>
+	
+	
+	<message id="206" type="CS" name="ReqToleaveGame" explain="玩家离队">
+		<field class="long" name="playerid" explain="要离队的玩家ID"></field>
+		<field class="byte" name="type" explain="0开除 ，1 自己离开 ，2下线"></field>
+	</message>
+
+
+
+	<message id="207" type="CS" name="ReqAppointGame" explain="任命新队长">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+
+	<message id="208" type="CS" name="ReqAppointGameSelect" explain="任命新队长-玩家选择">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="byte" name="select" explain="0同意，1拒绝"></field>
+	</message>
+
+
+	<message id="209" type="CS" name="ReqAutoTeaminvitedGame" explain="自动组队邀请">
+		<field class="byte" name="autoTeaminvited" explain="0手动，1自动邀请"></field>
+	</message>
+
+	<message id="210" type="CS" name="ReqAutoIntoTeamApplyGame" explain="自动接受入队申请">
+		<field class="byte" name="autointoteamapply" explain="0手动，1自动接受"></field>
+	</message>
+	
+	<message id="211" type="CS" name="ReqUpdateTeaminfoGame" explain="前端请求更新队伍消息，转发到世界服务器">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+	</message>
+	
+	<message id="212" type="CS" name="ReqMapSearchTeamInfoGame" explain="前端请求搜索本地图队伍信息，转发到世界服务器">
+		<field class="String" name="searchcontent" explain="搜索内容"></field>
+	</message>
+	
+	<message id="213" type="CS" name="ReqMapSearchPlayerInfoGame" explain="前端请求搜索本地图玩家信息，转发到世界服务器">
+		<field class="String" name="searchcontent" explain="搜索内容"></field>
+	</message>
+	
+	<message id="214" type="CS" name="ReqMapSearchMemberNameGame" explain="前端请求显示队伍所有队员名字，转发到世界服务器">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+	</message>
+	
+	<message id="215" type="CS" name="ReqGenericSearchToGame" explain="通用玩家搜索，转发到世界服务器">
+		<field class="byte" name="type" explain="搜索类型，0搜索世界，1，搜索本国，2，搜索所有线的当前地图，3搜索本线地图，4搜索所有线本地图未组队的人"></field>
+		<field class="byte" name="paneltype" explain="面板类型，1组队，2好友，3行会，4聊天"></field>
+		<field class="String" name="searchcontent" explain="搜索内容"></field>
+		<field class="short" name="indexstart" explain="索引开始"></field>
+		<field class="short" name="indexend" explain="索引结束"></field>
+		<field class="byte" name="sort" explain="排序，1按照等级"></field>
+	</message>
+	
+	<message id="216" type="CS" name="ReqIntoTeamToGame" explain="远程入队，在不知道队伍ID的情况下，服务器做判断是邀请还是加入">
+		<field class="long" name="othersid" explain="他人ID"></field>
+		<field class="int" name="type" explain="0普通邀请，1跨服战队邀请"></field>
+	</message>
+	
+	
+	
+	
+	
+	<!-- 服务器之间消息 -->
+	
+	<message id="301" type="SW" name="ReqCreateateamWorld" explain="发送创建队伍到世界服务器">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="long" name="teamid" explain="队伍ID，传0则自动创建"></field>
+	</message>
+	
+	
+	<message id="302" type="WS" name="ResTeamGame" explain="下发队伍更新到GAME(通用)">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<list class="TeamMemberInfo" name="memberinfo" explain="队伍列表"></list>
+		<field class="byte" name="type" explain="0更新外观 ，1 更新到GAME "></field>
+	</message>
+	
+
+	<message id="303" type="SW" name="ReqApplyWorld" explain="申请入队-通知世界服务器">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+	
+	<message id="304" type="SW" name="ReqApplyWorldSelect" explain="申请入队-队长选择">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="select" explain="0同意，1拒绝"></field>
+	</message>
+	
+	
+	<message id="305" type="SW" name="ReqInviteWorld" explain="邀请入队-通知世界服务器">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="long" name="captainid" explain="队长ID"></field>
+		<field class="int" name="type" explain="0普通邀请，1跨服战队邀请"></field>
+	</message>
+	
+	<message id="306" type="SW" name="ReqInviteWorldSelect" explain="邀请入队-玩家选择">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="long" name="captainid" explain="队长ID"></field>
+		<field class="byte" name="select" explain="0同意，1拒绝"></field>
+	</message>
+	
+	
+	<message id="307" type="SW" name="ReqToleaveWorld" explain="离队（开除 ， 自己离开 ，下线）">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="type" explain="0开除 ，1 自己离开 ，2下线"></field>
+	</message>
+	
+	<message id="308" type="SW" name="ReqAppointWorld" explain="任命新队长">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+	
+	<message id="309" type="SW" name="ReqAppointWorldSelect" explain="任命新队长-玩家选择">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="select" explain="0同意，1拒绝"></field>
+	</message>
+	
+	<message id="310" type="WS" name="ResToleaveWorld" explain="玩家离队后更新GAME">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+
+	<message id="311" type="SW" name="ReqUpdateTeaminfoWorld" explain="请求更新队伍消息">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="type" explain="0更新外观 ，1 更新到GAME ，2更新到前端"></field>
+	</message>
+	
+	<message id="312" type="SW" name="ReqAutoTeaminvitedWorld" explain="自动组队邀请">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="autoTeaminvited" explain="0手动，1自动邀请"></field>
+	</message>
+
+	<message id="313" type="SW" name="ReqAutoIntoTeamApplyWorld" explain="自动接受入队申请">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="byte" name="autointoteamapply" explain="0手动，1自动接受"></field>
+	</message>
+<!--
+	<message id="314" type="SW" name="Teambroadcast" explain="队伍广播">
+		<field class="long" name="playerid" explain="发送者ID"></field>
+		<field class="Message" name="teammessage" explain="队伍消息"></field>
+	</message>
+-->
+	
+	<message id="315" type="SW" name="ReqMapSearchTeamInfoWorld" explain="前端请求搜索本地图队伍信息">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="String" name="searchcontent" explain="搜索内容"></field>
+	</message>
+	
+	<message id="316" type="SW" name="ReqMapSearchPlayerInfoWorld" explain="前端请求搜索本地图玩家信息">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="String" name="searchcontent" explain="搜索内容"></field>
+	</message>
+	
+	<message id="317" type="SW" name="ReqMapSearchMemberNameWorld" explain="前端请求显示队伍所有队员名字">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="long" name="teamid" explain="队伍Id"></field>
+	</message>
+	
+	<message id="318" type="SW" name="ReqTeamMessageWorld" explain="全队伍广播提示信息，转发到世界服务器">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="String" name="content" explain="消息内容"></field>
+	</message>
+	
+	<message id="319" type="SW" name="ReqGenericSearchToWorld" explain="通用玩家搜索">
+		<field class="byte" name="type" explain="搜索类型，0搜索世界，1，搜索本国，2，搜索所有线的当前地图，3搜索本线地图，4搜索所有线本地图未组队的人"></field>
+		<field class="byte" name="paneltype" explain="面板类型(返回给前端)，1组队，2好友，3行会，4聊天"></field>
+		<field class="String" name="searchcontent" explain="搜索内容"></field>
+		<field class="short" name="indexstart" explain="索引开始"></field>
+		<field class="short" name="indexend" explain="索引结束"></field>
+		<field class="byte" name="sort" explain="排序，1按照等级"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+	
+	<message id="320" type="SW" name="ReqIntoTeamToWorld" explain="远程入队，在不知道队伍ID的情况下，服务器做判断是邀请还是加入">
+		<field class="long" name="playerid" explain="玩家自己ID"></field>
+		<field class="long" name="othersid" explain="他人ID"></field>
+		<field class="int" name="type" explain="0普通邀请，1跨服战队邀请"></field>
+	</message>
+	
+	<message id="321" type="WS" name="ResTeamchangeToGame" explain="队伍改变发送给改变的人">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<list class="TeamMemberInfo" name="memberinfo" explain="队伍列表"></list>
+	</message>
+	
+	
+	<message id="322" type="SW" name="ReqTeamAutoCaptainWorld" explain="指定玩家自动设置为队长">
+		<field class="long" name="teamid" explain="队伍Id"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+	
+</messages>
+
+
+
+
+
+
+
+
+
+

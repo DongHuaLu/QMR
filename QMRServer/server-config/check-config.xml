@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<checkbetween>30000</checkbetween>
+<distance>100</distance>
+<basespeed>100</basespeed>
+</config>

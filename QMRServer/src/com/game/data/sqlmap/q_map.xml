@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_map"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_mapBean" >
+	<result column="q_map_name" property="q_map_name" jdbcType="VARCHAR" />
+	<result column="q_map_id" property="q_map_id" jdbcType="INTEGER" />
+	<result column="q_mapresid" property="q_mapresid" jdbcType="INTEGER" />
+	<result column="q_map_width" property="q_map_width" jdbcType="INTEGER" />
+	<result column="q_map_height" property="q_map_height" jdbcType="INTEGER" />
+	<result column="q_map_min_level" property="q_map_min_level" jdbcType="INTEGER" />
+	<result column="q_map_max_level" property="q_map_max_level" jdbcType="INTEGER" />
+	<result column="q_map_safe" property="q_map_safe" jdbcType="INTEGER" />
+	<result column="q_map_jump" property="q_map_jump" jdbcType="INTEGER" />
+	<result column="q_map_ride" property="q_map_ride" jdbcType="INTEGER" />
+	<result column="q_map_show" property="q_map_show" jdbcType="INTEGER" />
+	<result column="q_map_buff" property="q_map_buff" jdbcType="INTEGER" />
+	<result column="q_map_pk" property="q_map_pk" jdbcType="INTEGER" />
+	<result column="q_map_pkprotection" property="q_map_pkprotection" jdbcType="INTEGER" />
+	<result column="q_map_hangprotection" property="q_map_hangprotection" jdbcType="INTEGER" />
+	<result column="q_map_die" property="q_map_die" jdbcType="INTEGER" />
+	<result column="q_map_die_x" property="q_map_die_x" jdbcType="INTEGER" />
+	<result column="q_map_die_y" property="q_map_die_y" jdbcType="INTEGER" />
+	<result column="q_map_quit" property="q_map_quit" jdbcType="INTEGER" />
+	<result column="q_map_quit_x" property="q_map_quit_x" jdbcType="INTEGER" />
+	<result column="q_map_quit_y" property="q_map_quit_y" jdbcType="INTEGER" />
+	<result column="q_map_lines" property="q_map_lines" jdbcType="VARCHAR" />
+	<result column="q_map_public" property="q_map_public" jdbcType="INTEGER" />
+	<result column="q_map_zones" property="q_map_zones" jdbcType="INTEGER" />
+	<result column="q_max_online" property="q_max_online" jdbcType="INTEGER" />
+	<result column="q_default_flag" property="q_default_flag" jdbcType="INTEGER" />
+	<result column="q_flag_pos" property="q_flag_pos" jdbcType="VARCHAR" />
+	<result column="q_default_line" property="q_default_line" jdbcType="INTEGER" />
+	<result column="q_poll_num" property="q_poll_num" jdbcType="INTEGER" />
+	<result column="q_music" property="q_music" jdbcType="VARCHAR" />
+	<result column="q_map_subsidiary" property="q_map_subsidiary" jdbcType="INTEGER" />
+	<result column="q_subsidiary_main" property="q_subsidiary_main" jdbcType="INTEGER" />
+	<result column="q_rnd_die_xy" property="q_rnd_die_xy" jdbcType="VARCHAR" />
+	<result column="q_rnd_quit_xy" property="q_rnd_quit_xy" jdbcType="VARCHAR" />
+	<result column="q_boss_id" property="q_boss_id" jdbcType="INTEGER" />
+	<result column="q_rose_resurrection" property="q_rose_resurrection" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_map
+  </select>
+</mapper> 

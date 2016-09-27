@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_transfer"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_transferBean" >
+	<result column="q_tran_id" property="q_tran_id" jdbcType="INTEGER" />
+	<result column="q_tran_from_map" property="q_tran_from_map" jdbcType="INTEGER" />
+	<result column="q_tran_from_range" property="q_tran_from_range" jdbcType="VARCHAR" />
+	<result column="q_tran_to_map" property="q_tran_to_map" jdbcType="INTEGER" />
+	<result column="q_tran_to_range" property="q_tran_to_range" jdbcType="VARCHAR" />
+	<result column="q_tran_icon" property="q_tran_icon" jdbcType="VARCHAR" />
+	<result column="q_mapdesc" property="q_mapdesc" jdbcType="LONGVARCHAR" />
+	<result column="q_scriptid" property="q_scriptid" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_transfer
+  </select>
+</mapper> 

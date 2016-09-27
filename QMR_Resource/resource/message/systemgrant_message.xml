@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.systemgrant" id="161">
+
+	
+	<!-- 服务器之间消息 -->
+	<message id="301" type="WS" name="ResSystemgrantRefreshToGame" explain="通知游戏服务器更新数据">
+		<field class="int" name="type" explain="类型，1更新，2删除"></field>
+		<field class="String" name="josnstr" explain="jisn字符串"></field>
+	</message>
+	
+</messages>

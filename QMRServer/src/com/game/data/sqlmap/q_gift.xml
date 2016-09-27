@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_gift"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_giftBean" >
+	<result column="q_gift_id" property="q_gift_id" jdbcType="INTEGER" />
+	<result column="q_gift_type" property="q_gift_type" jdbcType="INTEGER" />
+	<result column="q_gift_data" property="q_gift_data" jdbcType="LONGVARCHAR" />
+	<result column="q_huchi_random_gift_data" property="q_huchi_random_gift_data" jdbcType="LONGVARCHAR" />
+	<result column="q_random_gift_data" property="q_random_gift_data" jdbcType="LONGVARCHAR" />
+	<result column="q_gift_money" property="q_gift_money" jdbcType="INTEGER" />
+	<result column="q_gift_gold" property="q_gift_gold" jdbcType="INTEGER" />
+	<result column="q_time_limit" property="q_time_limit" jdbcType="INTEGER" />
+	<result column="q_invite_limit" property="q_invite_limit" jdbcType="INTEGER" />
+	<result column="q_login_limit" property="q_login_limit" jdbcType="INTEGER" />
+	<result column="q_online_time_limit" property="q_online_time_limit" jdbcType="INTEGER" />
+	<result column="q_qiandao_count_limit" property="q_qiandao_count_limit" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_gift
+  </select>
+</mapper> 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_jiaochang"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_jiaochangBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_change_time1" property="q_change_time1" jdbcType="INTEGER" />
+	<result column="q_change_time2" property="q_change_time2" jdbcType="INTEGER" />
+	<result column="q_change_time3" property="q_change_time3" jdbcType="INTEGER" />
+	<result column="q_redball" property="q_redball" jdbcType="INTEGER" />
+	<result column="q_greenball" property="q_greenball" jdbcType="INTEGER" />
+	<result column="q_purpleball" property="q_purpleball" jdbcType="INTEGER" />
+	<result column="q_double" property="q_double" jdbcType="INTEGER" />
+	<result column="q_half" property="q_half" jdbcType="INTEGER" />
+	<result column="q_refresh_del" property="q_refresh_del" jdbcType="INTEGER" />
+	<result column="q_refresh_del_time" property="q_refresh_del_time" jdbcType="INTEGER" />
+	<result column="q_extend" property="q_extend" jdbcType="INTEGER" />
+	<result column="q_extend_time" property="q_extend_time" jdbcType="INTEGER" />
+	<result column="q_refresh_time" property="q_refresh_time" jdbcType="INTEGER" />
+	<result column="q_x" property="q_x" jdbcType="INTEGER" />
+	<result column="q_y" property="q_y" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_jiaochang
+  </select>
+</mapper> 

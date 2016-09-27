@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.collect" id="153">
+	<!-- bean定义 -->
+	<bean name="FragInfo" explain="碎片信息">
+		<field class="int" name="modelid" explain="物品模型"></field>
+		<field class="int" name="num" explain="当前数量"></field>
+		<field class="int" name="neednum" explain="所需数量"></field>
+	</bean>	
+	<bean name="CollectInfo" explain="藏品信息">
+		<field class="int" name="modelid" explain="藏品模型"></field>	
+		<list class="FragInfo" name="fragList" explain="碎片信息"></list>
+	</bean>	
+	
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResCollectInfo" explain="个人藏品信息">
+		<field class="byte" name="type" explain="0 初始 1物品提交 2批量提交"></field>
+		<list class="CollectInfo" name="collectinfo" explain="藏品信息"></list>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqSubmitFragByType" explain="提交碎片根据系列">
+		<field class="int" name="collecttype" explain="系列"></field>
+	</message>
+	<message id="202" type="CS" name="ReqSubmitFrag" explain="提交碎片根据物品">
+		<field class="int" name="itemmodel" explain="碎片"></field>
+		<field class="int" name="num" explain="数量"></field>
+	</message>
+	
+</messages>

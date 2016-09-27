@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+	<java-project>QMRServer</java-project>
+	<java-message-pool>com.game.message.pool.MessagePool</java-message-pool>
+	<java-gate-project>QMRGate</java-gate-project>
+	<java-gate-message-pool>com.game.message.pool.MessagePool</java-gate-message-pool>
+	<java-world-project>QMRWorld</java-world-project>
+	<java-world-message-pool>com.game.message.pool.MessagePool</java-world-message-pool>
+	<java-client-project>QMRRobot</java-client-project>
+	<java-client-message-pool>com.game.message.pool.MessagePool</java-client-message-pool>
+	<as-project>QMR_Resource</as-project>
+	<as-message-pool>net.MessagePool</as-message-pool>
+</configs>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.pet" id="110">
+	<bean name="PetDetailInfo" explain="宠物祥细信息类">
+		<field class="long" name="petId" explain="宠物Id"></field>
+		<field class="int" name="petModelId" explain="宠物模板Id"></field>
+		<field class="int" name="level" explain="宠物等级"></field>
+		<field class="int" name="hp" explain="宠物HP"></field>
+		<field class="int" name="maxHp" explain="宠物最大HP"></field>
+		<field class="int" name="mp" explain="宠物MP"></field>
+		<field class="int" name="maxMp" explain="宠物最大MP"></field>
+		<field class="int" name="sp" explain="宠物SP"></field>
+		<field class="int" name="maxSp" explain="宠物最大SP"></field>
+		<field class="int" name="speed" explain="宠物速度"></field>
+		<field class="byte" name="showState" explain="出战状态,1出战 0不出战"></field>
+		<field class="int" name="dieTime" explain="死亡时间 如果出战状态且未死亡则返回0 否则返回秒级时间"></field>
+		<field class="int" name="htCount" explain="合体次数"></field>
+		<field class="int" name="dayCount" explain="今日合体次数"></field>
+		<field class="int" name="htCoolDownTime" explain="合体冷确时间"></field>
+		<field class="int" name="makeLoveCount" explain="亲热次数"></field>
+		<field class="int" name="dayMakeLoveCount" explain="今日亲热次数"></field>
+		<field class="int" name="makeLoveCoolDownTime" explain="亲热冷确时间"></field>
+		<list class="com.game.skill.bean.SkillInfo" name="skillInfos" explain="技能列表"></list>
+		<list class="com.game.player.bean.PlayerAttributeItem" name="htAddition" explain="合体加成"></list>
+	</bean>
+
+	<bean name="PetAttribute" explain="宠物属性变更项">
+		<field class="int" name="type" explain="属性类型"></field>
+		<field class="int" name="value" explain="属性值"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResPetList" explain="宠物列表">
+		<list class="PetDetailInfo" name="pets" explain="宠物列表"></list>
+	</message>
+	<message id="102" type="SC" name="ResPetAdd" explain="宠物增加">
+		<field class="PetDetailInfo" name="pet" explain="增加的宠物"></field>
+	</message>
+	<message id="103" type="SC" name="ResPetChange" explain="宠物信息变更">
+		<field class="PetDetailInfo" name="pet" explain="宠物信息"></field>
+	</message>
+	<message id="104" type="SC" name="ResPetHeTiResult" explain="合体结果">
+		<field class="long" name="petId" explain="宠物Id"></field>
+		<field class="int" name="htCount" explain="合体次数"></field>
+		<field class="int" name="dayCount" explain="今日合体次数"></field>
+		<field class="int" name="htCoolDownTime" explain="合体冷确时间"></field>
+		<field class="byte" name="isSuccess" explain="1成功  0失败"></field>
+		<list class="com.game.player.bean.PlayerAttributeItem" name="htAddition" explain="合体加成"></list>
+	</message>
+
+	<message id="105" type="SC" name="ResPetAttributeChange" explain="宠物属性变更">
+		<field class="long" name="petId" explain="宠物Id"></field>
+		<field class="PetAttribute" name="attributeChange" explain="变更的属性"></field>
+	</message>
+
+	<message id="106" type="SC" name="ResPetDie" explain="宠物死亡">
+		<field class="PetDetailInfo" name="pet" explain="宠物信息"></field>
+	</message>
+	<message id="107" type="SC" name="ResPetRevive" explain="宠物复活">
+		<field class="PetDetailInfo" name="pet" explain="宠物信息"></field>
+	</message>
+	<message id="108" type="SC" name="ResPetShow" explain="宠物出战">
+		<field class="PetDetailInfo" name="pet" explain="宠物信息"></field>
+	</message>
+	<message id="109" type="SC" name="ResPetHiden" explain="宠物休息">
+		<field class="PetDetailInfo" name="pet" explain="宠物信息"></field>
+	</message>
+
+	<message id="110" type="SC" name="ResPetSkillChange" explain="宠物技能变更">
+		<field class="long" name="petId" explain="宠物Id"></field>
+		<list class="com.game.skill.bean.SkillInfo" name="skillInfos" explain="技能列表"></list>
+	</message>
+
+	<message id="111" type="SC" name="ResPetDieBroadcast" explain="宠物死亡广播">
+		<field class="long" name="petId" explain="死亡宠物ID">
+		</field>
+	</message>
+	<message id="112" type="SC" name="ResPetHTCDClearResult" explain="宠物清除CD时间">
+		<field class="PetDetailInfo" name="pet" explain="宠物信息"></field>
+	</message>
+	<message id="113" type="SC" name="ResPetChat" explain="侍宠物说话">
+		<field class="long" name="petId" explain="侍宠id"></field>
+		<field class="String" name="saycontent" explain="说话内容"></field>
+	</message>
+	
+	<message id="114" type="SC" name="ResPetTarget" explain="侍宠目标">
+		<field class="long" name="targetId" explain="目标id"></field>
+	</message>
+	
+	<message id="115" type="SC" name="ResPetMakeLoveResult" explain="合体结果">
+		<field class="long" name="petId" explain="宠物Id"></field>
+		<field class="int" name="makeLoveCount" explain="亲热次数"></field>
+		<field class="int" name="dayMakeLoveCount" explain="今日亲热次数"></field>
+		<field class="int" name="makeLoveCoolDownTime" explain="亲热冷确时间"></field>
+		<list class="com.game.player.bean.PlayerAttributeItem" name="makeLoveAddition" explain="亲热加成"></list>
+	</message>
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqShowPet" explain="宠物出战">
+		<field class="long" name="petId" explain="宠物ID"></field>
+	</message>
+
+	<message id="202" type="CS" name="ReqHiddenPet" explain="宠物收回">
+		<field class="long" name="petId" explain="宠物ID"></field>
+	</message>
+	<message id="203" type="CS" name="ReqPetListQuery" explain="宠物列表查询">
+	</message>
+	<message id="204" type="CS" name="ReqPetHeTi" explain="宠物合体">
+		<field class="long" name="petId" explain="宠物ID"></field>
+	</message>
+	<message id="205" type="CS" name="ReqPetChangeSkill" explain="宠物技能变更">
+		<field class="long" name="petId" explain="宠物Id"></field>
+		<field class="int" name="index" explain="位置"></field>
+		<field class="int" name="skillModel" explain="技能模型"></field>
+	</message>
+	<message id="206" type="CS" name="ReqGoldReive" explain="复活宠物">
+		<field class="long" name="petId" explain="宠物ID"></field>
+	</message>
+	<message id="207" type="CS" name="ReqGotPet" explain="宠物钦点">
+		<field class="int" name="modelId" explain="宠物ID"></field>
+	</message>
+	<message id="208" type="CS" name="ReqHTCDClear" explain="宠物合体冷确清除">
+		<field class="int" name="modelId" explain="宠物ID"></field>
+	</message>
+	<message id="209" type="CS" name="ReqPetMakeLove" explain="宠物亲热">
+		<field class="long" name="petId" explain="宠物ID"></field>
+	</message>
+</messages>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_guildbanner"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_guildbannerBean" >
+	<result column="guildbannerlv" property="guildbannerlv" jdbcType="INTEGER" />
+	<result column="monsterlist" property="monsterlist" jdbcType="LONGVARCHAR" />
+	<result column="shuxing" property="shuxing" jdbcType="LONGVARCHAR" />
+	<result column="changname" property="changname" jdbcType="LONGVARCHAR" />
+	<result column="changicon" property="changicon" jdbcType="LONGVARCHAR" />
+	<result column="levelup" property="levelup" jdbcType="LONGVARCHAR" />
+	<result column="successcof" property="successcof" jdbcType="INTEGER" />
+	<result column="buffid" property="buffid" jdbcType="INTEGER" />
+	<result column="expcof" property="expcof" jdbcType="INTEGER" />
+	<result column="dazuocof" property="dazuocof" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_guildbanner
+  </select>
+</mapper> 

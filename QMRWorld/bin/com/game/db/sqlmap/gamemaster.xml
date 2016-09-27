@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="gamemaster"> 
+	<resultMap id="bean" type="com.game.db.bean.GameMaster" >
+		<result column="username" property="username" jdbcType="VARCHAR" />		
+		<result column="userid" property="userid" jdbcType="BIGINT" />
+		<result column="gmlevel" property="gmlevel" jdbcType="INTEGER" />
+		<result column="addtimes" property="addtimes" jdbcType="BIGINT" />
+		<result column="date" property="date" jdbcType="VARCHAR" />
+		<result column="idDeleted" property="isDeleted" jdbcType="INTEGER" />
+	</resultMap>
+  
+  	<select id="selectbyroleid" parameterType="long" resultMap="bean">
+  		SELECT g.username, g.userid, g.gmlevel, g.addtimes, g.date FROM gamemaster g WHERE g.roleid=#{ roleid, jdbcType=BIGINT} 
+  	</select>
+  	
+  	<select id="selectbyserver" parameterType="int" resultMap="bean">
+		SELECT g.username, g.userid, g.gmlevel, g.addtimes, g.date FROM gamemaster g WHERE g.serverid=#{ serverid, jdbcType=INTEGER} 
+  	</select>
+  	
+  	<select id="select" resultMap="bean">
+  		SELECT g.username, g.userid, g.gmlevel, g.addtimes, g.date FROM gamemaster g
+  	</select>
+  	
+  	<insert id="insert" parameterType="com.game.db.bean.GameMaster">
+  		INSERT INTO game.gamemaster(username, userid, serverid, gmlevel, addtimes, date, isDeleted) 
+  		VALUES(#{username, jdbcType=VARCHAR}
+  			, #{userid, jdbcType=BIGINT}
+  			, #{serverid, jdbcType=INTEGER}
+  			, #{gmlevel, jdbcType=INTEGER}
+  			, #{addtimes, jdbcType=BIGINT}
+  			, #{date, jdbcType=VARCHAR}
+  			, 0
+  			)
+  	</insert>
+  	
+  	<update id="updatebyuserid" parameterType="com.game.db.bean.GameMaster">
+  		UPDATE game.gamemaster SET 
+  			gmlevel=#{gmlevel, jdbcType=INTEGER}, isDeleted=#{isDeleted, jdbcType=INTEGER}  
+  		WHERE userid=#{userid, jdbcType=BIGINT}
+  	</update>
+  	
+</mapper> 

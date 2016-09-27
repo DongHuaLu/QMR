@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.guildflag" id="149">
+	<!-- bean定义 -->
+
+	<bean name="GuildFlagInfo" explain="帮会领地信息">
+		<field class="long" name="guildid" explain="帮会ID"></field>
+		<field class="String" name="guildname" explain="帮会名字"></field>
+		<field class="int" name="guildflaglevel" explain="帮会旗帜等级"></field>
+		<field class="int" name="mapmodelid" explain="占领地图id"></field>
+		<field class="int" name="hppercentage" explain="血量百分比"></field>
+		<field class="int" name="guildflagid" explain="帮会旗帜id"></field>
+		<field class="long" name="guildheadid" explain="帮主ID"></field>
+		<field class="String" name="guildheadname" explain="帮主名字"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResOpenGuildFlagToClient" explain="发送帮会领地信息">
+		<list class="GuildFlagInfo" name="challengeInfo" explain="帮会领地信息列表"></list>
+		<field class="String" name="status" explain="领地战文字提示"></field>
+	</message>	
+	
+	<message id="102" type="SC" name="ResGuildFlagStatusToClient" explain="发送领地争夺战是否开启">
+		<field class="int" name="time" explain="时间（秒）大于0表示进行中"></field>
+	</message>	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqOpenGuildFlagToGame" explain="请求帮会领地信息">
+	</message>	
+	
+	<message id="202" type="CS" name="ReqInsertGuildFlagToGame" explain="插旗">
+	</message>	
+	
+	<!-- 服务器间消息 -->
+	<message id="301" type="SW" name="ReqGuildFlagSyncToWorld" explain="同步领地信息">
+		<field class="int" name="country" explain="国家"></field>
+		<field class="String" name="info" explain="领地信息"></field>
+	</message>
+	
+	<message id="302" type="WS" name="ReqGuildFlagSyncToGame" explain="同步领地信息">
+		<field class="String" name="info" explain="领地信息"></field>
+	</message>
+	
+</messages>

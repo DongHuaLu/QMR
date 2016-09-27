@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE configuration 
+  PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN" 
+  "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">  
+<configuration>
+  <settings>
+	<setting name="defaultStatementTimeout" value="60"/>
+  </settings>
+  
+  <environments default="development"> 
+      <environment id="development"> 
+      <transactionManager type="JDBC"/> 
+      <dataSource type="POOLED"> 
+        <property name="driver" value="com.mysql.jdbc.Driver"/> 
+        <property name="url" value="jdbc:mysql://192.168.2.122:5849/game_haowan123_2?autoReconnect=true"/> 
+        <property name="username" value="qmrgame"/> 
+        <property name="password" value="Qmrgame925833"/>
+        <property name="poolPingQuery" value="select 1"/>
+        <property name="poolPingEnabled" value="true"/>
+        <property name="poolPingConnectionsNotUsedFor" value="3600000"/>
+      </dataSource> 
+    </environment> 
+  </environments>
+ 
+  <mappers> 
+  	<mapper resource="com/game/db/sqlmap/friend.xml"/>
+	<mapper resource="com/game/db/sqlmap/guildmember.xml"/>
+	<mapper resource="com/game/db/sqlmap/guild.xml"/>
+	<mapper resource="com/game/db/sqlmap/guildevent.xml"/>
+	<mapper resource="com/game/db/sqlmap/stalls.xml"/>
+	<mapper resource="com/game/db/sqlmap/world.xml"/>
+	<mapper resource="com/game/db/sqlmap/useronline.xml"/>
+	<mapper resource="com/game/db/sqlmap/userregister.xml"/>
+	<mapper resource="com/game/db/sqlmap/game_role.xml"/>
+	<mapper resource="com/game/db/sqlmap/game_user.xml"/>
+	<mapper resource="com/game/db/sqlmap/gold.xml"/>
+	<mapper resource="com/game/db/sqlmap/goldrechargelog.xml"/>
+	<mapper resource="com/game/db/sqlmap/spirittree.xml"/>
+	<mapper resource="com/game/db/sqlmap/card_data.xml"/>
+	<mapper resource="com/game/db/sqlmap/ybcard.xml"/>
+	<mapper resource="com/game/db/sqlmap/activity_set.xml"/>
+	<mapper resource="com/game/db/sqlmap/mail.xml"/>
+	<mapper resource="com/game/db/sqlmap/serverparam.xml"/>
+	<mapper resource="com/game/db/sqlmap/gamemaster.xml"/>  
+	<mapper resource="com/game/db/sqlmap/registrar.xml"/>
+	<mapper resource="com/game/db/sqlmap/phone_card.xml"/>
+	<mapper resource="com/game/db/sqlmap/blacklist.xml"/>
+	<mapper resource="com/game/db/sqlmap/txconsumelog.xml"/>
+	<mapper resource="com/game/db/sqlmap/system_grant.xml"/>
+	<mapper resource="com/game/db/sqlmap/marriage.xml"/>
+	<mapper resource="com/game/db/sqlmap/gold_expend.xml"/>
+  </mappers>
+</configuration> 

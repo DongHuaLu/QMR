@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.setupmenu" id="125">
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResMenuStatus" explain="发送系统设定状态值">
+		<field class="int" name="clientset" explain="客户端设定值"></field>
+		<field class="int" name="menustatus" explain="系统设定值"></field>
+	</message>
+
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqGetMenuStatus" explain="前端请求系统设置">
+	</message>
+	
+	<message id="202" type="CS" name="ReqSetMenuStatus" explain="系统设置设定状态">
+		<field class="int" name="clientset" explain="客户端设定值"></field>
+		<field class="int" name="menustatus" explain="服务端设定值"></field>
+	</message>
+
+
+
+	<!-- 服务器之间消息 -->
+	<message id="301" type="SW" name="ResSetMenuStatusToWorld" explain="系统设置">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="menustatus" explain="系统设定值"></field>
+	</message>
+
+
+
+</messages>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="ALL" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- {1}参数 是只输出类名 需要输出包名时将这个参数去掉即可 -->
+			<param name="ConversionPattern" value="[%d{HH:mm:ss}][%p][%c{1}]%m%n" />
+		</layout>
+	</appender>
+	<appender name="FileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/QMRserver.log" />
+		<param name="Threshold" value="error" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss} %p][%c]%m%n" />
+		</layout>
+	</appender>
+	<!-- 文件输出用异步 -->
+	<appender name="AsyncFileAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="FileAppender" />
+	</appender>
+		
+	<appender name="ChatLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/chat/QMRChat.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}]%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncChatLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="ChatLogFileAppender" />
+	</appender>
+	
+	<!-- 聊天错误日志-->
+	<appender name="ChatERRORLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/chat/QMRChatERROR.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncChatERRORLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="ChatERRORLogFileAppender" />
+	</appender>
+	<appender name="RechargeLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/recharge/QMRRecharge.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncRechargeLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="256" />
+		<appender-ref ref="RechargeLogFileAppender" />
+	</appender>
+	<appender name="RechargeErrorLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/recharge/QMRRecharge.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncRechargeErrorLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="256" />
+		<appender-ref ref="RechargeErrorLogFileAppender" />
+	</appender>
+	<!--充值错误日志-->
+	<logger name="com.game.recharge.RechargeManager" additivity="false">
+		<level value="info" />  
+        <appender-ref ref="AsyncRechargeErrorLogAppender"/>    
+	</logger>
+	<!--充值日志-->
+	<logger name="RECHARGE" additivity="false">
+		<level value="info" />  
+        <appender-ref ref="AsyncRechargeLogAppender"/>    
+	</logger>
+	<!--聊天日志-->
+	<logger name="CHATLOG" additivity="false">
+		<level value="info" />  
+        <appender-ref ref="AsyncChatLogAppender"/>    
+	</logger>
+	<!--聊天错误日志-->
+	<logger name="com.game.chat.manager.WorldChatManager" additivity="false">
+		<level value="info" />  
+        <appender-ref ref="AsyncChatERRORLogAppender"/>    
+	</logger>	
+	<!-- 发送消息 日志级别 -->
+	<logger name="com.game.utils.MessageUtil">
+		<level value="info" />
+	</logger>
+	<!-- 接收消息 日志级别 -->
+	<logger name="com.game.server.WorldServer">
+		<level value="INFO" />
+	</logger>
+		<!-- 玩家登陆退出统计日志-->
+
+	
+	<!-- 流量统计日志-->
+	<logger name="WORLDFLOW">
+		<level value="off" />      
+	</logger>
+	<logger name="org.apache">		<level value="error" />	</logger>	<logger name="java.sql">		<level value="error" />	</logger>
+	<logger name="org.quartz">
+		<level value="error" />
+	</logger>
+	<logger name="com.ibatis">
+		<level value="error" />
+	</logger>
+	<logger name="com.mchange">
+		<level value="error" />
+	</logger>
+	<logger name="com.game.server.http.HttpServerProtocolHandler">
+		<level value="debug" />
+	</logger>
+	<logger name="com.game.dblog.task.DBLogTask">
+		<level value="info"></level>
+	</logger>
+	<root>
+		<level value="debug" />
+		<!-- 注:部署时,只用 FileAppender 开发时只用Console -->
+	   	<appender-ref ref="CONSOLE" /> 
+		<!-- <appender-ref ref="AsyncFileAppender" /> -->
+	</root>
+</log4j:configuration>

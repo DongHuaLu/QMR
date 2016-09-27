@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_skill_model"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_skill_modelBean" >
+	<result column="q_skillID_q_grade" property="q_skillID_q_grade" jdbcType="VARCHAR" />
+	<result column="q_skillID" property="q_skillID" jdbcType="INTEGER" />
+	<result column="q_skillName" property="q_skillName" jdbcType="VARCHAR" />
+	<result column="q_panel_type" property="q_panel_type" jdbcType="INTEGER" />
+	<result column="q_index" property="q_index" jdbcType="INTEGER" />
+	<result column="q_show_needgrade" property="q_show_needgrade" jdbcType="INTEGER" />
+	<result column="q_desc" property="q_desc" jdbcType="LONGVARCHAR" />
+	<result column="q_swf" property="q_swf" jdbcType="VARCHAR" />
+	<result column="q_tips" property="q_tips" jdbcType="LONGVARCHAR" />
+	<result column="q_study_needgrade" property="q_study_needgrade" jdbcType="INTEGER" />
+	<result column="q_default_study" property="q_default_study" jdbcType="INTEGER" />
+	<result column="q_study_needbook" property="q_study_needbook" jdbcType="INTEGER" />
+	<result column="q_book_desc" property="q_book_desc" jdbcType="VARCHAR" />
+	<result column="q_skill_user" property="q_skill_user" jdbcType="INTEGER" />
+	<result column="q_trigger_type" property="q_trigger_type" jdbcType="INTEGER" />
+	<result column="q_range_limit" property="q_range_limit" jdbcType="INTEGER" />
+	<result column="q_passive_action" property="q_passive_action" jdbcType="INTEGER" />
+	<result column="q_passive_prob" property="q_passive_prob" jdbcType="INTEGER" />
+	<result column="q_target" property="q_target" jdbcType="INTEGER" />
+	<result column="q_area_shape" property="q_area_shape" jdbcType="INTEGER" />
+	<result column="q_area_target" property="q_area_target" jdbcType="INTEGER" />
+	<result column="q_area_length" property="q_area_length" jdbcType="INTEGER" />
+	<result column="q_area_width" property="q_area_width" jdbcType="INTEGER" />
+	<result column="q_sector_start" property="q_sector_start" jdbcType="INTEGER" />
+	<result column="q_secto_end" property="q_secto_end" jdbcType="INTEGER" />
+	<result column="q_sector_radius" property="q_sector_radius" jdbcType="INTEGER" />
+	<result column="q_circular_radius" property="q_circular_radius" jdbcType="INTEGER" />
+	<result column="q_target_max" property="q_target_max" jdbcType="INTEGER" />
+	<result column="q_default_enable" property="q_default_enable" jdbcType="INTEGER" />
+	<result column="q_shortcut" property="q_shortcut" jdbcType="INTEGER" />
+	<result column="q_cd" property="q_cd" jdbcType="INTEGER" />
+	<result column="q_public_cd" property="q_public_cd" jdbcType="INTEGER" />
+	<result column="q_public_cd_level" property="q_public_cd_level" jdbcType="INTEGER" />
+	<result column="q_restriction" property="q_restriction" jdbcType="INTEGER" />
+	<result column="q_trigger_figth_hurt" property="q_trigger_figth_hurt" jdbcType="INTEGER" />
+	<result column="q_hurt_correct_factor" property="q_hurt_correct_factor" jdbcType="INTEGER" />
+	<result column="q_grade" property="q_grade" jdbcType="INTEGER" />
+	<result column="q_needgrade" property="q_needgrade" jdbcType="INTEGER" />
+	<result column="q_up_need_goods" property="q_up_need_goods" jdbcType="VARCHAR" />
+	<result column="q_up_need_goods_desc" property="q_up_need_goods_desc" jdbcType="VARCHAR" />
+	<result column="q_up_need_copper" property="q_up_need_copper" jdbcType="INTEGER" />
+	<result column="q_up_need_zhengqi" property="q_up_need_zhengqi" jdbcType="INTEGER" />
+	<result column="q_up_need_zhengqi_desc" property="q_up_need_zhengqi_desc" jdbcType="VARCHAR" />
+	<result column="q_up_need_time" property="q_up_need_time" jdbcType="INTEGER" />
+	<result column="q_up_prob" property="q_up_prob" jdbcType="INTEGER" />
+	<result column="q_need_mp" property="q_need_mp" jdbcType="INTEGER" />
+	<result column="q_enmity" property="q_enmity" jdbcType="INTEGER" />
+	<result column="q_attack_addition" property="q_attack_addition" jdbcType="INTEGER" />
+	<result column="q_ignore_defence" property="q_ignore_defence" jdbcType="INTEGER" />
+	<result column="q_passive_buff" property="q_passive_buff" jdbcType="VARCHAR" />
+	<result column="q_bufq_trigger_factor" property="q_bufq_trigger_factor" jdbcType="INTEGER" />
+	<result column="q_bufq_defence_factor" property="q_bufq_defence_factor" jdbcType="INTEGER" />
+	<result column="q_bufq_timeup_factor" property="q_bufq_timeup_factor" jdbcType="INTEGER" />
+	<result column="q_bufq_timedown_factor" property="q_bufq_timedown_factor" jdbcType="INTEGER" />
+	<result column="q_bufq_num_factor" property="q_bufq_num_factor" jdbcType="INTEGER" />
+	<result column="q_bufq_action_factor" property="q_bufq_action_factor" jdbcType="INTEGER" />
+	<result column="q_attack_id" property="q_attack_id" jdbcType="INTEGER" />
+	<result column="q_delay_time" property="q_delay_time" jdbcType="INTEGER" />
+	<result column="q_trajectory_speed" property="q_trajectory_speed" jdbcType="INTEGER" />
+	<result column="q_use_effect" property="q_use_effect" jdbcType="VARCHAR" />
+	<result column="q_trajectory_effect" property="q_trajectory_effect" jdbcType="VARCHAR" />
+	<result column="q_hit_effect" property="q_hit_effect" jdbcType="VARCHAR" />
+	<result column="q_series_effect" property="q_series_effect" jdbcType="VARCHAR" />
+	<result column="q_small_ico" property="q_small_ico" jdbcType="INTEGER" />
+	<result column="q_use_sound" property="q_use_sound" jdbcType="VARCHAR" />
+	<result column="q_hit_sound" property="q_hit_sound" jdbcType="VARCHAR" />
+	<result column="q_fight_bonus" property="q_fight_bonus" jdbcType="INTEGER" />
+	<result column="q_max_level" property="q_max_level" jdbcType="INTEGER" />
+	<result column="q_is_Jump_skill" property="q_is_Jump_skill" jdbcType="INTEGER" />
+	<result column="q_skill_script" property="q_skill_script" jdbcType="INTEGER" />
+	<result column="q_is_ignore" property="q_is_ignore" jdbcType="INTEGER" />
+	<result column="q_skill_type" property="q_skill_type" jdbcType="INTEGER" />
+	<result column="q_skill_time" property="q_skill_time" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_skill_model
+  </select>
+</mapper> 

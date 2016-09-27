@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.fightpower" id="127">
+	<!-- bean定义 -->
+	
+	<!-- 游戏服务器接收消息 -->
+	<message id="101" type="CS" name="ReqFightPowerToServer" explain="请求战斗力">
+		<field class="int" name="fightPower" explain="总战斗力"></field>
+	</message>
+
+	<!-- 游戏服务器接收消息 -->
+	<message id="201" type="SC" name="ResFightPowerToClient" explain="发送战斗力给客户端">
+		<field class="int" name="fightPower" explain="总战斗力"></field>
+	</message>
+</messages>

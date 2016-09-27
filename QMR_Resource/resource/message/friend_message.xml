@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.friend" id="119">
+	<!-- bean定义 -->
+	<bean name="RelationInfo" explain="关系信息">
+		<field class="long" name="lgUserId" explain="角色Id"></field>
+		<field class="int" name="webvip" explain="平台VIP"></field>
+		<field class="String" name="szName" explain="角色名"></field>
+		<field class="int" name="nPopularity" explain="人气"></field>
+		<field class="int" name="nLevel" explain="等级"></field>
+		<field class="int" name="nIcon" explain="人物头像"></field>
+		<field class="byte" name="btSex" explain="性别"></field>
+		<field class="byte" name="btJob" explain="职业"></field>
+		<field class="int" name="nMapId" explain="地图Id"></field>
+		<field class="String" name="szMood" explain="心情"></field>
+		<field class="int" name="nRelationDegree" explain="历史战绩"></field>
+		<field class="int" name="nAddTime" explain="添加时间"></field>
+		<field class="byte" name="btState" explain="状态 2 摆摊 1 在线 0 离线"></field>
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="byte" name="btSortIdx" explain="关系排序位置"></field>
+	</bean>
+	
+	<bean name="FriendModeInfo" explain="好友角色造型信息">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="int" name="playerlv" explain="玩家等级"></field>
+		<field class="com.game.player.bean.PlayerAppearanceInfo" name="appearanceInfo" explain="造型信息"></field>
+	</bean>
+	
+	<!-- 世界服务器发送消息 -->
+	<message id="101" type="WC" name="ResRelationGetListToClient" explain="返回关系列表">
+		<field class="RelationInfo" name="relationMyInfo" explain="自己的关系信息"></field>
+		<list class="RelationInfo" name="relationList" explain="关系信息列表"></list>
+	</message>
+	<message id="102" type="WC" name="ResRelationAddOrChangeToClient" explain="添加或者更新一个新关系">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="RelationInfo" name="relationAddInfo" explain="添加或更新的关系信息"></field>
+	</message>
+	<message id="103" type="WC" name="ResRelationDeleteToClient" explain="删除关系返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+	</message>
+	<message id="104" type="WC" name="ResRelationIconTipToClient" explain="对被操作人的Icon提示返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="FriendModeInfo" name="friendModeInfo" explain="操作者信息"></field>
+	</message>
+	
+	<!-- 游戏服务器接收消息 -->
+	<message id="201" type="CS" name="ReqRelationGetListToServer" explain="请求关系列表">
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+	</message>
+	<message id="202" type="CS" name="ReqRelationAddToServer" explain="添加关系信息">
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+	</message>
+	<message id="203" type="CS" name="ReqRelationDeleteToServer" explain="请求删除关系">
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+	</message>
+	<message id="204" type="CS" name="ReqRelationSortToServer" explain="请求关系排序">
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+		<field class="int" name="sortNum" explain="排序次序"></field>
+	</message>
+	<message id="205" type="CS" name="ReqRelationMoodToServer" explain="请求关系心情">
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+		<field class="String" name="szMood" explain="心情"></field>
+	</message>
+	<message id="206" type="CS" name="ReqRelationConfigToServer" explain="请求关系设置">
+		<field class="byte" name="openMapLocation" explain="是否公开我的地图位置"></field>
+		<field class="byte" name="showrelation" explain="是否显示不在线的好友或仇人"></field>
+		<field class="byte" name="showicon" explain="是否在列表中显示头像"></field>
+	</message>
+	
+	<!-- 游戏服务器接收消息 -->
+	<message id="250" type="SC" name="ResRelationConfigToClient" explain="发送关系设置">
+		<field class="byte" name="openMapLocation" explain="是否公开我的地图位置"></field>
+		<field class="byte" name="showrelation" explain="是否显示不在线的好友或仇人"></field>
+		<field class="byte" name="showicon" explain="是否在列表中显示头像"></field>
+		<field class="byte" name="autoArgeeAddGuild" explain="自动同意加入帮会"></field>
+	</message>
+	
+	<!-- 服务器内部消息 游戏服务器发送到世界服务器 -->
+	<message id="301" type="SW" name="ReqRelationGetListToWorld" explain="通知世界服务器请求关系列表">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+	</message>
+	<message id="302" type="SW" name="ReqRelationAddToWorld" explain="通知世界服务器添加关系信息">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+	</message>
+	<message id="303" type="SW" name="ReqRelationDeleteToWorld" explain="通知世界服务器请求删除关系">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+	</message>
+	<message id="304" type="SW" name="ReqRelationSortToWorld" explain="通知世界服务器请求关系排序">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+		<field class="int" name="sortNum" explain="排序次序"></field>
+	</message>
+	<message id="305" type="SW" name="ReqRelationInnerAddToWorld" explain="通知世界服务器添加关系">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+	</message>
+	<message id="306" type="SW" name="ReqRelationInnerNotifyToWorld" explain="通知世界服务器通知消息">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+		<field class="String" name="friendNotify" explain="好友通知"></field>
+		<field class="String" name="enemyNotify" explain="仇人通知"></field>
+	</message>
+	<message id="307" type="SW" name="ReqRelationMoodToWorld" explain="通知世界服务器请求关系心情">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="operateplayerId" explain="被操作角色Id"></field>
+		<field class="String" name="szMood" explain="心情"></field>
+	</message>
+	<message id="308" type="SW" name="ReqRelationConfigToWorld" explain="通知世界服务器请求关系设置">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="byte" name="openMapLocation" explain="是否公开我的地图位置"></field>
+		<field class="byte" name="showrelation" explain="是否显示不在线的好友或仇人"></field>
+		<field class="byte" name="showicon" explain="是否在列表中显示头像"></field>
+	</message>
+	
+	<!-- 服务器内部消息 世界服务器发送到游戏服务器 -->
+	<message id="320" type="WS" name="ResInnerRelationSendListToWorld" explain="内部通知游戏服务器返回关系列表">
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<list class="long" name="relationList" explain="关系列表"></list>
+	</message>
+	
+	<message id="321" type="WS" name="ResInnerRelationAddNotice" explain="被别人好友操作的通知">
+		<field class="byte" name="btListType" explain="关系类型 1 好友列表 2 仇人列表 3 最近联系人 4 黑名单 0 所有列表"></field>
+		<field class="long" name="playerId" explain="被操作人ID"></field>
+	</message>
+</messages>

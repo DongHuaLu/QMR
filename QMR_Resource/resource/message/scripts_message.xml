@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.scripts" id="148">
+	<!-- bean定义 -->
+	
+	
+	<bean name="ButtonInfo" explain="面板按钮信息">
+		<field class="String" name="name" explain="按钮控件ID名称"></field>
+		<field class="int" name="scriptId" explain="脚本Id"></field>
+		<field class="String" name="method" explain="调用方法名"></field>
+		<field class="byte" name="isclose" explain="0不关闭，1点击后关闭"></field>
+		<list class="String" name="paras" explain="脚本参数"></list>
+	</bean>
+	
+	<bean name="PanelTxtInfo" explain="面板文字信息">
+		<field class="String" name="name" explain="控件ID名称"></field>
+		<field class="byte" name="type" explain="0整段文字替换，1只替换对应变量"></field>
+		<field class="String" name="content" explain="文字内容替换"></field>
+	</bean>
+	
+	<bean name="PanelItemInfo" explain="面板物品框信息">
+		<field class="String" name="name" explain="控件ID名称"></field>
+		<field class="com.game.backpack.bean.ItemInfo" name="iteminfo" explain="道具信息"></field>
+	</bean>
+	
+	
+	<bean name="PanelInfo" explain="面板信息">
+		<field class="String" name="panelmap" explain="面板信息"></field>
+		<list class="ButtonInfo" name="buttoninfolist" explain="面板按钮信息列表"></list>
+		<list class="PanelTxtInfo" name="paneltxtinfolist" explain="面板文字信息列表"></list>
+		<list class="PanelItemInfo" name="paneliteminfolist" explain="面板道具框信息列表"></list>
+	</bean>
+	
+	
+	
+	<bean name="PanelStatusInfo" explain="面板改变状态信息">
+		<field class="String" name="panelname" explain="面板ID名字"></field>
+		<field class="byte" name="type" explain="1关闭"></field>
+		<list class="ButtonInfo" name="buttoninfolist" explain="按钮列表"></list>
+	</bean>
+	
+	
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResScriptPanele" explain="脚本列表">
+		<field class="int" name="scriptId" explain="脚本Id"></field>
+		<field class="String" name="panel" explain="面板信息"></field>
+	</message>
+	
+	<message id="102" type="SC" name="ResShowPaneleInfoToClient" explain="发送前端面板信息">
+		<field class="PanelInfo" name="panelInfo" explain="面板信息"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResPanelStatusInfoToClient" explain="发送前端面板改变状态信息">
+		<field class="PanelStatusInfo" name="panelStatusInfo" explain="面板改变状态信息"></field>
+	</message>
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqScriptExcute" explain="请求脚本函数">
+		<field class="int" name="scriptId" explain="脚本Id"></field>
+		<field class="String" name="method" explain="脚本函数"></field>
+		<list class="String" name="paras" explain="脚本参数"></list>
+	</message>
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="301" type="SW" name="ReqScriptToWorld" explain="请求世界服务器上脚本">
+		<field class="int" name="scriptId" explain="脚本Id"></field>
+		<field class="String" name="method" explain="脚本函数"></field>
+		<list class="String" name="paras" explain="脚本参数"></list>
+	</message>
+	
+	<message id="302" type="WS" name="ReqScriptToGame" explain="请求游戏服务器上脚本">
+		<field class="int" name="scriptId" explain="脚本Id"></field>
+		<field class="String" name="method" explain="脚本函数"></field>
+		<list class="String" name="paras" explain="脚本参数"></list>
+	</message>
+</messages>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<servers>
+	<server>
+		<server-name>Gate1</server-name>
+		<server-id>30000</server-id>
+		<server-web>37wan</server-web>
+		<server-mina-port>8000</server-mina-port>
+		<server-mina-ssl-port>8001</server-mina-ssl-port>
+	</server>
+</servers>

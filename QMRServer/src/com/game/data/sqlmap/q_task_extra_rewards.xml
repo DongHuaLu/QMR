@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_task_extra_rewards"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_task_extra_rewardsBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_mingrade" property="q_mingrade" jdbcType="INTEGER" />
+	<result column="q_maxgrade" property="q_maxgrade" jdbcType="INTEGER" />
+	<result column="q_rewards_achieve" property="q_rewards_achieve" jdbcType="VARCHAR" />
+	<result column="q_rewards_exp" property="q_rewards_exp" jdbcType="INTEGER" />
+	<result column="q_rewards_coin" property="q_rewards_coin" jdbcType="INTEGER" />
+	<result column="q_rewards_zq" property="q_rewards_zq" jdbcType="INTEGER" />
+	<result column="q_rewards_prestige" property="q_rewards_prestige" jdbcType="INTEGER" />
+	<result column="q_rewards_bindyuanbao" property="q_rewards_bindyuanbao" jdbcType="INTEGER" />
+	<result column="q_rewards_goods" property="q_rewards_goods" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_task_extra_rewards
+  </select>
+</mapper> 

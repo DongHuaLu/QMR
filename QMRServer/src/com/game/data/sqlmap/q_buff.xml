@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_buff"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_buffBean" >
+	<result column="q_buff_id" property="q_buff_id" jdbcType="INTEGER" />
+	<result column="q_buff_name" property="q_buff_name" jdbcType="VARCHAR" />
+	<result column="q_effect_prompt" property="q_effect_prompt" jdbcType="LONGVARCHAR" />
+	<result column="q_target" property="q_target" jdbcType="INTEGER" />
+	<result column="q_user_prompt" property="q_user_prompt" jdbcType="LONGVARCHAR" />
+	<result column="q_cast_type" property="q_cast_type" jdbcType="INTEGER" />
+	<result column="q_effect_type" property="q_effect_type" jdbcType="INTEGER" />
+	<result column="q_action_type" property="q_action_type" jdbcType="INTEGER" />
+	<result column="q_trigger_prob" property="q_trigger_prob" jdbcType="INTEGER" />
+	<result column="q_effect_value" property="q_effect_value" jdbcType="INTEGER" />
+	<result column="q_effect_ratio" property="q_effect_ratio" jdbcType="INTEGER" />
+	<result column="q_effect_time" property="q_effect_time" jdbcType="INTEGER" />
+	<result column="q_effect_maxvalue" property="q_effect_maxvalue" jdbcType="INTEGER" />
+	<result column="q_effect_cooldown" property="q_effect_cooldown" jdbcType="INTEGER" />
+	<result column="q_overlay" property="q_overlay" jdbcType="INTEGER" />
+	<result column="q_overlay_maxcount" property="q_overlay_maxcount" jdbcType="INTEGER" />
+	<result column="q_replace_level" property="q_replace_level" jdbcType="INTEGER" />
+	<result column="q_effect_dieordown_clear" property="q_effect_dieordown_clear" jdbcType="INTEGER" />
+	<result column="q_user_dieordown_clear" property="q_user_dieordown_clear" jdbcType="INTEGER" />
+	<result column="q_small_ico" property="q_small_ico" jdbcType="VARCHAR" />
+	<result column="q_ico" property="q_ico" jdbcType="VARCHAR" />
+	<result column="q_swf" property="q_swf" jdbcType="VARCHAR" />
+	<result column="q_tips" property="q_tips" jdbcType="LONGVARCHAR" />
+	<result column="q_Bonus_skill" property="q_Bonus_skill" jdbcType="LONGVARCHAR" />
+	<result column="q_Line_time" property="q_Line_time" jdbcType="INTEGER" />
+	<result column="q_trigger_probability" property="q_trigger_probability" jdbcType="INTEGER" />
+	<result column="q_vip_bonus" property="q_vip_bonus" jdbcType="INTEGER" />
+	<result column="q_script_id" property="q_script_id" jdbcType="INTEGER" />
+	<result column="q_skill_influnce" property="q_skill_influnce" jdbcType="VARCHAR" />
+	<result column="q_target_type" property="q_target_type" jdbcType="INTEGER" />
+	<result column="q_colour" property="q_colour" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_buff
+  </select>
+</mapper> 

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.horse" id="126">
+
+	<!-- bean定义 -->
+	<bean name="HorseInfo" explain="坐骑信息">
+		<field class="short" name="layer" explain="当前最高坐骑阶层"></field>
+		<field class="short" name="curlayer" explain="当前使用的坐骑阶层"></field>
+		<field class="byte" name="status" explain="是否骑乘，1骑乘，0未骑乘"></field>
+		<list class="HorseSkillInfo" name="skillinfolist" explain="坐骑技能列表"></list>
+		<list class="com.game.equip.bean.EquipInfo" name="horseequipinfo" explain="坐骑装备列表"></list>
+		
+		<field class="int" name="dayblessvalue" explain="当前祝福值"></field>
+		<field class="int" name="hisblessvalue" explain="历史祝福值"></field>
+		<field class="short" name="dayupnum" explain="当前进阶次数"></field>
+		<field class="short" name="hisupnum" explain="历史进阶次数"></field>
+		<field class="byte" name="boxnum" explain="已使用连珠和拉杆总次数"></field>
+		<field class="int" name="boxcdtime" explain="拉杆CD剩余时间（秒）"></field>
+		<field class="int" name="cdtimeyuanbao" explain="清除CD需要的元宝数量"></field>
+		<field class="int" name="potential" explain="潜能点"></field>
+		<field class="short" name="horseduangu" explain="坐骑锻骨草使用数量"></field>
+	</bean>
+	
+	
+	<bean name="HorseSkillInfo" explain="坐骑单个技能信息">
+		<field class="short" name="skilllevel" explain="技能等级"></field>
+		<field class="int" name="skillmodelid" explain="技能模板Id"></field>
+		<field class="int" name="skillexp" explain="技能经验"></field>
+	</bean>
+	
+
+	<bean name="OthersHorseInfo" explain="查看他人坐骑详细信息">
+		<field class="short" name="layer" explain="当前最高坐骑阶层"></field>
+		<field class="short" name="curlayer" explain="当前使用的坐骑阶层"></field>
+		<field class="byte" name="status" explain="是否骑乘，1骑乘，0未骑乘"></field>
+		<field class="short" name="level" explain="当前坐骑等级"></field>
+		<list class="HorseSkillInfo" name="skillinfolist" explain="坐骑技能列表"></list>
+		<list class="com.game.equip.bean.EquipInfo" name="horseequipinfo" explain="坐骑装备列表"></list>
+		<field class="int" name="potential" explain="潜能点"></field>
+		<field class="short" name="horseduangu" explain="坐骑锻骨草使用数量"></field>
+	</bean>
+	
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResHorseInfo" explain="返回客户端坐骑信息">
+		<field class="long" name="playerid" explain="坐骑使用者ID"></field>
+		<field class="HorseInfo" name="horseinfo" explain="坐骑信息"></field>
+	</message>
+
+	<message id="102" type="SC" name="ResRidingCountdown" explain="发送骑乘倒计时开始">
+		<field class="byte" name="time" explain="时间（秒）"></field>
+	</message>
+
+	<message id="103" type="SC" name="ResRidingState" explain="发送骑乘状态">
+		<field class="long" name="playerid" explain="坐骑使用者ID"></field>
+		<field class="short" name="curlayer" explain="当前使用的坐骑阶层"></field>
+		<field class="byte" name="status" explain="是否骑乘，1骑乘，0未骑乘"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ReshorseStageUpPanel" explain="发送坐骑升阶面板信息">
+		<field class="int" name="gold" explain="消耗金币"></field>
+		<field class="int" name="yuanbao" explain="消耗元宝"></field>
+	</message>
+
+	<message id="105" type="SC" name="ReshorseStageUpResult" explain="发送坐骑升阶结果">
+		<field class="byte" name="type" explain="升阶结果，0失败，1成功"></field>
+		<field class="int" name="dayblessvalue" explain="失败后更新当前祝福值"></field>
+		<field class="byte" name="crit" explain="失败后是否暴击经验，0正常，1小暴击，2大暴击"></field>
+		<field class="int" name="exp" explain="失败后加的exp"></field>
+		<field class="int" name="itemmodelid" explain="进阶使用道具模组ID"></field>
+		<field class="int" name="itemnum" explain="进阶使用道具数量"></field>
+		<field class="int" name="money" explain="铜币数量"></field>
+	</message>
+
+	<message id="106" type="SC" name="ReshorseLuckyRod" explain="幸运拉杆（使用金币）">
+		<field class="byte" name="num" explain="已使用连珠和拉杆总次数"></field>
+		<list class="HorseSkillInfo" name="skillinfolist" explain="坐骑技能列表"></list>
+	</message>
+
+	<message id="107" type="SC" name="ReshorseLuckyPente" explain="幸运连珠（使用元宝）">
+		<field class="byte" name="num" explain="已使用连珠和拉杆总次数"></field>
+		<field class="HorseSkillInfo" name="skillinfo" explain="单个坐骑技能"></field>
+	</message>
+	
+	<message id="108" type="SC" name="ReshorseReceive" explain="响应领取坐骑">
+		<field class="HorseInfo" name="horseinfo" explain="坐骑信息"></field>
+	</message>
+
+	<message id="109" type="SC" name="ReshorseReceiveTimer" explain="坐骑领取计时器">
+		<field class="int" name="second" explain="倒计时（秒）"></field>
+		<field class="int" name="secondsum" explain="总时间（秒）"></field>
+		<field class="byte" name="type" explain="0不能领取，1可领取，2已经领取（关闭）"></field>
+	</message>
+
+	<message id="110" type="SC" name="ReshorseErrInfo" explain="错误信息">
+		<field class="byte" name="type" explain="错误类型"></field>
+		<field class="int" name="errint" explain="错误int内容"></field>
+		<field class="String" name="errstr" explain="错误字符内容"></field>
+	</message>
+
+	<message id="111" type="SC" name="ReshorseCDTime" explain="发送升级技能CD时间">
+		<field class="int" name="num" explain="拉杆CD时间"></field>
+		<field class="int" name="cdtimeyuanbao" explain="清除CD需要的元宝数量"></field>
+	</message>
+
+	<message id="112" type="SC" name="ResOthersHorseInfo" explain="返回他人坐骑消息">
+		<field class="long" name="playerid" explain="坐骑使用者ID"></field>
+		<field class="OthersHorseInfo" name="info" explain="坐骑信息"></field>
+	</message>
+
+	<message id="113" type="SC" name="ResOpenSkillUpPanel" explain="打开技能升级面板消息">
+		<field class="byte" name="boxnum" explain="已使用连珠和拉杆次数"></field>
+		<field class="int" name="money" explain="拉杆需要的金币"></field>
+		<field class="int" name="yuanbao" explain="连珠需要的元宝"></field>
+	</message>
+
+	<message id="114" type="SC" name="ResSkillInfo" explain="发送坐骑技能列表">
+		<list class="HorseSkillInfo" name="skillinfolist" explain="坐骑技能列表"></list>
+		<field class="int" name="money" explain="拉杆需要的金币"></field>
+		<field class="int" name="yuanbao" explain="连珠需要的元宝"></field>
+	</message>
+
+
+
+
+
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqGethorseInfo" explain="前端请求坐骑信息">
+		
+	</message>
+	
+	<message id="202" type="CS" name="ReqChangeRidingState" explain="改变骑乘状态">
+		<field class="short" name="curlayer" explain="当前使用的坐骑阶层"></field>
+		<field class="byte" name="status" explain="是否骑乘，1骑乘，0未骑乘"></field>
+	</message>
+
+
+	<message id="203" type="CS" name="ReqhorseStageUpPanel" explain="打开坐骑升阶面板">
+		
+	</message>
+
+	<message id="204" type="CS" name="ReqhorseStageUpStart" explain="开始坐骑升阶">
+		<field class="byte" name="type" explain="0手动进阶，1自动进阶"></field>
+	</message>
+
+	<message id="205" type="CS" name="ReqhorseLuckyRod" explain="幸运拉杆（使用金币）">
+		
+	</message>
+
+	<message id="206" type="CS" name="ReqhorseLuckyPente" explain="幸运连珠（使用元宝）">
+		
+	</message>
+
+	<message id="207" type="CS" name="ReqhorseReceive" explain="领取坐骑">
+		
+	</message>
+
+
+	<message id="208" type="CS" name="ReqhorseClearCD" explain="清除拉杆CD">
+		
+	</message>
+	
+	<message id="209" type="CS" name="ReqOpenSkillUpPanel" explain="打开技能升级面板消息">
+
+	</message>
+
+	<message id="210" type="CS" name="ReqSkillInfo" explain="请求坐骑技能列表">
+		
+	</message>
+
+	<message id="211" type="CS" name="ReqChangeHorse" explain="骑乘状态更换坐骑">
+		<field class="short" name="curlayer" explain="当前使用的坐骑阶层"></field>
+	</message>
+
+
+</messages>
+
+
+
+
+
+
+
+
+
+

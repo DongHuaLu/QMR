@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_realm_basic"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_realm_basicBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_attack_limit" property="q_attack_limit" jdbcType="VARCHAR" />
+	<result column="q_defence_limit" property="q_defence_limit" jdbcType="VARCHAR" />
+	<result column="q_crit_limit" property="q_crit_limit" jdbcType="VARCHAR" />
+	<result column="q_dodge_limit" property="q_dodge_limit" jdbcType="VARCHAR" />
+	<result column="q_maxhp_limit" property="q_maxhp_limit" jdbcType="VARCHAR" />
+	<result column="q_maxmp_limit" property="q_maxmp_limit" jdbcType="VARCHAR" />
+	<result column="q_maxsp_limit" property="q_maxsp_limit" jdbcType="VARCHAR" />
+	<result column="q_attackspeed_limit" property="q_attackspeed_limit" jdbcType="VARCHAR" />
+	<result column="q_speed_limit" property="q_speed_limit" jdbcType="VARCHAR" />
+	<result column="q_neg_defence_limit" property="q_neg_defence_limit" jdbcType="VARCHAR" />
+	<result column="q_arrow_probability_limit" property="q_arrow_probability_limit" jdbcType="VARCHAR" />
+	<result column="q_use_zhenqi" property="q_use_zhenqi" jdbcType="INTEGER" />
+	<result column="q_show_random" property="q_show_random" jdbcType="VARCHAR" />
+	<result column="q_true_random" property="q_true_random" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_defence" property="q_defence" jdbcType="INTEGER" />
+	<result column="q_crit" property="q_crit" jdbcType="INTEGER" />
+	<result column="q_dodge" property="q_dodge" jdbcType="INTEGER" />
+	<result column="q_maxhp" property="q_maxhp" jdbcType="INTEGER" />
+	<result column="q_maxmp" property="q_maxmp" jdbcType="INTEGER" />
+	<result column="q_maxsp" property="q_maxsp" jdbcType="INTEGER" />
+	<result column="q_attackspeed" property="q_attackspeed" jdbcType="INTEGER" />
+	<result column="q_speed" property="q_speed" jdbcType="INTEGER" />
+	<result column="q_neg_defence" property="q_neg_defence" jdbcType="INTEGER" />
+	<result column="q_arrow_probability" property="q_arrow_probability" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_realm_basic
+  </select>
+</mapper> 

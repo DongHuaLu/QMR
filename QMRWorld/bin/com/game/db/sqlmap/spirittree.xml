@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="spirittree"> 
+	<resultMap id="bean" type="com.game.db.bean.SpirittreeBean" >
+		<result column="roleid" property="roleid" jdbcType="BIGINT" />
+		<result column="data" property="data" jdbcType="LONGVARCHAR" />
+		<result column="time" property="time" jdbcType="INTEGER" />
+		<result column="deleted" property="deleted" jdbcType="INTEGER" />
+	</resultMap>
+  
+	<select id="select" resultMap="bean">
+		select roleid,data,time,deleted  from spirittree
+		where  deleted = 0
+	</select>
+  
+  	<select id="selectsingle" parameterType="Long" resultMap="bean">
+		select roleid,data,time,deleted  from spirittree
+		where roleid = #{ roleid,jdbcType=BIGINT } and deleted = 0 
+	</select>
+  
+  
+	<insert id="insert" parameterType="com.game.db.bean.SpirittreeBean" >
+		insert into spirittree (
+		roleid,
+		data,
+		time
+		)
+		values (
+		#{ roleid,jdbcType=BIGINT },
+		#{ data,jdbcType=LONGVARCHAR },
+		#{ time,jdbcType=INTEGER }
+		)
+	</insert>
+
+	<update id="update" parameterType="com.game.db.bean.SpirittreeBean" >
+		update spirittree set 
+		data = #{ data,jdbcType=LONGVARCHAR },
+		time = #{ time,jdbcType=INTEGER }
+		where roleid = #{ roleid,jdbcType=BIGINT }
+	</update>
+	
+	<delete id="delete" parameterType="Long" >
+		delete from spirittree
+		where roleid = #{ roleid,jdbcType=BIGINT }
+	</delete>
+	
+	
+	<select id="getcount" resultType="int">
+  		select count(roleid) from spirittree 
+ 	 </select>
+ 	 
+	<select id="selectbeginandend" parameterType="java.util.Map" resultMap="bean">
+  		select roleid,data,time,deleted from spirittree where deleted=0 and ( time IS NOT NULL and time > #{ time,jdbcType=INTEGER }) limit #{beginidx,jdbcType=INTEGER}, #{endidx,jdbcType=INTEGER}
+ 	</select>
+ 	
+ 	
+</mapper>
+
+

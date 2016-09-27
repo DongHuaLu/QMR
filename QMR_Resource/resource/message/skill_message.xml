@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.skill" id="107">
+	<!-- bean定义 -->
+	<bean name="SkillLevelInfo" explain="技能等级加成信息">
+		<field class="int" name="key" explain="技能等级加成模块"></field>
+		<field class="int" name="level" explain="技能等级"></field>
+	</bean>
+	
+	<bean name="SkillInfo" explain="技能信息类">
+		<field class="long" name="skillId" explain="技能Id"></field>
+		<field class="int" name="skillModelId" explain="技能模板Id"></field>
+		<field class="int" name="skillLevel" explain="技能等级"></field>
+		<list class="SkillLevelInfo" name="skillAddLevels" explain="加成等级"></list>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="SkillInfos" explain="技能信息列表">
+		<field class="int" name="defaultSkill" explain="默认技能模板Id"></field>
+		<list class="SkillInfo" name="skills" explain="技能信息列表"></list>
+	</message>
+
+	<message id="102" type="SC" name="SkillAdd" explain="技能增加">
+		<field class="SkillInfo" name="skill" explain="物品信息"></field>
+	</message>
+
+	<message id="103" type="SC" name="SkillStartLevelUp" explain="技能开始升级">
+		<field class="int" name="skillModelId" explain="技能模板Id"></field>
+	</message>
+
+	<message id="104" type="SC" name="SkillRemove" explain="技能删除">
+		<field class="int" name="skillModelId" explain="技能模板Id"></field>
+	</message>
+
+	<message id="105" type="SC" name="SkillLingWuResult" explain="技能领悟结果">
+		<field class="int" name="skillModelId" explain="技能模板Id"></field>
+		<field class="int" name="grade" explain="技能等级"></field>
+		<field class="byte" name="issuccess" explain="1成功 0失败"></field>
+	</message>
+
+	<message id="106" type="SC" name="NowLeranSkill" explain="当前正在学习的技能">
+		<field class="int" name="skillModelId" explain="技能模板Id 如果没有返回-1"></field>
+		<field class="int" name="remainingTime" explain="剩余时间(秒)"></field>
+	</message>
+	<message id="107" type="SC" name="SkillChange" explain="技能变更消息">
+		<field class="SkillInfo" name="skills" explain="技能信息列表"></field>
+	</message>
+
+	<!-- 服务器接收消息 -->
+
+	<message id="201" type="CS" name="StudySkill" explain="学习技能">
+		<field class="int" name="skillModelId" explain="技能模板Id"></field>
+		<field class="long" name="bookId" explain="技能书Id"></field>
+	</message>
+
+	<message id="202" type="CS" name="LevelUpSkill" explain="升级">
+		<field class="int" name="skillModelId" explain="技能模板Id"></field>
+	</message>
+
+	<message id="203" type="CS" name="SetDefaultSkill" explain="设置默认技能">
+		<field class="int" name="defaultSkill" explain="技能模板Id"></field>
+	</message>
+
+	<message id="204" type="CS" name="ReqCompleteMoment" explain="技能升级马上完成">
+	</message>
+	
+	<message id="205" type="CS" name="NowLearnSkillQuery" explain="当前正在学习的技能查询">
+	</message>
+</messages>

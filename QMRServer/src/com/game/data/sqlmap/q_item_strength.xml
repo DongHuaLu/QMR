@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_item_strength"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_item_strengthBean" >
+	<result column="q_id" property="q_id" jdbcType="VARCHAR" />
+	<result column="q_item_id" property="q_item_id" jdbcType="INTEGER" />
+	<result column="q_level" property="q_level" jdbcType="INTEGER" />
+	<result column="q_is_streng" property="q_is_streng" jdbcType="INTEGER" />
+	<result column="q_streng_item" property="q_streng_item" jdbcType="VARCHAR" />
+	<result column="q_streng_money" property="q_streng_money" jdbcType="INTEGER" />
+	<result column="q_streng_time" property="q_streng_time" jdbcType="INTEGER" />
+	<result column="q_fast_streng_yuanbao" property="q_fast_streng_yuanbao" jdbcType="INTEGER" />
+	<result column="q_streng_show_pby" property="q_streng_show_pby" jdbcType="VARCHAR" />
+	<result column="q_streng_min" property="q_streng_min" jdbcType="INTEGER" />
+	<result column="q_streng_pby" property="q_streng_pby" jdbcType="INTEGER" />
+	<result column="q_streng_max" property="q_streng_max" jdbcType="INTEGER" />
+	<result column="q_streng_fail_item" property="q_streng_fail_item" jdbcType="VARCHAR" />
+	<result column="q_streng_fail_reduce" property="q_streng_fail_reduce" jdbcType="INTEGER" />
+	<result column="q_streng_notice" property="q_streng_notice" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_defence" property="q_defence" jdbcType="INTEGER" />
+	<result column="q_crit" property="q_crit" jdbcType="INTEGER" />
+	<result column="q_dodge" property="q_dodge" jdbcType="INTEGER" />
+	<result column="q_maxhp" property="q_maxhp" jdbcType="INTEGER" />
+	<result column="q_maxmp" property="q_maxmp" jdbcType="INTEGER" />
+	<result column="q_maxsp" property="q_maxsp" jdbcType="INTEGER" />
+	<result column="q_attackspeed" property="q_attackspeed" jdbcType="INTEGER" />
+	<result column="q_speed" property="q_speed" jdbcType="INTEGER" />
+	<result column="q_luck" property="q_luck" jdbcType="INTEGER" />
+	<result column="q_is_up_stage" property="q_is_up_stage" jdbcType="INTEGER" />
+	<result column="q_up_stage_item" property="q_up_stage_item" jdbcType="VARCHAR" />
+	<result column="q_up_stage_money" property="q_up_stage_money" jdbcType="INTEGER" />
+	<result column="q_stage_show_pby" property="q_stage_show_pby" jdbcType="VARCHAR" />
+	<result column="q_up_stage_min" property="q_up_stage_min" jdbcType="INTEGER" />
+	<result column="q_stage_probability" property="q_stage_probability" jdbcType="INTEGER" />
+	<result column="q_up_stage_max" property="q_up_stage_max" jdbcType="INTEGER" />
+	<result column="q_stage_newitem" property="q_stage_newitem" jdbcType="INTEGER" />
+	<result column="q_newitem_level" property="q_newitem_level" jdbcType="INTEGER" />
+	<result column="q_stage_notice" property="q_stage_notice" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_item_strength
+  </select>
+</mapper> 

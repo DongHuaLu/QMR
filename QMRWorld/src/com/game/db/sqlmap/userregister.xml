@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="register"> 
+  <resultMap id="userRegister" type="com.game.player.structs.UserRegister" >
+    <id column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="idCard" property="idCard" jdbcType="VARCHAR" />
+    <result column="nonage" property="nonage" jdbcType="INTEGER" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.game.player.structs.UserRegister" >
+    insert into userregister (userId, name, idCard, nonage
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, #{nonage,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <select id="select" resultMap="userRegister">
+  	select userId, name, idCard, nonage from userregister
+  </select>
+  
+  <update id="update" parameterType="com.game.player.structs.UserRegister" >
+     update userregister
+      set name = #{name,jdbcType=VARCHAR},
+      idCard = #{idCard,jdbcType=VARCHAR}, 
+      nonage = #{nonage,jdbcType=INTEGER}
+    where userId = #{userId,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

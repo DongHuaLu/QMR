@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="game_player"> 
+  <resultMap id="playerinfo" type="com.game.memorycache.structs.PlayerInfo" >
+  	<id column="dataServerPlayerId" property="dataServerPlayerId" jdbcType="BIGINT" />
+  	<result column="playerId" property="playerId" jdbcType="BIGINT" />
+  	<result column="web" property="web" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="serverId" property="serverId" jdbcType="INTEGER" />
+    <result column="power" property="power" jdbcType="INTEGER" />
+    <result column="victory" property="victory" jdbcType="INTEGER" />
+    <result column="series" property="series" jdbcType="INTEGER" />
+    <result column="previctory" property="previctory" jdbcType="INTEGER" />
+    <result column="matchtimes" property="matchtimes" jdbcType="INTEGER" />
+    <result column="maxseries" property="maxseries" jdbcType="INTEGER" />
+    <result column="todayMaxseries" property="todayMaxseries" jdbcType="INTEGER" />
+    <result column="todaySeries" property="todaySeries" jdbcType="INTEGER" />
+    <result column="victoryTime" property="victoryTime" jdbcType="BIGINT" />
+    <result column="matchinfo" property="matchinfo" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="BIGINT" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="com.game.memorycache.structs.PlayerInfo" >
+    INSERT INTO playerinfo (
+    	dataServerPlayerId,
+    	playerId,
+    	web,
+    	userId,
+    	name,
+    	serverId,
+    	power,
+    	victory,
+    	series,
+    	previctory,
+    	matchtimes,
+    	maxseries,
+    	todayMaxseries,
+		todaySeries,
+		victoryTime,
+    	matchinfo,
+    	time
+    )
+    VALUES(
+    	#{dataServerPlayerId,jdbcType=BIGINT},
+    	#{playerId,jdbcType=BIGINT},
+    	#{web,jdbcType=VARCHAR},
+    	#{userId,jdbcType=VARCHAR},
+    	#{name,jdbcType=VARCHAR},
+    	#{serverId,jdbcType=INTEGER},
+    	#{power,jdbcType=INTEGER},
+    	#{victory,jdbcType=INTEGER},
+    	#{series,jdbcType=INTEGER},
+    	#{previctory,jdbcType=INTEGER},
+    	#{matchtimes,jdbcType=INTEGER},
+    	#{maxseries,jdbcType=INTEGER},
+    	#{todayMaxseries,jdbcType=INTEGER},
+    	#{todaySeries,jdbcType=INTEGER},
+    	#{victoryTime,jdbcType=BIGINT},
+    	#{matchinfo,jdbcType=INTEGER},
+    	#{time,jdbcType=BIGINT}
+    )
+  </insert>
+  
+  <select id="selectByWebAndPlayerId" parameterType="java.util.Map" resultMap="playerinfo">
+  	SELECT dataServerPlayerId, playerId, web, userId, name, serverId, power, victory, series, previctory, matchtimes, maxseries, todayMaxseries, todaySeries, victoryTime, matchinfo, time FROM playerinfo WHERE web=#{web,jdbcType=VARCHAR} AND playerId=#{playerId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByDataServerPlayerId" parameterType="long" resultMap="playerinfo">
+  	SELECT dataServerPlayerId, playerId, web, userId, name, serverId, power, victory, series, previctory, matchtimes, maxseries, todayMaxseries, todaySeries, victoryTime, matchinfo, time FROM playerinfo WHERE dataServerPlayerId=#{dataServerPlayerId,jdbcType=BIGINT}
+  </select>
+  
+  <update id="update" parameterType="com.game.memorycache.structs.PlayerInfo" >
+     UPDATE playerinfo
+     SET 
+    	power = #{power,jdbcType=INTEGER},
+    	victory = #{victory,jdbcType=INTEGER},
+    	series = #{series,jdbcType=INTEGER},
+    	previctory = #{previctory,jdbcType=INTEGER},
+    	matchtimes = #{matchtimes,jdbcType=INTEGER},
+    	maxseries = #{maxseries,jdbcType=INTEGER},
+    	matchinfo = #{matchinfo,jdbcType=INTEGER},
+    	todayMaxseries = #{todayMaxseries,jdbcType=INTEGER},
+    	todaySeries = #{todaySeries,jdbcType=INTEGER},
+    	victoryTime = #{victoryTime,jdbcType=BIGINT},
+    	time = #{time,jdbcType=BIGINT}
+     WHERE dataServerPlayerId=#{dataServerPlayerId,jdbcType=BIGINT}
+  </update>
+</mapper>

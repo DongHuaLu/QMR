@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<heartpara>pt=%s&amp;sid=%d&amp;state=%d&amp;tip=alive&amp;locate=gate</heartpara>
+<heartweb>http://122.226.64.45:9080/QMRBackend/r/callback.do?c=tablehearbeat</heartweb>
+</config>

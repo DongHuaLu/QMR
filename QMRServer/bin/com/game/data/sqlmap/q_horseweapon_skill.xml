@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_horseweapon_skill"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_horseweapon_skillBean" >
+	<result column="q_grid" property="q_grid" jdbcType="INTEGER" />
+	<result column="q_skilltype" property="q_skilltype" jdbcType="INTEGER" />
+	<result column="q_skillid" property="q_skillid" jdbcType="VARCHAR" />
+	<result column="q_show_rank" property="q_show_rank" jdbcType="INTEGER" />
+	<result column="q_active_rank" property="q_active_rank" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_horseweapon_skill
+  </select>
+</mapper> 

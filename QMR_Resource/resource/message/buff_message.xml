@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.buff" id="113">
+	<!-- bean定义 -->
+	<bean name="BuffInfo" explain="buff信息">
+		<field class="long" name="buffId" explain="Buff Id"></field>
+		<field class="int" name="modelId" explain="Buff 模板Id"></field>
+		<field class="int" name="total" explain="Buff 总时间"></field>
+		<field class="int" name="remain" explain="Buff 剩余时间"></field>
+		<field class="int" name="overlay" explain="Buff 叠加层数"></field>
+		<field class="int" name="value" explain="Buff 数值(血池时是血量)"></field>
+		<field class="int" name="percent" explain="Buff 比例"></field>
+		<list class="BuffPara" name="buffparas" explain="buff 参数"></list>
+	</bean>
+	
+	<bean name="BuffPara" explain="buff参数">
+		<field class="byte" name="type" explain="Buff 参数类型"></field>
+		<field class="int" name="value" explain="Buff 参数值"></field>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResBuffs" explain="Buff列表">
+		<field class="int" name="fightState" explain="战斗状态"></field>
+		<list class="BuffInfo" name="buff" explain="buff"></list>
+	</message>
+	
+	<message id="102" type="SC" name="ResAddBuff" explain="增加Buff">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="long" name="sourceId" explain="来源Id"></field>
+		<field class="int" name="fightState" explain="战斗状态"></field>
+		<field class="BuffInfo" name="buff" explain="buff"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResRemoveBuff" explain="移除Buff">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="fightState" explain="战斗状态"></field>
+		<field class="long" name="buffId" explain="buff Id"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResBuffInfo" explain="Buff信息">
+		<field class="long" name="buffId" explain="buff Id"></field>
+		<field class="int" name="value" explain="Buff 数值 主要用于血池"></field>
+		<field class="int" name="remain" explain="Buff 剩余时间"></field>
+	</message>
+	
+	<message id="105" type="SC" name="ResChangeBuff" explain="Buff改变">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="long" name="sourceId" explain="来源Id"></field>
+		<field class="int" name="fightState" explain="战斗状态"></field>
+		<field class="BuffInfo" name="buff" explain="buff"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqRemoveBuff" explain="移除Buff请求">
+		<field class="long" name="buffId" explain="buff Id"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqBuffInfo" explain="获取Buff信息">
+		<field class="long" name="buffId" explain="buff Id"></field>
+	</message>
+</messages>

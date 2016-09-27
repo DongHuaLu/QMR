@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.signwage" id="152">
+	<!-- bean定义 -->
+	<bean name="SignInfo" explain="签到信息">
+		<field class="int" name="year" explain="当前年"></field>
+		<field class="int" name="month" explain="当前月"></field>
+		<field class="int" name="day" explain="当前天"></field>
+		<list class="int" name="daylist" explain="签到日期"></list>
+		<list class="int" name="award" explain="签到奖励列表"></list>
+	</bean>
+	
+	
+	<bean name="WageInfo" explain="工资消息">
+		<field class="String" name="svrstarttime" explain="开服时间"></field>
+		<field class="int" name="curmonth" explain="当前月"></field>
+		<field class="int" name="daytime" explain="今日累计在线时间（秒）"></field>
+		<field class="int" name="monthtime" explain="本月累计在线时间（秒）"></field>
+		<field class="byte" name="curstatus" explain="本月领取状态(1领取，0未领取)"></field>
+		<field class="byte" name="oldstatus" explain="上月领取状态（1领取，0未领取）"></field>
+		<field class="int" name="curwage" explain="本月累计工资"></field>
+		<field class="int" name="oldwage" explain="上月累计工资"></field>
+		<list class="int" name="ernie" explain="摇奖列表（0可摇奖，1已经摇奖，2条件未达到）"></list>
+		<list class="com.game.spirittree.bean.FruitRewardinfo" name="fruitRewardinfo" explain="已经领取的道具奖励"></list>
+	</bean>
+	
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResSignWageInfo" explain="签到消息">
+		<field class="SignInfo" name="signInfo" explain="签到消息"></field>
+	</message>
+	
+	<message id="102" type="SC" name="ResSignWagetoWageInfo" explain="工资消息">
+		<field class="WageInfo" name="wageInfo" explain="工资消息"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResWageERNIEinof" explain="摇奖得到奖励">
+		<list class="int" name="pos" explain="位置"></list>
+		<list class="com.game.spirittree.bean.FruitRewardinfo" name="fruitRewardinfo" explain="道具奖励"></list>
+	</message>
+	
+	<message id="104" type="SC" name="RessignnumToClient" explain="发送累计签到次数">
+		<field class="int" name="signnum" explain="累计签到次数"></field>
+	</message>
+
+
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqSignToClient" explain="请求获取签到消息">
+	</message>
+	
+	<message id="202" type="CS" name="ReqReceiveSalaryToClient" explain="领取工资">
+	</message>
+	
+	<message id="203" type="CS" name="ReqReceiveAwardsToClient" explain="领取签到奖励">
+		<field class="byte" name="type" explain="领取奖励的类型，奖励对应的签到次数"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqWageToClient" explain="请求获取工资消息">
+	</message>
+	
+	<message id="205" type="CS" name="ReqWageERNIEToClient" explain="在线摇奖">
+	</message>
+	
+	<message id="206" type="CS" name="ReqClickSignToClient" explain="点击签到">
+	</message>
+	
+	<message id="207" type="CS" name="ReqReceiveBeauty" explain="请求领取美人">
+		<field class="byte" name="type" explain="领取的美人类型，1到4"></field>
+	</message>
+	
+	<message id="208" type="CS" name="ReqOpenReceiveBeauty" explain="打开领取美人面板">
+		
+	</message>
+	
+	
+</messages>

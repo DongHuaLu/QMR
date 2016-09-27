@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.dataserver" id="203">
+	<!-- bean定义 -->
+	<bean name="RewardInfo" explain="获得奖励信息">
+		<field class="long" name="rewardId" explain="奖励id"></field>
+		<field class="int" name="honour" explain="荣誉点"></field>
+		<field class="int" name="zhenqi" explain="真气"></field>
+		<field class="int" name="exp" explain="经验"></field>
+		<field class="long" name="time" explain="获得时间"></field>
+	</bean>
+	
+	<bean name="BfPlayerInfo" explain="战场个人信息">
+		<field class="long" name="playerId" explain="玩家ID"></field>
+		<field class="int" name="winningstreak" explain="连胜次数"></field>
+		<field class="int" name="recvord" explain="最近场次胜负记录"></field>
+		<field class="int" name="medal" explain="勋章"></field>
+		<field class="int" name="honor" explain="荣誉值"></field>
+		<field class="int" name="fightpower" explain="战斗力"></field>
+	</bean>
+	
+	
+	<bean name="InvitePlayerInfo" explain="跨服邀请单个玩家信息">
+		<field class="long" name="playerId" explain="玩家ID"></field>
+		<field class="int" name="level" explain="玩家等级"></field>
+		<field class="String" name="name" explain="玩家名字"></field>
+		<field class="int" name="medal" explain="勋章"></field>
+		<field class="int" name="honor" explain="荣誉值"></field>
+		<field class="int" name="fightpower" explain="战斗力 "></field>
+	</bean>
+	
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResChangeServer" explain="切换服务器">
+		<field class="int" name="serverId" explain="公共游戏服务器Id"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="String" name="userId" explain="账号id"></field>
+		<field class="long" name="dataServerPlayerId" explain="角色id"></field>
+		<field class="String" name="serverIp" explain="公共游戏服务器Ip"></field>
+		<field class="int" name="serverPort" explain="公共游戏服务器port"></field>
+		<field class="int" name="serverSSLPort" explain="公共游戏服务器sslport"></field>
+	</message>
+	
+	<message id="102" type="SC" name="ResStartMatch" explain="开始比赛">
+		<field class="int" name="serverId" explain="服务器Id"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="String" name="userId" explain="账号id"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResBackOldServer" explain="返回原服务器">
+	</message>
+	
+	<message id="104" type="SC" name="ResRewardsInfo" explain="获得奖励信息">
+		<list class="com.game.backpack.bean.ItemInfo" name="reward" explain="奖励数据"></list>
+	</message>
+	
+	
+	<message id="105" type="SC" name="ResPlayerEnterToClient" explain="返回个人报名成功">
+		<field class="int" name="time" explain="匹配剩余秒数"></field>
+		<field class="BfPlayerInfo" name="bfplayerInfo" explain="玩家战场信息"></field>
+	</message>
+	
+	<message id="106" type="SC" name="ResTeamEnterToClient" explain="返回组队报名成功">
+		<field class="int" name="time" explain="匹配剩余秒数"></field>
+		<list class="BfPlayerInfo" name="bfplayerInfolist" explain="队伍成员战场信息列表"></list>
+	</message>
+	
+	<message id="107" type="SC" name="ResPlayerResetToClient" explain="返回个人重新排位">
+		<field class="int" name="time" explain="匹配剩余秒数"></field>
+		<field class="BfPlayerInfo" name="bfplayerInfo" explain="玩家战场信息"></field>
+	</message>
+	
+	<message id="108" type="SC" name="ResTeamResetToClient" explain="返回组队重新排位">
+		<field class="int" name="time" explain="匹配剩余秒数"></field>
+		<list class="BfPlayerInfo" name="bfplayerInfolist" explain="队伍成员战场信息列表"></list>
+	</message>
+	
+	
+	<message id="109" type="SC" name="ResEnterErrorToClient" explain="返回排位错误">
+		<field class="int" name="type" explain="0个人，1组队"></field>
+		<field class="int" name="error" explain="错误代码"></field>
+		<field class="String" name="paras" explain="结果参数"></field>
+	</message>
+	
+	<message id="110" type="SC" name="ResCancelPlayerEnterToClient" explain="返回取消个人报名">
+	</message>
+	
+	<message id="111" type="SC" name="ResCancelTeamEnterToClient" explain="返回取消组队报名">
+	</message>
+
+	<message id="112" type="SC" name="ResGetMedalToClient" explain="返回前端勋章">
+		<field class="int" name="medal" explain="勋章"></field>
+		<field class="int" name="honor" explain="荣誉"></field>
+		<field class="int" name="matchinfo" explain="胜负记录"></field>
+		<field class="int" name="todayHonor" explain="今日荣誉"></field>
+		<field class="int" name="continuousHonor" explain="今日连胜荣誉"></field>
+		<field class="int" name="dayconvictory" explain="今日连胜次数"></field>
+		<field class="int" name="dayconvictorymax" explain="今日最大连胜次数"></field>
+		<field class="int" name="convictorymax" explain="历史最大连胜次数"></field>
+		<field class="int" name="currwinningstreak" explain="当前连胜次数"></field>
+	</message>
+
+	<message id="113" type="WC" name="ResGetinvitelistToClient" explain="发送邀请列表到前端">
+		<list class="InvitePlayerInfo" name="InvitePlayerInfolist" explain="邀请列表"></list>
+	</message>	
+
+	<message id="114" type="SC" name="ResGetBattlefieldTeamMemberInfoToGame" explain="发送战斗小组成员信息">
+		<list class="BfPlayerInfo" name="bfplayerInfolist" explain="队伍成员战场信息列表"></list>
+	</message>
+
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqChangeServer" explain="跨服务器">
+		<field class="int" name="serverId" explain="服务器Id"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="int" name="zoneId" explain="副本Id"></field>
+	</message>
+	
+	
+	<message id="202" type="CS" name="ReqGetRewards" explain="获得奖励">
+	</message>
+	
+	<message id="203" type="CS" name="ReqSingleapply" explain="单人报名">
+	</message>
+	
+	<message id="204" type="CS" name="ReqTeamapply" explain="组队报名">
+	</message>
+	
+	<message id="205" type="CS" name="ReqCancelSingleapply" explain="取消单人报名">
+	</message>
+	
+	<message id="206" type="CS" name="ReqCancelTeamapply" explain="取消组队报名">
+	</message>	
+	
+	<message id="207" type="CS" name="ReqGetMedalToGame" explain="获取本人勋章">
+	</message>
+		
+	<message id="208" type="CS" name="ReqGetinvitelistToGame" explain="请求获取邀请列表">
+		<field class="int" name="type" explain="列表类型，0好友列表，1帮派成员列表"></field>
+	</message>	
+	
+	<message id="209" type="CS" name="ReqGetBattlefieldTeamMemberInfoToGame" explain="获取战斗小组成员信息">
+	</message>
+	
+	
+	<!-- 服务器之间消息 -->
+	<message id="301" type="SS" name="ReqSyncPlayerToDataServer" explain="同步公共服务器玩家全部信息（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="userName" explain="账号名字"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="String" name="data" explain="数据"></field>
+	</message>
+	
+	<message id="302" type="SS" name="ResSyncPlayerToDataServer" explain="同步公共服务器玩家全部信息返回（公共数据服务器到游戏服务器）">
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="userName" explain="账号名字"></field>
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="long" name="dataServerPlayerId" explain="公共区角色id"></field>
+		<field class="int" name="result" explain="返回结果 0-成功 1-跨服中..."></field>
+		<field class="int" name="serverId" explain="公共游戏服务器Id"></field>
+		<field class="String" name="serverIp" explain="公共游戏服务器Ip"></field>
+		<field class="int" name="serverPort" explain="公共游戏服务器port"></field>
+		<field class="int" name="serverSSLPort" explain="公共游戏服务器sslport"></field>
+	</message>
+	
+	<message id="303" type="SS" name="ReqSyncPlayerInfoFromDataServer" explain="请求公共服务器玩家全部信息（公共服务器到公共数据服务器）">
+		<field class="int" name="serverId" explain="跨服服务器id"></field>
+		<field class="String" name="serverWeb" explain="跨服服务器平台"></field>
+		<field class="int" name="gateId" explain="跨服网关id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="dataServerPlayerId" explain="角色id"></field>
+	</message>
+	
+	<message id="304" type="SS" name="ResSyncPlayerInfoFromDataServer" explain="返回请求公共服务器玩家全部信息（公共数据服务器到公共服务器）">
+		<field class="long" name="dataServerPlayerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="int" name="gateId" explain="跨服网关id"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="teamId" explain="队伍Id"></field>
+		<field class="long" name="enterId" explain="报名Id"></field>
+		<field class="int" name="matchId" explain="比赛Id"></field>
+		<field class="String" name="data" explain="数据"></field>
+	</message>
+	
+	<message id="305" type="SS" name="ResSyncPlayerInfoFromDataServerError" explain="返回请求公共服务器玩家错误信息（公共数据服务器到游戏服务器）">
+		<field class="long" name="dataServerPlayerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="int" name="serverId" explain="跨服服务器id"></field>
+		<field class="int" name="gateId" explain="跨服网关id"></field>
+		<field class="int" name="error" explain="错误类型 1-角色不存在 2-账号不存在 3-已经在跨服中"></field>
+	</message>
+	
+	<message id="306" type="SS" name="ReqPlayerStateFromDataServer" explain="请求公共服务器玩家状态（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="int" name="serverId" explain="跨服服务器id"></field>
+		<field class="long" name="ms" explain="服务器时间（毫秒）"></field>
+	</message>
+	
+	<message id="307" type="SS" name="ResPlayerStateFromDataServer" explain="返回请求公共服务器玩家状态信息（公共数据服务器到游戏服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="int" name="state" explain="状态类型"></field>
+	</message>
+	
+	<message id="308" type="SS" name="ReqPlayerQuitToDataServer" explain="请求公共服务器玩家结束跨服（公共游戏服务器到公共数据服务器）">
+		<field class="int" name="serverId" explain="跨服服务器id"></field>
+		<field class="long" name="dataServerPlayerId" explain="角色id"></field>
+		<field class="String" name="reward" explain="奖励数据"></field>
+		<field class="int" name="victory" explain="1-胜利0-未胜利"></field>
+		<field class="int" name="power" explain="战斗力"></field>
+	</message>
+	
+	<message id="309" type="SS" name="ResPlayerQuitToDataServer" explain="返回请求公共服务器玩家结束跨服信息（公共数据服务器到公共游戏服务器）">
+		<field class="int" name="serverId" explain="跨服服务器id"></field>
+		<field class="long" name="dataServerPlayerId" explain="角色id"></field>
+		<field class="int" name="state" explain="状态类型"></field>
+	</message>
+	
+	<message id="310" type="SS" name="ReqReceivePlayerRewardToDataServer" explain="请求公共数据服务器获得玩家奖励信息（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+	</message>
+	
+	<message id="311" type="SS" name="ResReceivePlayerRewardToDataServer" explain="返回游戏服务器玩家奖励信息（公共数据服务器到游戏服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<list class="String" name="reward" explain="奖励数据"></list>
+	</message>
+	
+	<message id="312" type="SS" name="ReqPlayerRewardFromDataServer" explain="请求公共服务器玩家奖励信息（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+	</message>
+	
+	<message id="313" type="SS" name="ResPlayerRewardFromDataServer" explain="返回请求公共服务器玩家奖励信息（查看）（公共数据服务器到游戏服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<list class="String" name="reward" explain="奖励数据"></list>
+		<field class="int" name="result" explain="返回是否需要现在跨服 0-不需要 1-需要"></field>
+		<field class="int" name="currwinningstreak" explain="当前连胜次数"></field>
+		<field class="int" name="winningstreak" explain="总连胜次数"></field>
+		<field class="int" name="recvord" explain="最近场次胜负记录"></field>
+		<field class="int" name="dayconvictory" explain="今日连胜次数"></field>
+		<field class="int" name="dayconvictorymax" explain="今日最大连胜次数"></field>
+	</message>
+	
+	<message id="314" type="SS" name="ReqFinishMatchToDataServer" explain="请求跨服比赛结束（公共游戏服务器到公共数据服务器）">
+		<field class="long" name="matchId" explain="角色id"></field>
+	</message>
+	
+	<message id="315" type="SS" name="ReqKickPlayerToCrossServer" explain="请求跨服服务器将玩家踢出（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="dataServerPlayerId" explain="角色id"></field>
+	</message>
+	
+	<message id="316" type="SS" name="ReqTeamEnterToDataServer" explain="队伍报名（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="teamId" explain="队伍id"></field>
+		<list class="long" name="teamPlayerIds" explain="角色id"></list>
+		<field class="int" name="power" explain="队伍战斗力"></field>
+		<field class="int" name="matchId" explain="比赛Id"></field>
+		<field class="int" name="version" explain="服务器版本"></field>
+	</message>
+	
+	<message id="317" type="SS" name="ReqPlayerEnterToDataServer" explain="个人报名（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="int" name="power" explain="战斗力"></field>
+		<field class="int" name="matchId" explain="比赛Id"></field>
+		<field class="int" name="version" explain="服务器版本"></field>
+	</message>
+	
+	<message id="318" type="SS" name="ResTeamEnterToGameServer" explain="队伍报名结果返回（公共数据服务器到游戏服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="teamId" explain="队伍id"></field>
+		<field class="int" name="result" explain="队伍报名结果"></field>
+		<field class="String" name="paras" explain="结果参数"></field>
+	</message>
+	
+	<message id="319" type="SS" name="ResPlayerEnterToGameServer" explain="个人报名结果返回（公共数据服务器到游戏服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="int" name="result" explain="个人报名结果"></field>
+		<field class="String" name="paras" explain="结果参数"></field>
+	</message>
+	
+	<message id="320" type="SS" name="ReqCheckTeamEnterToGameServer" explain="队伍报名校验是否可以跨服（公共数据服务器到游戏服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="teamId" explain="队伍id"></field>
+		<field class="long" name="dataServerTeamId" explain="公共服队伍id"></field>
+		<field class="long" name="entryId" explain="比赛id"></field>
+		<list class="long" name="teamPlayerIds" explain="角色id"></list>
+	</message>
+	
+	<message id="321" type="SS" name="ReqCheckPlayerEnterToGameServer" explain="个人报名校验是否可以跨服（公共数据服务器到游戏服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="dataServerTeamId" explain="公共服队伍id"></field>
+		<field class="long" name="entryId" explain="比赛id"></field>
+	</message>
+	
+	<message id="322" type="SS" name="ResCheckTeamEnterToDataServer" explain="队伍报名校验结果返回（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="teamId" explain="队伍id"></field>
+		<field class="long" name="dataServerTeamId" explain="公共服队伍id"></field>
+		<field class="long" name="entryId" explain="比赛id"></field>
+		<field class="int" name="result" explain="队伍报名校验结果"></field>
+		<list class="int" name="members" explain="队伍成员校验结果"></list>
+	</message>
+	
+	<message id="323" type="SS" name="ResCheckPlayerEnterToDataServer" explain="个人报名校验结果返回（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="dataServerTeamId" explain="公共服队伍id"></field>
+		<field class="long" name="entryId" explain="比赛id"></field>
+		<field class="int" name="result" explain="个人报名结果"></field>
+	</message>
+	
+	<message id="324" type="SS" name="ReqCancelTeamEnterToDataServer" explain="队伍报名取消（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="teamId" explain="队伍id"></field>
+		<field class="int" name="reason" explain="取消报名的原因，1队员下线，2队员变更"></field>
+	</message>
+	
+	<message id="325" type="SS" name="ReqCancelPlayerEnterToDataServer" explain="个人报名取消（游戏服务器到公共数据服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+	</message>
+	
+	<message id="326" type="SS" name="ResCancelTeamEnterToGameServer" explain="取消队伍报名结果（公共数据服务器到游戏服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="teamId" explain="队伍id"></field>
+		<field class="int" name="result" explain="队伍报名结果"></field>
+		<field class="String" name="paras" explain="结果参数"></field>
+		<list class="long" name="members" explain="队伍成员"></list>
+	</message>
+	
+	<message id="327" type="SS" name="ResCancelPlayerEnterToGameServer" explain="取消个人报名结果（公共数据服务器到游戏服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="int" name="result" explain="个人报名结果"></field>
+		<field class="String" name="paras" explain="结果参数"></field>
+	</message>
+	
+	<message id="328" type="SS" name="ReqStartMatchToGameServer" explain="开始比赛（公共数据服务器到游戏服务器）">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+	</message>
+	
+	<message id="329" type="SS" name="ResPlayerResetToClient" explain="返回个人重新排位">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="int" name="time" explain="匹配剩余秒数"></field>
+	</message>
+	
+	<message id="330" type="SS" name="ResGmCommandToDataServer" explain="GM指令">
+		<field class="String" name="command" explain="GM指令字符串"></field>
+	</message>
+	
+	<message id="331" type="SS" name="ResEnterErrorToGameServer" explain="返回排位错误">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="teamId" explain="队伍id"></field>
+		<field class="int" name="error" explain="错误代码"></field>
+		<field class="String" name="paras" explain="结果参数"></field>
+		<list class="long" name="members" explain="队伍成员"></list>
+	</message>
+	
+	<message id="332" type="SS" name="ResTeamResetToGameServer" explain="返回排位错误">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="服务器平台"></field>
+		<field class="long" name="teamId" explain="队伍id"></field>
+		<field class="int" name="time" explain="匹配剩余秒数"></field>
+	</message>
+	
+	
+	<message id="333" type="SW" name="ReqGetinvitelistToWorld" explain="请求获取邀请列表发送给世界服务器">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="long" name="gangid" explain="帮会"></field>
+		<field class="int" name="type" explain="列表类型，0好友列表，1帮派成员列表"></field>
+	</message>	
+	
+</messages>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="rechargelog" >
+	<resultMap id="log" type="com.game.db.bean.GoldRechargeLog" >
+		<result column="oid" property="oid" jdbcType="VARCHAR" />
+		<result column="uid" property="uid" jdbcType="VARCHAR" />
+		<result column="serverid" property="serverid" jdbcType="VARCHAR" />
+		<result column="gold" property="gold" jdbcType="INTEGER" />
+		<result column="time" property="time" jdbcType="BIGINT" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="rmb" property="rmb" jdbcType="VARCHAR"/>
+		<result column="content" property="rechargeContent" jdbcType="VARCHAR"></result>
+	</resultMap>
+	<select id="selectById" resultMap="log" parameterType="String">
+		select oid, uid, serverid, gold, time, type,rmb from goldrechargelog where oid
+			= #{oid,jdbcType=VARCHAR}
+	</select>
+	<select id="selectByUseridType" resultMap="log" parameterType="com.game.db.bean.GoldRechargeLog">
+		SELECT l.oid, l.uid, l.serverid, l.gold, l.time, l.type, l.userid,l.rmb FROM goldrechargelog l WHERE l.userid=#{userid, jdbcType=BIGINT} AND l.type=#{type,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByUserid" resultMap="log" parameterType="Long">
+		SELECT l.oid, l.uid, l.serverid, l.gold, l.time, l.type, l.userid,l.rmb FROM goldrechargelog l WHERE l.userid=#{userid, jdbcType=BIGINT}
+	</select>
+	
+	<select id="selectMaxByUseridType" resultMap="log" parameterType="java.util.Map">
+		SELECT l.oid, l.uid, l.serverid, l.gold, l.time, l.type, l.userid,l.rmb FROM goldrechargelog l WHERE l.userid=#{userid, jdbcType=BIGINT} AND l.type=0 AND l.time&gt;=#{startTime, jdbcType=BIGINT} AND l.time&lt;=#{endTime, jdbcType=BIGINT}
+	</select>
+	
+	<insert id="insert" parameterType="com.game.db.bean.GoldRechargeLog">
+		insert into goldrechargelog (
+			oid,
+			uid,
+			serverid ,
+			gold,
+			time,
+			type,
+			userid,
+			rmb,
+			content
+		) values (
+			#{oid,jdbcType=VARCHAR},
+			#{uid,jdbcType=VARCHAR},
+			#{serverid,jdbcType=VARCHAR},
+			#{gold,jdbcType=INTEGER},
+			#{time,jdbcType=BIGINT},
+			#{type,jdbcType=INTEGER},
+			#{userid, jdbcType=BIGINT},
+			#{rmb, jdbcType=VARCHAR},
+			#{rechargeContent,jdbcType=VARCHAR}
+		)
+	</insert>
+</mapper>

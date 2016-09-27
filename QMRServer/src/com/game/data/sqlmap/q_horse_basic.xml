@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_horse_basic"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_horse_basicBean" >
+	<result column="q_layer" property="q_layer" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_name_color" property="q_name_color" jdbcType="VARCHAR" />
+	<result column="q_is_ridingwar" property="q_is_ridingwar" jdbcType="INTEGER" />
+	<result column="q_head_ico_id" property="q_head_ico_id" jdbcType="INTEGER" />
+	<result column="q_panel_show_id" property="q_panel_show_id" jdbcType="INTEGER" />
+	<result column="q_scene_show_id" property="q_scene_show_id" jdbcType="INTEGER" />
+	<result column="q_huf_wirkung" property="q_huf_wirkung" jdbcType="INTEGER" />
+	<result column="q_level_max" property="q_level_max" jdbcType="INTEGER" />
+	<result column="q_skill_level_max" property="q_skill_level_max" jdbcType="INTEGER" />
+	<result column="q_growup" property="q_growup" jdbcType="INTEGER" />
+	<result column="q_up_figure_level" property="q_up_figure_level" jdbcType="INTEGER" />
+	<result column="q_up_gold_num" property="q_up_gold_num" jdbcType="INTEGER" />
+	<result column="q_up_item_id" property="q_up_item_id" jdbcType="INTEGER" />
+	<result column="q_up_item_num" property="q_up_item_num" jdbcType="INTEGER" />
+	<result column="q_up_num_min" property="q_up_num_min" jdbcType="INTEGER" />
+	<result column="q_up_num_max" property="q_up_num_max" jdbcType="INTEGER" />
+	<result column="q_up_probability" property="q_up_probability" jdbcType="INTEGER" />
+	<result column="q_up_clientshow_rate" property="q_up_clientshow_rate" jdbcType="VARCHAR" />
+	<result column="q_blessnum_min" property="q_blessnum_min" jdbcType="INTEGER" />
+	<result column="q_blessnum_max" property="q_blessnum_max" jdbcType="INTEGER" />
+	<result column="q_blessnum_limit" property="q_blessnum_limit" jdbcType="INTEGER" />
+	<result column="q_normal_rnd" property="q_normal_rnd" jdbcType="VARCHAR" />
+	<result column="q_small_crit_rnd" property="q_small_crit_rnd" jdbcType="VARCHAR" />
+	<result column="q_large_crit_rnd" property="q_large_crit_rnd" jdbcType="VARCHAR" />
+	<result column="q_up_fail_addexp" property="q_up_fail_addexp" jdbcType="INTEGER" />
+	<result column="q_notice" property="q_notice" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_horse_basic
+  </select>
+</mapper> 

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="mail"> 
+	<resultMap id="bean" type="com.game.db.bean.Q_mailBean" >
+		<result column="mail_id" property="mail_id" jdbcType="BIGINT" />
+		<result column="send_name" property="send_name" jdbcType="VARCHAR" />
+		<result column="receiver_id" property="receiver_id" jdbcType="BIGINT" />
+		<result column="receiver_name" property="receiver_name" jdbcType="VARCHAR" />
+		<result column="send_time" property="send_time" jdbcType="INTEGER" />
+		<result column="btAccessory" property="btAccessory" jdbcType="INTEGER" />
+		<result column="btSystem" property="btSystem" jdbcType="INTEGER" />
+		<result column="btRead" property="btRead" jdbcType="INTEGER" />
+		<result column="btReturn" property="btReturn" jdbcType="INTEGER" />
+		<result column="mail_data" property="mail_data" jdbcType="LONGVARCHAR" />
+	</resultMap>
+  
+	<select id="select" resultMap="bean">
+		select * from mail
+	</select>
+  
+	<select id="selectbymailid" parameterType="long" resultMap="bean">
+		select * from mail where 
+		mail_id = #{ mail_id,jdbcType=BIGINT }
+	</select>
+	
+	<select id="selectbyuserid" parameterType="long" resultMap="bean">
+		select * from mail where 
+		receiver_id = #{ receiver_id,jdbcType=BIGINT }
+	</select>
+	
+	<select id="selectnewbyuserid" parameterType="long" resultMap="bean">
+		select * from mail where 
+		(receiver_id = #{ receiver_id,jdbcType=BIGINT }) and (btRead = 0)
+	</select>
+	
+	<select id="selectbysendtime" parameterType="int" resultMap="bean">
+		select * from mail where 
+		send_time &lt;= #{ send_time,jdbcType=INTEGER }
+	</select>
+
+	<insert id="insert" parameterType="com.game.db.bean.Q_mailBean" >
+		insert into mail (
+		mail_id,
+		send_name,
+		receiver_id,
+		receiver_name,
+		send_time,
+		btAccessory,
+		btSystem,
+		btRead,
+		btReturn,
+		mail_data
+		)
+		values (
+		#{ mail_id,jdbcType=BIGINT },
+		#{ send_name,jdbcType=VARCHAR },
+		#{ receiver_id,jdbcType=BIGINT },
+		#{ receiver_name,jdbcType=VARCHAR },
+		#{ send_time,jdbcType=INTEGER },
+		#{ btAccessory,jdbcType=INTEGER },
+		#{ btSystem,jdbcType=INTEGER },
+		#{ btRead,jdbcType=INTEGER },
+		#{ btReturn,jdbcType=INTEGER },
+		#{ mail_data,jdbcType=LONGVARCHAR }
+		)
+	</insert>
+
+	<update id="update" parameterType="com.game.db.bean.Q_mailBean" >
+		update mail set 
+		send_name = #{ send_name,jdbcType=VARCHAR },
+		receiver_id = #{ receiver_id,jdbcType=BIGINT },
+		receiver_name = #{ receiver_name,jdbcType=VARCHAR },
+		send_time = #{ send_time,jdbcType=INTEGER },
+		btAccessory = #{ btAccessory,jdbcType=INTEGER },
+		btSystem = #{ btSystem,jdbcType=INTEGER },
+		btRead = #{ btRead,jdbcType=INTEGER },
+		btReturn = #{ btReturn,jdbcType=INTEGER },
+		mail_data = #{ mail_data,jdbcType=LONGVARCHAR }
+		where mail_id = #{ mail_id,jdbcType=BIGINT }
+	</update>
+
+	<delete id="delete" parameterType="Long" >
+		delete from mail 
+		where mail_id = #{ mail_id,jdbcType=BIGINT }
+	</delete>
+	
+	<delete id="deletebyuserid" parameterType="Long" >
+		delete from mail 
+		where receiver_id = #{ receiver_id,jdbcType=BIGINT }
+	</delete>
+
+<!--
+
+<select id="selectTemplate" parameterType="long" resultMap="bean">
+	select * from mail where 
+		mail_id = #{ mail_id,jdbcType=BIGINT }
+<select>
+
+<select id="selectAllTemplate" parameterType="long" resultMap="bean">
+	select 
+		mail_id,
+		send_name,
+		receiver_name,
+		send_time,
+		btAccessory,
+		btSystem,
+		btRead,
+		btReturn,
+		mail_data,
+	from mail where 
+		mail_id = #{ mail_id,jdbcType=BIGINT }
+<select>
+
+<insert id="insertTemplate" parameterType="com.game.db.bean.Q_mailBean" >
+	insert into mail (
+		mail_id,
+		send_name,
+		receiver_name,
+		send_time,
+		btAccessory,
+		btSystem,
+		btRead,
+		btReturn,
+		mail_data,
+	)
+	values (
+		#{ mail_id,jdbcType=BIGINT },
+		#{ send_name,jdbcType=VARCHAR },
+		#{ receiver_name,jdbcType=VARCHAR },
+		#{ send_time,jdbcType=INTEGER },
+		#{ btAccessory,jdbcType=INTEGER },
+		#{ btSystem,jdbcType=INTEGER },
+		#{ btRead,jdbcType=INTEGER },
+		#{ btReturn,jdbcType=INTEGER },
+		#{ mail_data,jdbcType=LONGVARCHAR },
+	)
+</insert>
+
+<update id="update" parameterType="com.game.db.bean.Q_mailBean" >
+	update mail set 
+		mail_id = #{ mail_id,jdbcType=BIGINT },
+		send_name = #{ send_name,jdbcType=VARCHAR },
+		receiver_name = #{ receiver_name,jdbcType=VARCHAR },
+		send_time = #{ send_time,jdbcType=INTEGER },
+		btAccessory = #{ btAccessory,jdbcType=INTEGER },
+		btSystem = #{ btSystem,jdbcType=INTEGER },
+		btRead = #{ btRead,jdbcType=INTEGER },
+		btReturn = #{ btReturn,jdbcType=INTEGER },
+		mail_data = #{ mail_data,jdbcType=LONGVARCHAR },
+	where 
+		mail_id = #{ mail_id,jdbcType=BIGINT }
+</update>
+
+-->
+</mapper> 

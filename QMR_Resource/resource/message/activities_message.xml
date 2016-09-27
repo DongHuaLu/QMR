@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.activities" id="138">
+
+	<!-- bean定义 -->
+	<bean name="ActivityInfo" explain="活动信息">
+		<field class="int" name="activityId" explain="活动id"></field>
+		<field class="int" name="activityType" explain="活动类型"></field>
+		<field class="String" name="activityDescribe" explain="活动描述"></field>
+		<field class="String" name="activityReward" explain="活动奖励"></field>
+		<field class="int" name="status" explain="是否领取，0已经领取，1可领取， 2不可领取  3到世界服判断"></field>
+		<field class="int" name="duration" explain="活动持续时间 单位:秒  0表示没有结束时间"></field> 
+		<field class="int" name="recommend" explain="是否推荐"></field>
+		<field class="int" name="starttime" explain="开始时间"></field>
+		<field class="int" name="endtime" explain="结束时间"></field>
+		<field class="int" name="canrepeated" explain="是否可重复领取"></field>
+		<field class="int" name="canreceive" explain="可领取次数"></field>
+		<field class="int" name="grouptype" explain="分组类型"></field>
+		<field class="String" name="sign" explain="标识"></field>
+		<list class="String" name="infoExpandList" explain="扩展属性"></list>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResActivitiesInfo" explain="返回活动信息">
+		<list class="ActivityInfo" name="activities" explain="活动信息"></list>
+	</message>
+	<message id="102" type="SC" name="ResReceiveLiJinGiftResult" explain="封测礼金领取结果">
+		<field class="int" name="nextReceiveNeedTime" explain="下次领取所需时间"></field>
+		<field class="byte" name="result" explain="领取结果 1成功 0失败"></field>
+	</message>
+	<message id="103" type="SC" name="ResCallEveryDay0Clock" explain="零点通知事件">
+		<field class="int" name="eventType" explain="通知事件类型"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResReceiveMobileGiftInfo" explain="手机版本更新礼包领取信息">
+		<field class="int" name="index" explain="已经领取的最大索引"></field>
+	</message>
+	
+	<message id="110" type="WC" name="ResActivitiesInfoWorld" explain="返回活动信息(从世界服)">
+		<list class="ActivityInfo" name="activities" explain="活动信息"></list>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqGetReward" explain="前端请求领取信息">
+		<field class="int" name="activityId" explain="活动id"></field>
+		<field class="int" name="activityType" explain="活动类型"></field>
+		<field class="int" name="selected" explain="选择奖励"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqActivitiesInfo" explain="前端请求活动信息">
+	</message>
+	
+	<message id="203" type="CS" name="ReqReceiveLiJinGift" explain="封测礼金领取">
+	</message>
+	
+	<message id="204" type="CS" name="ReqReceiveMobileGift" explain="手机版本更新礼包领取">
+		<field class="int" name="index" explain="请求领取指定索引的奖励"></field>
+	</message>
+	
+	<message id="205" type="CS" name="ReqReceiveMobileGiftInfo" explain="手机版本更新礼包领取信息">
+	</message>
+	
+	<!-- 服务器之间消息 -->
+	<message id="301" type="SW" name="ReqActivitiesInfoToWorld" explain="向世界服请求活动信息">
+		<field class="long" name="playerid" explain="角色ID"></field>
+		<list class="ActivityInfo" name="activities" explain="活动信息"></list>
+		<field class="byte" name="force" explain="是否强制发送，1强制，0不强制"></field>
+	</message>
+	
+	<message id="302" type="SW" name="ReqGetRewardToWorld" explain="向世界服请求领取">
+		<field class="long" name="playerid" explain="角色ID"></field>
+		<field class="ActivityInfo" name="activityinfo" explain="活动信息"></field>
+		<field class="int" name="selected" explain="选择奖励"></field>
+	</message>
+	
+	<message id="303" type="SW" name="ReqGetGiftToWorld" explain="转发实物礼品领取信息到世界服">
+		<field class="long" name="playerid" explain="角色ID"></field>
+		<field class="byte" name="type" explain="礼品类型 0:台历  1:抱枕"></field>
+		<field class="String" name="name" explain="姓名"></field>
+		<field class="String" name="phone" explain="电话"></field>
+		<field class="String" name="addr" explain="地址"></field>
+	</message>
+</messages>
+
+
+
+
+
+
+
+
+
+

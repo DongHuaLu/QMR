@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_rank"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_rankBean" >
+	<result column="q_ranklv" property="q_ranklv" jdbcType="INTEGER" />
+	<result column="q_rankname" property="q_rankname" jdbcType="VARCHAR" />
+	<result column="q_name_reg" property="q_name_reg" jdbcType="VARCHAR" />
+	<result column="q_ranknum" property="q_ranknum" jdbcType="INTEGER" />
+	<result column="q_isranking" property="q_isranking" jdbcType="INTEGER" />
+	<result column="q_need_level" property="q_need_level" jdbcType="INTEGER" />
+	<result column="q_savvy_skill" property="q_savvy_skill" jdbcType="INTEGER" />
+	<result column="q_activation_skill" property="q_activation_skill" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_defence" property="q_defence" jdbcType="INTEGER" />
+	<result column="q_crit" property="q_crit" jdbcType="INTEGER" />
+	<result column="q_dodge" property="q_dodge" jdbcType="INTEGER" />
+	<result column="q_maxhp" property="q_maxhp" jdbcType="INTEGER" />
+	<result column="q_maxmp" property="q_maxmp" jdbcType="INTEGER" />
+	<result column="q_maxsp" property="q_maxsp" jdbcType="INTEGER" />
+	<result column="q_attackspeed" property="q_attackspeed" jdbcType="INTEGER" />
+	<result column="q_speed" property="q_speed" jdbcType="INTEGER" />
+	<result column="q_luck" property="q_luck" jdbcType="INTEGER" />
+	<result column="q_bulletin" property="q_bulletin" jdbcType="INTEGER" />
+	<result column="q_switch" property="q_switch" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_rank
+  </select>
+</mapper> 

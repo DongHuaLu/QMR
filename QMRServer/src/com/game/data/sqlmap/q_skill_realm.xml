@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_skill_realm"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_skill_realmBean" >
+	<result column="q_jingjieid" property="q_jingjieid" jdbcType="INTEGER" />
+	<result column="q_jingjie_name" property="q_jingjie_name" jdbcType="VARCHAR" />
+	<result column="q_show_needgrade" property="q_show_needgrade" jdbcType="INTEGER" />
+	<result column="q_arrive_levelsum" property="q_arrive_levelsum" jdbcType="INTEGER" />
+	<result column="q_jiache_ratio" property="q_jiache_ratio" jdbcType="INTEGER" />
+	<result column="q_tips" property="q_tips" jdbcType="VARCHAR" />
+	<result column="q_swf" property="q_swf" jdbcType="VARCHAR" />
+	<result column="q_head_swf" property="q_head_swf" jdbcType="VARCHAR" />
+	<result column="q_player_tips" property="q_player_tips" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_skill_realm
+  </select>
+</mapper> 

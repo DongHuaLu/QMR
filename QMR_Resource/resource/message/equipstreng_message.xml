@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.equipstreng" id="130">
+	<!-- bean定义 -->
+
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResStrengItemToClient" explain="发送强化结果">
+		<field class="com.game.equip.bean.EquipInfo" name="equipInfo" explain="装备详细信息"></field>
+		<field class="byte" name="issuccess" explain="是否成功：0失败，1成功"></field>
+		<field class="byte" name="itemlevel" explain="当前的强化等级"></field>
+	</message>
+
+	<message id="102" type="SC" name="ResStageUpItemToClient" explain="发送升阶结果">
+		<field class="com.game.equip.bean.EquipInfo" name="equipInfo" explain="装备详细信息"></field>
+		<field class="byte" name="issuccess" explain="是否成功：0失败，1成功"></field>
+	</message>
+
+	<message id="103" type="SC" name="ResErrorInfoToClient" explain="发送错误消息">
+		<field class="byte" name="type" explain="错误类型"></field>
+		<field class="int" name="errint" explain="错误int内容"></field>
+		<field class="String" name="errstr" explain="错误字符内容"></field>
+	</message>
+
+	<message id="104" type="SC" name="ResStrengthenState" explain="发送当前强化状态">
+		<field class="long" name="itemid" explain="道具唯一ID，0表示没有道具在强化"></field>
+		<field class="int" name="time" explain="强化完成剩余时间"></field>
+		<field class="int" name="timesum" explain="强化完成需要的总时间"></field>
+		<field class="int" name="yuanbao" explain="消耗的元宝基础值"></field>
+	</message>
+	
+	
+	
+
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqStrengItemToServer" explain="对指定道具进行强化操作">
+		<field class="long" name="itemid" explain="要强化的道具唯一ID"></field>
+		<field class="byte" name="type" explain="类型：0手动，1自动"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqStageUpItemToServer" explain="对指定道具进行升阶操作">
+		<field class="long" name="itemid" explain="要升阶的道具唯一ID"></field>
+		<field class="byte" name="type" explain="类型：0手动，1自动"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqStrengClearCooling" explain="装备强化立即完成">
+	</message>
+	
+	<message id="204" type="CS" name="ReqStrengthenState" explain="请求当前强化状态（打开强化面板）">
+	</message>
+	
+</messages>

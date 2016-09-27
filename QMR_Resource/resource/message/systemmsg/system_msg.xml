@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.system_msg" id="250" explain="服务器之间系统消息定义" handler="com.game.system_msg.SystemMsgManage" msgsuper="com.game.message.Message" beansuper="com.game.message.Bean">
+	<!-- bean定义 -->
+
+	<!-- 服务器发送消息 -->
+
+	<!-- 服务器接收消息 -->
+
+	<!-- 服务器之间消息 -->
+	<message id="1" type="GS,SG" name="RegisterSvr" explain="注册请求" cover="1">
+		<field class="short" name="serverId" explain="服务器编号"></field>
+		<field class="byte" name="serverType" explain="服务器类型"></field>
+	</message>
+
+	<message id="2" type="SG,GS" name="ReqRegisterSvr" explain="返回注册请求" queue="Local" cover="1">
+		<field class="short" name="serverId" explain="服务器编号"></field>
+		<field class="byte" name="serverType" explain="服务器类型"></field>
+	</message>
+</messages>

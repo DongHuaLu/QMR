@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.ybcard" id="139">
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="WC" name="ResYBCardToClient" explain="打开公测元宝卡后展示窗口">
+		<field class="int" name="yuanbaonum" explain="公测元宝总数量"></field>
+		<field class="int" name="num" explain="抽到的元宝数量"></field>
+		<field class="byte" name="type" explain="类型，0打开面板，1使用元宝卡，2领取元宝"></field>
+	</message>
+	
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqYBCardToGame" explain="前端发起打开元宝卡">
+		<field class="byte" name="type" explain="类型，0打开面板，1使用元宝卡，2领取元宝"></field>
+	</message>
+	
+
+	<!-- 服务器之间消息 -->
+	<message id="301" type="SW" name="ReqYBCardToWorld" explain="打开公测元宝卡到世界服务器">
+		<field class="long" name="playerid" explain="玩家Id"></field>
+		<field class="byte" name="type" explain="类型，0打开面板，1使用元宝卡，2领取元宝"></field>
+		<field class="int" name="num" explain="使用数量"></field>
+	</message>
+
+	<message id="302" type="WS" name="ResYBCardReceiveToGame" explain="领取公测元宝卡内的元宝">
+		<field class="long" name="playerid" explain="玩家Id"></field>
+		<field class="int" name="yuanbaonum" explain="领取的元宝总数量"></field>
+	</message>	
+	
+	<message id="303" type="WS" name="ResYBCardNoticeToGame" explain="通知GAME服务器，元宝已经到达上限">
+		<field class="int" name="yuanbaonum" explain="当前领取的元宝总量"></field>
+	</message>	
+	
+	<message id="304" type="WS" name="ResYBCardAddYBPlayerToGame" explain="加绑定元宝">
+		<field class="long" name="playerid" explain="玩家Id"></field>
+		<field class="int" name="num" explain="数量"></field>
+	</message>
+	
+	
+	
+	
+	
+</messages>

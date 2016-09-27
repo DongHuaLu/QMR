@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.publogin" id="204" explain="登陆消息定义" handler="com.game.login.PlayerLoginManager" msgsuper="com.game.message.Message" beansuper="com.game.message.Bean">
+	<!-- 服务器发送消息 -->
+	<message id="101" type="GC" name="ResLoginFailedForPublic" explain="登陆角色失败">
+		<field class="byte" name="reason" explain="失败原因 1-服务器未开启 等"></field>
+	</message>
+	
+	<message id="102" type="GC" name="ResQuitForPublic" explain="退出游戏">
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CG" name="ReqQuitForPublic" explain="退出游戏">
+	</message>
+	
+	<message id="202" type="CG" name="ReqLoginForPublic" explain="登陆">
+		<field class="String" name="serverId" explain="跨服服务器Id"></field>
+		<field class="String" name="web" explain="来源平台"></field>
+		<field class="String" name="username" explain="玩家用户名"></field>
+		<field class="String" name="agent" explain="平台标识"></field>
+		<field class="String" name="ad" explain="服务器Id"></field>
+		<field class="String" name="time" explain="平台服务器的LINUX时间戳(为长整数, 单位为秒)"></field>
+		<field class="String" name="isadult" explain="1成年,0未成年,-1未知"></field>
+		<field class="String" name="sign" explain="全小写MD5验证码"></field>
+		<field class="String" name="localref" explain=""></field>
+		<field class="String" name="reserva1" explain=""></field>
+		<field class="String" name="reserva2" explain=""></field>
+		<field class="String" name="logintype" explain="登陆类型"></field>
+		<field class="String" name="agentPlusdata" explain="平台数据"></field>
+		<field class="String" name="agentColdatas" explain="平台数据"></field>
+		<field class="String" name="adregtime" explain="平台数据"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="String" name="playerId" explain="角色id"></field>
+	</message>
+	
+	<!-- 服务器之间消息 -->
+	<message id="301" type="GS" name="ReqLoginCharacterToPublicGame" explain="向游戏服务器登录请求" queue="Local">
+		<field class="int" name="gateId" explain="网关编号"></field>
+		<field class="String" name="userName" explain="用户名字"></field>
+		<field class="String" name="web" explain="来源平台"></field>
+		<field class="int" name="serverId" explain="创建服务器编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="byte" name="isAdult" explain="1成年,0未成年,-1未知"></field>
+		<field class="String" name="loginIp" explain="登录 IP"></field>
+		<field class="int" name="logintype" explain="登陆类型"></field>
+	</message>
+	
+	<message id="302" type="SG" name="ResLoginSuccessToPublicGate" explain="通知网关服务器登录成功">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="来源平台"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="mapId" explain="地图模板id"></field>
+	</message>
+	
+	<message id="303" type="SW" name="ResLoginSuccessToPublicWorld" explain="通知世界服务器登录成功">
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="int" name="gateId" explain="网关编号"></field>
+		<field class="String" name="web" explain="来源平台"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="byte" name="isAdult" explain="1成年,0未成年,-1未知"></field>
+		<field class="String" name="loginIp" explain="登录 IP"></field>
+		<field class="int" name="logintype" explain="登陆类型"></field>
+	</message>
+	
+	<message id="304" type="GS" name="ReqQuitToPublicGame" explain="退出游戏">
+		<field class="byte" name="force" explain="是否强制退出"></field>
+	</message>
+	
+	<message id="305" type="SG" name="ResRemoveCharacterToPublicGate" explain="通知网关服务器移除人物信息">
+		<field class="long" name="playerId" explain="角色id"></field>
+	</message>
+	
+	<message id="306" type="SW" name="ResRemoveCharacterToPublicWorld" explain="通知世界服务器移除人物信息">
+		<field class="long" name="playerId" explain="角色id"></field>
+	</message>
+	
+	<message id="307" type="SG" name="ResLoginCharacterFailedForPublic" explain="登陆玩家失败">
+		<field class="int" name="createServerId" explain="服务器编号"></field>
+		<field class="String" name="web" explain="来源平台"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="byte" name="reason" explain="失败原因"></field>
+	</message>
+	
+	<message id="308" type="WG" name="ReqKickPlayerForPublic" explain="踢出玩家">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="createServerId" explain="服务器编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+	</message>
+</messages>

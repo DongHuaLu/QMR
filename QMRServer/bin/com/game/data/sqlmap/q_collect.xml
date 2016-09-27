@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_collect"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_collectBean" >
+	<result column="q_coll_id" property="q_coll_id" jdbcType="INTEGER" />
+	<result column="q_coll_type" property="q_coll_type" jdbcType="INTEGER" />
+	<result column="q_coll_name" property="q_coll_name" jdbcType="VARCHAR" />
+	<result column="q_frag1_id" property="q_frag1_id" jdbcType="INTEGER" />
+	<result column="q_frag1_num" property="q_frag1_num" jdbcType="INTEGER" />
+	<result column="q_frag1_desc" property="q_frag1_desc" jdbcType="VARCHAR" />
+	<result column="q_frag2_id" property="q_frag2_id" jdbcType="INTEGER" />
+	<result column="q_frag2_num" property="q_frag2_num" jdbcType="INTEGER" />
+	<result column="q_frag2_desc" property="q_frag2_desc" jdbcType="VARCHAR" />
+	<result column="q_frag3_id" property="q_frag3_id" jdbcType="INTEGER" />
+	<result column="q_frag3_num" property="q_frag3_num" jdbcType="INTEGER" />
+	<result column="q_frag3_desc" property="q_frag3_desc" jdbcType="VARCHAR" />
+	<result column="q_frag4_id" property="q_frag4_id" jdbcType="INTEGER" />
+	<result column="q_frag4_num" property="q_frag4_num" jdbcType="INTEGER" />
+	<result column="q_frag4_desc" property="q_frag4_desc" jdbcType="VARCHAR" />
+	<result column="q_frag5_id" property="q_frag5_id" jdbcType="INTEGER" />
+	<result column="q_frag5_num" property="q_frag5_num" jdbcType="INTEGER" />
+	<result column="q_frag5_desc" property="q_frag5_desc" jdbcType="VARCHAR" />
+	<result column="q_frag6_id" property="q_frag6_id" jdbcType="INTEGER" />
+	<result column="q_frag6_num" property="q_frag6_num" jdbcType="INTEGER" />
+	<result column="q_frag6_desc" property="q_frag6_desc" jdbcType="VARCHAR" />
+	<result column="q_frag7_id" property="q_frag7_id" jdbcType="INTEGER" />
+	<result column="q_frag7_num" property="q_frag7_num" jdbcType="INTEGER" />
+	<result column="q_frag7_desc" property="q_frag7_desc" jdbcType="VARCHAR" />
+	<result column="q_frag8_id" property="q_frag8_id" jdbcType="INTEGER" />
+	<result column="q_frag8_num" property="q_frag8_num" jdbcType="INTEGER" />
+	<result column="q_frag8_desc" property="q_frag8_desc" jdbcType="VARCHAR" />
+	<result column="q_frag9_id" property="q_frag9_id" jdbcType="INTEGER" />
+	<result column="q_frag9_num" property="q_frag9_num" jdbcType="INTEGER" />
+	<result column="q_frag9_desc" property="q_frag9_desc" jdbcType="VARCHAR" />
+	<result column="q_frag10_id" property="q_frag10_id" jdbcType="INTEGER" />
+	<result column="q_frag10_num" property="q_frag10_num" jdbcType="INTEGER" />
+	<result column="q_frag10_desc" property="q_frag10_desc" jdbcType="VARCHAR" />
+	<result column="q_buff_id" property="q_buff_id" jdbcType="INTEGER" />
+	<result column="q_item_desc" property="q_item_desc" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_collect
+  </select>
+</mapper> 

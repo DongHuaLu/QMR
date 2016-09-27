@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<hearttime>10000</hearttime>
+<allowtime>8000</allowtime>
+<success>1</success>
+<error>2</error>
+<closetime>120000</closetime>
+</config>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.version" id="202">
+	
+	<bean name="VersionResInfo" explain="RES文件版本信息">
+		<field class="int" name="version" explain="版本号" ></field>
+		<field class="String" name="tabname" explain="表名"></field>
+	</bean>
+	
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="WC" name="ResVersionUpdateToClient" explain="通知在线玩家更新RES版本信息">
+		<list class="VersionResInfo" name="versionlist" explain="RES文件版本信息表"/>
+	</message>
+
+	<message id="102" type="SC" name="ResVersionResInfo" explain="RES文件版本信息发送给登录玩家">
+		<list class="VersionResInfo" name="versionlist" explain="RES文件版本信息表"/>
+	</message>
+
+
+	<!-- 服务器内部消息 -->
+	<message id="301" type="SW" name="ReqVersionUpdateToWorld" explain="通知世界服务器广播给所有GAME重读data" >
+		<field class="long" name="playerId" explain="GM角色ID"></field>
+	</message>
+	
+	<message id="302" type="WS" name="ResVersionUpdateToGame" explain="世界服务器广播给所有游戏服务器重读data" >
+	</message>
+	
+</messages>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_longyuan_exp"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_longyuan_expBean" >
+	<result column="q_lv" property="q_lv" jdbcType="INTEGER" />
+	<result column="q_fail_exp" property="q_fail_exp" jdbcType="INTEGER" />
+	<result column="q_success_others_exp" property="q_success_others_exp" jdbcType="INTEGER" />
+	<result column="q_success_exp" property="q_success_exp" jdbcType="INTEGER" />
+	<result column="q_max_exp" property="q_max_exp" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_longyuan_exp
+  </select>
+</mapper> 

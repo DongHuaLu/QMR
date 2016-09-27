@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_task_conquer"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_task_conquerBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_mingrade" property="q_mingrade" jdbcType="INTEGER" />
+	<result column="q_maxgrade" property="q_maxgrade" jdbcType="INTEGER" />
+	<result column="q_scroll_type" property="q_scroll_type" jdbcType="INTEGER" />
+	<result column="q_image" property="q_image" jdbcType="INTEGER" />
+	<result column="q_monstercount" property="q_monstercount" jdbcType="VARCHAR" />
+	<result column="q_accept_needAchieve" property="q_accept_needAchieve" jdbcType="VARCHAR" />
+	<result column="q_accept_prompt" property="q_accept_prompt" jdbcType="VARCHAR" />
+	<result column="q_rewards_achieve" property="q_rewards_achieve" jdbcType="VARCHAR" />
+	<result column="q_rewards_exp" property="q_rewards_exp" jdbcType="INTEGER" />
+	<result column="q_rewards_coin" property="q_rewards_coin" jdbcType="INTEGER" />
+	<result column="q_rewards_zq" property="q_rewards_zq" jdbcType="INTEGER" />
+	<result column="q_rewards_prestige" property="q_rewards_prestige" jdbcType="INTEGER" />
+	<result column="q_rewards_bindyuanbao" property="q_rewards_bindyuanbao" jdbcType="INTEGER" />
+	<result column="q_rewards_goods" property="q_rewards_goods" jdbcType="VARCHAR" />
+	<result column="q_man_rewards_goods" property="q_man_rewards_goods" jdbcType="VARCHAR" />
+	<result column="q_women_rewards_goods" property="q_women_rewards_goods" jdbcType="VARCHAR" />
+	<result column="q_devour_able" property="q_devour_able" jdbcType="INTEGER" />
+	<result column="q_devour_prop" property="q_devour_prop" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_task_conquer
+  </select>
+</mapper> 

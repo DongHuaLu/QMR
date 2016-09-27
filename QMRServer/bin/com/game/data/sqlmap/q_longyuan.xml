@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_longyuan"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_longyuanBean" >
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_realm" property="q_realm" jdbcType="VARCHAR" />
+	<result column="q_pointname" property="q_pointname" jdbcType="VARCHAR" />
+	<result column="q_id" property="q_id" jdbcType="VARCHAR" />
+	<result column="q_imagename_unaction" property="q_imagename_unaction" jdbcType="VARCHAR" />
+	<result column="q_imagename_action" property="q_imagename_action" jdbcType="VARCHAR" />
+	<result column="q_effectsid_suc" property="q_effectsid_suc" jdbcType="INTEGER" />
+	<result column="q_effectsid_fai" property="q_effectsid_fai" jdbcType="INTEGER" />
+	<result column="q_islastpoint" property="q_islastpoint" jdbcType="INTEGER" />
+	<result column="q_ordzhenqi" property="q_ordzhenqi" jdbcType="INTEGER" />
+	<result column="q_limit" property="q_limit" jdbcType="INTEGER" />
+	<result column="q_max" property="q_max" jdbcType="INTEGER" />
+	<result column="q_ordgold" property="q_ordgold" jdbcType="INTEGER" />
+	<result column="q_days_delay" property="q_days_delay" jdbcType="INTEGER" />
+	<result column="q_successrate" property="q_successrate" jdbcType="INTEGER" />
+	<result column="q_show_successrate" property="q_show_successrate" jdbcType="VARCHAR" />
+	<result column="q_requireslv" property="q_requireslv" jdbcType="INTEGER" />
+	<result column="q_addskillid" property="q_addskillid" jdbcType="INTEGER" />
+	<result column="q_addskillname" property="q_addskillname" jdbcType="VARCHAR" />
+	<result column="q_addskilllevel" property="q_addskilllevel" jdbcType="INTEGER" />
+	<result column="q_skillid" property="q_skillid" jdbcType="VARCHAR" />
+	<result column="q_skillname" property="q_skillname" jdbcType="VARCHAR" />
+	<result column="q_radius" property="q_radius" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_defence" property="q_defence" jdbcType="INTEGER" />
+	<result column="q_dodge" property="q_dodge" jdbcType="INTEGER" />
+	<result column="q_crit" property="q_crit" jdbcType="INTEGER" />
+	<result column="q_maxhp" property="q_maxhp" jdbcType="INTEGER" />
+	<result column="q_maxmp" property="q_maxmp" jdbcType="INTEGER" />
+	<result column="q_maxsp" property="q_maxsp" jdbcType="INTEGER" />
+	<result column="q_attackspeed" property="q_attackspeed" jdbcType="INTEGER" />
+	<result column="q_speed" property="q_speed" jdbcType="INTEGER" />
+	<result column="q_luck" property="q_luck" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_longyuan
+  </select>
+</mapper> 

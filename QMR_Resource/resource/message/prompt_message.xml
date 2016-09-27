@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.prompt" id="109">
+	
+	<!-- 服务器发送消息 -->
+	<!--
+	<message id="101" type="SC" name="PersonalPrompt" explain="个人信息">
+		<field class="byte" name="type" explain="信息类型 1-组队。。。（暂定，具体见文档）"></field>
+		<field class="String" name="content" explain="信息内容"></field>
+		<list class="String" name="values" explain="数值"></list>
+	</message>
+	-->
+	<message id="102" type="SC" name="PersonalNotice" explain="个人通知">
+		<field class="byte" name="type" explain="信息类型 1-错误， 2-提示， 3-成功 （暂定，具体见文档）"></field>
+		<field class="String" name="content" explain="信息内容"></field>
+		<field class="int" name="subtype" explain="付费引导类型"></field>
+		<list class="String" name="values" explain="数值"></list>
+		<list class="com.game.chat.bean.GoodsInfoRes" name="goodsinfos" explain="物品内容"></list>
+	</message>
+	
+<!--
+	<message id="103" type="SC" name="GMNotice" explain="GM公告">
+		<field class="String" name="content" explain="信息内容"></field>
+		<list class="String" name="values" explain="数值"></list>
+	</message>
+	
+	<message id="104" type="SC" name="WorldNotice" explain="世界公告">
+		<field class="String" name="content" explain="信息内容"></field>
+		<list class="String" name="values" explain="数值"></list>
+	</message>
+	
+	<message id="105" type="WC" name="PersonalPromptWorld" explain="个人信息">
+		<field class="byte" name="type" explain="信息类型 1-组队。。。（暂定，具体见文档）"></field>
+		<field class="String" name="content" explain="信息内容"></field>
+		<list class="String" name="values" explain="数值"></list>
+	</message>
+	
+	<message id="106" type="WC" name="PersonalNoticeWorld" explain="个人通知">
+		<field class="byte" name="type" explain="信息类型 1-错误， 2-提示， 3-成功 （暂定，具体见文档）"></field>
+		<field class="String" name="content" explain="信息内容"></field>
+		<list class="String" name="values" explain="数值"></list>
+	</message>
+	
+	<message id="107" type="WC" name="GMNoticeWorld" explain="GM公告">
+		<field class="String" name="content" explain="信息内容"></field>
+		<list class="String" name="values" explain="数值"></list>
+	</message>
+
+	
+	<message id="108" type="WC" name="WorldNoticeWorld" explain="世界公告">
+		<field class="String" name="content" explain="信息内容"></field>
+		<list class="String" name="values" explain="数值"></list>
+	</message>
+-->
+
+	<message id="109" type="WC" name="NonagePrompt" explain="防沉迷信息">
+		<field class="String" name="content" explain="信息内容"></field>
+		<list class="String" name="values" explain="数值"></list>
+	</message>
+	
+	<message id="110" type="SC" name="AddToFavorite" explain="添加到收藏">
+	</message>
+	<message id="111" type="SC" name="PersonalNoticeActivity" explain="活动提示消息">
+		<field class="byte" name="type" explain="信息类型 1-错误， 2-提示， 3-成功 （暂定，具体见文档）"></field>
+		<field class="int" name="activityId" explain="活动ID"></field>
+		<field class="String" name="content" explain="信息内容"></field>
+		<list class="String" name="values" explain="参数"></list>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	
+</messages>

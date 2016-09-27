@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_npc"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_npcBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_map" property="q_map" jdbcType="INTEGER" />
+	<result column="q_x" property="q_x" jdbcType="INTEGER" />
+	<result column="q_y" property="q_y" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_title" property="q_title" jdbcType="VARCHAR" />
+	<result column="q_function" property="q_function" jdbcType="VARCHAR" />
+	<result column="q_npcdesc" property="q_npcdesc" jdbcType="LONGVARCHAR" />
+	<result column="q_isminimap" property="q_isminimap" jdbcType="INTEGER" />
+	<result column="q_shop" property="q_shop" jdbcType="INTEGER" />
+	<result column="q_transfer" property="q_transfer" jdbcType="VARCHAR" />
+	<result column="q_task" property="q_task" jdbcType="VARCHAR" />
+	<result column="q_dialog" property="q_dialog" jdbcType="LONGVARCHAR" />
+	<result column="q_speak" property="q_speak" jdbcType="LONGVARCHAR" />
+	<result column="q_speak_time" property="q_speak_time" jdbcType="INTEGER" />
+	<result column="q_resources" property="q_resources" jdbcType="INTEGER" />
+	<result column="q_isturn" property="q_isturn" jdbcType="INTEGER" />
+	<result column="q_direction" property="q_direction" jdbcType="INTEGER" />
+	<result column="q_resource" property="q_resource" jdbcType="VARCHAR" />
+	<result column="q_head" property="q_head" jdbcType="VARCHAR" />
+	<result column="q_access_play" property="q_access_play" jdbcType="VARCHAR" />
+	<result column="q_complete_play" property="q_complete_play" jdbcType="VARCHAR" />
+	<result column="q_isvisible" property="q_isvisible" jdbcType="INTEGER" />
+	<result column="q_behavior" property="q_behavior" jdbcType="INTEGER" />
+	<result column="q_follow" property="q_follow" jdbcType="INTEGER" />
+	<result column="q_clickplay" property="q_clickplay" jdbcType="INTEGER" />
+	<result column="q_playerstate" property="q_playerstate" jdbcType="INTEGER" />
+	<result column="q_clickscriptid" property="q_clickscriptid" jdbcType="INTEGER" />
+	<result column="q_viewplay" property="q_viewplay" jdbcType="INTEGER" />
+	<result column="q_field" property="q_field" jdbcType="INTEGER" />
+	<result column="q_collectscript" property="q_collectscript" jdbcType="INTEGER" />
+	<result column="q_collecttime" property="q_collecttime" jdbcType="INTEGER" />
+	<result column="q_displaynpc" property="q_displaynpc" jdbcType="VARCHAR" />
+	<result column="q_acquisition_item" property="q_acquisition_item" jdbcType="INTEGER" />
+	<result column="q_type" property="q_type" jdbcType="INTEGER" />
+	<result column="q_px" property="q_px" jdbcType="INTEGER" />
+	<result column="q_py" property="q_py" jdbcType="INTEGER" />
+	<result column="q_acquisition_task" property="q_acquisition_task" jdbcType="INTEGER" />
+	<result column="q_Interactive" property="q_Interactive" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_npc
+  </select>
+</mapper> 

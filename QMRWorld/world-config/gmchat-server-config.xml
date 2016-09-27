@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!--gm与后台聊天端口-->
+<servers>
+	<server>
+		<server-port>8089</server-port>
+		<server-ip>127.0.0.1</server-ip>
+	</server>
+</servers>

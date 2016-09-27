@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="world"> 
+	<resultMap id="worldInfo" type="com.game.player.structs.PlayerWorldInfo" >
+		<id column="roleId" property="id" jdbcType="BIGINT" />
+		<result column="roleName" property="name" jdbcType="VARCHAR" />
+		<result column="popularity" property="popularity" jdbcType="INTEGER" />
+		<result column="lastOnlineTime" property="lastOnlineTime" jdbcType="BIGINT" />
+		<result column="country" property="country" jdbcType="INTEGER" />
+		<result column="level" property="level" jdbcType="INTEGER" />
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="changeName" property="changeName" jdbcType="INTEGER" />
+		<result column="changaccount" property="changaccount" jdbcType="INTEGER" />
+		<result column="menustatus" property="menustatus" jdbcType="INTEGER" />
+		<result column="worshipNum" property="worshipNum" jdbcType="INTEGER" />
+		<result column="allworshipNum" property="allworshipNum" jdbcType="INTEGER" />
+		<result column="recordworshipiddata" property="recordworshipiddata" jdbcType="LONGVARCHAR" />
+		<result column="sex" property="sex" jdbcType="INTEGER" />
+		<result column="vip" property="vip" jdbcType="INTEGER" />
+		<result column="webvip" property="webvip" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.game.player.structs.PlayerWorldInfo" >
+		insert into world (roleId, roleName, popularity, lastOnlineTime, country, level, account, changeName, changaccount, menustatus, worshipNum, allworshipNum, recordworshipiddata,sex,vip,webvip
+		)
+		values (#{id,jdbcType=BIGINT}, #{name,jdbcType=LONGVARCHAR}, #{popularity,jdbcType=INTEGER}, #{lastOnlineTime,jdbcType=BIGINT}, #{country,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, 
+		#{account,jdbcType=VARCHAR}, #{changeName,jdbcType=INTEGER}, #{changaccount,jdbcType=INTEGER}, #{menustatus,jdbcType=INTEGER}, #{worshipNum,jdbcType=INTEGER}, #{allworshipNum,jdbcType=INTEGER}, #{recordworshipiddata,jdbcType=LONGVARCHAR}
+		,#{sex,jdbcType=INTEGER},#{vip,jdbcType=INTEGER},#{webvip,jdbcType=INTEGER}
+		)
+	</insert>
+  
+	<select id="select" resultMap="worldInfo">
+		select roleId, roleName, popularity, lastOnlineTime, country, level, account, changeName, changaccount, menustatus, worshipNum, allworshipNum, recordworshipiddata ,sex,vip,webvip from world
+	</select>
+  
+	<select id="selectById" parameterType="String" resultMap="worldInfo">
+		select roleId, roleName, popularity, lastOnlineTime, country, level, account, changeName, changaccount, menustatus, worshipNum, allworshipNum, recordworshipiddata ,sex,vip,webvip from world  where account = #{account,jdbcType=VARCHAR}
+	</select>
+	
+	<update id="update" parameterType="com.game.player.structs.PlayerWorldInfo" >
+		update world
+		set roleName = #{name,jdbcType=LONGVARCHAR},
+		popularity = #{popularity,jdbcType=INTEGER},
+		lastOnlineTime = #{lastOnlineTime,jdbcType=BIGINT},
+		country = #{country,jdbcType=INTEGER},
+		level = #{level,jdbcType=INTEGER},
+		account = #{account,jdbcType=VARCHAR}, 
+		changeName = #{changeName,jdbcType=INTEGER}, 
+		changaccount = #{changaccount,jdbcType=INTEGER},
+		menustatus = #{menustatus,jdbcType=INTEGER},
+		worshipNum = #{worshipNum,jdbcType=INTEGER},
+		allworshipNum = #{allworshipNum,jdbcType=INTEGER},
+		recordworshipiddata = #{recordworshipiddata,jdbcType=LONGVARCHAR},
+		sex = #{sex,jdbcType=INTEGER},
+		vip = #{vip,jdbcType=INTEGER},
+		webvip = #{webvip,jdbcType=INTEGER}
+		where roleId = #{id,jdbcType=BIGINT}
+	</update>
+  
+	<update id="updatechangaccount" parameterType="String" >
+		update world
+		set changaccount = 0
+		where account = #{account,jdbcType=VARCHAR}
+	</update>
+  
+	<update id="updatechangeName" parameterType="com.game.player.structs.PlayerWorldInfo" >
+		update world
+		set changeName = #{changeName,jdbcType=INTEGER}
+		where roleId = #{id,jdbcType=BIGINT}
+	</update>
+  
+ 
+</mapper>

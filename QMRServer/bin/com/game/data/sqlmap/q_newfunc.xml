@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_newfunc"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_newfuncBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_string_name" property="q_string_name" jdbcType="VARCHAR" />
+	<result column="q_main_type" property="q_main_type" jdbcType="VARCHAR" />
+	<result column="q_level" property="q_level" jdbcType="INTEGER" />
+	<result column="q_need_taskid" property="q_need_taskid" jdbcType="INTEGER" />
+	<result column="q_show_panel" property="q_show_panel" jdbcType="INTEGER" />
+	<result column="q_info" property="q_info" jdbcType="LONGVARCHAR" />
+	<result column="q_img_url" property="q_img_url" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_newfunc
+  </select>
+</mapper> 

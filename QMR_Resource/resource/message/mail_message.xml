@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.mail" id="124">
+	<!-- bean定义 -->
+	<bean name="MailSummaryItem" explain="邮件摘要物品">
+		<field class="int" name="itemid" explain="物品Id"></field>
+		<field class="int" name="itemnum" explain="物品数目"></field>
+	</bean>
+	
+	<bean name="MailSummaryInfo" explain="邮件摘要">
+		<field class="long" name="mailid" explain="邮件Id"></field>
+		<field class="String" name="szSenderName" explain="发件人"></field>
+		<field class="String" name="szTitle" explain="邮件标题"></field>
+		<field class="byte" name="btRead" explain="是否已读取"></field>
+		<field class="byte" name="btAccessory" explain="是否有附件"></field>
+		<field class="int" name="nSendTime" explain="发送时间"></field>
+		<field class="byte" name="btSystem" explain="是否系统邮件"></field>
+		<list class="MailSummaryItem" name="summaryitemlist" explain="邮件摘要物品列表"></list>
+	</bean>
+	
+	<bean name="MailDetailInfo" explain="邮件具体信息">
+		<field class="long" name="mailid" explain="邮件Id"></field>
+		<field class="long" name="senderid" explain="发送者Id"></field>
+		<field class="long" name="receiverid" explain="接受者Id"></field>
+		<field class="String" name="szSenderName" explain="发件人名字"></field>
+		<field class="String" name="szReceiverName" explain="接收人名字"></field>
+		<field class="String" name="szTitle" explain="邮件标题"></field>
+		<field class="String" name="szNotice" explain="邮件内容"></field>
+		<field class="byte" name="btRead" explain="是否已读取"></field>
+		<field class="byte" name="btGoldType" explain="金币类型"></field>
+		<field class="int" name="nGold" explain="金币数量"></field>
+		<field class="byte" name="btAccessory" explain="是否有附件"></field>
+		<field class="int" name="nSendTime" explain="发送时间"></field>
+		<field class="byte" name="btSystem" explain="是否系统邮件"></field>
+		<field class="byte" name="btReturn" explain="是否是回信"></field>
+		<list class="com.game.backpack.bean.ItemInfo" name="itemlist" explain="邮件物品列表"></list>
+	</bean>
+	
+	<bean name="InnerMailDetailInfo" explain="内部邮件具体信息">
+		<field class="long" name="mailid" explain="邮件Id"></field>
+		<field class="long" name="senderid" explain="发送者Id"></field>
+		<field class="long" name="receiverid" explain="接受者Id"></field>
+		<field class="String" name="szSenderName" explain="发件人名字"></field>
+		<field class="String" name="szReceiverName" explain="接收人名字"></field>
+		<field class="String" name="szTitle" explain="邮件标题"></field>
+		<field class="String" name="szNotice" explain="邮件内容"></field>
+		<field class="byte" name="btRead" explain="是否已读取"></field>
+		<field class="byte" name="btGoldType" explain="金币类型"></field>
+		<field class="int" name="nGold" explain="金币数量"></field>
+		<field class="byte" name="btAccessory" explain="是否有附件"></field>
+		<field class="int" name="nSendTime" explain="发送时间"></field>
+		<field class="byte" name="btSystem" explain="是否系统邮件"></field>
+		<field class="byte" name="btReturn" explain="是否是回信"></field>
+		<field class="String" name="itemdata" explain="邮件物品列表(json字符串)"></field>
+	</bean>
+	
+	<!-- 游戏服务器接收消息 -->
+	<message id="151" type="CS" name="ReqMailQueryListToServer" explain="客户端请求邮件列表">
+	</message>
+	<message id="152" type="CS" name="ReqMailQueryDetailToServer" explain="请求读取邮件">
+		<field class="long" name="mailid" explain="邮件Id"></field>
+	</message>
+	<message id="153" type="CS" name="ReqMailGetItemToServer" explain="收取附件">
+		<field class="long" name="mailid" explain="邮件Id"></field>
+		<field class="long" name="itemid" explain="要取得的附件物品编号,为-1表示全部收取,为0表示收取金钱，其他表示真正物品编号"></field>
+	</message>
+	<message id="154" type="CS" name="ReqMailSendNewMailToServer" explain="发送新邮件">
+		<field class="String" name="szReceiverName" explain="接收人名字"></field>
+		<field class="String" name="szTitle" explain="邮件标题"></field>
+		<field class="String" name="szNotice" explain="邮件内容"></field>
+		<field class="byte" name="btGoldType" explain="金币类型"></field>
+		<field class="int" name="nGold" explain="金币数量"></field>
+		<list class="long" name="itemidlist" explain="邮件附件物品id列表"></list>
+	</message>
+	<message id="155" type="CS" name="ReqMailDeleteMailToServer" explain="删除邮件,删完会返回 ResMailQueryListToClient">
+		<field class="byte" name="btdeleteall" explain="1 全删除 全删的话后面不需要添写"></field>
+		<list class="long" name="deleteMailIdList" explain="或者 最大支持删除10封信 填写邮件ID"></list>
+	</message>
+	<message id="156" type="CS" name="ReqMailQueryUserToServer" explain="查询玩家">
+		<field class="String" name="szName" explain="查询玩家名"></field>
+	</message>
+	<message id="157" type="CS" name="ReqMailReturnToServer" explain="退信">
+		<field class="long" name="mailid" explain="邮件Id"></field>
+	</message>
+	<message id="158" type="CS" name="ReqMailListGetItemToServer" explain="批量收取附件">
+		<list class="long" name="mailidlist" explain="邮件Id列表"></list>
+		<field class="long" name="itemid" explain="要取得的附件物品编号,为-1表示全部收取,为0表示收取金钱，其他表示真正物品编号"></field>
+	</message>
+	
+	<!-- 游戏服务器发送消息 -->
+	<message id="101" type="SC" name="ResMailQueryListToClient" explain="获得邮件列表返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<list class="MailSummaryInfo" name="mailSummaryList" explain="邮件列表"></list>
+	</message>
+	<message id="102" type="SC" name="ResMailQueryDetailToClient" explain="返回读取邮件的结果">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="MailDetailInfo" name="mailDetail" explain="读取邮件的内容"></field>
+	</message>
+	<message id="103" type="SC" name="ResMailGetItemToClient" explain="收取附件返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="long" name="itemid" explain="要取得的附件物品编号,为-1表示全部收取,为0表示收取金钱，其他表示真正物品编号"></field>
+		<field class="MailDetailInfo" name="mailDetail" explain="读取邮件的内容"></field>
+	</message>
+	<message id="104" type="SC" name="ResMailSendNewMailToClient" explain="发送新邮件返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+	<message id="106" type="SC" name="ResMailQueryUserToClient" explain="查询玩家返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="String" name="szName" explain="查询玩家名字"></field>
+	</message>
+	<message id="107" type="SC" name="ResMailReturnToClient" explain="退信返回">
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+		<field class="long" name="mailid" explain="邮件Id"></field>
+	</message>
+	<message id="110" type="SC" name="ResMailGetNewMailToClient" explain="获得新邮件提示">
+		<field class="int" name="nCount" explain="新邮件数量"></field>
+	</message>
+	
+	<!-- 世界到游戏服务器发送消息 -->
+	<message id="201" type="WS" name="ResMailSendSystemMailToServer" explain="发送系统新邮件">
+		<field class="String" name="mailJsonstr" explain="邮件json"></field>
+	</message>
+	
+	<!-- 游戏到世界服务器发送消息 -->
+	<message id="251" type="SW" name="ReqMailSendSystemMailToWorld" explain="发送系统新邮件返回">
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="byte" name="btErrorCode" explain="错误代码"></field>
+	</message>
+</messages>
+<!--
+#define DB_MAIL_TBL "mydb_Mail"
+#define DB_MAILCONFIG_TBL "Config_Mail"
+
+#define _MAX_MAIL_DELETE_COUNT 10
+
+enum emMailErrorCode
+{
+	MAIL_SUCCESS,            //成功
+	MAIL_FAIL_NORECEIVER,    //没找到接收者
+	MAIL_FAIL_IDERROR,       //邮件编号错误
+	MAIL_FAIL_NOT_VALIDCHAR, //非法字符
+	MAIL_FAIL_SERVER_ERROR,  //内部错误
+	MAIL_FAIL_FULLBAG,       //包裹已满 无法收取
+	MAIL_FAIL_FULLGOLD,      //金币已满 无法收取
+	MAIL_FAIL_NOTENOUTHGOLD, //发送的金币不足
+	MAIL_FAIL_NOTENOUTHITEM, //发送的物品不足
+	MAIL_FAIL_ITEMBINDING,   //绑定的物品
+	MAIL_FAIL_NOTITLE,       //空标题
+	MAIL_FAIL_NOTEXT,        //空内容
+	MAIL_FAIL_GOLD,          //费用不足
+	MAIL_FAIL_TOSELF,        //发给自己的
+	MAIL_FAIL_SERVER_FULL,   //
+	MAIL_FAIL_NOMAIL,        //没有任何邮件
+	MAIL_FAIL_INBLOCK,
+	MAIL_FAIL_COUNTRY,   //国家不同
+	MAIL_FAIL_PET_BOX_FULL, //
+	MAIL_FAIL_FULLZHUGOLD,//身上铸比已满
+	MAIL_FAIL_ITEMERROR,	//物品出错
+	MAIL_FAIL_PAIDGOLD,		//付费金钱错误
+	MAIL_FAIL_RETURNED,		//已经被退过
+};
+
+struct stMailConfig{
+	int  nMaxCount;
+	int  nShowCount;
+	int  nKeepTime; //Days
+	DWORD dwTextCost;
+	DWORD dwGoldCost;
+	DWORD dwItemCost;
+	stMailConfig(){
+		nMaxCount= 100;
+		nShowCount= 30;
+		nKeepTime= 30;
+		dwTextCost = 1000;
+		dwGoldCost = 1000;
+		dwItemCost = 1000;
+	}
+};
+
+static dbCol MailConfig_define[] = { 
+	{_DBC_SO_("最大邮件数量", DB_DWORD, stMailConfig, nMaxCount)}, 
+	{_DBC_SO_("显示最大邮件数量", DB_DWORD, stMailConfig, nShowCount)}, 
+	{_DBC_SO_("邮件保存时间", DB_DWORD, stMailConfig, nKeepTime)}, 
+	{_DBC_SO_("寄送文本费用", DB_DWORD, stMailConfig, dwTextCost)},
+	{_DBC_SO_("寄送金币费用", DB_DWORD, stMailConfig, dwGoldCost)},
+	{_DBC_SO_("寄送物品费用", DB_DWORD, stMailConfig, dwItemCost)},
+	{_DBC_MO_NULL_(stMailConfig)}, 
+};-->

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.marriage" id="163">
+
+	<!-- bean定义 -->
+	<bean name="LeaveMsgInfo" explain="留言信息">
+		<field class="int" name="time" explain="发布时间"></field>
+		<field class="String" name="playername" explain="发布人名字"></field>
+		<field class="String" name="content" explain="内容"></field>
+		<field class="byte" name="alread" explain="1未读取，0已经读取"></field>
+		<field class="long" name="msgid" explain="当前留言索引ID"></field>
+	</bean>
+	
+	<bean name="RedEnvelopeInfo" explain="红包信息">
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="int" name="playerlv" explain="玩家等级"></field>
+		<field class="int" name="rednum" explain="红包数量"></field>
+	</bean>
+	
+	<bean name="WeddingInfo" explain="婚宴信息">
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="int" name="time" explain="开始时间（秒）"></field>
+		<field class="byte" name="type" explain="婚宴类型，1普通，2大型，3豪华"></field>
+		<field class="byte" name="status" explain="婚姻状态，0未开始，1进行中，2结束"></field>
+		<field class="String" name="bridegroom" explain="新郎名字"></field>
+		<field class="String" name="bride" explain="新娘名字"></field>
+		<field class="int" name="rednum" explain="红包数量"></field>
+	</bean>
+	
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResLaunchProposeToClient" explain="得到求婚对象信息">
+		<field class="long" name="suitorobjid" explain="求婚对象ID"></field>
+		<field class="String" name="suitorobjname" explain="求婚对象名字"></field>
+		<field class="short" name="suitorobjlv" explain="求婚对象等级"></field>
+		<field class="String" name="guildname" explain="求婚对象帮会名字"></field>
+		<field class="int" name="avatarid" explain="求婚对象头像"></field>
+		
+	</message>	
+
+	<message id="102" type="SC" name="ResLaunchProposeStartToClient" explain="求婚信息展示">
+		<field class="long" name="playerid" explain="求婚发起人ID"></field>
+		<field class="String" name="playername" explain="求婚发起人名字"></field>
+		<field class="short" name="playerlv" explain="求婚发起人等级"></field>
+		<field class="String" name="guildname" explain="求婚发起人帮会名字"></field>
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+		<field class="int" name="avatarid" explain="求婚发起人头像"></field>
+	</message>	
+
+
+	<message id="103" type="SC" name="ResReplaceRingToClient" explain="更换婚戒刷新对方面板">
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+	</message>	
+
+	<message id="104" type="SC" name="ResShowLeaveMsgToClient" explain="留言展示">
+		<list class="LeaveMsgInfo" name="leavemsglist" explain="留言列表"></list>
+	</message>	
+
+	<message id="105" type="SC" name="ResDivorceToClient" explain="协议离婚，通知另一方">
+	</message>	
+
+	<message id="106" type="SC" name="ResForceDivorceToClient" explain="离婚成功后弹出面板">
+		<field class="byte" name="type" explain="1协议离婚，2强行离婚"></field>
+	</message>	
+	
+	<message id="107" type="SC" name="ResRedEnvelopeToClient" explain="红包信息">
+		<list class="RedEnvelopeInfo" name="redenvelopelist" explain="红包信息列表"></list>
+		<field class="int" name="redsum" explain="红包总收益"></field>
+		<field class="byte" name="isreceive" explain="1已经领取，0没有领取"></field>
+	</message>	
+	
+
+	<message id="108" type="SC" name="ResWeddingListToClient" explain="展示婚宴列表">
+		<list class="WeddingInfo" name="weddingInfolist" explain="婚宴信息列表"></list>
+	</message>	
+
+	<message id="109" type="SC" name="ResMarriedSuccessToClient" explain="结婚成功消息">
+		<field class="String" name="playername" explain="对方名字"></field>
+		<field class="int" name="avatarid" explain="对方头像"></field>
+	</message>	
+	
+	<message id="110" type="SC" name="ResSpouseInfoToClient" explain="获取配偶面板信息">
+		<field class="com.game.player.bean.OtherPlayerInfo" name="otherPlayerInfo" explain="配偶信息"></field>
+		<list class="LeaveMsgInfo" name="leavemsglist" explain="留言列表"></list>
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+	</message>	
+	
+	<message id="111" type="SC" name="ResNoticeNewLeaveMsgToClient" explain="通知新留言">
+		<field class="long" name="playerid" explain="被通知玩家ID"></field>
+		<list class="LeaveMsgInfo" name="leavemsglist" explain="留言列表"></list>
+	</message>	
+	
+	
+	<message id="112" type="SC" name="ResWeddingbanquetToClient" explain="弹出参加婚宴面板">
+		<field class="String" name="bridegroom" explain="新郎名字"></field>
+		<field class="String" name="bride" explain="新娘名字"></field>
+		<field class="int" name="foodnum" explain="食物数量"></field>
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="npcid" explain="NPC唯一id"></field>
+		<field class="int" name="totalredenvelope" explain="今日累计送出红包"></field>
+		<field class="byte" name="type" explain="婚宴类型，1普通，2大型，3豪华"></field>
+	</message>	
+	
+	
+	<message id="113" type="SC" name="ResEdibleInfoToClient" explain="弹出食用婚宴界面">
+		<field class="String" name="bridegroom" explain="新郎名字"></field>
+		<field class="String" name="bride" explain="新娘名字"></field>
+		<field class="int" name="foodnum" explain="食物数量"></field>
+		<field class="int" name="totalzhenqi" explain="今日累计获得真气"></field>
+		<field class="int" name="totalexp" explain="今日累计获得经验"></field>
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="npcid" explain="NPC唯一id"></field>
+		<field class="byte" name="type" explain="婚宴类型，1普通，2大型，3豪华"></field>
+	</message>
+	
+	<message id="114" type="SC" name="ResMarriageinfoToClient" explain="婚姻信息">
+		<field class="long" name="spouseid" explain="配偶ID"></field>
+		<field class="String" name="spousename" explain="配偶名字" ></field>
+		<field class="long" name="marriageid" explain="婚姻唯一ID"></field>
+		<field class="int" name="time" explain="结婚时间（秒）"></field>
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+	</message>
+	
+	<message id="115" type="SC" name="ResTeaseSpouseToClient" explain="返回动TA一下">
+		
+	</message>
+	
+	<message id="116" type="SC" name="ResGetSpouseLongYuanToClient" explain="返回配偶龙元心法">
+		<field class="byte" name="longyuanlv" explain="龙元心法阶段（星图）"></field>
+		<field class="byte" name="longyuannum" explain="龙元心法星位"></field>
+	</message>
+
+	<message id="117" type="SC" name="ResGetSpouseSkillToClient" explain="返回配偶武功">
+		<field class="int" name="defaultSkill" explain="默认技能模板Id"></field>
+		<list class="com.game.skill.bean.SkillInfo" name="skills" explain="技能信息列表"></list>
+	</message>
+	
+	<message id="118" type="SC" name="ResNoticeReceiveRedToClient" explain="通知玩家领取红包">
+	</message>
+	
+	<message id="119" type="SC" name="ResWeddingExteriorToClient" explain="需要在婚宴改变外观的玩家ID">
+		<list class="long" name="roleslist" explain="需要改变外观的角色列表"></list>
+	</message>	
+	
+	<message id="120" type="SC" name="ResOnlineStatusToClient" explain="配偶在线状态">
+		<field class="byte" name="type" explain="在线状态，1上线，2下线"></field>
+	</message>
+	
+	<message id="121" type="SC" name="ResRingUPToClient" explain="婚戒升级弹出面板">
+	</message>
+	
+	<message id="122" type="SC" name="ResWeddingTimeToClient" explain="婚宴时间">
+		<field class="byte" name="type" explain="婚宴类型，1普通，2大型，3豪华"></field>	
+		<field class="byte" name="month" explain="月"></field>
+		<field class="byte" name="day" explain="日"></field>
+	</message>
+	
+	<message id="123" type="SC" name="ResSynSpousecoordToClient" explain="同地图同步配偶坐标">
+		<field class="short" name="mx" explain="所在坐标X"></field>
+		<field class="short" name="my" explain="所在坐标Y"></field>
+	</message>
+	
+	<message id="124" type="SC" name="ResSpouseSwitchmapToClient" explain="配偶切换地图">
+		<field class="long" name="mapid" explain="地图ID"></field>
+		<field class="int" name="line" explain="线路"></field>
+	</message>
+	
+	<message id="125" type="SC" name="ResSpouseInfoErrorToClient" explain="配偶信息读取错误">
+		<field class="int" name="type" explain="错误类型"></field>
+		<field class="int" name="error" explain="错误编码"></field>
+	</message>
+	
+	<message id="126" type="WC" name="ResSpouseInfoErrorWorldToClient" explain="配偶信息读取错误">
+		<field class="int" name="type" explain="错误类型"></field>
+		<field class="int" name="error" explain="错误编码"></field>
+	</message>
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqLaunchProposeToGame" explain="玩家发起求婚（准备）">
+		<field class="long" name="suitorobjid" explain="求婚对象ID"></field>
+	</message>	
+
+	<message id="202" type="CS" name="ReqLaunchProposeStartToGame" explain="玩家发起求婚（开始）">
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+		<field class="long" name="suitorobjid" explain="求婚对象ID"></field>
+	</message>	
+
+	<message id="203" type="CS" name="ReqProposeSelectToGame" explain="玩家对求婚做选择">
+		<field class="long" name="playerid" explain="求婚者ID"></field>
+		<field class="byte" name="select" explain="对求婚做选择，1同意，0拒绝（取消）"></field>
+	</message>	
+
+	<message id="204" type="CS" name="ReqReplaceRingToGame" explain="进行更换婚戒">
+		<field class="long" name="suitorobjid" explain="求婚对象ID"></field>
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+	</message>	
+
+	<message id="205" type="CS" name="ReqNewLeaveMsgToGame" explain="增加新留言">
+		<field class="String" name="content" explain="留言内容"></field>
+	</message>	
+
+	<message id="206" type="CS" name="ReqDivorceToGame" explain="发起离婚">
+		<field class="byte" name="type" explain="1协议离婚，2强行离婚"></field>
+	</message>	
+	
+	<message id="207" type="CS" name="ReqApplyWeddingToGame" explain="申请婚宴">
+		<field class="byte" name="type" explain="婚宴类型，1普通，2大型，3豪华"></field>
+	</message>	
+
+	<message id="208" type="CS" name="ReqDivorceSelectToGame" explain="协议离婚选择">
+		<field class="byte" name="select" explain="对协议离婚做选择，1同意，0拒绝"></field>
+	</message>	
+	
+	<message id="209" type="CS" name="ReqSpouseInfoToGame" explain="获取配偶面板信息">
+	</message>	
+	
+	<message id="210" type="CS" name="ReqRedEnvelopeToGame" explain="请求红包列表">
+	</message>	
+	
+	<message id="211" type="CS" name="ReqWeddingListToGame" explain="请求婚宴列表">
+	</message>	
+	
+	<message id="212" type="CS" name="ReqWeddingParticipateToGame" explain="送上红包，参加婚宴">
+		<field class="int" name="num" explain="红包数量"></field>
+		<field class="long" name="marriageid" explain="结婚id"></field>
+	</message>	
+	
+	<message id="213" type="CS" name="ReqWeddingEatingToGame" explain="开始吃菜">
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="npcid" explain="NPC唯一id"></field>
+	</message>
+	
+	<message id="214" type="CS" name="ReqReceiveredenvelopeToGame" explain="领取红包">
+	</message>
+	
+	<message id="215" type="CS" name="ReqCockRedenvelopeToGame" explain="送上红包">
+		<field class="long" name="marriageid" explain="结婚id"></field>
+	</message>
+	
+	<message id="216" type="CS" name="ReqTeaseSpouseToGame" explain="动TA一下">
+
+	</message>
+	
+	<message id="217" type="CS" name="ReqGetSpouseOtherToGame" explain="获取配偶其他资料">
+		<field class="int" name="type" explain="类型：1获取配偶龙元心法，2获取配偶武功"></field>
+	</message>
+	
+	<message id="218" type="CS" name="ReqSpouseMoveToGame" explain="夫妻传送">
+	</message>
+	
+	<message id="219" type="CS" name="ReqDeleteLeaveMsgToGame" explain="删除留言">
+		<field class="long" name="msgid" explain="当前留言索引ID"></field>
+	</message>
+	
+	<message id="220" type="CS" name="ReqChangeRingToGame" explain="更换婚戒">
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+	</message>
+	
+	
+	
+	<!-- 服务器内部消息 GAME TO WORLD-->
+	<message id="301" type="SW" name="ReqUpdatedMarriageToWorld" explain="通知世界服务器更新婚姻信息" >
+		<field class="String" name="marriageInfo" explain="结婚信息"></field>
+	</message>
+	
+	<message id="303" type="WS" name="ResUpdatedMarriageToGame" explain="通知游戏服务器更新婚姻信息" >
+		<field class="String" name="marriageInfo" explain="结婚信息"></field>
+	</message>
+	
+	<message id="307" type="SW" name="ReqNewLeaveMsgToWorld" explain="通知世界服务器增加留言消息" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="String" name="content" explain="留言内容"></field>
+	</message>
+	
+	<message id="308" type="WS" name="ResNewLeaveMsgToGame" explain="通知游戏服务器增加留言消息" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="String" name="content" explain="留言内容"></field>
+	</message>
+	
+	<message id="309" type="SW" name="ReqRedEnvelopeToWorld" explain="通知世界服务器读取红包消息" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="310" type="WS" name="ResRedEnvelopeToGame" explain="通知游戏服务器读取红包消息" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="311" type="SW" name="ReqWeddingListToWorld" explain="通知世界服务器读取婚宴列表" >
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="312" type="WS" name="ResWeddingListToGame" explain="通知游戏服务器读取婚宴列表" >
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="313" type="SW" name="ReqGetSpouseOtherToWorld" explain="通知世界服务器配偶其他资料" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="type" explain="类型：1获取配偶龙元心法，2获取配偶武功"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="314" type="WS" name="ResGetSpouseOtherToGame" explain="通知游戏服务器配偶其他资料" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="type" explain="类型：1获取配偶龙元心法，2获取配偶武功"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="315" type="SW" name="ReqSpouseMoveToWorld" explain="通知世界服务器夫妻传送" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="316" type="WS" name="ResSpouseMoveToGame" explain="通知游戏服务器夫妻传送" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="317" type="SW" name="ReqSpouseMoveStartToWorld" explain="通知世界服务器夫妻传送开始" >
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="int" name="mapid" explain="地图id"></field>
+		<field class="int" name="mapmodelid" explain="地图模版id"></field>
+		<field class="int" name="line" explain="线路"></field>
+		<field class="com.game.structs.Position" name="position" explain="坐标"></field>
+	</message>
+	
+	<message id="318" type="WS" name="ResSpouseMoveStartToGame" explain="通知游戏服务器夫妻传送开始" >
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="int" name="mapid" explain="地图id"></field>
+		<field class="int" name="mapmodelid" explain="地图模版id"></field>
+		<field class="int" name="line" explain="线路"></field>
+		<field class="com.game.structs.Position" name="position" explain="坐标"></field>
+	</message>
+	
+	<message id="319" type="SW" name="ReqDeleteLeaveMsgToWorld" explain="通知世界服务器删除留言" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="long" name="msgid" explain="当前留言索引ID"></field>
+	</message>
+	
+	<message id="320" type="WS" name="ResDeleteLeaveMsgToGame" explain="通知游戏服务器删除留言" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="long" name="msgid" explain="当前留言索引ID"></field>
+	</message>
+	
+	<message id="321" type="SW" name="ReqChangeRingToWorld" explain="通知世界服务器更换婚戒" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+	</message>
+	
+	<message id="322" type="WS" name="ResChangeRingToGame" explain="通知游戏服务器更换婚戒" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+	</message>
+	
+	<message id="323" type="SW" name="ReqSpouseInfoToWorld" explain="通知世界服务器配偶面板" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+	</message>
+	
+	<message id="324" type="WS" name="ResSpouseInfoToGame" explain="通知游戏服务器配偶面板" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+	</message>
+	
+	<message id="325" type="SW" name="ReqSendWeddingRewardMailToWorld" explain="通知世界服务器发放婚宴经验和真气" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="zhenqi" explain="经验"></field>
+		<field class="int" name="exp" explain="真气"></field>
+	</message>
+	
+	<message id="326" type="SW" name="ReqSendWeddingMailToWorld" explain="通知世界服务器通知配偶举办婚宴" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="long" name="spouseid" explain="配偶id"></field>
+		<field class="byte" name="date" explain="日期"></field>
+		<field class="byte" name="month" explain="月份"></field>
+		<field class="String" name="typename" explain="婚宴类型名字"></field>
+	</message>
+	
+	<message id="327" type="SW" name="ReqSendDivorceMailToWorld" explain="通知世界服务器发送离婚邮件" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="long" name="spouseid" explain="配偶id"></field>
+	</message>
+	
+	<message id="328" type="SW" name="ReqSyncMarriagerLevelToWorld" explain="通知世界服务器更改结婚玩家等级" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="int" name="level" explain="等级"></field>
+	</message>
+	
+	<message id="329" type="WS" name="ResSyncMarriagerLevelToGame" explain="通知游戏服务器更改结婚玩家等级" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="int" name="level" explain="等级"></field>
+	</message>
+	
+	<message id="330" type="SW" name="ReqHaveRedEnvelopeToWorld" explain="通知世界服务器读取是否有红包消息" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+	
+	<message id="331" type="WS" name="ResHaveRedEnvelopeToGame" explain="通知游戏服务器读取是否有红包消息" >
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int" name="country" explain="国家"></field>
+	</message>
+</messages>

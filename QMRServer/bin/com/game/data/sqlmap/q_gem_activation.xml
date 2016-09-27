@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_gem_activation"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_gem_activationBean" >
+	<result column="q_id" property="q_id" jdbcType="VARCHAR" />
+	<result column="q_pos_id" property="q_pos_id" jdbcType="INTEGER" />
+	<result column="q_grid_id" property="q_grid_id" jdbcType="INTEGER" />
+	<result column="q_gem_type" property="q_gem_type" jdbcType="INTEGER" />
+	<result column="q_initial_level" property="q_initial_level" jdbcType="INTEGER" />
+	<result column="q_consumable_item" property="q_consumable_item" jdbcType="VARCHAR" />
+	<result column="q_consumable_zhenqi" property="q_consumable_zhenqi" jdbcType="INTEGER" />
+	<result column="q_client_show_rnd" property="q_client_show_rnd" jdbcType="VARCHAR" />
+	<result column="q_act_num_min" property="q_act_num_min" jdbcType="INTEGER" />
+	<result column="q_act_rnd" property="q_act_rnd" jdbcType="INTEGER" />
+	<result column="q_act_num_max" property="q_act_num_max" jdbcType="INTEGER" />
+	<result column="q_notice" property="q_notice" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_gem_activation
+  </select>
+</mapper> 

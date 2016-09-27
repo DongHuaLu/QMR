@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.player" id="103">
+	<!-- bean定义 -->
+	<bean name="PlayerAttributeItem" explain="个人属性项">
+		<field class="int" name="type" explain="属性类型"></field>
+		<field class="int" name="value" explain="属性值"></field>
+	</bean>
+	
+	<bean name="PlayerAppearanceInfo" explain="玩家外观展示信息">
+		<field class="byte" name="sex" explain="玩家性别"></field>
+		<field class="int" name="clothingmodid" explain="衣服模版ID"></field>
+		<field class="int" name="weaponmodid" explain="武器模版ID"></field>
+		<field class="byte" name="weaponStreng" explain="武器强化等级"></field>
+		<field class="int" name="horsemodid" explain="坐骑模版ID"></field>
+		<field class="int" name="horseweaponmodid" explain="坐骑模版ID"></field>
+		<field class="int" name="avatarid" explain="头像模板ID" ></field>
+		<field class="int" name="arrowid" explain="弓箭模板ID" ></field>
+		<field class="int" name="hiddenweaponmodid" explain="暗器模版ID"></field>
+		<field class="short" name="horseduangu" explain="坐骑锻骨草使用数量"></field>
+		<field class="int" name="amuletModel" explain="护身符模版ID"></field>
+		<field class="int" name="cloakModel" explain="披风模版ID"></field>
+	</bean>
+
+	<bean name="OtherPlayerInfo" explain="他人信息">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="int" name="sex" explain="角色性别 1-男 2-女"></field>
+		<field class="int" name="level" explain="角色等级"></field>
+		<field class="long" name="exp" explain="角色经验"></field>
+		<field class="int" name="zhenqi" explain="角色真气"></field>
+		<field class="int" name="prestige" explain="角色战场声望"></field>
+		<field class="int" name="avatar" explain="头象ID"></field>
+		<field class="int" name="chapter" explain="当前章节"></field>
+		<list class="PlayerAttributeItem" name="attributes" explain="属性列表"></list>
+		<list class="com.game.equip.bean.EquipInfo" name="equips" explain="装备列表信息"></list>
+		<field class="byte" name="skill" explain="角色武功境界"></field>
+		<field class="int" name="skills" explain="角色武功境界层数"></field>
+		<field class="com.game.guild.bean.OtherGuildInfo" name="otherGuildInfo" explain="他人公会信息"></field>
+		<field class="int" name="fightpower" explain="战斗力"></field>
+		<list class="com.game.gem.bean.PosGemInfo" name="posallgeminfo" explain="装备部位全部宝石信息"></list>
+		<field class="int" name="kingcitybuffid" explain="王城BUFFid"></field>
+		<field class="int" name="vipid" explain="VIPid"></field>
+		<field class="byte" name="ranklevel" explain="军衔等级"></field>
+		<field class="com.game.arrow.bean.ArrowInfo" name="arrowInfo" explain="弓箭信息"></field>
+		<field class="com.game.horseweapon.bean.OthersHorseWeaponInfo" name="horseWeaponInfo" explain="骑战兵器信息"></field>
+		<field class="com.game.hiddenweapon.bean.OthersHiddenWeaponInfo" name="hiddenWeaponInfo" explain="暗器信息"></field>
+		<field class="int" name="realmlevel" explain="境界等级" ></field>
+		<field class="int" name="realmintensifylevel" explain="境界强化等级" ></field>
+		<field class="String" name="spousename" explain="配偶名字" ></field>
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+		<field class="int" name="marriedtime" explain="结婚时间"></field>
+		<field class="com.game.amulet.bean.AmuletInfo" name="amuletInfo" explain="护身符信息"></field>
+		<field class="String" name="webname" explain="平台标识"></field>
+		<field class="com.game.cloak.bean.CloakInfo" name="cloakInfo" explain="披风信息"></field>
+	</bean>
+	
+	<bean name="PlayerEnergyRewordinfo" explain="玩家获得奖励信息">
+		<field class="int" name="type" explain="奖励类型"></field>
+		<field class="int" name="para" explain="奖励参数"></field>	
+		<field class="byte" name="rewordisget" explain="玩家是否已领取"></field>
+		<field class="String" name="keyname" explain="奖励标识"></field>
+	</bean>
+
+
+
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResPlayerHpChange" explain="生命变化">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="currentHp" explain="当前HP"></field>
+	</message>
+	
+	<message id="102" type="SC" name="ResReviveSuccess" explain="复活成功">
+		<field class="long" name="personId" explain="角色Id"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResPlayerExpChange" explain="经验变化">
+		<field class="long" name="currentExp" explain="当前经验"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResPlayerLevelUp" explain="等级变化">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="currentLevel" explain="当前等级"></field>
+	</message>
+	
+	<message id="105" type="SC" name="ResPlayerMpChange" explain="魔法变化">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="currentMp" explain="当前MP"></field>
+	</message>
+	
+	<message id="106" type="SC" name="ResPlayerSpChange" explain="体力变化">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="currentSp" explain="当前SP"></field>
+	</message>
+	
+	<message id="107" type="SC" name="ResMyPlayerInfo" explain="本人玩家信息">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="int" name="sex" explain="角色性别 1-男 2-女"></field>
+		<field class="int" name="level" explain="角色等级"></field>
+		<field class="int" name="mapId" explain="角色所在地图"></field>
+		<field class="short" name="x" explain="角色所在X"></field>
+		<field class="short" name="y" explain="角色所在Y"></field>
+		<field class="byte" name="skill" explain="角色武功境界"></field>
+		<field class="int" name="skills" explain="角色武功境界层数"></field>
+		<field class="int" name="state" explain="角色状态"></field>
+		<field class="int" name="pkState" explain="角色PK状态"></field>
+		<field class="long" name="exp" explain="角色经验"></field>
+		<field class="int" name="zhenqi" explain="角色真气"></field>
+		<field class="int" name="prestige" explain="角色战场声望"></field>
+		<field class="byte" name="dir" explain="人物面对方向"></field>
+		<field class="int" name="avatar" explain="头象ID"></field>
+		<list class="PlayerAttributeItem" name="attributes" explain="属性列表"></list>
+		<list class="com.game.structs.Position" name="positions" explain="跑步坐标集合"></list>
+		<list class="com.game.equip.bean.EquipInfo" name="equips" explain="装备列表信息"></list>
+		<field class="short" name="cellnum" explain="背包格子数"></field>
+		<field class="short" name="storecellnum" explain="仓库格子数"></field>
+		<list class="com.game.backpack.bean.ItemInfo" name="items" explain="物品信息列表"></list>
+		<field class="int" name="money" explain="金币"></field>
+		<field class="int" name="gold" explain="元宝"></field>
+		<field class="int" name="bindgold" explain="绑定元宝"></field>
+		<field class="byte" name="nonage" explain="玩家防沉迷状态 0-非防沉迷 1-正常 2-疲劳 3-不健康"></field>
+		<field class="short" name="horseid" explain="角色当前坐骑"></field>
+		<field class="short" name="horseweaponid" explain="角色当前骑战兵器"></field>
+		<field class="short" name="hiddenweaponid" explain="角色当前暗器"></field>
+		<list class="com.game.gem.bean.PosGemInfo" name="posallgeminfo" explain="装备部位全部宝石信息"></list>
+		<field class="int" name="maintaskId" explain="主线任务ID"></field>
+		<field class="int" name="kingcitybuffid" explain="王城BUFFid"></field>
+		<field class="int" name="vipid" explain="VIPid"></field>
+		<field class="byte" name="longyuanlv" explain="龙元心法阶段（星图）"></field>
+		<field class="byte" name="longyuannum" explain="龙元心法星位"></field>
+		<field class="byte" name="ranklevel" explain="军衔等级"></field>
+		<field class="com.game.arrow.bean.ArrowInfo" name="arrowInfo" explain="弓箭信息"></field>
+		<field class="int" name="webvip" explain="平台VIP"></field>
+		<field class="int" name="webvip2" explain="平台VIP2"></field>
+		<field class="short" name="horseduangu" explain="坐骑锻骨草使用数量"></field>
+		<field class="String" name="webname" explain="平台标识"></field>
+		<field class="int" name="cloakModel" explain="披风model"></field>
+	</message>
+	
+	<message id="108" type="SC" name="ResOtherPlayerInfo" explain="他人玩家信息">
+		<field class="OtherPlayerInfo" name="otherPlayerInfo" explain="他人玩家信息" ></field>
+	</message>
+	
+	<message id="109" type="SC" name="ResPlayerMaxHpChange" explain="最大生命变化">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="currentHp" explain="当前HP"></field>
+		<field class="int" name="maxHp" explain="最大HP"></field>
+	</message>
+	
+	<message id="110" type="SC" name="ResPlayerMaxMpChange" explain="最大内力变化">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="currentMp" explain="当前MP"></field>
+		<field class="int" name="maxMp" explain="最大MP"></field>
+	</message>
+	
+	<message id="111" type="SC" name="ResPlayerMaxSpChange" explain="最大体力变化">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="currentSp" explain="当前SP"></field>
+		<field class="int" name="maxSp" explain="最大SP"></field>
+	</message>
+	
+	<message id="112" type="SC" name="ResPlayerSpeedChange" explain="速度变化">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="speed" explain="当前速度"></field>
+	</message>
+	
+	<message id="113" type="SC" name="ResPlayerZhenqiChange" explain="真气变化">
+		<field class="int" name="currentZhenqi" explain="当前真气"></field>
+	</message>
+	
+	<message id="114" type="SC" name="ResPlayerBattleExpChange" explain="战场经验变化">
+		<field class="int" name="currentBattleExp" explain="当前战场经验"></field>
+	</message>
+	
+	<message id="115" type="SC" name="ResPlayerDie" explain="玩家死亡">
+		<field class="long" name="personId" explain="死亡的角色Id"></field>
+		<field class="byte" name="autoRevive" explain="自动复活"></field>
+		<field class="int" name="monstermodelid" explain="怪物模型ID"></field>
+		<field class="long" name="attackerid" explain="攻击者玩家ID"></field>
+		<field class="String" name="attackername" explain="攻击者玩家名字"></field>
+		<field class="com.game.structs.Position" name="position" explain="死亡位置"></field>
+		<field class="int" name="time" explain="死亡时间"></field>
+		<field class="byte" name="type" explain="0正常死亡，1攻城战期间在攻城战地图死亡"></field>
+	</message>
+	
+	
+	<message id="118" type="SC" name="ResChangePKState" explain="更改pk状态">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="pkState" explain="pk状态"></field>
+		<field class="int" name="auto" explain="是否自动切换"></field>
+	</message>
+	
+	<message id="119" type="SC" name="ResPlayerAttributeChange" explain="个人属性值变化">
+		<field class="int" name="attributeChangeReason" explain="变化的属性原因"/>
+		<field class="int" name="modelId" explain="模型Id"></field>
+		<list class="PlayerAttributeItem" name="attributeChangeList" explain="变化的属性列表"/>
+	</message>
+	
+	<message id="120" type="SC" name="ResPlayerStateChange" explain="玩家战斗状态改变">
+		<field class="byte" name="state" explain="玩家战斗状态 0-进入 1-退出"></field>
+	</message>
+	
+	<message id="121" type="SC" name="ResPlayerNonageState" explain="玩家防沉迷状态改变">
+		<field class="byte" name="nonage" explain="玩家防沉迷状态 0-非防沉迷 1-正常 2-疲劳 3-不健康"></field>
+	</message>		
+	
+	<message id="122" type="WC" name="ResPlayerNonageTime" explain="玩家防沉迷在线时间">
+		<field class="int" name="time" explain="玩家防沉迷在线时间"></field>
+	</message>
+	
+	<message id="123" type="WC" name="ResPlayerNonageRegister" explain="玩家防沉迷注册返回">
+		<field class="byte" name="result" explain="玩家防沉迷注册结果返回， 1-成功 2-未成年 3-身份证错误"></field>
+	</message>
+	
+	<message id="124" type="SC" name="ResPlayerAvatar" explain="同步玩家头像改变">
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="int"  name="avatarid" explain="头像模板id"></field>
+	</message>
+	
+	<message id="125" type="WC" name="ResPlayerCheckOnline" explain="检查指定玩家是否在线">
+		<field class="long" name="othersid" explain="他人ID"></field>
+		<field class="String" name="othersname" explain="他人名字"></field>
+		<field class="short" name="x" explain="屏幕坐标x"></field>
+		<field class="short" name="y" explain="屏幕坐标y"></field>
+		<field class="byte" name="type" explain="面板类型"></field>
+		<field class="byte" name="isonline" explain="0不在线，1在线"></field>
+	</message>
+	
+	<message id="126" type="WC" name="ResGetPlayerAppearanceInf" explain="获取玩家造型信息">
+		<field class="long" name="othersid" explain="他人ID"></field>
+		<field class="byte" name="type" explain="面板类型"></field>
+		<field class="PlayerAppearanceInfo" name="appearanceInfo" explain="外观信息"></field>
+	</message>
+	
+	<message id="127" type="SC" name="ResChangePlayerNameToClient" explain="玩家改名，完成后通知客户端">
+		<field class="long" name="playerId" explain="角色ID"></field>
+		<field class="String" name="newname" explain="新名字"></field>
+		<field class="byte" name="result" explain="返回结果，0失败，1成功"></field>
+	</message>
+	
+	<message id="128" type="SC" name="ResPlayerNameInfoToClient" explain="服务器通知前端玩家是否可改名">
+		<field class="byte" name="changeName" explain="是否可以改名"></field>
+		<field class="byte" name="changeUser" explain="是否可以改账号"></field>
+	</message>
+	
+	<message id="129" type="WC" name="ResChangePlayerUserToClient" explain="玩家改帐号，完成后通知客户端">
+		<field class="long" name="playerId" explain="角色ID"></field>
+		<field class="String" name="newname" explain="新帐号"></field>
+		<field class="byte" name="result" explain="返回结果，0：成功   1：用户存在   2：注册错误    3：用户名不符合规定     4：密码不符合规定    6：加密验证失效"></field>
+	</message>
+	
+	<message id="130" type="SC" name="ResScriptCommonPlayerToClient" explain="服务器发起脚本通用类消息">
+		<field class="int" name="scriptid" explain="脚本编号"></field>
+		<field class="int" name="type" explain="脚本消息类型"></field>
+		<field class="String" name="messageData" explain="脚本消息数据(json字符串)"></field>
+	</message>
+	
+	<message id="131" type="WC" name="ResScriptCommonPlayerWorldToClient" explain="世界服务器发起脚本通用类消息">
+		<field class="int" name="scriptid" explain="脚本编号"></field>
+		<field class="int" name="type" explain="脚本消息类型"></field>
+		<field class="String" name="messageData" explain="脚本消息数据(json字符串)"></field>
+	</message>
+
+	<message id="132" type="SC" name="ResVipPlayerChangeMapToClient" explain="发送VIP玩家改变地图消息">
+		<field class="int" name="curnum" explain="当前次数"></field>
+		<field class="int" name="maxnum" explain="最大次数"></field>
+		<field class="int" name="viplv" explain="VIP等级"></field>
+	</message>
+	
+	<message id="133" type="SC" name="ResAutoStartState" explain="返回挂机状态">
+		<field class="byte" name="result" explain="挂机状态， 1-挂机 0-未挂机"></field>
+	</message>
+	
+	
+	<message id="134" type="SC" name="ResPlayerPrisonState" explain="玩家被关监狱情况">
+		<field class="int" name="prisontimes" explain="关监狱次数"></field>
+		<field class="int" name="prisonremaintime" explain="监狱剩余时间(单位 秒)"></field>
+	</message>
+	
+	<message id="135" type="SC" name="ResJumpMaxSpeed" explain="跳跃最大速度">
+		<field class="int" name="jumpmaxspeed" explain="跳跃最大速度"></field>
+	</message>
+	
+	<message id="136" type="SC" name="RespopuGuide" explain="通用弹出引导">
+		<field class="int" name="type" explain="引导id"></field>
+	</message>	
+	
+	<message id="137" type="SC" name="ResPlayerBattleHonorChange" explain="战场荣誉变化">
+		<field class="int" name="currentBattleHonor" explain="当前战场荣誉"></field>
+	</message>	
+	
+	<message id="138" type="SC" name="ResPlayerMedalChange" explain="勋章变化">
+		<field class="int" name="medal" explain="当前勋章"></field>
+	</message>	
+	
+	<message id="139" type="SC" name="ResPlayerHuoliChange" explain="活力变化">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="currentHuoli" explain="当前活力"></field>
+		<field class="int" name="changeHuoli" explain="活力变化"></field>
+		<field class="int" name="reason" explain="活力变化原因"></field>
+	</message>
+	
+	<message id="140" type="SC" name="ResPlayerEnergyReword" explain="消耗精力获得奖励">
+		<list class="PlayerEnergyRewordinfo" name="rewords" explain="消耗精力可获得奖励列表"></list>
+	</message>
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqRevive" explain="回城复活">
+	</message>
+	
+	<message id="202" type="CS" name="ReqLocalRevive" explain="原地复活">
+		<field class="int" name="itemmodelid" explain="使用复活道具modelid"></field>
+		<field class="byte" name="type" explain="0自动使用玫瑰，1手动使用玫瑰复活"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqOtherPlayerInfo" explain="请求其他玩家详细信息">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="byte" name="type" explain="类型： 0角色，1坐骑"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqChangePKState" explain="请求更改pk状态">
+		<field class="int" name="pkState" explain="pk状态"></field>
+		<field class="int" name="auto" explain="是否自动切换"></field>
+	</message>
+	
+	<message id="205" type="CS" name="ReqAutoStart" explain="请求挂机开始">
+	</message>
+	
+	<message id="206" type="CS" name="ReqAutoEnd" explain="请求挂机结束">
+	</message>
+	
+	<message id="207" type="CS" name="ReqNonageTime" explain="请求防沉迷在线时间">
+	</message>
+	
+	<message id="208" type="CS" name="ReqPlayerNonageRegister" explain="玩家防沉迷注册身份证">
+		<field class="String" name="name" explain="名字"></field>
+		<field class="String" name="idCard" explain="证件号码"></field>
+	</message>
+	
+	<message id="209" type="CS" name="ReqPlayerAvatarChange" explain="请求玩家头像变更">
+		<field class="int" name="avatarid" explain="新头像模板ID"></field>
+	</message>
+	
+	<message id="210" type="CS" name="ReqPlayerCheckOnline" explain="检查指定玩家是否在线">
+		<field class="long" name="othersid" explain="玩家ID"></field>
+		<field class="short" name="x" explain="屏幕坐标x"></field>
+		<field class="short" name="y" explain="屏幕坐标y"></field>
+		<field class="byte" name="type" explain="面板类型"></field>
+	</message>
+	
+	
+	<message id="211" type="CS" name="ReqGetPlayerAppearanceInfo" explain="得到玩家造型信息">
+		<field class="long" name="othersid" explain="他人ID"></field>
+		<field class="byte" name="type" explain="面板类型"></field>
+	</message>
+	
+	<message id="212" type="CS" name="ReqChangePlayerName" explain="玩家发起改名">
+		<field class="String" name="newname" explain="新名字"></field>
+	</message>
+	
+	<message id="213" type="CS" name="ReqScriptCommonPlayerToServer" explain="玩家发起脚本通用类消息">
+		<field class="int" name="scriptid" explain="脚本编号"></field>
+		<field class="int" name="type" explain="脚本消息类型"></field>
+		<field class="String" name="messageData" explain="脚本消息数据(json字符串)"></field>
+	</message>
+	
+	<message id="214" type="CS" name="ReqVipPlayerChangeMapToServer" explain="发送VIP玩家改变地图消息">
+	</message>
+	
+	<message id="215" type="CS" name="ReqReportPlayerSpeed" explain="举报玩家加速">
+		<field class="long" name="targetid" explain="被举报玩家ID"></field>
+	</message>
+	
+	<message id="216" type="CS" name="ReqPlayerEnergyReword" explain="玩家消耗精力获取奖励内容">
+		<field class="String" name="key" explain="奖励关键字"></field>
+	</message>
+	
+	<message id="217" type="CS" name="ReqPlayerIsEnergyReword" explain="请求玩家消耗精力奖励内容(打开面板调用)">
+	</message>
+	
+	<!-- 服务器之间消息 -->
+	<message id="301" type="SW" name="ReqSyncPlayerInfo" explain="同步世界服务器玩家全部信息变动">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="int" name="serverId" explain="服务器编号"></field>
+		<field class="int" name="line" explain="角色所在线"></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="int" name="country" explain="角色国家"></field>
+		<field class="int" name="level" explain="角色等级"></field>
+		<field class="int" name="mapId" explain="角色所在地图"></field>
+		<field class="long" name="maponlyId" explain="角色所在地图唯一ID"></field>
+		<field class="short" name="x" explain="角色所在X"></field>
+		<field class="short" name="y" explain="角色所在Y"></field>
+		<field class="byte" name="mountLevel" explain="坐骑阶数"></field>
+		<field class="byte" name="arrowLevel" explain="弓箭阶数"></field>
+		<field class="byte" name="tianyuanLevel" explain="天元阶数"></field>
+		<field class="int" name="prestigePoint" explain="声望点"></field>
+		<field class="int" name="achievementPoint" explain="成就点"></field>
+		<field class="int" name="fightPower" explain="战斗力"></field>
+		<field class="byte" name="autoTeamApply" explain="自动邀请组队"></field>
+		<field class="byte" name="autoTeamInvited" explain="自动邀请组队"></field>
+		<field class="String" name="mood" explain="心情"></field>
+		<field class="byte" name="openMapLocation" explain="是否公开我的地图位置"></field>
+		<field class="byte" name="autoArgeeAddGuild" explain="自动同意加入帮会"></field>
+		<field class="long" name="lastAfkGuildTime" explain="离开帮会时间"></field>
+		<field class="int" name="contributionPoint" explain="帮贡点"></field>
+		<field class="PlayerAppearanceInfo" name="appearanceInfo" explain="外观信息"></field>
+		<field class="int" name="menustatus" explain="玩家系统设置面板信息"></field>
+		<field class="byte" name="type" explain="登陆类型"></field>
+		<field class="byte" name="changeName" explain="是否可以改名"></field>
+		<field class="byte" name="changeUser" explain="是否可以改账号"></field>
+		<field class="int" name="kingcitybuffid" explain="王城BUFFid"></field>
+		<field class="int" name="vipid" explain="VIPid"></field>
+		<field class="byte" name="ranklevel" explain="军衔等级"></field>
+		<field class="int" name="webvip" explain="平台VIP"></field>
+		<field class="short" name="horseduangu" explain="坐骑锻骨草使用数量"></field>
+		<field class="int" name="medal" explain="勋章"></field>
+	</message>
+
+	<message id="302" type="SW" name="ReqSyncPlayerHp" explain="同步世界服务器玩家HP">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="hp" explain="玩家HP"></field>
+		<field class="int" name="maxHp" explain="玩家MAXHP"></field>
+	</message>
+	
+	<message id="303" type="SW" name="ReqSyncPlayerPosition" explain="同步世界服务器玩家坐标">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="short" name="x" explain="角色所在X"></field>
+		<field class="short" name="y" explain="角色所在Y"></field>
+	</message>
+	
+	<message id="304" type="SW" name="ReqSyncPlayerMap" explain="同步世界服务器玩家地图">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="line" explain="角色所在线"></field>
+		<field class="int" name="mapId" explain="角色所在地图"></field>
+		<field class="long" name="maponlyId" explain="角色所在地图唯一ID"></field>
+		<field class="short" name="x" explain="角色所在X"></field>
+		<field class="short" name="y" explain="角色所在Y"></field>
+	</message>
+	
+	<message id="305" type="SW" name="ReqSyncPlayerLevel" explain="同步世界服务器玩家等级">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="level" explain="角色等级"></field>
+		<field class="long" name="levelUpTime" explain="角色升级时间"></field>
+	</message>
+	
+	<message id="306" type="SW" name="ReqSyncPlayerAppearanceInfo" explain="同步世界服务器玩家外观">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="PlayerAppearanceInfo" name="appearanceInfo" explain="外观信息"></field>
+		<field class="int" name="kingcitybuffid" explain="王城BUFFid"></field>
+		<field class="int" name="vipid" explain="VIPid"></field>
+	</message>
+	
+	<message id="307" type="SW" name="ReqOtherPlayerInfoToWorld" explain="查询他人玩家信息到世界服务器">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="long" name="otherPlayerId" explain="角色id"></field>
+		<field class="byte" name="type" explain="类型： 0角色，1坐骑"></field>
+	</message>
+	
+	<message id="308" type="WS" name="ReqOtherPlayerInfoToGame" explain="查询他人玩家信息到游戏服务器">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="long" name="otherPlayerId" explain="角色id"></field>
+		<field class="byte" name="type" explain="类型： 0角色，1坐骑"></field>
+	</message>
+	
+	<message id="309" type="SW" name="ReqNonageTimeToWorld" explain="请求防沉迷在线时间">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号id"></field>
+	</message>
+	
+	<message id="310" type="SW" name="ReqNonageRegisterToWorld" explain="请求防沉迷注册">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号id"></field>
+		<field class="String" name="name" explain="名字"></field>
+		<field class="String" name="idCard" explain="证件号码"></field>
+	</message>
+	
+	<message id="311" type="SW" name="ReqPlayerCheckOnlineToWorld" explain="检查指定玩家是否在线（发送世界服务器）">
+		<field class="long" name="playerId" explain="玩家本人id"></field>
+		<field class="long" name="othersid" explain="他人ID"></field>
+		<field class="short" name="x" explain="屏幕坐标x"></field>
+		<field class="short" name="y" explain="屏幕坐标y"></field>
+		<field class="byte" name="type" explain="面板类型"></field>
+	</message>
+	
+	<message id="312" type="SW" name="ReqGetPlayerAppearanceInfoToWorld" explain="得到玩家造型信息ToWorld">
+		<field class="long" name="playerId" explain="玩家本人id"></field>
+		<field class="long" name="othersid" explain="他人ID"></field>
+		<field class="byte" name="type" explain="面板类型"></field>
+	</message>
+	
+	<message id="313" type="SW" name="ReqDelPlayerToWorld" explain="删除角色">
+		<field class="long" name="playerId" explain="角色ID"></field>
+		<field class="String" name="userId" explain="用户ID"></field>
+		<field class="int" name="createServer" explain="服务器ID"></field>
+		<field class="int" name="gateId" explain="网关ID"></field>
+		<field class="String" name="optIp" explain="操作IP"></field>
+	</message>
+	
+	<message id="314" type="GS" name="ReqDelPlayerToGame" explain="删除角色ToGame" queue="Local">
+		<field class="long" name="playerId" explain="角色ID"></field>
+		<field class="String" name="userId" explain="用户ID"></field>
+		<field class="int" name="createServer" explain="服务器ID"></field>
+		<field class="int" name="gateId" explain="网关ID"></field>
+		<field class="String" name="optIp" explain="操作IP"></field>
+	</message>
+	
+	<message id="315" type="WG" name="ResDelPlayerStatus" explain="返回给网关端删除角色消息">
+		<field class="long" name="playerId" explain="角色ID"></field>
+		<field class="String" name="userId" explain="用户ID"></field>
+		<field class="int" name="createServer" explain="服务器ID"></field>
+		<field class="byte" name="type" explain="类型： 0人物不存在（或已删），1删除成功，2删除失败（删除角色达到4人），3需要退出帮会才可以删除"></field>
+	</message>
+	
+	<message id="316" type="WS" name="ResPlayerNameInfoToGame" explain="世界服务器通知游戏服务器玩家改名信息">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="byte" name="changeName" explain="是否可以改名"></field>
+		<field class="byte" name="changeUser" explain="是否可以改账号"></field>
+	</message>
+	
+	<message id="318" type="SW" name="ReqChangePlayerNameToWorld" explain="玩家改名，通知世界服务器">
+		<field class="long" name="playerId" explain="角色ID"></field>
+		<field class="String" name="newname" explain="新名字"></field>
+	</message>
+
+	<message id="319" type="WS" name="ResChangePlayerNameToGame" explain="玩家改名，在世界服务器完成后，通知Game服务器">
+		<field class="long" name="playerId" explain="角色ID"></field>
+		<field class="String" name="newname" explain="新名字"></field>
+		<field class="byte" name="result" explain="返回结果，0失败，1成功"></field>
+	</message>
+	
+	<message id="320" type="SW" name="ReqSyncPlayerEventcut" explain="同步世界服务器玩家连斩数量">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="eventcut" explain="角色连斩数量"></field>
+		<field class="long" name="eventcutTime" explain="角色连斩数量时间"></field>
+		<field class="int" name="mapModelId" explain="角色连斩地图"></field>
+		<field class="int" name="monsterModelId" explain="角色连斩怪物"></field>
+		<field class="short" name="mapX" explain="角色连斩地图X"></field>
+		<field class="short" name="mapY" explain="角色连斩地图Y"></field>
+	</message>
+
+	<message id="321" type="SW" name="ReqSyncPlayerSkill" explain="技能升级">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="skill" explain="角色技能"></field>
+		<field class="int" name="upLevel" explain="技能提升的层数"></field>
+		<field class="long" name="skillTime" explain="角色升级时间"></field>
+	</message>
+	
+	<message id="322" type="SW" name="ReqSyncPlayerHorse" explain="同步世界服务器玩家坐骑阶数">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="horseStage" explain="角色坐骑阶数"></field>
+		<field class="int" name="horseLevel" explain="角色坐骑等级"></field>
+		<field class="int" name="horseSkillLevel" explain="角色坐骑技能等级"></field>
+		<field class="long" name="horseTime" explain="角色坐骑阶数时间"></field>
+		<field class="short" name="horseduangu" explain="坐骑锻骨草使用数量"></field>
+	</message>
+	
+	<message id="323" type="SW" name="ReqSyncPlayerLongyuan" explain="同步世界服务器玩家龙元心法阶数">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="longyuanSection" explain="角色龙元心法星图"></field>
+		<field class="int" name="longyuanLevel" explain="角色龙元心法阶数"></field>
+		<field class="long" name="longyuanTime" explain="角色龙元心法时间"></field>
+	</message>
+	
+	<message id="324" type="SW" name="ReqSyncPlayerOrderInfo" explain="同步世界服务器玩家全部信息变动">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="userId" explain="账号"></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="byte" name="sex" explain="角色性别"></field>
+		<field class="int" name="country" explain="角色国家"></field>
+		<field class="int" name="money" explain="角色金币"></field>
+		<field class="long" name="exp" explain="角色经验"></field>
+		<field class="int" name="zhenqi" explain="角色真气"></field>
+		<field class="int" name="avatar" explain="头象ID"></field>
+		<field class="int" name="chapter" explain="当前章节"></field>
+		<field class="int" name="prestige" explain="战场声望"></field>
+		<field class="int" name="kingcitybuffid" explain="王城BUFFid"></field>
+		<field class="int" name="vipid" explain="VIPid"></field>
+		<field class="int" name="level" explain="角色等级"></field>
+		<field class="long" name="levelUpTime" explain="角色升级时间"></field>
+		<field class="int" name="eventcut" explain="角色连斩数量"></field>
+		<field class="long" name="eventcutTime" explain="角色连斩数量时间"></field>
+		<field class="int" name="eventcutMap" explain="角色连斩地图"></field>
+		<field class="int" name="eventcutMonster" explain="角色连斩怪物"></field>
+		<field class="short" name="eventcutX" explain="角色连斩坐标"></field>
+		<field class="short" name="eventcutY" explain="角色连斩坐标"></field>
+		<field class="int" name="skillLevel" explain="角色技能层数"></field>
+		<field class="long" name="skillTime" explain="角色技能层数时间"></field>
+		<field class="int" name="mapId" explain="角色所在地图"></field>
+		<field class="int" name="longyuanSection" explain="角色龙元心法星图"></field>
+		<field class="int" name="longyuanLevel" explain="角色龙元心法阶数"></field>
+		<field class="long" name="longyuanTime" explain="角色龙元心法时间"></field>
+		<list class="PlayerAttributeItem" name="attributes" explain="属性列表"></list>
+		<field class="int" name="fightPower" explain="战斗力"></field>
+		<field class="String" name="equip" explain="装备信息"></field>
+		<field class="String" name="gem" explain="宝石信息"></field>
+		<field class="String" name="skills" explain="技能信息"></field>
+		<field class="int" name="horseStage" explain="角色坐骑阶数"></field>
+		<field class="int" name="horseLevel" explain="角色坐骑等级"></field>
+		<field class="int" name="horseSkillLevel" explain="角色坐骑技能等级"></field>
+		<field class="long" name="horseTime" explain="角色坐骑阶数时间"></field>
+		<field class="String" name="horseEquip" explain="坐骑装备"></field>
+		<field class="String" name="horseSkill" explain="坐骑技能"></field>
+		<field class="String" name="pets" explain="宠物信息"></field>
+		<field class="byte" name="ranklevel" explain="军衔等级"></field>
+		<field class="int" name="rankpoint" explain="军衔点"></field>
+		<field class="int" name="costgold" explain="消耗元宝"></field>
+		<field class="String" name="arrowinfo" explain="弓箭信息" ></field>
+		
+		<field class="int" name="horseweaponlayer" explain="骑兵阶数"></field>
+		<field class="int" name="horseweaponlevel" explain="骑兵等级"></field>
+		<field class="String" name="horseWeaponSkill" explain="骑兵技能列表"></field>
+		<field class="long" name="horseweaponTime" explain="骑兵进阶时间"></field>
+		
+		<field class="int" name="hiddenweaponlayer" explain="暗器阶数"></field>
+		<field class="int" name="hiddenweaponlevel" explain="暗器等级"></field>
+		<field class="String" name="hiddenWeaponSkill" explain="暗器技能列表"></field>
+		<field class="long" name="hiddenweaponTime" explain="暗器进阶时间"></field>
+		
+		<field class="int" name="realmlevel" explain="境界等级" ></field>
+		<field class="int" name="realmintensifylevel" explain="境界强化等级" ></field>
+		
+		<field class="int" name="arenaWin" explain="竞技场连胜次数" ></field>
+		<field class="long" name="arenaWinTime" explain="达到连胜次数的时间"></field>
+		<field class="int" name="medal" explain="勋章" ></field>
+		
+		<field class="short" name="horseduangu" explain="坐骑锻骨草使用数量"></field>
+		
+		<field class="int" name="amuletModel" explain="护身符model"></field>
+		<field class="String" name="amuletSkill" explain="护身符技能列表"></field>
+		<field class="long" name="amuletTime" explain="护身符进阶时间"></field>
+		
+		<field class="long" name="quitTime" explain="退出游戏的时间"></field>
+		
+		<field class="int" name="cloackModel" explain="披风model"></field>
+		<field class="String" name="cloackStone" explain="披风石头列表"></field>
+		<field class="long" name="cloackTime" explain="披风进阶时间"></field>
+	</message>
+
+	<message id="325" type="SW" name="ReqSyncPlayerEquip" explain="同步世界服务器玩家装备">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="byte" name="site" explain="装备部位"></field>
+		<field class="String" name="equip" explain="单件装备"></field>
+	</message>
+
+	<message id="326" type="SW" name="ReqSyncPlayerGem" explain="同步世界服务器玩家宝石">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="byte" name="site" explain="宝石部位"></field>
+		<field class="String" name="gem" explain="单件宝石"></field>
+	</message>
+	
+	<message id="327" type="SW" name="ReqSyncPlayerAttribute" explain="同步世界服务器玩家属性">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="long" name="exp" explain="角色经验"></field>
+		<field class="int" name="zhenqi" explain="角色真气"></field>
+		<field class="int" name="avatar" explain="头象ID"></field>
+		<field class="int" name="chapter" explain="当前章节"></field>
+		<field class="int" name="prestige" explain="战场声望"></field>
+		<field class="String" name="equip" explain="装备信息"></field>
+		<field class="String" name="gem" explain="宝石信息"></field>
+		<field class="String" name="skills" explain="技能信息"></field>
+		<list class="PlayerAttributeItem" name="attributes" explain="属性列表"></list>
+		<field class="int" name="fightPower" explain="战斗力"></field>
+		<field class="String" name="horseEquip" explain="坐骑装备"></field>
+		<field class="String" name="horseSkill" explain="坐骑技能"></field>
+		<field class="String" name="pets" explain="宠物信息"></field>
+		<field class="int" name="kingcitybuffid" explain="王城BUFFid"></field>
+		<field class="int" name="vipid" explain="VIPid"></field>
+		<field class="int" name="costgold" explain="消耗元宝"></field>
+		<field class="String" name="arrowinfo" explain="弓箭信息"></field>
+		<field class="String" name="horseWeaponSkill" explain="骑兵技能列表"></field>
+		<field class="String" name="hiddenWeaponSkill" explain="暗器技能列表"></field>
+		<field class="int" name="realmlevel" explain="境界等级" ></field>
+		<field class="int" name="realmintensifylevel" explain="境界强化等级" ></field>
+		<field class="String" name="amuletSkill" explain="护身符技能列表"></field>
+	</message>
+	
+	<message id="328" type="SW" name="ReqScriptCommonServerToWorld" explain="游戏服务器发起脚本通用类消息(内部)">
+		<field class="int" name="scriptid" explain="脚本编号"></field>
+		<field class="int" name="type" explain="脚本消息类型"></field>
+		<field class="String" name="messageData" explain="脚本消息数据(json字符串)"></field>
+	</message>
+	
+	<message id="329" type="WS" name="ResScriptCommonServerToServer" explain="世界服务器发起脚本通用类消息(内部)">
+		<field class="int" name="scriptid" explain="脚本编号"></field>
+		<field class="int" name="type" explain="脚本消息类型"></field>
+		<field class="String" name="messageData" explain="脚本消息数据(json字符串)"></field>
+	</message>
+	
+	<message id="330" type="SW" name="ReqSyncPlayerPet" explain="同步世界服务器玩家宠物">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="pet" explain="宠物信息"></field>
+	</message>
+	
+	<message id="331" type="SW" name="ReqSyncPlayerPetInfo" explain="同步世界服务器玩家宠物简要信息">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="long" name="petId" explain="宠物id"></field>
+		<field class="int" name="petHeti" explain="宠物合体"></field>
+		<field class="int" name="petLevel" explain="宠物等级"></field>
+		<field class="int" name="petMakeLove" explain="宠物亲热次数"></field>
+	</message>
+	
+	<message id="332" type="SW" name="ReqSyncPlayerRank" explain="同步世界服务器玩家军衔">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="byte" name="ranklevel" explain="军衔等级"></field>
+		<field class="int" name="rankpoint" explain="军衔点"></field>
+	</message>
+	
+	<message id="333" type="SW" name="ReqSyncPlayerArrow" explain="同步世界服务器玩家弓箭">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="String" name="arrowinfo" explain="弓箭信息"></field>
+	</message>
+	
+	<message id="334" type="SW" name="ReqSyncPlayerHorseWeapon" explain="同步世界服务器玩家骑战兵器">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="horseWeaponStage" explain="角色骑战兵器阶数"></field>
+		<field class="int" name="horseWeaponLevel" explain="角色骑战兵器等级"></field>
+		<field class="int" name="horseSkillWeaponLevel" explain="角色骑战兵器技能等级"></field>
+		<field class="long" name="horseWeaponTime" explain="角色骑战兵器阶数时间"></field>
+	</message>
+	
+	<message id="335" type="SW" name="ReqSyncPlayerHiddenWeapon" explain="同步世界服务器玩家暗器">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="hiddenWeaponStage" explain="角色暗器阶数"></field>
+		<field class="int" name="hiddenWeaponLevel" explain="角色暗器等级"></field>
+		<field class="int" name="hiddenSkillWeaponLevel" explain="角色暗器技能等级"></field>
+		<field class="long" name="hiddenWeaponTime" explain="角色暗器阶数时间"></field>
+	</message>
+	
+	<message id="336" type="SW" name="ReqSyncPlayerRealM" explain="同步世界服务器玩家境界">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="realmlevel" explain="境界等级" ></field>
+		<field class="int" name="realmintensifylevel" explain="境界强化等级" ></field>
+		<field class="long" name="realmTime" explain="角色境界阶数时间"></field>
+	</message>
+	
+	<message id="337" type="SW" name="ReqSyncPlayerGoldExpend" explain="玩家消耗元宝">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="reason" explain="消耗类型" ></field>
+		<field class="int" name="gold" explain="消耗元宝数量" ></field>
+	</message>
+	
+	<message id="338" type="SW" name="ReqSyncPlayerArenaTime" explain="玩家竞技场连胜信息">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="arenaWin" explain="竞技场连胜次数" ></field>
+		<field class="long" name="arenaWinTime" explain="达到连胜次数的时间"></field>
+	</message>
+	
+	<message id="339" type="SW" name="ReqSyncPlayerArenaMedal" explain="玩家竞技场勋章信息">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="medal" explain="勋章" ></field>
+	</message>
+	
+	<message id="340" type="SW" name="ReqSyncPlayerHorseDuangu" explain="断骨草信息">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="horseduangu" explain="断骨草" ></field>
+	</message>
+	
+</messages>

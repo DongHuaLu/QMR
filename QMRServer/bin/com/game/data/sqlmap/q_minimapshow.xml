@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_minimapshow"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_minimapshowBean" >
+	<result column="q_mapid" property="q_mapid" jdbcType="INTEGER" />
+	<result column="q_monster_coord" property="q_monster_coord" jdbcType="VARCHAR" />
+	<result column="q_min_lv" property="q_min_lv" jdbcType="INTEGER" />
+	<result column="q_max_lv" property="q_max_lv" jdbcType="INTEGER" />
+	<result column="q_movepoint" property="q_movepoint" jdbcType="VARCHAR" />
+	<result column="q_noappear" property="q_noappear" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_minimapshow
+  </select>
+</mapper> 

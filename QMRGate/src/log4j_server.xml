@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+	<appender name="FileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/QMRgate.log" />
+		<param name="Threshold" value="ALL" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss:SSS} %p][%c{1}]%m%n" />
+		</layout>
+	</appender>
+	<!-- 文件输出用异步 -->
+	<appender name="AsyncFileAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="FileAppender" />
+	</appender>
+
+	<!-- 流量统计日志-->
+	<appender name="FlowLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/flow/QMRGateFlow.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncFlowLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="FlowLogFileAppender" />
+	</appender>
+	
+	<!-- 心跳统计日志-->
+	<appender name="HeartLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/session/QMRGateHeart.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncHeartLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="HeartLogFileAppender" />
+	</appender>
+
+	<!-- 内网流量统计日志-->
+	<appender name="InnerFlowLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/flow/QMRGateInnerFlow.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncInnerFlowLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="InnerFlowLogFileAppender" />
+	</appender>
+
+
+	<!-- 消息统计日志-->
+	<appender name="MessageLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/message/QMRGateMessage.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncMessageLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="MessageLogFileAppender" />
+	</appender>
+
+	<!-- 通信关闭日志-->
+	<appender name="SessionCloseLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/session/QMRGateSessionClose.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncSessionCloseLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="SessionCloseLogFileAppender" />
+	</appender>
+	
+	<!-- 通信关闭数量日志-->
+	<appender name="SessionCloseNumLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/session/QMRGateSessionCloseNum.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncSessionCloseNumLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="SessionCloseNumLogFileAppender" />
+	</appender>
+
+	<!-- 内网通信关闭日志-->
+	<appender name="InnerSessionCloseLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/session/QMRGateInnerSessionClose.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncInnerSessionCloseLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="InnerSessionCloseLogFileAppender" />
+	</appender>
+
+	<!-- 通信创建日志-->
+	<appender name="SessionCreateLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/session/QMRGateSessionCreate.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncSessionCreateLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="SessionCreateLogFileAppender" />
+	</appender>
+
+	<!-- 防御统计日志-->
+	<appender name="DefenseLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/defense/QMRGateDefense.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncDefenseLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="DefenseLogFileAppender" />
+	</appender>
+	<!--		addLogModel(RegLog.class);//用户在游戏内注册时间日志-->
+	<appender name="RegLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/dblog/RegLog.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncRegLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="RegLogAppender" />
+	</appender>
+	<!--		addLogModel(ServerStartAndStopLog.class);//服务器维护日志-->
+	<appender name="ServerStartAndStopLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/dblog/ServerStartAndStopLog.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncServerStartAndStopLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="ServerStartAndStopLogAppender" />
+	</appender>
+	<appender name="DbConsumingLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/dbconsuming/dbconsuming.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"/>
+		</layout>
+	</appender>
+	<appender name="AsyncDbConsumingLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="DbConsumingLogAppender" />
+	</appender>
+
+	<!--		addLogModel(RegLog.class);//用户在游戏内注册时间日志-->
+	<logger name="RegLog" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncRegLogAppender"/>
+	</logger>
+	<logger name="DBLOGCONSUMING" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncDbConsumingLogAppender"/>
+	</logger>
+	
+	
+	<!--		addLogModel(ServerStartAndStopLog.class);//服务器维护日志-->
+	<logger name="ServerStartAndStopLog" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncServerStartAndStopLogAppender"/>
+	</logger>
+
+	<logger name="GATEFLOW" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncFlowLogAppender"/>
+	</logger>
+
+	<logger name="GATEINNERFLOW" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncInnerFlowLogAppender"/>
+	</logger>
+
+	<logger name="GATEMESSAGE" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncMessageLogAppender"/>
+	</logger>
+
+	<logger name="GATESESSIONCREATE" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncSessionCreateLogAppender"/>
+	</logger>
+
+	<logger name="GATESESSIONCLOSE" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncSessionCloseLogAppender"/>
+	</logger>
+	
+	<logger name="GATESESSIONCLOSENUM" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncSessionCloseNumLogAppender"/>
+	</logger>
+	
+	<logger name="HEART" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncHeartLogAppender"/>
+	</logger>
+
+	<logger name="INNERSESSIONCLOSE" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncInnerSessionCloseLogAppender"/>
+	</logger>
+
+	<logger name="com.game.mina.code.ServerProtocolDecoder" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncDefenseLogAppender"/>
+	</logger>
+
+	<logger name="java.sql">
+		<level value="error" />
+	</logger>
+	<logger name="org.quartz">
+		<level value="error" />
+	</logger>
+	<logger name="com.ibatis">
+		<level value="error" />
+	</logger>
+	<logger name="org.apache.mina">
+		<level value="error" />
+	</logger>
+	<logger name="snaq">
+		<level value="error" />
+	</logger>
+	<root>
+		<level value="info" />
+		<appender-ref ref="AsyncFileAppender" />
+	</root>
+</log4j:configuration>

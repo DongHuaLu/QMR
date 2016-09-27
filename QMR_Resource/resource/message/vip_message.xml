@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.vip" id="147">
+
+	<!-- bean定义 -->
+	<bean name="VipInfo" explain="玩家VIP信息">
+		<field class="int" name="vipId" explain="VIPid 0表示不是VIP"></field>
+		<field class="int" name="remain" explain="VIP剩余持续时间 单位:秒 "></field>
+		<field class="int" name="status" explain="是否可领取，0-不可领取， 1-可领取"></field>
+		<field class="byte" name="showad" explain="是否展示 至尊VIP的广告 0-不展示 1-展示"></field>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResPlayerVIPInfo" explain="返回玩家VIP信息">
+		<field class="VipInfo" name="vipinfo" explain="玩家VIP信息"></field>
+	</message>
+	
+	<message id="102" type="SC" name="ResUseVIPCardResult" explain="返回VIP卡使用结果">
+		<field class="byte" name="usesuccess" explain="VIP卡使用是否成功"></field>
+		<field class="VipInfo" name="vipinfo" explain="玩家VIP信息"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResVIPAnnounce" explain="通知客户端广播成为VIP公告">
+		<field class="String" name="playername" explain="玩家角色名"></field>
+		<field class="int" name="vipid" explain="玩家的vipid"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResVIPExpired" explain="通知客户端VIP过期">
+	
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqReceiveVIPReward" explain="前端请求领取VIP礼包">
+	
+	</message>
+	
+	<message id="202" type="CS" name="ReqPlayerVIPInfo" explain="前端请求玩家VIP信息">
+	
+	</message>	
+	
+	<message id="203" type="CS" name="ReqReceiveVIPTopReward" explain="前端请求领取至尊VIP奖励">
+	
+	</message>	
+	
+</messages>
+
+
+
+
+
+
+
+
+
+

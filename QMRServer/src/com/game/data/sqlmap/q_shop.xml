@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_shop"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_shopBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_model_id" property="q_model_id" jdbcType="INTEGER" />
+	<result column="q_shop_type" property="q_shop_type" jdbcType="INTEGER" />
+	<result column="q_shop_name" property="q_shop_name" jdbcType="VARCHAR" />
+	<result column="q_page" property="q_page" jdbcType="INTEGER" />
+	<result column="q_page_name" property="q_page_name" jdbcType="VARCHAR" />
+	<result column="q_page_sex" property="q_page_sex" jdbcType="INTEGER" />
+	<result column="q_sell" property="q_sell" jdbcType="INTEGER" />
+	<result column="q_strengthen" property="q_strengthen" jdbcType="INTEGER" />
+	<result column="q_append" property="q_append" jdbcType="VARCHAR" />
+	<result column="q_losttime" property="q_losttime" jdbcType="VARCHAR" />
+	<result column="q_duration" property="q_duration" jdbcType="INTEGER" />
+	<result column="q_buy_bind" property="q_buy_bind" jdbcType="INTEGER" />
+	<result column="q_money_type" property="q_money_type" jdbcType="INTEGER" />
+	<result column="q_coin" property="q_coin" jdbcType="INTEGER" />
+	<result column="q_gold" property="q_gold" jdbcType="INTEGER" />
+	<result column="q_bindgold" property="q_bindgold" jdbcType="INTEGER" />
+	<result column="q_show_coin" property="q_show_coin" jdbcType="INTEGER" />
+	<result column="q_show_gold" property="q_show_gold" jdbcType="INTEGER" />
+	<result column="q_show_bindgold" property="q_show_bindgold" jdbcType="INTEGER" />
+	<result column="q_describe" property="q_describe" jdbcType="LONGVARCHAR" />
+	<result column="q_hot" property="q_hot" jdbcType="INTEGER" />
+	<result column="q_rack" property="q_rack" jdbcType="VARCHAR" />
+	<result column="q_show_level" property="q_show_level" jdbcType="INTEGER" />
+	<result column="q_show_cost" property="q_show_cost" jdbcType="INTEGER" />
+	<result column="q_sale_rate" property="q_sale_rate" jdbcType="INTEGER" />
+	<result column="q_discount_time" property="q_discount_time" jdbcType="VARCHAR" />
+	<result column="q_index" property="q_index" jdbcType="INTEGER" />
+	<result column="q_openserver_discount" property="q_openserver_discount" jdbcType="VARCHAR" />
+	<result column="q_openserver_rack" property="q_openserver_rack" jdbcType="VARCHAR" />
+	<result column="q_service_area" property="q_service_area" jdbcType="VARCHAR" />
+	<result column="q_shop_limit" property="q_shop_limit" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_shop
+  </select>
+</mapper> 

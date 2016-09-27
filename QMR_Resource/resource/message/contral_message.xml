@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.contral" id="167">
+	<bean name="StateInfo" explain="功能状态">
+		<field class="int" name="contral" explain="功能ID,对应ContralEnum"></field>
+		<field class="int" name="state" explain="0:关闭 1:开启"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResContralCloseList" explain="功能状态列表">
+		<list class="StateInfo" name="contralList" explain="功能状态列表"></list>
+	</message>
+</messages>

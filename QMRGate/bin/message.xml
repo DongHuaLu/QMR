@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages>
+<message handler="com.game.login.handler.ReqLoginHandler" id="100201" message="com.game.login.message.ReqLoginMessage" name="ReqLogin"/>
+<message handler="com.game.login.handler.ReqSelectCharacterHandler" id="100202" message="com.game.login.message.ReqSelectCharacterMessage" name="ReqSelectCharacter"/>
+<message handler="com.game.login.handler.ReqCreateCharacterHandler" id="100203" message="com.game.login.message.ReqCreateCharacterMessage" name="ReqCreateCharacter"/>
+<message handler="com.game.login.handler.ResLoginSuccessToGateHandler" id="100302" message="com.game.login.message.ResLoginSuccessToGateMessage" name="ResLoginSuccessToGate"/>
+<message handler="com.game.server.handler.ReqRegisterGateHandler" id="300301" message="com.game.server.message.ReqRegisterGateMessage" name="ReqRegisterGate"/>
+<message handler="com.game.server.handler.ResRegisterWorldForGateHandler" id="300306" message="com.game.server.message.ResRegisterWorldForGateMessage" name="ResRegisterWorldForGate"/>
+<message handler="com.game.login.handler.ReqHeartHandler" id="100206" message="com.game.login.message.ReqHeartMessage" name="ReqHeart"/>
+<message handler="com.game.map.handler.ReqLoadFinishForChangeMapHandler" id="101207" message="com.game.map.message.ReqLoadFinishForChangeMapMessage" name="ReqLoadFinishForChangeMap"/>
+<message handler="com.game.login.handler.ResRemoveCharacterToGateHandler" id="100306" message="com.game.login.message.ResRemoveCharacterToGateMessage" name="ResRemoveCharacterToGate"/>
+<message handler="com.game.login.handler.ReqQuitHandler" id="100205" message="com.game.login.message.ReqQuitMessage" name="ReqQuit"/>
+<message handler="com.game.login.handler.ResCreateCharacterFailedHandler" id="100309" message="com.game.login.message.ResCreateCharacterFailedMessage" name="ResCreateCharacterFailed"/>
+<message handler="com.game.login.handler.ReqDeleteHandler" id="100207" message="com.game.login.message.ReqDeleteMessage" name="ReqDelete"/>
+<message handler="com.game.login.handler.ReqLoginForPlatformHandler" id="100208" message="com.game.login.message.ReqLoginForPlatformMessage" name="ReqLoginForPlatform"/>
+<message handler="com.game.login.handler.ResLoginCharacterFailedHandler" id="100311" message="com.game.login.message.ResLoginCharacterFailedMessage" name="ResLoginCharacterFailed"/>
+<message handler="com.game.login.handler.ResReloginCharacterHandler" id="100312" message="com.game.login.message.ResReloginCharacterMessage" name="ResReloginCharacter"/>
+<message handler="com.game.player.handler.ResDelPlayerStatusHandler" id="103315" message="com.game.player.message.ResDelPlayerStatusMessage" name="ResDelPlayerStatus"/>
+<message handler="com.game.login.handler.ReqLoginForNoUserHandler" id="100209" message="com.game.login.message.ReqLoginForNoUserMessage" name="ReqLoginForNoUser"/>
+<message handler="com.game.server.handler.ReqCloseForGateHandler" id="300308" message="com.game.server.message.ReqCloseForGateMessage" name="ReqCloseForGate"/>
+<message handler="com.game.login.handler.ReqKickPlayerHandler" id="100313" message="com.game.login.message.ReqKickPlayerMessage" name="ReqKickPlayer"/>
+<message handler="com.game.gm.handler.GmCommandToGateHandler" id="200302" message="com.game.gm.message.GmCommandToGateMessage" name="GmCommandToGate"/>
+<message handler="com.game.login.handler.ResRolesCreateReportToGateHandler" id="100314" message="com.game.login.message.ResRolesCreateReportToGateMessage" name="ResRolesCreateReportToGate"/>
+<message handler="com.game.login.handler.ReqJustCreateCharacterHandler" id="100211" message="com.game.login.message.ReqJustCreateCharacterMessage" name="ReqJustCreateCharacter"/>
+<message handler="com.game.publogin.handler.ReqQuitForPublicHandler" id="204201" message="com.game.publogin.message.ReqQuitForPublicMessage" name="ReqQuitForPublic"/>
+<message handler="com.game.publogin.handler.ReqLoginForPublicHandler" id="204202" message="com.game.publogin.message.ReqLoginForPublicMessage" name="ReqLoginForPublic"/>
+<message handler="com.game.publogin.handler.ResLoginSuccessToPublicGateHandler" id="204302" message="com.game.publogin.message.ResLoginSuccessToPublicGateMessage" name="ResLoginSuccessToPublicGate"/>
+<message handler="com.game.publogin.handler.ResRemoveCharacterToPublicGateHandler" id="204305" message="com.game.publogin.message.ResRemoveCharacterToPublicGateMessage" name="ResRemoveCharacterToPublicGate"/>
+<message handler="com.game.publogin.handler.ResLoginCharacterFailedForPublicHandler" id="204307" message="com.game.publogin.message.ResLoginCharacterFailedForPublicMessage" name="ResLoginCharacterFailedForPublic"/>
+<message handler="com.game.publogin.handler.ReqKickPlayerForPublicHandler" id="204308" message="com.game.publogin.message.ReqKickPlayerForPublicMessage" name="ReqKickPlayerForPublic"/>
+</messages>

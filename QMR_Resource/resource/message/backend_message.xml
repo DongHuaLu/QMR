@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.backend" id="135">
+	
+	<!-- 服务器内部消息 世界服务器到游戏服务器 -->
+	<message id="301" type="WS" name="ReqPlayerMoneyGoldToGame" explain="向游戏服请求玩家铜币元宝实时信息">
+		<field class="long" name="personId" explain="角色Id"></field>
+	</message>
+	
+	<message id="302" type="WS" name="ReqPlayerInfoToGame" explain="向游戏服请求玩家实时详细信息">
+		<field class="long" name="personId" explain="角色Id"></field>
+	</message>
+	
+	<!-- 服务器内部消息 游戏服务器到世界服务器 -->
+	<message id="303" type="SW" name="ResPlayerMoneyGoldToWorld" explain="向世界服返回玩家实时铜币元宝信息">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int"  name="money" explain="铜币"></field>
+		<field class="int"  name="gold" explain="元宝"></field>
+		<field class="int"  name="bindgold" explain="绑定元宝"></field>
+		<field class="int"  name="tmpgold" explain="临时元宝"></field>
+	</message>
+	
+	<message id="304" type="SW" name="ResPlayerInfoToWorld" explain="向世界服返回玩家实时详细信息">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="String" name="name" explain="角色名字"></field>
+		<field class="int" name="sex" explain="角色性别 1-男 2-女"></field>
+		<field class="int" name="level" explain="角色等级"></field>
+		<field class="int" name="mapId" explain="角色所在地图"></field>
+		<field class="short" name="x" explain="角色所在X"></field>
+		<field class="short" name="y" explain="角色所在Y"></field>
+		<field class="byte" name="skill" explain="角色武功境界"></field>
+		<field class="int" name="state" explain="角色状态"></field>
+		<field class="int" name="pkState" explain="角色PK状态"></field>
+		<field class="long" name="exp" explain="角色经验"></field>
+		<field class="int" name="zhenqi" explain="角色真气"></field>
+		<field class="int" name="prestige" explain="角色战场声望"></field>
+		<field class="short" name="cellnum" explain="背包格子数"></field>
+		<field class="short" name="storecellnum" explain="仓库格子数"></field>
+		<field class="int" name="money" explain="铜币"></field>
+		<field class="int" name="gold" explain="元宝"></field>
+		<field class="int" name="bindgold" explain="绑定元宝"></field>
+		<field class="int"  name="tmpgold" explain="临时元宝"></field>
+		<field class="byte" name="nonage" explain="玩家防沉迷状态 0-非防沉迷 1-正常 2-疲劳 3-不健康"></field>
+		<field class="short" name="horseid" explain="角色当前坐骑"></field>
+		<field class="short" name="tophorseid" explain="角色最高坐骑"></field>
+		<list  class="com.game.gem.bean.PosGemInfo" name="posallgeminfo" explain="装备部位全部宝石信息"></list>
+		<list  class="com.game.player.bean.PlayerAttributeItem" name="attributes" explain="属性列表"></list>
+		<list  class="com.game.equip.bean.EquipInfo" name="equips" explain="装备列表信息"></list>
+		<list  class="com.game.backpack.bean.ItemInfo" name="items" explain="物品信息列表"></list>
+	</message>
+	
+	<message id="305" type="WS" name="ReqJinYan" explain="禁言玩家">
+		<field class="long" name="playerId" explain="角色id"></field>
+		<field class="int" name="createServerId" explain="服务器编号"></field>
+		<field class="String" name="userId" explain="用户id"></field>
+		<field class="long" name="startTime" explain="开始禁言时间"></field>
+		<field class="long" name="times" explain="禁言时长"></field>
+	</message>
+	
+	<message id="306" type="WS" name="ReqChangePlayerCurrency" explain="向游戏服务器请求修改玩家的现金(铜币或者绑定元宝)">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="byte" name="type" explain="要修改的货币类型(1-铜币 2-绑定元宝)"></field>
+		<field class="int"  name="num" explain="要修改的数量(可正负)"></field>
+	</message>
+	
+</messages>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="registrar"> 
+	<resultMap id="registrar" type="com.game.db.bean.RegistrarBean" >
+	    <id column="userid" property="userid" jdbcType="BIGINT" />
+	    <result column="lastregistrartime" property="lastregistrartime" jdbcType="BIGINT" />
+	    <result column="registrared" property="registrared" jdbcType="INTEGER"></result>
+	    <result column="firstrechargeed" property="firstrechargeed" jdbcType="INTEGER"></result>
+	    <result column="params" property="params" jdbcType="LONGVARCHAR"></result>
+  	</resultMap>
+  	
+  	<select id="selectbyuserid" parameterType="Long" resultMap="registrar">
+  		SELECT r.userid, r.lastregistrartime, r.registrared, r.firstrechargeed FROM registrar r WHERE r.userid=#{userid, jdbcType=BIGINT} 
+  	</select>
+	
+	<select id="selectparamsbyuserid" parameterType="Long" resultMap="registrar">
+		SELECT r.userid, r.params FROM registrar r WHERE r.userid=#{userid, jdbcType=BIGINT}
+	</select>
+	  	
+  	<update id="updateregistrarbyuserid" parameterType="com.game.db.bean.RegistrarBean">
+  		UPDATE registrar 
+  		SET lastregistrartime=#{lastregistrartime, jdbcType=BIGINT}, registrared=1
+  		WHERE userid=#{userid, jdbcType=BIGINT}
+  	</update>
+  	
+  	<update id="updaterechargebyuserid" parameterType="Long">
+  		UPDATE registrar SET firstrechargeed=1
+  		WHERE userid=#{userid, jdbcType=BIGINT}
+  	</update>
+  	
+  	<update id="updateregistrarparams" parameterType="com.game.db.bean.RegistrarBean">
+  		UPDATE registrar 
+  		SET params=#{params, jdbcType=LONGVARCHAR}
+  		WHERE userid=#{userid, jdbcType=BIGINT} 
+  	</update>
+  	
+  	<insert id="insert" parameterType="com.game.db.bean.RegistrarBean">
+  		INSERT INTO registrar(userid, lastregistrartime, registrared, firstrechargeed) VALUES( #{userid, jdbcType=BIGINT}, #{lastregistrartime, jdbcType=BIGINT}, 0, 0)
+  	</insert>
+</mapper>

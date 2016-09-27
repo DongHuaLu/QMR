@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_item"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_itemBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_type" property="q_type" jdbcType="INTEGER" />
+	<result column="q_sex" property="q_sex" jdbcType="INTEGER" />
+	<result column="q_bind" property="q_bind" jdbcType="INTEGER" />
+	<result column="q_max" property="q_max" jdbcType="INTEGER" />
+	<result column="q_buy_price" property="q_buy_price" jdbcType="INTEGER" />
+	<result column="q_sell" property="q_sell" jdbcType="INTEGER" />
+	<result column="q_sell_price" property="q_sell_price" jdbcType="INTEGER" />
+	<result column="q_sell_confirm" property="q_sell_confirm" jdbcType="INTEGER" />
+	<result column="q_drop" property="q_drop" jdbcType="INTEGER" />
+	<result column="q_drop_confirm" property="q_drop_confirm" jdbcType="INTEGER" />
+	<result column="q_shortcut" property="q_shortcut" jdbcType="INTEGER" />
+	<result column="q_kind" property="q_kind" jdbcType="INTEGER" />
+	<result column="q_level" property="q_level" jdbcType="INTEGER" />
+	<result column="q_max_strengthen" property="q_max_strengthen" jdbcType="INTEGER" />
+	<result column="q_max_inlay" property="q_max_inlay" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_defence" property="q_defence" jdbcType="INTEGER" />
+	<result column="q_crit" property="q_crit" jdbcType="INTEGER" />
+	<result column="q_dodge" property="q_dodge" jdbcType="INTEGER" />
+	<result column="q_max_hp" property="q_max_hp" jdbcType="INTEGER" />
+	<result column="q_max_mp" property="q_max_mp" jdbcType="INTEGER" />
+	<result column="q_max_sp" property="q_max_sp" jdbcType="INTEGER" />
+	<result column="q_attackspeed" property="q_attackspeed" jdbcType="INTEGER" />
+	<result column="q_speed" property="q_speed" jdbcType="INTEGER" />
+	<result column="q_luck" property="q_luck" jdbcType="INTEGER" />
+	<result column="q_buff" property="q_buff" jdbcType="VARCHAR" />
+	<result column="q_cooldown" property="q_cooldown" jdbcType="INTEGER" />
+	<result column="q_cooldown_level" property="q_cooldown_level" jdbcType="INTEGER" />
+	<result column="q_cooldown_type" property="q_cooldown_type" jdbcType="INTEGER" />
+	<result column="q_transfer" property="q_transfer" jdbcType="INTEGER" />
+	<result column="q_transfer_map" property="q_transfer_map" jdbcType="INTEGER" />
+	<result column="q_transfer_position" property="q_transfer_position" jdbcType="VARCHAR" />
+	<result column="q_task" property="q_task" jdbcType="INTEGER" />
+	<result column="q_script" property="q_script" jdbcType="INTEGER" />
+	<result column="q_skill" property="q_skill" jdbcType="INTEGER" />
+	<result column="q_gift" property="q_gift" jdbcType="INTEGER" />
+	<result column="q_ui" property="q_ui" jdbcType="INTEGER" />
+	<result column="q_max_create" property="q_max_create" jdbcType="VARCHAR" />
+	<result column="q_notice" property="q_notice" jdbcType="INTEGER" />
+	<result column="q_log" property="q_log" jdbcType="INTEGER" />
+	<result column="q_default" property="q_default" jdbcType="INTEGER" />
+	<result column="q_append" property="q_append" jdbcType="VARCHAR" />
+	<result column="q_describe" property="q_describe" jdbcType="LONGVARCHAR" />
+	<result column="q_tiny_icon" property="q_tiny_icon" jdbcType="INTEGER" />
+	<result column="q_equip_resource" property="q_equip_resource" jdbcType="VARCHAR" />
+	<result column="q_drop_music" property="q_drop_music" jdbcType="VARCHAR" />
+	<result column="q_use_music" property="q_use_music" jdbcType="VARCHAR" />
+	<result column="q_unuse_music" property="q_unuse_music" jdbcType="VARCHAR" />
+	<result column="q_effict_type" property="q_effict_type" jdbcType="VARCHAR" />
+	<result column="q_auto_use" property="q_auto_use" jdbcType="INTEGER" />
+	<result column="q_whether_batch" property="q_whether_batch" jdbcType="INTEGER" />
+	<result column="q_save_warehouse" property="q_save_warehouse" jdbcType="INTEGER" />
+	<result column="q_tips_effect" property="q_tips_effect" jdbcType="INTEGER" />
+	<result column="q_item_limit" property="q_item_limit" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_item
+  </select>
+</mapper> 

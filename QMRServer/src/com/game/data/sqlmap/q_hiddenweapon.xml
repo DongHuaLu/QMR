@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_hiddenweapon"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_hiddenweaponBean" >
+	<result column="q_rank" property="q_rank" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_color" property="q_color" jdbcType="VARCHAR" />
+	<result column="q_res_panelid" property="q_res_panelid" jdbcType="INTEGER" />
+	<result column="q_skillid" property="q_skillid" jdbcType="INTEGER" />
+	<result column="q_potential" property="q_potential" jdbcType="INTEGER" />
+	<result column="q_need_level" property="q_need_level" jdbcType="INTEGER" />
+	<result column="q_need_money" property="q_need_money" jdbcType="INTEGER" />
+	<result column="q_need_modelid" property="q_need_modelid" jdbcType="INTEGER" />
+	<result column="q_item_num" property="q_item_num" jdbcType="INTEGER" />
+	<result column="q_up_num_min" property="q_up_num_min" jdbcType="INTEGER" />
+	<result column="q_up_num_max" property="q_up_num_max" jdbcType="INTEGER" />
+	<result column="q_up_probability" property="q_up_probability" jdbcType="INTEGER" />
+	<result column="q_up_clientshow_rate" property="q_up_clientshow_rate" jdbcType="VARCHAR" />
+	<result column="q_blessnum_min" property="q_blessnum_min" jdbcType="INTEGER" />
+	<result column="q_blessnum_max" property="q_blessnum_max" jdbcType="INTEGER" />
+	<result column="q_blessnum_limit" property="q_blessnum_limit" jdbcType="INTEGER" />
+	<result column="q_normal_rnd" property="q_normal_rnd" jdbcType="VARCHAR" />
+	<result column="q_small_crit_rnd" property="q_small_crit_rnd" jdbcType="VARCHAR" />
+	<result column="q_large_crit_rnd" property="q_large_crit_rnd" jdbcType="VARCHAR" />
+	<result column="q_up_fail_addexp" property="q_up_fail_addexp" jdbcType="INTEGER" />
+	<result column="q_is_announce" property="q_is_announce" jdbcType="INTEGER" />
+	<result column="q_max_level" property="q_max_level" jdbcType="INTEGER" />
+	<result column="q_open_grid" property="q_open_grid" jdbcType="INTEGER" />
+	<result column="q_throw_times" property="q_throw_times" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_hiddenweapon
+  </select>
+</mapper> 

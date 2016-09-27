@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.protect" id="164">
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResAskedPanelToClient" explain="通知前端弹出询问面板">
+		<field class="byte" name="type" explain="面板类型：1设置密码前，2输入密码框"></field>
+	</message>
+
+	<message id="102" type="SC" name="ResPointToClient" explain="错误通知">
+		<field class="byte" name="type" explain="1注册时验证码错误，2解锁时密码错误，3注册成功，4解锁成功，5修改密码成功，6找回密码发送邮件成功,7已经设置过密码"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResVerificationCoolingToGame" explain="验证码冷却时间发送">
+		<field class="int" name="time" explain="验证码冷却时间"></field>
+	</message>
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqSelectIsSetToGame" explain="取消设置">
+	</message>
+
+	<message id="202" type="CS" name="ReqPasswordSetToGame" explain="新设置密码">
+		<field class="String" name="password" explain="密码"></field>
+		<field class="String" name="mail" explain="邮箱"></field>
+		<field class="String" name="verification" explain="验证码"></field>
+	</message>
+	
+	
+	<message id="203" type="CS" name="ReqVerificationToGame" explain="请求服务器，获得验证码">
+		<field class="String" name="mail" explain="邮箱"></field>
+	</message>
+
+
+	<message id="204" type="CS" name="ReqPasswordUnlockToGame" explain="输入密码解锁">
+		<field class="String" name="password" explain="密码"></field>
+	</message>
+
+	<message id="205" type="CS" name="ReqModifyPasswordToGame" explain="修改密码">
+		<field class="String" name="newpassword" explain="新密码"></field>
+		<field class="String" name="oldpassword" explain="原密码"></field>
+	</message>
+	
+	<message id="206" type="CS" name="ReqForgetPasswordToGame" explain="忘记密码">
+	</message>
+	
+	
+	
+	
+	<message id="301" type="WS" name="ReqBackstageModifyToGame" explain="后台修改2级密码或邮件" >
+		<field class="String" name="userid" explain="用户id" ></field>
+		<field class="String" name="password" explain="密码"></field>
+		<field class="String" name="mail" explain="邮箱"></field>
+	</message>
+	
+	
+</messages>

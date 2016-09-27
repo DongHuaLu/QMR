@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.gm" id="200">
+	<!-- bean定义 -->
+		
+	<!-- 服务器发送消息 -->
+	<message id="101" type="GC" name="GmLevel" explain="GM等级">
+		<field class="int" name="level" explain="Gm等级"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	
+	<message id="201" type="CS" name="GmCommand" explain="GM指令">
+		<field class="String" name="command" explain="Gm指令"></field>
+	</message>
+	
+	<!-- 服务器内部消息  -->
+	<message id="301" type="SW" name="GmCommandToWorld" explain="通知世界服务器GM指令">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="String" name="command" explain="Gm指令"></field>
+	</message>
+	<message id="302" type="SG" name="GmCommandToGate" explain="通知网关服务器GM指令">
+		<field class="long" name="playerId" explain="角色Id"></field>
+		<field class="String" name="command" explain="Gm指令"></field>
+	</message>
+	<message id="303" type="WS" name="GmCommandToServer" explain="通知SERVER服GM指令">
+		<field class="String" name="action" explain="事务Id"></field>
+		<field class="String" name="command" explain="Gm指令"></field>
+		<field class="String" name="httpresult" explain="执行回执接口"></field>
+	</message>
+</messages>

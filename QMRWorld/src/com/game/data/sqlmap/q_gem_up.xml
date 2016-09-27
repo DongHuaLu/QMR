@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_gem_up"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_gem_upBean" >
+	<result column="q_id" property="q_id" jdbcType="VARCHAR" />
+	<result column="q_gem_name" property="q_gem_name" jdbcType="VARCHAR" />
+	<result column="q_gem_type" property="q_gem_type" jdbcType="INTEGER" />
+	<result column="q_gem_level" property="q_gem_level" jdbcType="INTEGER" />
+	<result column="q_is_up" property="q_is_up" jdbcType="INTEGER" />
+	<result column="q_gem_rgb" property="q_gem_rgb" jdbcType="VARCHAR" />
+	<result column="q_gem_swf" property="q_gem_swf" jdbcType="INTEGER" />
+	<result column="q_gem_tips_swf" property="q_gem_tips_swf" jdbcType="INTEGER" />
+	<result column="q_consumable_item" property="q_consumable_item" jdbcType="VARCHAR" />
+	<result column="q_consumable_zhenqi" property="q_consumable_zhenqi" jdbcType="INTEGER" />
+	<result column="q_need_up_exp" property="q_need_up_exp" jdbcType="INTEGER" />
+	<result column="q_normal_rnd" property="q_normal_rnd" jdbcType="INTEGER" />
+	<result column="q_normal_exp" property="q_normal_exp" jdbcType="INTEGER" />
+	<result column="q_crit_rnd" property="q_crit_rnd" jdbcType="INTEGER" />
+	<result column="q_crit_exp" property="q_crit_exp" jdbcType="INTEGER" />
+	<result column="q_max_crit_rnd" property="q_max_crit_rnd" jdbcType="INTEGER" />
+	<result column="q_max_crit_exp" property="q_max_crit_exp" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_defence" property="q_defence" jdbcType="INTEGER" />
+	<result column="q_dodge" property="q_dodge" jdbcType="INTEGER" />
+	<result column="q_crit" property="q_crit" jdbcType="INTEGER" />
+	<result column="q_maxhp" property="q_maxhp" jdbcType="INTEGER" />
+	<result column="q_maxmp" property="q_maxmp" jdbcType="INTEGER" />
+	<result column="q_maxsp" property="q_maxsp" jdbcType="INTEGER" />
+	<result column="q_attackspeed" property="q_attackspeed" jdbcType="INTEGER" />
+	<result column="q_speed" property="q_speed" jdbcType="INTEGER" />
+	<result column="q_luck" property="q_luck" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_gem_up
+  </select>
+</mapper> 

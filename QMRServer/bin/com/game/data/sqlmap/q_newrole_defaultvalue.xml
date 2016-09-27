@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_newrole_defaultvalue"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_newrole_defaultvalueBean" >
+	<result column="q_sex" property="q_sex" jdbcType="INTEGER" />
+	<result column="q_skills" property="q_skills" jdbcType="LONGVARCHAR" />
+	<result column="q_body1" property="q_body1" jdbcType="LONGVARCHAR" />
+	<result column="q_body2" property="q_body2" jdbcType="LONGVARCHAR" />
+	<result column="q_body3" property="q_body3" jdbcType="LONGVARCHAR" />
+	<result column="q_body4" property="q_body4" jdbcType="LONGVARCHAR" />
+	<result column="q_body5" property="q_body5" jdbcType="LONGVARCHAR" />
+	<result column="q_body6" property="q_body6" jdbcType="LONGVARCHAR" />
+	<result column="q_body7" property="q_body7" jdbcType="LONGVARCHAR" />
+	<result column="q_body8" property="q_body8" jdbcType="LONGVARCHAR" />
+	<result column="q_body9" property="q_body9" jdbcType="LONGVARCHAR" />
+	<result column="q_body10" property="q_body10" jdbcType="LONGVARCHAR" />
+	<result column="q_initlevel" property="q_initlevel" jdbcType="INTEGER" />
+	<result column="q_bageitems" property="q_bageitems" jdbcType="LONGVARCHAR" />
+	<result column="q_short_cut" property="q_short_cut" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_newrole_defaultvalue
+  </select>
+</mapper> 

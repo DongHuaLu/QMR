@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+	<appender name="FileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/QMRworld.log" />
+		<param name="Threshold" value="ALL" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss:SSS} %p][%c{1}]%m%n" />
+		</layout>
+	</appender>
+	<!-- 文件输出用异步 -->
+	<appender name="AsyncFileAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="FileAppender" />
+	</appender>
+
+	<appender name="ChatLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/chat/QMRChat.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}]%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncChatLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="ChatLogFileAppender" />
+	</appender>
+
+
+	<appender name="SpirittreeLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/Spirittree/QMRSpirittree.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}]%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncSpirittreeLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="SpirittreeLogFileAppender" />
+	</appender>
+
+	<!-- 聊天错误日志-->
+	<appender name="ChatERRORLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/chat/QMRChatERROR.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncChatERRORLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="ChatERRORLogFileAppender" />
+	</appender>
+	<appender name="RechargeLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/recharge/QMRRecharge.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncRechargeLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="256" />
+		<appender-ref ref="RechargeLogFileAppender" />
+	</appender>
+	<appender name="RechargeErrorLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/recharge/QMRRecharge.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncRechargeErrorLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="256" />
+		<appender-ref ref="RechargeErrorLogFileAppender" />
+	</appender>
+
+	<appender name="SavePlayerErrorLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/player/QMRSavePlayer.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncSavePlayerErrorLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="256" />
+		<appender-ref ref="SavePlayerErrorLogAppender" />
+	</appender>
+
+	<!-- 流量统计日志-->
+	<appender name="FlowLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/flow/QMRWorldFlow.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncFlowLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="FlowLogFileAppender" />
+	</appender>
+
+	<!-- 玩家登陆退出统计日志-->
+	<appender name="PlayerLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/player/QMRWorldPlayer.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncPlayerLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="PlayerLogFileAppender" />
+	</appender>
+
+	<!-- 单指令最大执行时间统计日志-->
+	<appender name="HandlerLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/handler/QMRWorldHandler.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncHandlerLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="HandlerLogFileAppender" />
+	</appender>
+	<!--	########################################################################################-->
+	<!--		addLogModel(StallsWorldLog.class);//摆摊世界服务器日志-->
+	<appender name="StallsWorldLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/handler/StallsWorldLog.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncStallsWorldLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="StallsWorldLogAppender" />
+	</appender>
+	<!--		addLogModel(GuildLog.class);	//公会日志-->
+	<appender name="GuildLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/handler/GuildLog.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncGuildLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="GuildLogAppender" />
+	</appender>
+	<!--		addLogModel(FriendLog.class);	//好友日志-->
+	<appender name="FriendLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/handler/FriendLog.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncFriendLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="FriendLogAppender" />
+	</appender>
+	<!--		addLogModel(OnlineCountLog.class);//在线统计日志-->
+	<appender name="OnlineCountLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/handler/OnlineCountLog.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncOnlineCountLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="OnlineCountLogAppender" />
+	</appender>
+	<!--		addLogModel(WorldRegLog.class);//用户在游戏内注册时间日志-->
+	<appender name="WorldRegLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/handler/RegLog.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncWorldRegLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="WorldRegLogAppender" />
+	</appender>
+	<!--		addLogModel(YbcaedLog.class);//封测使用公测元宝卡-->
+	<appender name="YbcaedLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/handler/YbcaedLog.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncYbcaedLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="YbcaedLogAppender" />
+	</appender>
+	<!--		addLogModel(ServerStartAndStopLog.class);//服务器维护日志-->
+	<appender name="ServerStartAndStopLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/handler/ServerStartAndStopLog.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"
+				/>
+		</layout>
+	</appender>
+	<appender name="AsyncServerStartAndStopLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="ServerStartAndStopLogAppender" />
+	</appender>
+	<appender name="DbConsumingLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/dbconsuming/dbconsuming.log" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"/>
+		</layout>
+	</appender>
+	<appender name="AsyncDbConsumingLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="DbConsumingLogAppender" />
+	</appender>
+	<appender name="TxLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/tx/tx.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n"/>
+		</layout>
+	</appender>
+	<appender name="AsyncTxLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048"/>
+		<appender-ref ref="TxLogAppender" />
+	</appender>
+	
+	<!--	#################################################################################、-->
+	<logger name="DBLOGCONSUMING" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncDbConsumingLogAppender"/>
+	</logger>
+
+
+	<!--addLogModel(StallsWorldLog.class);//摆摊世界服务器日志-->
+	<logger name="StallsWorldLog" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncStallsWorldLogAppender"/>
+	</logger>
+	<!--addLogModel(GuildLog.class);//公会日志-->
+	<logger name="GuildLog" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncGuildLogAppender"/>
+	</logger>
+	<!--addLogModel(FriendLog.class);//好友日志-->
+	<logger name="FriendLog" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncFriendLogAppender"/>
+	</logger>
+	<!--addLogModel(OnlineCountLog.class);//在线统计日志-->
+	<logger name="OnlineCountLog" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncOnlineCountLogAppender"/>
+	</logger>
+	<!--addLogModel(RegLog.class);//用户在游戏内注册时间日志-->
+	<logger name="WorldRegLog" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncRegLogAppender"/>
+	</logger>
+	<!--addLogModel(YbcaedLog.class);//封测使用公测元宝卡-->
+	<logger name="YbcaedLog" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncYbcaedLogAppender"/>
+	</logger>
+	<!--addLogModel(ServerStartAndStopLog.class);//服务器维护日志-->
+	<logger name="ServerStartAndStopLog" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncServerStartAndStopLogAppender"/>
+	</logger>
+	<!--	#################################################################################、-->
+
+	<!-- 单指令最大执行时间统计日志-->
+	<logger name="com.game.server.thread.ServerThread" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncHandlerLogAppender"/>
+	</logger>
+
+	<!-- 玩家登陆退出统计日志-->
+	<logger name="WORLDPLAYER" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncPlayerLogAppender"/>
+	</logger>
+
+	<!-- 流量统计日志-->
+	<logger name="WORLDFLOW" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AsyncFlowLogAppender"/>
+	</logger>
+	<!--充值错误日志-->
+	<logger name="com.game.recharge.RechargeManager" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncRechargeErrorLogAppender"/>
+	</logger>
+	<!-- 腾讯道具发放日志 -->
+	<logger name="txlog" additivity="false">
+		<level value="error"/>
+		<appender-ref ref="AsyncTxLogAppender"/>	
+	</logger>
+	
+	<logger name="SAVEPLAYER" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncSavePlayerErrorLogAppender"/>
+	</logger>
+	<!--充值日志-->
+	<logger name="RECHARGE" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncRechargeLogAppender"/>
+	</logger>
+	<!--聊天日志-->
+	<logger name="CHATLOG" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncChatLogAppender"/>
+	</logger>
+	<!--聊天错误日志-->
+	<logger name="com.game.chat.manager.WorldChatManager" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AsyncChatERRORLogAppender"/>
+	</logger>
+	<!-- 发送消息 日志级别 -->
+	<logger name="com.game.utils.MessageUtil">
+		<level value="info" />
+	</logger>
+	<!-- 接收消息 日志级别 -->
+	<logger name="com.game.server.WorldServer">
+		<level value="INFO" />
+	</logger>
+
+	<logger name="com.game.server.thread.SaveFruitThread">
+		<level value="info" />
+		<appender-ref ref="AsyncSpirittreeLogAppender"/>
+	</logger>
+
+
+	<logger name="org.apache">
+		<level value="error" />
+	</logger>
+	<logger name="java.sql">
+		<level value="error" />
+	</logger>
+	<logger name="org.quartz">
+		<level value="error" />
+	</logger>
+	<logger name="com.ibatis">
+		<level value="error" />
+	</logger>
+	<logger name="org.apache.mina">
+		<level value="error" />
+	</logger>
+	<logger name="com.mchange">
+		<level value="error" />
+	</logger>
+	<root>
+		<level value="error" />
+		<appender-ref ref="AsyncFileAppender" />
+	</root>
+</log4j:configuration>

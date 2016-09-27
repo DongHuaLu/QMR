@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_spirittree_pack_con"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_spirittree_pack_conBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_packet_id" property="q_packet_id" jdbcType="INTEGER" />
+	<result column="q_item_id" property="q_item_id" jdbcType="INTEGER" />
+	<result column="q_item_num" property="q_item_num" jdbcType="INTEGER" />
+	<result column="q_Theft_Percentage" property="q_Theft_Percentage" jdbcType="INTEGER" />
+	<result column="q_compensate_exp" property="q_compensate_exp" jdbcType="INTEGER" />
+	<result column="q_is_use" property="q_is_use" jdbcType="INTEGER" />
+	<result column="q_use_effect" property="q_use_effect" jdbcType="VARCHAR" />
+	<result column="q_need_level" property="q_need_level" jdbcType="INTEGER" />
+	<result column="q_exclude_level" property="q_exclude_level" jdbcType="INTEGER" />
+	<result column="q_selected_rnd" property="q_selected_rnd" jdbcType="INTEGER" />
+	<result column="q_streng_level" property="q_streng_level" jdbcType="INTEGER" />
+	<result column="q_addProperty_num" property="q_addProperty_num" jdbcType="INTEGER" />
+	<result column="q_addProperty_min" property="q_addProperty_min" jdbcType="INTEGER" />
+	<result column="q_addProperty_max" property="q_addProperty_max" jdbcType="INTEGER" />
+	<result column="q_is_binding" property="q_is_binding" jdbcType="INTEGER" />
+	<result column="q_existtime" property="q_existtime" jdbcType="INTEGER" />
+	<result column="q_notice_type" property="q_notice_type" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_spirittree_pack_con
+  </select>
+</mapper> 

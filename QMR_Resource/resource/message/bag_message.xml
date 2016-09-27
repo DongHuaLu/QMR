@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.bag" id="160">
+	<!-- 服务器发送消息 -->
+	<message id="100" type="SC" name="ResBagSyn" explain="跨服包裹物品信息同步">
+		<field class="int" name="cellnum" explain="格子数量"></field>
+		<list class="com.game.backpack.bean.ItemInfo" name="items" explain="物品信息列表"></list>
+	</message>
+
+	<message id="101" type="SC" name="ResBagItemAdd" explain="跨服包裹物品信息增加">
+		<field class="com.game.backpack.bean.ItemInfo" name="item" explain="物品信息"></field>
+	</message>
+
+	<message id="102" type="SC" name="ResBagItemUpdate" explain="跨服包裹物品信息修正">
+		<field class="com.game.backpack.bean.ItemInfo" name="item" explain="物品信息"></field>
+	</message>
+
+	<message id="103" type="SC" name="ResBagItemRemove" explain="跨服包裹物品删除">
+		<field class="long" name="itemId" explain="物品Id"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="200" type="CS" name="ReqBagSyn" explain="跨服包裹物品同步请求">
+	</message>
+
+	<message id="201" type="CS" name="ReqBagItemMove" explain="跨服包裹移动物品">
+		<field class="long" name="itemId" explain="物品Id"></field>
+		<field class="int" name="toGridId" explain="移动到格子Id"></field>
+		<field class="int" name="num" explain="移动数量"></field>
+	</message>
+
+	<message id="202" type="CS" name="ReqBagItemMoveIn" explain="物品存入跨服包裹">
+		<field class="int" name="cellId" explain="包裹格子号(主包裹)"></field>
+	</message>
+
+	<message id="203" type="CS" name="ReqBagItemMoveOut" explain="物品从跨服包裹取出">
+		<field class="int" name="cellId" explain="包裹格子号(跨服包裹)"></field>
+	</message>
+</messages>

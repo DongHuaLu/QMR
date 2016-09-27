@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.recharge" id="134">
+	<!--SW消息-->
+	<message id="301" type="WS" name="Recharge" explain="充值消息">
+		<field class="String" name="oid" explain="订单ID"></field>
+		<field class="int" name="rechargeParam" explain="充值数"></field>
+		<field class="long" name="playerId" explain="角色ID"></field>
+	</message>
+</messages>

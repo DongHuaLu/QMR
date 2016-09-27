@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.recall" id="168">
+	<bean name="History" explain="召回日志">
+		<field class="long" name="id" explain="角色id"></field>
+		<field class="String" name="name" explain="角色名称"></field>
+		<field class="long" name="time" explain="发起召回的时间"></field>
+		<field class="byte" name="back" explain="0:未回归 1:已回归"></field>
+	</bean>
+	
+	<bean name="SearchResult" explain="查询结果">
+		<field class="long" name="id" explain="角色id"></field>
+		<field class="String" name="name" explain="角色名称"></field>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="WC" name="ResRecallSearchName" explain="返回服查询玩家名称列表">
+		<list class="SearchResult" name="names" explain="玩家名称列表"></list>
+	</message>
+	
+	<message id="102" type="WC" name="ResRecallPlayer" explain="召回玩家操作结果">
+		<field class="byte" name="type" explain="0:成功 1:失败"></field>
+	</message>
+	
+	<message id="103" type="WC" name="ResRecallHistory" explain="召回日志">
+		<list class="History" name="history" explain="日志"></list>
+	</message>
+	
+	<message id="104" type="SC" name="ResRecallPrize" explain="返回召回奖励信息">
+		<field class="byte" name="times" explain="可领取奖励次数"></field>
+	</message>
+	
+	<message id="105" type="SC" name="ResRecallPrizeResult" explain="领取奖励结果">
+		<field class="byte" name="type" explain="0:成功 1:失败"></field>
+	</message>
+	
+	<message id="106" type="WC" name="ResBackPrize" explain="返回回归奖励信息">
+		<field class="byte" name="times" explain="可领取奖励次数"></field>
+		<field class="String" name="name" explain="发起召回的玩家名称"></field>
+	</message>
+	
+	<message id="107" type="SC" name="ResRecallExpPanel" explain="打开急速升级丹面板">
+		<field class="long" name="item" explain="物品唯一id"></field>
+		<field class="long" name="expAll" explain="总经验"></field>
+		<field class="long" name="expTime" explain="本次经验"></field>
+	</message>
+	
+	<message id="108" type="SC" name="ResRecallExpItemUse" explain="使用急速升级丹结果">
+		<field class="byte" name="type" explain="0:成功 1:失败"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqRecallSearchName" explain="查询玩家名称">
+		<field class="String" name="name" explain="玩家名称"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqRecallPlayer" explain="召回玩家">
+		<field class="String" name="name" explain="玩家名称"></field>
+		<field class="byte" name="type" explain="0:系统召回 1:玩家召回"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqRecallGetPrize" explain="领奖">
+		<field class="byte" name="type" explain="0:召回 奖励 1:回归奖励"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqRecallHistory" explain="召回日志">
+	</message>
+	
+	<message id="205" type="CS" name="ReqRecallPrize" explain="请求召回奖励信息">
+	</message>
+	
+	<message id="206" type="CS" name="ReqRecallBackPrize" explain="请求回归奖励信息">
+	</message>
+	
+	<message id="207" type="CS" name="ReqRecallExpPanel" explain="打开急速升级丹面板(不用)">
+		<field class="long" name="item" explain="物品唯一id"></field>
+	</message>
+	
+	<message id="208" type="CS" name="ReqRecallExpItemUse" explain="使用急速升级丹">
+		<field class="long" name="item" explain="物品唯一id"></field>
+		<field class="byte" name="type" explain="0:普通 1:双倍"></field>
+	</message>
+	
+	<!-- game -> world -->
+	<message id="301" type="SW" name="ReqRecallSearchNameToWorld" explain="查询玩家名称">
+		<field class="long" name="playerId" explain="发起操作的玩家id"></field>
+		<field class="String" name="name" explain="玩家名称"></field>
+	</message>
+	
+	<message id="302" type="SW" name="ReqRecallPlayerToWorld" explain="召回玩家">
+		<field class="long" name="playerId" explain="发起操作的玩家id"></field>
+		<field class="String" name="name" explain="玩家名称"></field>
+		<field class="byte" name="type" explain="0:系统召回 1:玩家召回"></field>
+	</message>
+	
+	<message id="303" type="SW" name="ReqRecallHistoryToWorld" explain="召回日志">
+		<field class="long" name="playerId" explain="发起操作的玩家id"></field>
+	</message>
+	
+	<message id="304" type="SW" name="ReqRecallBackPrizeToWorld" explain="请求回归奖励信息">
+		<field class="long" name="playerId" explain="发起操作的玩家id"></field>
+		<field class="byte" name="times" explain="已经领取奖励的次数"></field>
+	</message>
+	
+	<message id="305" type="SW" name="ReqRecallLevelAvg" explain="请求排行榜前10-15名平均等级">
+		<field class="long" name="playerId" explain="发起操作的玩家id"></field>
+		<field class="long" name="item" explain="物品id"></field>
+	</message>
+	
+	<!-- world -> game -->
+	<message id="351" type="WS" name="ReqRecallInfoToGame" explain="玩家召回相关信息">
+		<field class="long" name="playerId" explain="玩家id"></field>
+		<field class="byte" name="recallTimes" explain="本月成功召回次数"></field>
+		<field class="byte" name="backTimes" explain="回归次数"></field>
+	</message>
+	
+	<message id="352" type="WS" name="ReqRecallSendSuccess" explain="玩家发送召回信息成功">
+		<field class="long" name="playerId" explain="玩家id"></field>
+	</message>
+	
+	<message id="353" type="WS" name="ResRecallLevelAvg" explain="排行榜前10-15名平均等级">
+		<field class="long" name="playerId" explain="玩家id"></field>
+		<field class="int" name="level" explain="平均等级"></field>
+		<field class="long" name="item" explain="物品id"></field>
+	</message>
+	
+	<message id="354" type="WS" name="ResRecallOfflineDay" explain="玩家回归时的离线天数">
+		<field class="long" name="playerId" explain="玩家id"></field>
+		<field class="int" name="day" explain="天数"></field>
+	</message>
+	
+</messages>

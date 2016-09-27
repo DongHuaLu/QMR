@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.plugset" id="131">
+
+	<!-- bean定义 -->
+	<bean name="PlugSetInfo" explain="自动挂机设置内容">
+		<field class="int" name="parameter" explain="总设置参数"></field>
+		<field class="byte" name="hpper" explain="血量百分比"></field>
+		<field class="byte" name="mpper" explain="内力百分比"></field>
+		<field class="byte" name="spper" explain="体力百分比"></field>
+		
+		<field class="byte" name="itemcolor" explain="自动出售道具颜色类型"></field>
+		<field class="byte" name="itemlv" explain="自动出售道具强化等级"></field>
+		<field class="int" name="skillid" explain="自动打怪技能"></field>
+		<field class="byte" name="range" explain="挂机范围"></field>
+		<field class="byte" name="pickup" explain="拾取道具类型"></field>
+		<field class="int" name="time" explain="挂机时间 （分钟）"></field>
+	</bean>
+	
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResPlugSetInfo" explain="发送自动挂机设置内容">
+		<field class="PlugSetInfo" name="plugsetinfo" explain="自动挂机设置内容"></field>
+	</message>
+
+		
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqPlugSetInfo" explain="请求设置 自动挂机内容">
+		<field class="int" name="parameter" explain="总设置参数"></field>
+		<field class="byte" name="hpper" explain="血量百分比"></field>
+		<field class="byte" name="mpper" explain="内力百分比"></field>
+		<field class="byte" name="spper" explain="体力百分比"></field>
+		
+		<field class="byte" name="itemcolor" explain="自动出售道具颜色类型"></field>
+		<field class="byte" name="itemlv" explain="自动出售道具强化等级"></field>
+		<field class="int" name="skillid" explain="自动打怪技能"></field>
+		<field class="byte" name="range" explain="挂机范围"></field>
+		<field class="byte" name="pickup" explain="拾取道具类型"></field>
+		<field class="int" name="time" explain="挂机时间 （分钟）"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqPlugBackToCity" explain="请求回城">
+	</message>
+	
+	
+</messages>

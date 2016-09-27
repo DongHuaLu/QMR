@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_backpack_grid"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_backpack_gridBean" >
+	<result column="q_backpack_q_grid" property="q_backpack_q_grid" jdbcType="VARCHAR" />
+	<result column="q_backpack" property="q_backpack" jdbcType="INTEGER" />
+	<result column="q_grid" property="q_grid" jdbcType="INTEGER" />
+	<result column="q_time" property="q_time" jdbcType="INTEGER" />
+	<result column="q_cost" property="q_cost" jdbcType="INTEGER" />
+	<result column="q_exp" property="q_exp" jdbcType="INTEGER" />
+	<result column="q_maxhp" property="q_maxhp" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_backpack_grid
+  </select>
+</mapper> 

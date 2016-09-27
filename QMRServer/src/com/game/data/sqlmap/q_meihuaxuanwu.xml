@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_meihuaxuanwu"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_meihuaxuanwuBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_zhenxing" property="q_zhenxing" jdbcType="VARCHAR" />
+	<result column="q_limitneedhit" property="q_limitneedhit" jdbcType="INTEGER" />
+	<result column="q_limitneedtime" property="q_limitneedtime" jdbcType="INTEGER" />
+	<result column="q_decbosshp" property="q_decbosshp" jdbcType="INTEGER" />
+	<result column="q_desc" property="q_desc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_meihuaxuanwu
+  </select>
+</mapper> 

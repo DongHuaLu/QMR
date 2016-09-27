@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<servers>
+	<server>
+		<server-name>Public</server-name>
+		<server-id>15000</server-id>
+		<server-port>8800</server-port>
+		<server-web>37wan</server-web>
+	</server>
+</servers>

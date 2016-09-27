@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.npc" id="140">
+	
+	<bean name="ServiceInfo" explain="NPC服务信息类">
+		<field class="int" name="serviceId" explain="服务Id"></field>
+		<field class="String" name="serviceName" explain="服务名称"></field>
+		<field class="String" name="serviceParameter" explain="服务参数"></field>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResNpcServices" explain="返回服务器npc服务列表">
+		<field class="long" name="npcId" explain="npcId"></field>
+		<list class="ServiceInfo" name="services" explain="npc服务列表集合"></list>
+	</message>
+	
+	<message id="102" type="SC" name="ResStartGather" explain="玩家开始采集">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="long" name="tatget" explain="行为目标"></field>
+		<field class="int" name="costtime" explain="采集时间"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResStopGather" explain="玩家停止采集">
+		<field class="long" name="personId" explain="角色Id"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResNpcAction" explain="npc行为">
+		<field class="long" name="npcId" explain="npcId"></field>
+		<field class="long" name="tatget" explain="行为目标"></field>
+		<field class="int" name="actionType" explain="行为类型"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqNpcServices" explain="请求服务器npc服务列表">
+		<field class="long" name="npcId" explain="npcId"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqService" explain="请求npc脚本服务">
+		<field class="long" name="npcId" explain="npcId"></field>
+		<field class="String" name="serviceParameter" explain="服务参数"></field>
+	</message>
+</messages>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_clone_activity"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_clone_activityBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_zone_type" property="q_zone_type" jdbcType="INTEGER" />
+	<result column="q_mapid" property="q_mapid" jdbcType="VARCHAR" />
+	<result column="q_duplicate_name" property="q_duplicate_name" jdbcType="VARCHAR" />
+	<result column="q_exist_time" property="q_exist_time" jdbcType="INTEGER" />
+	<result column="q_open_time" property="q_open_time" jdbcType="VARCHAR" />
+	<result column="q_reset_time" property="q_reset_time" jdbcType="VARCHAR" />
+	<result column="q_min_lv" property="q_min_lv" jdbcType="INTEGER" />
+	<result column="q_max_lv" property="q_max_lv" jdbcType="INTEGER" />
+	<result column="q_min_num" property="q_min_num" jdbcType="INTEGER" />
+	<result column="q_max_num" property="q_max_num" jdbcType="INTEGER" />
+	<result column="q_type" property="q_type" jdbcType="INTEGER" />
+	<result column="q_manual_num" property="q_manual_num" jdbcType="INTEGER" />
+	<result column="q_raids_num" property="q_raids_num" jdbcType="INTEGER" />
+	<result column="q_raids_yuanbao" property="q_raids_yuanbao" jdbcType="INTEGER" />
+	<result column="q_raids_min_yuanbao" property="q_raids_min_yuanbao" jdbcType="INTEGER" />
+	<result column="q_reward" property="q_reward" jdbcType="VARCHAR" />
+	<result column="q_time_evaluate" property="q_time_evaluate" jdbcType="INTEGER" />
+	<result column="q_explain" property="q_explain" jdbcType="LONGVARCHAR" />
+	<result column="q_x" property="q_x" jdbcType="INTEGER" />
+	<result column="q_y" property="q_y" jdbcType="INTEGER" />
+	<result column="q_isscript" property="q_isscript" jdbcType="INTEGER" />
+	<result column="q_Participation_Award" property="q_Participation_Award" jdbcType="VARCHAR" />
+	<result column="q_Random_Description" property="q_Random_Description" jdbcType="VARCHAR" />
+	<result column="q_map_boss" property="q_map_boss" jdbcType="VARCHAR" />
+	<result column="q_map_group" property="q_map_group" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_clone_activity
+  </select>
+</mapper> 

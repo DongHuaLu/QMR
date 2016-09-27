@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_map_block"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_map_blockBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_block" property="q_block" jdbcType="LONGVARBINARY" />
+	<result column="q_alpha" property="q_alpha" jdbcType="LONGVARBINARY" />
+	<result column="q_safe" property="q_safe" jdbcType="LONGVARBINARY" />
+	<result column="q_jump" property="q_jump" jdbcType="LONGVARBINARY" />
+	<result column="q_effect" property="q_effect" jdbcType="LONGVARBINARY" />
+	<result column="q_ban_monster" property="q_ban_monster" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_map_block
+  </select>
+</mapper> 

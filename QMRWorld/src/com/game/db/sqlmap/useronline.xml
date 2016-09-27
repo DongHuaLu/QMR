@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="online"> 
+  <resultMap id="userOnline" type="com.game.player.structs.User" >
+    <id column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="online" property="online" jdbcType="BIGINT" />
+    <result column="lasttime" property="lasttime" jdbcType="BIGINT" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.game.player.structs.User" >
+    insert into useronline (userId, online, lasttime
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{online,jdbcType=BIGINT}, #{lasttime,jdbcType=BIGINT}
+      )
+  </insert>
+  
+  <select id="select" resultMap="userOnline">
+  	select userId, online, lasttime from useronline
+  </select>
+  
+  <update id="update" parameterType="com.game.player.structs.User" >
+     update useronline
+      set online = #{online,jdbcType=BIGINT},
+      lasttime = #{lasttime,jdbcType=BIGINT}
+    where userId = #{userId,jdbcType=VARCHAR}
+  </update>
+  
+  <delete id="delete" parameterType="com.game.player.structs.User" >
+     delete from useronline 
+    where userId = #{userId,jdbcType=VARCHAR}
+  </delete>
+</mapper>

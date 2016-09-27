@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_boss_drop"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_boss_dropBean" >
+	<result column="q_boss_id" property="q_boss_id" jdbcType="INTEGER" />
+	<result column="q_boss_name" property="q_boss_name" jdbcType="VARCHAR" />
+	<result column="q_goods1" property="q_goods1" jdbcType="VARCHAR" />
+	<result column="q_goods2" property="q_goods2" jdbcType="VARCHAR" />
+	<result column="q_goods3" property="q_goods3" jdbcType="VARCHAR" />
+	<result column="q_goods4" property="q_goods4" jdbcType="VARCHAR" />
+	<result column="q_goods5" property="q_goods5" jdbcType="VARCHAR" />
+	<result column="q_goods6" property="q_goods6" jdbcType="VARCHAR" />
+	<result column="q_goods7" property="q_goods7" jdbcType="VARCHAR" />
+	<result column="q_goods8" property="q_goods8" jdbcType="VARCHAR" />
+	<result column="q_goods9" property="q_goods9" jdbcType="VARCHAR" />
+	<result column="q_goods10" property="q_goods10" jdbcType="VARCHAR" />
+	<result column="q_goods11" property="q_goods11" jdbcType="VARCHAR" />
+	<result column="q_goods12" property="q_goods12" jdbcType="VARCHAR" />
+	<result column="q_goods13" property="q_goods13" jdbcType="VARCHAR" />
+	<result column="q_goods14" property="q_goods14" jdbcType="VARCHAR" />
+	<result column="q_goods15" property="q_goods15" jdbcType="VARCHAR" />
+	<result column="q_goods16" property="q_goods16" jdbcType="VARCHAR" />
+	<result column="q_goods17" property="q_goods17" jdbcType="VARCHAR" />
+	<result column="q_goods18" property="q_goods18" jdbcType="VARCHAR" />
+	<result column="q_goods19" property="q_goods19" jdbcType="VARCHAR" />
+	<result column="q_goods20" property="q_goods20" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_boss_drop
+  </select>
+</mapper> 

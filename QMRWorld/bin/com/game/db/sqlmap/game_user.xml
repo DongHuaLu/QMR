@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="game_user"> 
+
+  <resultMap id="user" type="com.game.db.bean.GameUser" >
+    <id column="userId" property="userid" jdbcType="BIGINT" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="BIGINT" />
+    <result column="lastLoginTime" property="lastlogintime" jdbcType="BIGINT" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="com.game.db.bean.GameUser" >
+    insert into user (userName, 
+      userId, createTime, lastLoginTime )
+    values (#{username,jdbcType=VARCHAR},  #{userid,jdbcType=BIGINT}, #{createtime,jdbcType=BIGINT}, #{lastlogintime,jdbcType=BIGINT})
+  </insert>
+  
+  <select id="selectDataByName" parameterType="HashMap" resultMap="user">
+  	select userName, userId, createTime, lastLoginTime from user 
+  	where userName = #{username,jdbcType=VARCHAR} and server = #{server,jdbcType=INTEGER}
+  </select>
+  
+	<select id="selectDataById" parameterType="HashMap" resultMap="user">
+		select userName, userId, createTime, lastLoginTime from user  
+		where userId = #{userid,jdbcType=BIGINT} and server = #{server,jdbcType=INTEGER}
+	</select>
+	
+  <update id="update" parameterType="com.game.db.bean.GameUser" >
+    update user
+      set lastLoginTime = #{lastlogintime,jdbcType=BIGINT}
+    where userId = #{userid,jdbcType=BIGINT} and server = #{server,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="selectByUserName" parameterType="HashMap" resultType="int">
+  	select count(userName) from user 
+  	where userName = #{username,jdbcType=VARCHAR} and server = #{server,jdbcType=INTEGER}
+  </select>
+  
+  
+  <update id="updateUserName" parameterType="com.game.db.bean.GameUser" >
+    update user
+      set userName = #{username,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=BIGINT} 
+  </update>
+  
+
+  
+</mapper> 
+
+

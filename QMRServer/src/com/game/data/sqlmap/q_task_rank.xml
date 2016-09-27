@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_task_rank"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_task_rankBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_desc" property="q_desc" jdbcType="LONGVARCHAR" />
+	<result column="q_type" property="q_type" jdbcType="INTEGER" />
+	<result column="q_condition" property="q_condition" jdbcType="VARCHAR" />
+	<result column="q_front_task" property="q_front_task" jdbcType="INTEGER" />
+	<result column="q_next_task" property="q_next_task" jdbcType="INTEGER" />
+	<result column="q_rewards_rank" property="q_rewards_rank" jdbcType="INTEGER" />
+	<result column="q_show_level" property="q_show_level" jdbcType="INTEGER" />
+	<result column="q_quickfinsh_gold" property="q_quickfinsh_gold" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_task_rank
+  </select>
+</mapper> 

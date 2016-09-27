@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.epalace" id="143">
+	<!-- bean定义 -->
+		
+	<bean name="EpalaceInfo" explain="走路格子信息">
+		<field class="byte" name="direction" explain="前进方向，上右下左0246，没有就-1"></field>
+		<field class="byte" name="currentpos" explain="当前位置"></field>
+		<field class="int" name="eventid" explain="当前格子触发事件ID"></field>
+		<field class="byte" name="forkdirection" explain="当前格子岔路选择方向（展示罗盘），上右下左0246，没有就-1，-2表示最后一格"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResEpalaceWalkToClient" explain="地宫行走消息">
+		<field class="EpalaceInfo" name="epalaceInfo" explain="目标格子信息"></field>
+	</message>	
+	
+	
+	<message id="102" type="SC" name="ResEpalaceDiceToClient" explain="返回前端骰子数值">
+		<field class="byte" name="num" explain="骰子数值"></field>
+		<field class="byte" name="movenum" explain="已经移动次数"></field>
+		<field class="int" name="time" explain="恢复次数冷却时间"></field>
+	</message>	
+	
+	<message id="103" type="SC" name="ResEpalaceOpenToGame" explain="打开面板返回消息">
+		<field class="int" name="time" explain="恢复次数冷却时间"></field>
+		<field class="int" name="task" explain="任务ID"></field>
+		<field class="byte" name="pos" explain="当前站立位置"></field>
+		<field class="byte" name="movenum" explain="已经移动次数"></field>
+		<field class="com.game.player.bean.PlayerAppearanceInfo" name="appearanceInfo" explain="造型信息"></field>
+	</message>			
+		
+	<message id="104" type="SC" name="ResEpalaceErrorToGame" explain="错误提示消息">
+		<field class="String" name="str" explain="错误消息文字提示"></field>
+		<field class="int" name="num" explain="错误消息数字提示"></field>
+		<field class="byte" name="type" explain="错误消息类型"></field>
+	</message>		
+		
+	<message id="105" type="SC" name="ResEpalaceDialToClient" explain="返回前端转盘消息">
+		<field class="byte" name="currentpos" explain="当前位置"></field>
+		<field class="byte" name="forkdirection" explain="罗盘转动位置，上右下左0246，没有就-1"></field>
+	</message>		
+		
+	<message id="106" type="SC" name="ResEpalaceRewardInfoToClient" explain="发送奖励消息">
+		<field class="int" name="type" explain="奖励类型，和格子事件对应"></field>
+		<list class="com.game.spirittree.bean.FruitRewardinfo" name="fruitrewardinfo" explain="奖励内容"></list>
+		<field class="int" name="buffid" explain="普通奖励的BUFFID，如果是0，表示给其他数值奖励"></field>
+	</message>		
+		
+		
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqEpalaceDiceToGame" explain="前端执行丢骰子动作">
+
+	</message>		
+		
+	<message id="202" type="CS" name="ReqEpalaceOpenToGame" explain="打开面板">
+
+	</message>		
+		
+	<message id="203" type="CS" name="ReqEpalaceTaskEndToGame" explain="完成任务">
+		<field class="byte" name="type" explain="完成任务，0手动，1用元宝完成"></field>
+		<field class="int" name="taskid" explain="任务ID"></field>
+	</message>		
+		
+	
+	<message id="204" type="CS" name="ReqEpalaceAbandonTaskToGame" explain="放弃任务">
+		<field class="int" name="taskid" explain="任务ID"></field>
+	</message>	
+		
+		
+		
+		
+		
+		
+		
+</messages>		

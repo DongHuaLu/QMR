@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_task_daily_cond"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_task_daily_condBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_mingrade" property="q_mingrade" jdbcType="INTEGER" />
+	<result column="q_maxgrade" property="q_maxgrade" jdbcType="INTEGER" />
+	<result column="q_end_needgoods" property="q_end_needgoods" jdbcType="VARCHAR" />
+	<result column="q_end_needkillmonster" property="q_end_needkillmonster" jdbcType="VARCHAR" />
+	<result column="q_end_needachieve" property="q_end_needachieve" jdbcType="VARCHAR" />
+	<result column="q_hard" property="q_hard" jdbcType="INTEGER" />
+	<result column="q_resume_goods" property="q_resume_goods" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_task_daily_cond
+  </select>
+</mapper> 

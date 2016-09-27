@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.shortcut" id="108">
+	<!-- bean定义 -->
+	<bean name="ShortCutInfo" explain="快捷信息类">
+		<field class="long" name="shortcutId" explain="快捷Id"></field>
+		<field class="int" name="shortcutType" explain="快捷类型"></field>
+		<field class="long" name="shortcutSource" explain="快捷对象"></field>
+		<field class="int" name="shortcutSourceModel" explain="快捷对象模板"></field>
+		<field class="int" name="shortcutGrid" explain="快捷位置"></field>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ShortCutInfos" explain="快捷信息列表">
+		<list class="ShortCutInfo" name="shortcuts" explain="快捷信息列表"></list>
+	</message>
+	
+	<message id="102" type="SC" name="ShortCutAdd" explain="快捷增加">
+		<field class="ShortCutInfo" name="shortcut" explain="快捷信息"></field>
+	</message>
+
+	<message id="103" type="SC" name="ShortCutRemove" explain="快捷删除">
+		<field class="int" name="shortcutGrid" explain="快捷位置"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	
+	<message id="201" type="CS" name="AddShortCut" explain="增加快捷">
+		<field class="int" name="shortcutType" explain="快捷类型"></field>
+		<field class="long" name="shortcutSource" explain="快捷对象"></field>
+		<field class="int" name="shortcutSourceModel" explain="快捷对象模板"></field>
+		<field class="int" name="shortcutGrid" explain="快捷位置"></field>
+	</message>
+	
+	<message id="202" type="CS" name="RemoveShortCut" explain="删除快捷">
+		<field class="long" name="shortcutId" explain="快捷Id"></field>
+	</message>
+	
+	<message id="203" type="CS" name="MoveShortCut" explain="移动快捷">
+		<field class="long" name="shortcutId" explain="快捷Id"></field>
+		<field class="int" name="shortcutGrid" explain="快捷位置"></field>
+	</message>
+	
+</messages>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.emperorcity" id="169">
+	<!-- bean定义 -->
+		
+	<bean name="EmperorWarInfo" explain="皇城争霸战即时信息">
+		<field class="int" name="countryid" explain="皇城占领者国家ID"></field>
+		<field class="long" name="emperorguildid" explain="皇城帮会ID"></field>
+		<field class="String" name="guildname" explain="皇城帮会名字"></field>
+		<field class="long" name="emperorid" explain="皇帝ID"></field>
+		<field class="String" name="emperorname" explain="皇帝名字"></field>
+		<field class="int" name="occupytime" explain="占领旗帜时间（秒）"></field>
+		<field class="int" name="endtime" explain="皇城争霸战结束剩余时间（秒）"></field>
+	</bean>
+	
+	<bean name="EmperorWarRewardInfo" explain="皇城争霸战个人在线奖励信息">
+		<field class="int" name="zhenqi" explain="累计奖励真气"></field>
+		<field class="int" name="exp" explain="累计奖励经验"></field>
+		<field class="int" name="rank" explain="累计奖励军功"></field>
+		<field class="int" name="remaintime" explain="停留时间（秒）"></field>
+	</bean>
+	
+	<bean name="EmperorStructureInfo" explain="皇城结构信息">
+		<field class="int" name="countryid" explain="皇城占领者国家ID"></field>
+		<field class="long" name="guildid" explain="皇城帮会ID"></field>
+		<field class="String" name="guildname" explain="皇城帮会名字"></field>
+		<list class="EmperorMemberInfo" name="countrymemberInfolist" explain="皇城成员信息列表"></list>
+		<field class="int" name="day" explain="在位天数"></field>
+		<field class="String" name="emperorWartime" explain="皇城攻城时间"></field>
+	</bean>
+	
+	<bean name="EmperorMemberInfo" explain="皇城成员信息">
+		<field class="byte" name="post" explain="职位：1皇帝，2列侯，3丞相，4太尉，5御史大夫，6夫人"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="int" name="sex" explain="玩家性别"></field>
+	</bean>	
+	
+	<bean name="EmperorWarTopInfo" explain="皇城战排行榜信息">
+		<field class="String" name="playername" explain="玩家名字"></field>
+		<field class="String" name="guildname" explain="帮会名字"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+		<field class="int" name="playerlevel" explain="玩家等级"></field>
+		<field class="int" name="playercountry" explain="玩家国家ID"></field>
+		<field class="int" name="kill" explain="杀敌数量"></field>
+		<field class="int" name="death" explain="死亡次数"></field>
+		<field class="int" name="hurt" explain="总伤害输出"></field>
+		<field class="int" name="beenhurt" explain="被伤害总数"></field>
+		<field class="int" name="ranking" explain="排名"></field>
+	</bean>
+		
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ReqEmperorWarSelectToClient" explain="发送是否参与皇城争霸战询问">
+	</message>
+	
+	<message id="102" type="WC" name="ResEmperorWarStateToClient" explain="皇城争霸战状态">
+		<field class="byte" name="state" explain="0未开启，1进行中，2已结束"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResEmperorWarTopInfoToClient" explain="皇城争霸战斩将排行榜信息">
+		<list class="EmperorWarTopInfo" name="emperorWarTopInfolist" explain="皇城争霸战斩将排行榜信息"></list>
+	</message>
+	
+	<message id="104" type="SC" name="ResEmperorWarArtilleryLocusToClient" explain="地图广播炮弹轨迹">
+		<field class="byte" name="type" explain="炮弹类型"></field>
+		<field class="int" name="endx" explain="终点坐标X"></field>
+		<field class="int" name="endy" explain="终点坐标Y"></field>
+		<field class="long" name="playerid" explain="开炮玩家ID"></field>
+	</message>
+	
+	<message id="105" type="WC" name="ResEmperorStructureInfoToClient" explain="返回皇城结构信息">
+		<field class="EmperorStructureInfo" name="emperorStructureInfo" explain="皇城结构信息"></field>
+		<list class="byte" name="stateawards" explain="奖励领取状态1表示已经领取，排列顺序 皇帝，皇后"></list>
+	</message>
+	
+	<message id="106" type="SC" name="ResEmperorWarTimeRewardToClient" explain="在线时间奖励信息">
+		<field class="EmperorWarRewardInfo" name="emperorWarRewardInfo" explain="在线奖励"></field>
+	</message>
+	
+	<message id="107" type="SC" name="ResEmperorWarInfoToClient" explain="地图广播皇城战即时消息">
+		<field class="EmperorWarInfo" name="emperorWarInfo" explain="皇城战即时消息"></field>
+	</message>
+	
+
+	<message id="108" type="SC" name="ResEmperorWarSendReinCoolingToClient" explain="发送援军冷却时间">
+		<field class="int" name="attacktime" explain="攻方冷却时间"></field>
+		<field class="int" name="defenstime" explain="守方冷却时间"></field>
+	</message>	
+	
+	<message id="119" type="SC" name="ResGroupActivityinfoToGameClient" explain="大型群体活动时间记录">
+		<list class="String" name="strjson" explain="活动时间内容列表"></list>
+	</message>
+	
+	<message id="120" type="WC" name="ResGroupActivityinfoWoridToClient" explain="世界服务器大型群体活动时间记录">
+		<list class="String" name="strjson" explain="活动时间内容列表"></list>
+	</message>
+	
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ResEmperorWarSelectToGame" explain="玩家选择是否参与皇城争霸战">
+		<field class="byte" name="type" explain="是否参与，1参与攻城"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ResEmperorReceiveRewardsToGame" explain="领取皇城职位奖励">
+	</message>
+	
+	<message id="203" type="CS" name="ReqEmperorWarOpenTopToGame" explain="打开斩将排行榜">
+	</message>
+	
+	<message id="204" type="CS" name="ReqEmperorWarCarToGame" explain="玩家使用战车攻击">
+		<field class="int" name="npcid" explain="NPCid"></field>
+		<field class="byte" name="type" explain="战车类型"></field>
+		<field class="int" name="x" explain="攻击坐标X"></field>
+		<field class="int" name="y" explain="攻击坐标Y"></field>
+	</message>
+	
+	<message id="205" type="CS" name="ReqEmperorWarCarInAdvanceToGame" explain="战车攻击提前移动镜像观察">
+		<field class="int" name="npcid" explain="NPCid"></field>
+		<field class="byte" name="type" explain="战车类型"></field>
+		<field class="int" name="x" explain="攻击坐标X"></field>
+		<field class="int" name="y" explain="攻击坐标Y"></field>
+	</message>
+
+	<message id="206" type="CS" name="ReqEmperorStructureInfoToGame" explain="请求皇城结构信息">
+	</message>
+	
+	<message id="207" type="CS" name="ReqEmperorWarCallMonsterToGame" explain="各国国王召唤援军">
+		<field class="int" name="type" explain="召唤援军类型"></field>
+	</message>
+	
+	<message id="208" type="CS" name="ReqEmperorWarCallWallsToGame" explain="皇城城主召唤围墙">
+		<field class="int" name="type" explain="召唤围墙类型"></field>
+	</message>
+	
+	<message id="209" type="CS" name="ReqEmperorWarSendReinCoolingToGame" explain="获取召唤援军冷却时间">
+		
+	</message>
+	
+	
+	
+	<!-- 服务器之间消息 -->
+	<message id="300" type="SW" name="ReqEmperorStructureInfoToWorid" explain="玩家请求皇城结构信息to世界">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+	
+	<message id="301" type="SW" name="ReqEmperorSyncKingCityToWorid" explain="同步到世界服务器皇城信息">
+		<field class="String" name="emperorJSON" explain="皇城信息JSON格式"></field>
+		<field class="int" name="type" explain="同步类型，0普通，1夺旗同步（拿来做同步皇城BUFF）"></field>
+	</message>
+	
+	<message id="302" type="WS" name="ResEmperorSyncKingCityToGame" explain="下发皇城信息到所有game服务器">
+		<field class="String" name="emperorJSON" explain="皇城信息JSON格式"></field>
+	</message>
+		
+	<message id="303" type="SW" name="ReqEmperorWarStateToWorid" explain="皇城争霸战状态">
+		<field class="byte" name="state" explain="0未开启，1进行中，2已结束"></field>
+	</message>
+	
+	<message id="304" type="SW" name="ReqEmperorReceiveRewardsToWorid" explain="检测领取皇城职位奖励">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+	
+	<message id="305" type="WS" name="ResEmperorReceiveRewardsWoridToGame" explain="领取皇城职位奖励（返回游戏服务器发奖励）">
+		<field class="int" name="job" explain="可获得奖励的对应职位"></field>
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+	
+	<message id="306" type="WS" name="ResEmperorWarStateToGame" explain="下发各个服务器皇城争霸战状态">
+		<field class="byte" name="state" explain="0未开启，1进行中，2已结束"></field>
+	</message>
+	
+	<message id="307" type="SW" name="ReqSynEmperorEventToWorid" explain="发送到世界服务器皇城事件">
+		<field class="int" name="type" explain="事件类型"></field>
+		<field class="String" name="param" explain="事件内容参数"></field>
+	</message>
+
+	<message id="308" type="WS" name="ResSynEmperorEventWoridToGame" explain="下发各个服务器皇城事件">
+		<field class="int" name="type" explain="事件类型"></field>
+	</message>
+	
+</messages>
+	
+	
+	
+	
+	

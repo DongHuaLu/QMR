@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.task" id="120">
+	<bean name="DailyTaskInfo" explain="日常任务">
+		<field class="int" name="jlId" explain="奖励模型ID"></field>
+		<field class="int" name="premiseId" explain="完成条件模型ID"></field>
+		<field class="int" name="otherjlId" explain="额外奖励模型ID"></field>
+		<list class="TaskAttribute" name="permiseGoods" explain="达成物品成数"></list>
+		<list class="TaskAttribute" name="permiseMonster" explain="达成怪物"></list>
+		<list class="int" name="permiseAchieve" explain="达成成就"></list>
+		<list class="com.game.backpack.bean.ItemInfo" name="rewards" explain="任务完成奖励物品"></list>
+	</bean>
+	<bean name="ConquerTaskInfo" explain="讨伐任务">
+		<field class="long" name="id" explain="任务ID"></field>
+		<field class="int" name="modelId" explain="任务模型"></field>
+		<list class="TaskAttribute" name="permiseGoods" explain="达成物品成数"></list>
+		<list class="TaskAttribute" name="permiseMonster" explain="达成怪物"></list>
+		<list class="int" name="permiseAchieve" explain="达成成就"></list>
+		<field class="int" name="rewardsExp" explain="奖励经验"></field>
+		<field class="int" name="rewardsCopper" explain="奖励铜币"></field>
+		<field class="int" name="rewardsZQ" explain="奖励真气"></field>
+		<field class="int" name="rewardsSW" explain="奖励声望"></field>
+		<field class="int" name="rewardsBindGold" explain="奖励绑定元宝"></field>
+		<list class="com.game.backpack.bean.ItemInfo" name="rewards" explain="任务完成奖励物品"></list>
+	</bean>
+	<bean name="TreasureHuntTaskInfo" explain="寻宝任务">
+		<field class="long" name="id" explain="任务ID"></field>
+		<field class="int" name="modelId" explain="任务模型"></field>
+		<list class="TaskAttribute" name="permiseGoods" explain="达成物品成数"></list>
+		<list class="TaskAttribute" name="permiseMonster" explain="达成怪物"></list>
+		<list class="int" name="permiseAchieve" explain="达成成就"></list>
+		<field class="int" name="rewardsExp" explain="奖励经验"></field>
+		<field class="int" name="rewardsCopper" explain="奖励铜币"></field>
+		<field class="int" name="rewardsZQ" explain="奖励真气"></field>
+		<field class="int" name="rewardsSW" explain="奖励声望"></field>
+		<field class="int" name="rewardsBindGold" explain="奖励绑定元宝"></field>
+		<list class="com.game.backpack.bean.ItemInfo" name="rewards" explain="任务完成奖励物品"></list>
+	</bean>
+	<bean name="MainTaskInfo" explain="主线任务">
+		<field class="int" name="modelId" explain="任务模型"></field>
+		<field class="byte" name="isFinshAction" explain="是否完成指定动作 1完成 2未完成 无动作条件时默认为完成"></field>
+		<list class="TaskAttribute" name="permiseGoods" explain="达成物品成数"></list>
+		<list class="TaskAttribute" name="permiseMonster" explain="达成怪物"></list>
+		<list class="int" name="permiseAchieve" explain="达成成就"></list>
+	</bean>
+	<bean name="TaskAttribute" explain="任务追踪">
+		<field class="int" name="model" explain="模型"></field>
+		<field class="int" name="num" explain="数量"></field>
+	</bean>
+	<bean name="TargetMonsterInfo" explain="同步怪物的信息">
+		<field class="byte" name="state" explain="怪物状态 0未刷新 1未死亡"></field>
+		<field class="int" name="modelId" explain="怪物模型ID"></field>
+		<field class="int" name="serverId" explain="服务器ID"></field>
+		<field class="int" name="lineId" explain="线ID"></field>
+		<field class="int" name="hp" explain="怪物当前血量"></field>
+		<field class="int" name="mapId" explain="地图模型ID"></field>
+		<field class="String" name="killer" explain="上次击杀者名字"></field>
+		<field class="int" name="reliveTime" explain="重生时间"></field>
+		<field class="short" name="birthX" explain="座标X"></field>
+		<field class="short" name="birthY" explain="座标Y"></field>
+	</bean>
+
+	<bean name="RankTaskInfo" explain="军功任务">
+		<field class="int" name="modelId" explain="任务模型"></field>
+		<list class="RankTaskAttribute" name="permiseGoods" explain="任务追踪"></list>
+	</bean>
+	<bean name="RankTaskAttribute" explain="任务追踪">
+		<field class="int" name="type" explain="任务类型"></field>
+		<field class="int" name="num" explain="数量"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResTaskList" explain="任务列表">
+		<field class="int" name="daylyTaskacceptcount" explain="当日日常任务己接取次数"></field>
+		<field class="int" name="conquerTaskAcceptCount" explain="当日讨伐接取次数"></field>
+		<field class="int" name="conquerTaskAcceptMaxCount" explain="当日讨伐接取最大次数"></field>
+		<field class="int" name="devourCount" explain="今日吞噬数"></field>
+		<list class="DailyTaskInfo" name="DailyTask" explain="日常任务列表"></list>
+		<list class="ConquerTaskInfo" name="conqueryTask" explain="讨伐任务"></list>
+		<list class="MainTaskInfo"	name="mainTask" explain="主线任务"></list>
+		<list class="TreasureHuntTaskInfo" name="treasureHuntTask" explain="寻宝任务"></list>
+		<list class="com.game.backpack.bean.ItemInfo" name="ableAct" explain="可领取"></list>
+		<field class="int" name="ishasnewdailytask" explain="是否有新的日常任务1是 0否"></field>
+	</message>
+	<message id="102" type="SC" name="ResTaskFinsh" explain="任务完成">
+		<field class="byte" name="type" explain="任务类型 主线 日常 讨伐"></field>
+		<field class="int" name="modelId" explain="任务模型"></field>
+		<field class="long" name="conquerTadkId" explain="吞噬任务ID"></field>
+		<field class="int" name="finshType" explain="日常任务完成类型   0普通完成 1一键完成 "></field>
+	</message>
+	<message id="103" type="SC" name="ResRewardsAbleAct" explain="更新在可领取区域物品变更">
+		<list class="com.game.backpack.bean.ItemInfo" name="ableAct" explain="任务完成待领取的物品"/>
+	</message>
+	<message id="104" type="SC" name="ResMainTaskChange" explain="主线任务变更">
+		<field class="MainTaskInfo" name="task" explain="主线任务"></field>
+	</message>
+	<message id="105" type="SC" name="ResDailyTaskChange" explain="日常任务变更">
+		<field class="int" name="daylyTaskacceptcount" explain="当日日常任务己接取次数"></field>
+		<field class="DailyTaskInfo" name="task" explain="日常任务"></field>
+	</message>
+	<message id="106" type="SC" name="ResConquerTaskChange" explain="讨伐任务变更">
+		<field class="int" name="conquerTaskAcceptCount" explain="当日讨伐接取次数"></field>
+		<field class="int" name="conquerTaskAcceptMaxCount" explain="当日讨伐接取最大次数"></field>
+		<field class="int" name="devourCount" explain="今日吞噬数"></field>
+		<field class="ConquerTaskInfo" name="task" explain="讨伐任务"></field>
+	</message>
+
+	<message id="107" type="SC" name="ResConquerTaskAnnex" explain="讨伐任务吞噬">
+		<field class="long" name="vanishTaskId" explain="被吞噬的任务(要消失)"></field>
+	</message>
+
+	<message id="108" type="SC" name="ResTaskReceive" explain="可领取区域领取结果 领取成功以后才会返回">
+	</message>
+
+	<message id="109" type="SC" name="ResConquerTaskListUpdate" explain="讨伐任务重排">
+		<field class="int" name="conquerTaskAcceptCount" explain="当日讨伐接取次数"></field>
+		<field class="int" name="conquerTaskAcceptMaxCount" explain="当日讨伐接取最大次数"></field>
+		<field class="int" name="devourCount" explain="今日吞噬数"></field>
+		<list class="ConquerTaskInfo" name="task" explain="讨伐任务"/>
+	</message>
+
+	<message id="110" type="SC" name="ResTargetMonsterChange" explain="讨伐任务怪物状态变化">
+		<field class="TargetMonsterInfo" name="monsterInfo" explain="怪物信息"></field>
+	</message>
+
+	<message id="111" type="SC" name="ResTreasureHuntTaskChange" explain="寻宝任务变更">
+		<field class="TreasureHuntTaskInfo" name="task" explain="寻宝任务"></field>
+	</message>
+
+	<message id="112" type="SC" name="ResGiveUpTask" explain="任务放弃">
+		<field class="int" name="type" explain="任务类型 0主线 1讨伐 2日常 3寻宝"></field>
+		<field class="long" name="taskid" explain="选择的任务ID"></field>
+	</message>
+	<message id="113" type="SC" name="ResTargetMonster" explain="需要同步的怪物信息">
+		<list class="TargetMonsterInfo" name="monsterInfoList" explain="登录时返回的讨伐怪物信息"></list>
+	</message>
+
+
+	<message id="114" type="SC" name="ResRankTaskList" explain="任务列表">
+		<list class="RankTaskInfo" name="tasklist" explain="军衔任务列表"></list>
+		<list class="int" name="completetasklist" explain="完成军衔任务列表"></list>
+	</message>
+	
+	<message id="115" type="SC" name="ResRankTaskChange" explain="军衔任务列表变更">
+		<field class="RankTaskInfo" name="taskInfo" explain="军衔任务变更"></field>
+	</message>
+	
+	<message id="116" type="SC" name="ResRankTaskFinsh" explain="军衔任务完成">
+		<field class="int" name="modelId" explain="任务模型"></field>
+		<field class="int" name="finshType" explain="任务完成类型   0普通完成 1一键完成 "></field>
+	</message>
+	
+	<message id="117" type="SC" name="ResRankTaskQuickFinshAll" explain="军衔任务一键快速完成后所有军功值">
+		<field class="int" name="allrankexp" explain="所有军功值"></field>
+	</message>
+	
+	<message id="118" type="SC" name="ResTaskGoldAddNum" explain="任务增加次数">
+		<field class="int" name="tasktype" explain="任务类型"></field>
+		<field class="int" name="nowmaxnum" explain="现在的最大次数"></field>
+	</message>
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqTaskReceive" explain="领取任务">
+		<field class="byte" name="type" explain="任务类型 主线 日常 （讨伐使用卷轴完成领用）"></field>
+		<field class="int" name="modelId" explain="任务模型"></field>
+	</message>
+	<message id="202" type="CS" name="ReqTaskFinsh" explain="交付任务">
+		<field class="byte" name="type" explain="任务类型 主线 日常 讨伐"></field>
+		<field class="long" name="conquererTaskId" explain="讨伐任务ID"></field>
+		<field class="int" name="taskId" explain="任务模型"></field>
+	</message>
+	<message id="203" type="CS" name="ReqTaskUpAchieve" explain="提升奖励">
+		<field class="int" name="taskId" explain="任务ID"></field>
+	</message>
+	<message id="204" type="CS" name="ReqTaskDownHard" explain="降低难度">
+		<field class="int" name="taskId" explain="任务ID"></field>
+	</message>
+	<message id="205" type="CS" name="ReqReceiveRewards" explain="领取可领取区域的物品">
+	</message>
+	<message id="206" type="CS" name="ReqQuickFinsh" explain="快速完成">
+		<field class="int" name="taskId" explain="任务ID"></field>
+		<field class="byte" name="type" explain="0快速完成  1最优快速完成"></field>
+	</message>
+	<message id="207" type="CS" name="ReqTaskInfoMation" explain="请求任务动态信息">
+	</message>
+	<message id="208" type="CS" name="ReqConquerTaskDevour" explain="讨伐任务吞噬请求">
+		<field class="long" name="devourId" explain="选择的任务ID"></field>
+		<field class="byte" name="isfull" explain="是否保留100%比例"></field>
+	</message>
+	<message id="209" type="CS" name="ReqGiveUpTask" explain="放弃任务">
+		<field class="int" name="type" explain="任务类型 0主线 1讨伐 2日常 3寻宝"></field>
+		<field class="long" name="taskid" explain="选择的任务ID"></field>
+	</message>
+
+	<message id="210" type="CS" name="ReqDailyTaskTrans" explain="日常任务传送">
+		<field class="int" name="mapid" explain="目标地图ID"></field>
+		<field class="int" name="x" explain="目标x"></field>
+		<field class="int" name="y" explain="目标y"></field>
+		<field class="int" name="line" explain="目标line"></field>
+	</message>
+
+	<message id="211" type="CS" name="ReqConqueryTaskTrans" explain="讨伐任务传送">
+		<field class="long" name="taskId" explain="任务ID"></field>
+		<field class="int" name="mapid" explain="目标地图ID"></field>
+		<field class="int" name="x" explain="目标x"></field>
+		<field class="int" name="y" explain="目标y"></field>
+		<field class="int" name="line" explain="目标line"></field>
+	</message>
+
+	<message id="212" type="CS" name="ReqTreasureHuntTaskTrans" explain="讨伐任务传送">
+		<field class="long" name="taskId" explain="任务ID"></field>
+		<field class="int" name="mapid" explain="目标地图ID"></field>
+		<field class="int" name="x" explain="目标x"></field>
+		<field class="int" name="y" explain="目标y"></field>
+		<field class="int" name="line" explain="目标line"></field>
+	</message>
+	<message id="213" type="CS" name="ReqConquerTaskQuckFinsh" explain="讨伐任务快速完成">
+		<field class="long" name="taskId" explain="任务ID"></field>
+	</message>
+	<message id="214" type="CS" name="ReqRankTaskQuckFinsh" explain="军衔任务快速完成">
+		<field class="int" name="modelId" explain="任务模型"></field>
+	</message>
+	<message id="215" type="CS" name="ReqRankTaskQuckFinshAll" explain="军衔任务快速完成所有军功任务">
+	</message>
+	<message id="216" type="CS" name="ReqTaskGoldAddNum" explain="任务通过元宝增加次数上限">
+		<field class="int" name="tasktype" explain="任务类型"></field>
+		<field class="int" name="addnum" explain="增加次数"></field>
+	</message>
+
+
+
+
+
+	<!--服务器请求世界服-->
+	<message id="301" type="SW" name="ReqTargetMonster" explain="请求任务中需要同步的怪物信息">
+		<field class="int" name="serverId" explain="服务器ID"></field>
+		<field class="long" name="reqRoleId" explain="角色ID"></field>
+		<list class="int" name="modelIds" explain="怪物模型ID"></list>
+	</message>
+
+	<!--世界服返回-->
+	<message id="302" type="WC" name="ResTargetMonsterInfo" explain="需要同步的怪物信息">
+		<list class="TargetMonsterInfo" name="monsterInfoList" explain="登录时返回的讨伐怪物信息"></list>
+	</message>
+
+	<message id="303" type="WS" name="ResTargetMonsterToServer" explain="请求任务中需要同步的怪物信息">
+		<list class="TargetMonsterInfo" name="monsterInfoList" explain="登录时返回的讨伐怪物信息"></list>
+	</message>
+</messages>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.chat" id="111">
+	<!-- bean定义 -->
+	<bean name="GoodsInfoReq" explain="装备信息类">
+		<field class="long" name="goodId" explain="物品Id"></field>
+		<field class="int" name="index" explain="索引位置"></field>
+	</bean>
+	<bean name="GoodsInfoRes" explain="装备信息类">
+		<field class="int" name="queryType" explain="请求类型 0物品 1其它"></field>
+		<field class="int" name="index" explain="索引位置"></field>
+		<field class="com.game.backpack.bean.ItemInfo" name="ItemInfo" explain="物品内容"></field>
+		<list class="com.game.gem.bean.GemInfo" name="geminfo" explain="装备部位宝石信息"></list>
+	</bean>
+
+	<bean name="RoleChatInfo" explain="玩家简要信息">
+		<field class="long" name="id" explain="角色ID"></field>
+		<field class="String" name="name" explain="角色名"></field>
+		<field class="int" name="level" explain="等级"></field>
+		<field class="byte" name="sex" explain="性别"></field>
+	</bean>
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ChatResponse" explain="聊天消息">
+		<!--0 世界 1普通 2私聊 3队伍 4帮派 5喇叭 -->
+		<field class="short" name="viptype" explain="VIP类型"></field>
+		<field class="int" name="chattype" explain="消息类型"></field>
+		<field class="long" name="chater" explain="发送人id"></field>
+		<field class="int" name="chaterlevel" explain="发送人等级"></field>
+		<field class="int" name="country" explain="发送人国家id"></field>
+		<field class="int" name="chaterkinglv" explain="发送人王城等级"></field>
+		<field class="int" name="chaterempirelv" explain="发送人皇城等级"></field>
+		<field class="long" name="receiver" explain="接收人id"></field>
+		<field class="int" name="receiverlevel" explain="接收人等级"></field>
+		<field class="String" name="chatername" explain="发送人名字"></field>
+		<field class="String" name="receivername" explain="接收人名字"></field>
+		<field class="short" name="receiverviptype" explain="接收人VIP类型"></field>
+		<field class="String" name="condition" explain="聊天消息"></field>
+		<list class="GoodsInfoRes" name="other" explain="附加属性"></list>
+		<field class="byte" name="isgm" explain="是否GM1是 0否" ></field>
+		<field class="int" name="webvip" explain="发送人WEBVIP类型"></field>
+		<field class="int" name="receiverwebvip" explain="接收人WEBVIP类型"></field>
+	</message>
+	<message id="102" type="SC" name="RoleQueryResult" explain="查找结果列表">
+		<field class="int" name="page" explain="页码"></field>
+		<field class="int" name="count" explain="总数"></field>
+		<list class="RoleChatInfo" name="list" explain="结果列表"></list>
+	</message>
+	<!--SW消息-->
+	<message id="103" type="WC" name="ChatResponseWC" explain="聊天消息">
+		<field class="int" name="chattype" explain="消息类型"></field>
+		<field class="long" name="chater" explain="发送人id"></field>
+		<field class="String" name="chatername" explain="发送人名字"></field>
+		<field class="int" name="chaterlevel" explain="发送人等级"></field>
+		<field class="int" name="chaterkinglv" explain="发送人王城等级"></field>
+		<field class="int" name="chaterempirelv" explain="发送人皇城等级"></field>
+		<field class="int" name="country" explain="发送人国家id"></field>
+		<field class="short" name="viptype" explain="发送人VIP类型"></field>
+		<field class="long" name="receiver" explain="接收人id"></field>
+		<field class="int" name="receiverlevel" explain="接收人等级"></field>
+		<field class="String" name="receivername" explain="接收人名字"></field>
+		<field class="short" name="receiverviptype" explain="接收人VIP类型"></field>
+		<field class="String" name="condition" explain="聊天消息"></field>
+		<list class="GoodsInfoRes" name="other" explain="附加属性"></list>
+		<field class="byte" name="isgm" explain="是否GM1是 0否" ></field>
+		<field class="int" name="webvip" explain="发送人WEBVIP类型"></field>
+		<field class="int" name="receiverwebvip" explain="接收人WEBVIP类型"></field>
+	</message>
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ChatRequest" explain="聊天请求">
+		<!--0 世界 1普通 2私聊 3队伍 4帮派 5喇叭 -->
+		<field class="int" name="chattype" explain="消息类型"></field>
+		<field class="String" name="roleName" explain="私聊时需要填写角色名"></field>
+		<field class="String" name="condition" explain="聊天消息"></field>
+		<list class="GoodsInfoReq" name="other" explain="附加属性请求"></list>
+	</message>
+
+	<message id="202" type="CS" name="RoleQuery" explain="按角色名查询  支持模糊">
+		<field class="int" name="page" explain="页码 从1开始"></field>
+		<field class="String" name="roleLikeName" explain="角色名"></field>
+	</message>
+	
+	<!--SW消息-->
+	<message id="301" type="SW" name="ChatResponseSW" explain="广播聊天消息">
+		<!--2私聊 3队伍 4帮派  -->
+		<!--0 世界 1普通 5喇叭聊天不走世界服 -->
+		<field class="int" name="chattype" explain="消息类型"></field>
+		<field class="long" name="chater" explain="发送人id"></field>
+		<field class="String" name="chatername" explain="发送人名字"></field>
+		<field class="int" name="country" explain="发送人国家id"></field>
+		<field class="int" name="chaterkinglv" explain="发送人王城等级"></field>
+		<field class="String" name="receivername" explain="接收人名字"></field>
+		<field class="String" name="condition" explain="聊天消息"></field>
+		<field class="byte" name="isprohibit" explain="是否禁言 1禁言 0未禁言"></field>
+		<list class="GoodsInfoRes" name="other" explain="附加属性"></list>
+		<field class="byte" name="isgm" explain="是否GM1是 0否" ></field>
+		<field class="short" name="senderviptype" explain="发送人VIP类型"></field>
+		<field class="short" name="receiverviptype" explain="接收人VIP类型"></field>
+		<field class="int" name="webvip" explain="发送人WEBVIP类型"></field>
+		<field class="int" name="receiverwebvip" explain="接收人WEBVIP类型"></field>
+	</message>
+	
+	<!-- WS消息 -->
+	<message id="320" type="WS" name="ReqLoadBlackListWS" explain="通知游戏服加载聊天黑名单">
+		<field class="int" name="blacktype" explain="聊天黑名单类型 1-账号 2-IP"></field>
+	</message>
+</messages>

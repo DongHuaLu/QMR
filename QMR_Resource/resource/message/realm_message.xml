@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.realm" id="158">
+	<!-- bean定义 -->
+	
+	<bean name="RealmInfo" explain="境界信息">
+		<field class="int" name="realmlevel" explain="境界等级"></field>
+		<field class="int" name="intensifylevel" explain="境界强化等级"></field>
+		<field class="int" name="blessingnum" explain="境界突破祝福值"></field>
+	</bean>
+
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResRealmInfoToClient" explain="境界信息">
+		<field class="RealmInfo" name="bealmInfo" explain="境界信息"></field>
+	</message>
+	
+	<message id="102" type="SC" name="ResBreakthroughToClient" explain="返回前端突破境界信息">
+		<field class="RealmInfo" name="bealmInfo" explain="境界信息"></field>
+		<field class="int" name="result" explain="0失败，1成功"></field>
+		<field class="int" name="type" explain="失败获得经验类型：0普通，1小暴击，2大暴击"></field>
+		<field class="int" name="exp" explain="失败获得经验"></field>
+		<field class="String" name="prompt" explain="提示内容"></field>
+	</message>
+	
+	
+	<message id="103" type="SC" name="ResIntensifyToClient" explain="返回前端强化境界信息">
+		<field class="RealmInfo" name="bealmInfo" explain="境界信息"></field>
+		<field class="int" name="result" explain="0失败，1成功"></field>
+		<field class="String" name="prompt" explain="提示内容"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResRealmErrToClient" explain="返回前端错误内容">
+		<field class="int" name="type" explain="1道具不足，2铜币不足，3真气不足，4强化已满，5元宝不足"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqBreakthroughToGame" explain="通知game突破境界">
+		<field class="int" name="type" explain="0手动，1自动"></field>
+	</message>
+	
+	<message id="202" type="CS" name="ReqIntensifyToGame" explain="通知game强化境界">
+	
+	</message>
+	
+	
+</messages>		

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_horse_addition"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_horse_additionBean" >
+	<result column="q_id" property="q_id" jdbcType="VARCHAR" />
+	<result column="q_layer" property="q_layer" jdbcType="INTEGER" />
+	<result column="q_level" property="q_level" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_defense" property="q_defense" jdbcType="INTEGER" />
+	<result column="q_crit" property="q_crit" jdbcType="INTEGER" />
+	<result column="q_dodge" property="q_dodge" jdbcType="INTEGER" />
+	<result column="q_maxHp" property="q_maxHp" jdbcType="INTEGER" />
+	<result column="q_maxMp" property="q_maxMp" jdbcType="INTEGER" />
+	<result column="q_maxSp" property="q_maxSp" jdbcType="INTEGER" />
+	<result column="q_attackSpeed" property="q_attackSpeed" jdbcType="INTEGER" />
+	<result column="q_speed" property="q_speed" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_horse_addition
+  </select>
+</mapper> 

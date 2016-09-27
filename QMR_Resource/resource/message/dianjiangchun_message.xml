@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.dianjiangchun" id="116">
+	<!-- bean定义 -->
+	<bean name="DianjiangchunInfo" explain="点绛唇保存信息">
+		<field class="int" name="status" explain="状态"></field>
+		<field class="int" name="nInfuriatingvalue" explain="真气值"></field>
+		<field class="int" name="nReceiveintinfuriatingvalue" explain="领取真气值"></field>
+		<field class="byte" name="btUsecount" explain="使用次数"></field>
+		<field class="byte" name="btMaxcount" explain="最大使用次数"></field>
+		<field class="byte" name="btFreechangeluckcount" explain="免费改运次数"></field>
+		<field class="byte" name="btFreechangeluckMaxcount" explain="免费改运最大次数"></field>
+		<list class="int" name="bosonList" explain="色子信息列表"></list>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="SendDianjiangchunInfoToClient" explain="点绛唇信息发送到客户端">
+		<field class="DianjiangchunInfo" name="stCurInfo" explain="点绛唇保存信息"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="GetDianjiangchunInfoToServer" explain="客户端请求点绛唇信息">
+	</message>
+	<message id="202" type="CS" name="GetBeginDianjiangchunToServer" explain="客户端请求开始点绛唇">
+	</message>
+	<message id="203" type="CS" name="GetChangeLuckToServer" explain="客户端请求改运">
+	</message>
+	<message id="204" type="CS" name="GetReceiveintinfuriatingvalueToServer" explain="客户端请求领取真气">
+	</message>
+</messages>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_platformgift"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_platformgiftBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_agent" property="q_agent" jdbcType="VARCHAR" />
+	<result column="q_type" property="q_type" jdbcType="INTEGER" />
+	<result column="q_min_lv" property="q_min_lv" jdbcType="INTEGER" />
+	<result column="q_max_lv" property="q_max_lv" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_giftid" property="q_giftid" jdbcType="INTEGER" />
+	<result column="q_display" property="q_display" jdbcType="VARCHAR" />
+	<result column="q_limit" property="q_limit" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_platformgift
+  </select>
+</mapper> 

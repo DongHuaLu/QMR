@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_horse_skills"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_horse_skillsBean" >
+	<result column="q_skillid" property="q_skillid" jdbcType="INTEGER" />
+	<result column="q_skill_name" property="q_skill_name" jdbcType="VARCHAR" />
+	<result column="q_show_need_layer" property="q_show_need_layer" jdbcType="INTEGER" />
+	<result column="q_activate_need_layer" property="q_activate_need_layer" jdbcType="INTEGER" />
+	<result column="q_a_grid_rnd" property="q_a_grid_rnd" jdbcType="INTEGER" />
+	<result column="q_b_grid_rnd" property="q_b_grid_rnd" jdbcType="INTEGER" />
+	<result column="q_c_grid_rnd" property="q_c_grid_rnd" jdbcType="INTEGER" />
+	<result column="q_addexp_single" property="q_addexp_single" jdbcType="INTEGER" />
+	<result column="q_addexp_crit" property="q_addexp_crit" jdbcType="INTEGER" />
+	<result column="q_addexp_bigcrit" property="q_addexp_bigcrit" jdbcType="INTEGER" />
+	<result column="q_expend_gold" property="q_expend_gold" jdbcType="LONGVARCHAR" />
+	<result column="q_expend_yuanbao" property="q_expend_yuanbao" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_horse_skills
+  </select>
+</mapper> 

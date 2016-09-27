@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_activities"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_activitiesBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_maintype" property="q_maintype" jdbcType="INTEGER" />
+	<result column="q_type" property="q_type" jdbcType="INTEGER" />
+	<result column="q_show" property="q_show" jdbcType="INTEGER" />
+	<result column="q_mainicon" property="q_mainicon" jdbcType="VARCHAR" />
+	<result column="q_titleimage" property="q_titleimage" jdbcType="VARCHAR" />
+	<result column="q_listimage" property="q_listimage" jdbcType="VARCHAR" />
+	<result column="q_tuijian" property="q_tuijian" jdbcType="INTEGER" />
+	<result column="q_canrepeated" property="q_canrepeated" jdbcType="INTEGER" />
+	<result column="q_duration" property="q_duration" jdbcType="LONGVARCHAR" />
+	<result column="q_timingstart" property="q_timingstart" jdbcType="LONGVARCHAR" />
+	<result column="q_info" property="q_info" jdbcType="LONGVARCHAR" />
+	<result column="q_items" property="q_items" jdbcType="LONGVARCHAR" />
+	<result column="q_login_limit" property="q_login_limit" jdbcType="INTEGER" />
+	<result column="q_pay_yuanbao" property="q_pay_yuanbao" jdbcType="VARCHAR" />
+	<result column="q_need_level" property="q_need_level" jdbcType="INTEGER" />
+	<result column="q_need_horse" property="q_need_horse" jdbcType="INTEGER" />
+	<result column="q_need_skill" property="q_need_skill" jdbcType="INTEGER" />
+	<result column="q_other" property="q_other" jdbcType="LONGVARCHAR" />
+	<result column="q_flag" property="q_flag" jdbcType="VARCHAR" />
+	<result column="q_resflag" property="q_resflag" jdbcType="VARCHAR" />
+	<result column="q_onlinetime" property="q_onlinetime" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_activities
+  </select>
+</mapper> 

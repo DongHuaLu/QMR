@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="game_reward"> 
+  <resultMap id="rewardinfo" type="com.game.memorycache.structs.RewardData" >
+  	<id column="rewardId" property="rewardId" jdbcType="BIGINT" />
+  	<result column="dataServerPlayerId" property="dataServerPlayerId" jdbcType="BIGINT" />
+  	<result column="playerId" property="playerId" jdbcType="BIGINT" />
+  	<result column="web" property="web" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="serverId" property="serverId" jdbcType="INTEGER" />
+    <result column="reward" property="reward" jdbcType="LONGVARCHAR" />
+    <result column="time" property="time" jdbcType="BIGINT" />
+    <result column="receive" property="receive" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="com.game.memorycache.structs.RewardData" >
+    INSERT INTO reward (
+    	rewardId,
+    	dataServerPlayerId,
+    	playerId,
+    	web,
+    	userId,
+    	serverId,
+    	reward,
+    	time,
+    	receive
+    )
+    VALUES(
+    	#{rewardId,jdbcType=BIGINT},
+    	#{dataServerPlayerId,jdbcType=BIGINT},
+    	#{playerId,jdbcType=BIGINT},
+    	#{web,jdbcType=VARCHAR},
+    	#{userId,jdbcType=VARCHAR},
+    	#{serverId,jdbcType=INTEGER},
+    	#{reward,jdbcType=LONGVARCHAR},
+    	#{time,jdbcType=BIGINT},
+    	#{receive,jdbcType=INTEGER}
+    )
+  </insert>
+  
+  <select id="selectByWebAndPlayerId" parameterType="java.util.Map" resultMap="rewardinfo">
+  	SELECT rewardId, dataServerPlayerId, playerId, web, userId, serverId, reward, time FROM reward WHERE web=#{web,jdbcType=VARCHAR} AND playerId=#{playerId,jdbcType=BIGINT} AND receive=0
+  </select>
+  
+  <update id="update" parameterType="java.util.Map" >
+     UPDATE reward
+     SET 
+    	receive = 1
+     WHERE playerId = #{playerId,jdbcType=BIGINT} 
+    	AND web = #{web,jdbcType=VARCHAR}
+  </update>
+</mapper>

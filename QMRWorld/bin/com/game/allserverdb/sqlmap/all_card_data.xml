@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="all_card_data"> 
+	<resultMap id="bean" type="com.game.allserverdb.bean.All_Card_dataBean" >
+		<result column="cardid" property="cardid" jdbcType="VARCHAR" />
+		<result column="agid" property="agid" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="roleid" property="roleid" jdbcType="BIGINT" />
+		<result column="web" property="web" jdbcType="VARCHAR" />
+	</resultMap>
+  
+	<select id="select" resultMap="bean">
+		select * from all_card_data
+	</select>
+  
+	<select id="selectbyid" parameterType="String" resultMap="bean">
+		select * from all_card_data where 
+		cardid = #{ cardid,jdbcType=VARCHAR }
+	</select>
+  
+	<select id="selectbyaccountandagidonly" parameterType="com.game.allserverdb.bean.All_Card_dataBean" resultMap="bean">
+		select * from all_card_data where 
+		account = #{ account,jdbcType=VARCHAR } and agid =#{ agid,jdbcType=INTEGER } and type =#{ type,jdbcType=INTEGER }
+	</select>
+  
+	<select id="selectbyaccountandtypeonly" parameterType="com.game.allserverdb.bean.All_Card_dataBean" resultMap="bean">
+		select * from all_card_data where 
+		account = #{ account,jdbcType=VARCHAR } and type =#{ type,jdbcType=INTEGER }
+	</select>
+  
+	<select id="selectbyroleidandagidonly" parameterType="com.game.allserverdb.bean.All_Card_dataBean" resultMap="bean">
+		select * from all_card_data where 
+		roleid = #{ roleid,jdbcType=BIGINT } and type =#{ type,jdbcType=INTEGER } and agid =#{ agid,jdbcType=INTEGER }
+	</select>
+  
+	<select id="selectbyroleidandtypeonly" parameterType="com.game.allserverdb.bean.All_Card_dataBean" resultMap="bean">
+		select * from all_card_data where 
+		roleid = #{ roleid,jdbcType=BIGINT } and type =#{ type,jdbcType=INTEGER }
+	</select>
+  
+	<insert id="insert" parameterType="com.game.allserverdb.bean.All_Card_dataBean" >
+		insert into all_card_data (
+		cardid,
+		agid,
+		type,
+		account,
+		roleid,
+		web
+		)
+		values (
+		#{ cardid,jdbcType=VARCHAR },
+		#{ agid,jdbcType=INTEGER },
+		#{ type,jdbcType=INTEGER },
+		#{ account,jdbcType=VARCHAR },
+		#{ roleid,jdbcType=BIGINT },
+		#{ web,jdbcType=VARCHAR }
+		)
+	</insert>
+
+<!--
+
+<select id="selectTemplate" parameterType="long" resultMap="bean">
+	select * from all_card_data where 
+		cardid = #{ cardid,jdbcType=VARCHAR }
+<select>
+
+<select id="selectAllTemplate" parameterType="long" resultMap="bean">
+	select 
+		cardid,
+		agid,
+		type,
+		account,
+		roleid,
+	from all_card_data where 
+		cardid = #{ cardid,jdbcType=VARCHAR }
+<select>
+
+<insert id="insertTemplate" parameterType="com.game.allserverdb.bean.All_Card_dataBean" >
+	insert into all_card_data (
+		cardid,
+		agid,
+		type,
+		account,
+		roleid,
+	)
+	values (
+		#{ cardid,jdbcType=VARCHAR },
+		#{ agid,jdbcType=INTEGER },
+		#{ type,jdbcType=INTEGER },
+		#{ account,jdbcType=VARCHAR },
+		#{ roleid,jdbcType=BIGINT },
+	)
+</insert>
+
+<update id="update" parameterType="com.game.allserverdb.bean.All_Card_dataBean" >
+	update all_card_data set 
+		cardid = #{ cardid,jdbcType=VARCHAR },
+		agid = #{ agid,jdbcType=INTEGER },
+		type = #{ type,jdbcType=INTEGER },
+		account = #{ account,jdbcType=VARCHAR },
+		roleid = #{ roleid,jdbcType=BIGINT },
+	where 
+		cardid = #{ cardid,jdbcType=VARCHAR }
+</update>
+
+-->
+</mapper> 

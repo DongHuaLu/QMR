@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.amulet" id="166">
+
+	<!-- bean定义 -->
+	<bean name="AmuletInfo" explain="护身符信息">
+		<field class="int" name="spouseModel" explain="配偶的护身符model"></field>
+		<field class="int" name="model" explain="护身符model"></field>
+		<field class="int" name="time" explain="剩余过期时间"></field>
+		<field class="int" name="bless" explain="当前祝福值"></field>
+		<field class="int" name="clearTime" explain="清空剩余时间"></field>
+		<list class="AmuletSkillInfo" name="skills" explain="技能"></list>
+	</bean>
+	
+	<bean name="AmuletSkillInfo" explain="技能信息">
+		<field class="byte" name="index" explain="格子编号,从1开始"></field>
+		<field class="int" name="skill" explain="技能"></field>
+		<field class="int" name="level" explain="技能加成等级"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResAmuletInfo" explain="护身符信息">
+		<field class="long" name="playerid" explain="角色ID"></field>
+		<field class="AmuletInfo" name="info" explain="护身符信息"></field>
+	</message>
+
+	<message id="102" type="SC" name="ResAmuletLevelUp" explain="发送护身符升阶结果">
+		<field class="byte" name="type" explain="升阶结果，0失败，1成功"></field>
+		<field class="int" name="bless" explain="当前祝福值"></field>
+		<field class="int" name="gotbless" explain="获得祝福值"></field>
+		<field class="int" name="gotexp" explain="获得经验"></field>
+		<field class="int" name="clearTime" explain="清空剩余时间"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResAmuletSetSkill" explain="护身符技能列表">
+		<field class="byte" name="index" explain="新学的技能所在的格子编号,从1开始"></field>
+		<list class="AmuletSkillInfo" name="skills" explain="技能"></list>
+	</message>
+	
+	<message id="104" type="SC" name="ResAmuletInfoOther" explain="护身符信息,发送给周围玩家的">
+		<field class="long" name="playerid" explain="角色ID"></field>
+		<field class="int" name="model" explain="护身符信息"></field>
+		<field class="int" name="spouseModel" explain="配偶的护身符model"></field>
+	</message>
+	
+	<message id="105" type="SC" name="ResAmuletItemRebuild" explain="技能书重新鉴定返回">
+		<field class="byte" name="result" explain="0:成功 1:失败"></field>
+		<field class="int" name="srcItem" explain="原来的道具"></field>
+		<field class="int" name="dstItem" explain="获得的道具"></field>
+	</message>
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqAmuletInfo" explain="前端请求护身符信息">
+	</message>
+
+	<message id="202" type="CS" name="ReqAmuletLevelUp" explain="护身符升阶">
+		<field class="byte" name="type" explain="0手动进阶，1自动进阶"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqAmuletStudySkill" explain="使用道具学习技能">
+		<field class="long" name="item" explain="道具唯一ID"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqAmuletItemRebuild" explain="技能书重新鉴定">
+		<field class="long" name="item" explain="道具唯一ID"></field>
+	</message>
+	
+	<!-- 服务器间 -->
+	<message id="301" type="SW" name="ReqAmuletRefreshToWorld" explain="发送玩家的护身符消息">
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="long" name="playercountry" explain="玩家国家"></field>
+		<field class="int" name="model" explain="护身符model"></field>
+	</message>
+	<message id="302" type="WS" name="ReqAmuletRefreshToGame" explain="发送玩家的护身符消息">
+		<field class="long" name="marriageid" explain="结婚id"></field>
+		<field class="long" name="playerid" explain="玩家id"></field>
+		<field class="long" name="playercountry" explain="玩家国家"></field>
+		<field class="int" name="model" explain="护身符model"></field>
+	</message>
+</messages>

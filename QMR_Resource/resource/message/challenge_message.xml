@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.challenge" id="144">
+	<!-- bean定义 -->
+	<bean name="ChallengeInfo" explain="挑战信息">
+		<field class="int" name="zonesnum" explain="秦王战役副本剩余次数"></field>
+		<field class="String" name="bosstime" explain="BOSS刷新时间"></field>
+		<field class="String" name="gongchengtime" explain="攻城战开始时间"></field>
+		<field class="String" name="lingditime" explain="领地战开始时间"></field>
+		<field class="String" name="epalacenum" explain="地宫寻宝剩余次数"></field>
+		<field class="int" name="jiaochangnum" explain="挑战校场剩余次数"></field>
+		<field class="String" name="doubletime" explain="双倍收益时间"></field>
+		<field class="String" name="mazetime" explain="迷宫开始时间"></field>
+		<field class="String" name="biwudaotime" explain="比武岛时间"></field>
+	</bean>
+	
+	<bean name="ChallengeRewardInfo" explain="挑战奖励信息">
+		<field class="int" name="id" explain="奖励id -1铜币，-2元宝，-3真气，-4经验  -5礼金"></field>
+		<field class="int" name="num" explain="奖励数量"></field>
+		<field class="int" name="type" explain="奖励类型，0通关或者优胜，1参与奖"></field>
+	</bean>
+	
+	
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResOpenChallengeToClient" explain="发送挑战面板消息">
+		<field class="ChallengeInfo" name="challengeInfo" explain="挑战信息"></field>
+	</message>	
+	
+	
+	<message id="102" type="SC" name="ResRewardChallengeToClient" explain="发送挑战面板奖励消息">
+		<list class="ChallengeRewardInfo" name="rewardInfo" explain="挑战奖励信息"></list>
+	</message>	
+
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqOpenChallengeToGame" explain="打开挑战面板">
+	</message>	
+	
+	<message id="202" type="CS" name="ReqSelectChallengeToGame" explain="选择挑战面板">
+		<field class="byte" name="type" explain="面板类型，1-9"></field>
+	</message>	
+	
+</messages>

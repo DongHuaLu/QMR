@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<servers>
+	<server>
+		<server-name>World</server-name>
+		<server-id>20000</server-id>
+		<server-port>8200</server-port>
+		<server-web>haowan123</server-web>
+	</server>
+</servers>

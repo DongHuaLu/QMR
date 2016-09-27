@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_task_main"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_task_mainBean" >
+	<result column="q_chapter" property="q_chapter" jdbcType="INTEGER" />
+	<result column="q_chapter_name" property="q_chapter_name" jdbcType="VARCHAR" />
+	<result column="q_taskid" property="q_taskid" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_finsh_type" property="q_finsh_type" jdbcType="INTEGER" />
+	<result column="q_task_type" property="q_task_type" jdbcType="INTEGER" />
+	<result column="q_task_desc" property="q_task_desc" jdbcType="LONGVARCHAR" />
+	<result column="q_start_chat" property="q_start_chat" jdbcType="LONGVARCHAR" />
+	<result column="q_task_desc2" property="q_task_desc2" jdbcType="LONGVARCHAR" />
+	<result column="q_endnpc" property="q_endnpc" jdbcType="INTEGER" />
+	<result column="q_end_need_goods" property="q_end_need_goods" jdbcType="VARCHAR" />
+	<result column="q_end_need_killmonster" property="q_end_need_killmonster" jdbcType="VARCHAR" />
+	<result column="q_end_need_achieve" property="q_end_need_achieve" jdbcType="VARCHAR" />
+	<result column="q_end_resume_goods" property="q_end_resume_goods" jdbcType="VARCHAR" />
+	<result column="q_next_task" property="q_next_task" jdbcType="INTEGER" />
+	<result column="q_accept_needmingrade" property="q_accept_needmingrade" jdbcType="INTEGER" />
+	<result column="q_rewards_achieve" property="q_rewards_achieve" jdbcType="VARCHAR" />
+	<result column="q_rewards_exp" property="q_rewards_exp" jdbcType="INTEGER" />
+	<result column="q_rewards_coin" property="q_rewards_coin" jdbcType="INTEGER" />
+	<result column="q_rewards_zq" property="q_rewards_zq" jdbcType="INTEGER" />
+	<result column="q_rewards_exploit" property="q_rewards_exploit" jdbcType="INTEGER" />
+	<result column="q_rewards_prestige" property="q_rewards_prestige" jdbcType="INTEGER" />
+	<result column="q_rewards_bindYuanBao" property="q_rewards_bindYuanBao" jdbcType="INTEGER" />
+	<result column="q_rewards_goods" property="q_rewards_goods" jdbcType="LONGVARCHAR" />
+	<result column="q_taskfinlishboss" property="q_taskfinlishboss" jdbcType="INTEGER" />
+	<result column="q_ispromp" property="q_ispromp" jdbcType="INTEGER" />
+	<result column="q_end_need_horselevel" property="q_end_need_horselevel" jdbcType="INTEGER" />
+	<result column="q_end_need_conquertaskcount" property="q_end_need_conquertaskcount" jdbcType="INTEGER" />
+	<result column="q_end_need_dailytaskcount" property="q_end_need_dailytaskcount" jdbcType="INTEGER" />
+	<result column="q_rewards_pet" property="q_rewards_pet" jdbcType="INTEGER" />
+	<result column="q_task_brush_monid" property="q_task_brush_monid" jdbcType="INTEGER" />
+	<result column="q_brush_mon_map" property="q_brush_mon_map" jdbcType="INTEGER" />
+	<result column="q_brush_mon_xy" property="q_brush_mon_xy" jdbcType="VARCHAR" />
+	<result column="q_acc_show" property="q_acc_show" jdbcType="VARCHAR" />
+	<result column="q_acc_hide" property="q_acc_hide" jdbcType="VARCHAR" />
+	<result column="q_end_show" property="q_end_show" jdbcType="VARCHAR" />
+	<result column="q_end_hide" property="q_end_hide" jdbcType="VARCHAR" />
+	<result column="q_end_needaction" property="q_end_needaction" jdbcType="INTEGER" />
+	<result column="q_rewards_scrpt" property="q_rewards_scrpt" jdbcType="INTEGER" />
+	<result column="q_accomplish_show" property="q_accomplish_show" jdbcType="VARCHAR" />
+	<result column="q_accomplish_hide" property="q_accomplish_hide" jdbcType="VARCHAR" />
+	<result column="q_collection_target" property="q_collection_target" jdbcType="INTEGER" />
+	<result column="q_end_show_moster" property="q_end_show_moster" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_task_main
+  </select>
+</mapper> 

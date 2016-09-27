@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="system_grant"> 
+  <resultMap id="bean" type="com.game.db.bean.System_grantBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_key" property="q_key" jdbcType="VARCHAR" />
+	<result column="q_type" property="q_type" jdbcType="INTEGER" />
+	<result column="q_platform" property="q_platform" jdbcType="VARCHAR" />
+	<result column="q_exclude_platform" property="q_exclude_platform" jdbcType="VARCHAR" />
+	<result column="q_items" property="q_items" jdbcType="LONGVARCHAR" />
+	<result column="q_time_interval" property="q_time_interval" jdbcType="VARCHAR" />
+	<result column="q_expired" property="q_expired" jdbcType="VARCHAR" />
+	<result column="q_rolecreated" property="q_rolecreated" jdbcType="VARCHAR" />
+	<result column="q_caption" property="q_caption" jdbcType="VARCHAR" />
+	<result column="q_level" property="q_level" jdbcType="VARCHAR" />
+	<result column="q_other" property="q_other" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from system_grant
+  </select>
+  
+
+	<insert id="insert" parameterType="com.game.db.bean.System_grantBean" >
+		insert into system_grant (
+		q_key,
+		q_type,
+		q_platform,
+		q_exclude_platform,
+		q_items,
+		q_time_interval,
+		q_expired,
+		q_rolecreated,
+		q_caption,
+		q_level,
+		q_other
+		)
+		values (
+		#{ q_key,jdbcType=VARCHAR },
+		#{ q_type,jdbcType=INTEGER },
+		#{ q_platform,jdbcType=VARCHAR },
+		#{ q_exclude_platform,jdbcType=VARCHAR },
+		#{ q_items,jdbcType=LONGVARCHAR },
+		#{ q_time_interval,jdbcType=VARCHAR },
+		#{ q_expired,jdbcType=VARCHAR },
+		#{ q_rolecreated,jdbcType=VARCHAR },
+		#{ q_caption,jdbcType=VARCHAR },
+		#{ q_level,jdbcType=VARCHAR },
+		#{ q_other,jdbcType=LONGVARCHAR }
+		)
+	</insert>
+
+	<update id="update" parameterType="com.game.db.bean.System_grantBean" >
+		update system_grant set 
+		q_key = #{ q_key,jdbcType=VARCHAR },
+		q_type = #{ q_type,jdbcType=INTEGER },
+		q_platform = #{ q_platform,jdbcType=VARCHAR },
+		q_exclude_platform = #{ q_exclude_platform,jdbcType=VARCHAR },
+		q_items = #{ q_items,jdbcType=LONGVARCHAR },
+		q_time_interval = #{ q_time_interval,jdbcType=VARCHAR },
+		q_expired = #{ q_expired,jdbcType=VARCHAR },
+		q_rolecreated = #{ q_rolecreated,jdbcType=VARCHAR },
+		q_caption = #{ q_caption,jdbcType=VARCHAR },
+		q_level = #{ q_level,jdbcType=VARCHAR },
+		q_other = #{ q_other,jdbcType=LONGVARCHAR }
+		where q_id = #{ q_id,jdbcType=INTEGER }
+	</update>
+  
+  
+  	<delete id="delete" parameterType="Integer" >
+		delete from system_grant
+		where q_id = #{ q_id,jdbcType=INTEGER }
+	</delete>
+
+</mapper> 
+
+
+
+
+

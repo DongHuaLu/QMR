@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+<configuration>
+  <environments default="development"> 
+      <environment id="development"> 
+      <transactionManager type="JDBC"/> 
+      <dataSource type="UNPOOLED"> 
+        <property name="driver" value="com.mysql.jdbc.Driver"/> 
+        <property name="url" value="jdbc:mysql://192.168.2.122:5849/game_data_haowan123_2?autoReconnect=true"/> 
+        <property name="username" value="qmrgame"/> 
+        <property name="password" value="Qmrgame925833"/>
+      </dataSource> 
+    </environment> 
+  </environments>
+<mappers>
+<mapper resource="com/game/data/sqlmap/q_item.xml"/>
+<mapper resource="com/game/data/sqlmap/q_equip_append.xml"/>
+<mapper resource="com/game/data/sqlmap/q_guildbanner.xml"/>
+<mapper resource="com/game/data/sqlmap/q_spirittree_packet.xml"/>
+<mapper resource="com/game/data/sqlmap/q_spirittree_kiwi.xml"/>
+<mapper resource="com/game/data/sqlmap/q_spirittree_pack_con.xml"/>
+<mapper resource="com/game/data/sqlmap/q_global.xml"/>
+<mapper resource="com/game/data/sqlmap/q_version.xml"/>
+<mapper resource="com/game/data/sqlmap/q_character.xml"/>
+<mapper resource="com/game/data/sqlmap/q_card.xml"/>
+<mapper resource="com/game/data/sqlmap/q_script.xml"/>
+<mapper resource="com/game/data/sqlmap/q_bulletin.xml"/>
+<mapper resource="com/game/data/sqlmap/q_gem_activation.xml"/>
+<mapper resource="com/game/data/sqlmap/q_title.xml"/>
+<mapper resource="com/game/data/sqlmap/q_vip.xml"/>
+<mapper resource="com/game/data/sqlmap/q_scheduler.xml"/>
+<mapper resource="com/game/data/sqlmap/q_skill_model.xml"/>
+<mapper resource="com/game/data/sqlmap/q_item_strength.xml"/>
+<mapper resource="com/game/data/sqlmap/q_activities.xml"/>
+<mapper resource="com/game/data/sqlmap/q_gem_up.xml"/>
+<mapper resource="com/game/data/sqlmap/q_arrow_bow.xml"/>
+<mapper resource="com/game/data/sqlmap/q_arrow_star.xml"/>
+<mapper resource="com/game/data/sqlmap/q_arrow.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horse_addition.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horse_basic.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horse_skill_exp.xml"/>
+<mapper resource="com/game/data/sqlmap/q_horse_skills.xml"/>
+</mappers>
+</configuration>

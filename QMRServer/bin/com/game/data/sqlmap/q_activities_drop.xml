@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_activities_drop"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_activities_dropBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_platform" property="q_platform" jdbcType="VARCHAR" />
+	<result column="q_activityid" property="q_activityid" jdbcType="INTEGER" />
+	<result column="q_openday" property="q_openday" jdbcType="INTEGER" />
+	<result column="q_time_interval" property="q_time_interval" jdbcType="VARCHAR" />
+	<result column="q_drop_items" property="q_drop_items" jdbcType="VARCHAR" />
+	<result column="q_probability" property="q_probability" jdbcType="INTEGER" />
+	<result column="q_expired" property="q_expired" jdbcType="VARCHAR" />
+	<result column="q_monlevel_Interval" property="q_monlevel_Interval" jdbcType="INTEGER" />
+	<result column="q_other" property="q_other" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_activities_drop
+  </select>
+</mapper> 

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.fight" id="102">
+	<!-- bean定义 -->
+	<bean name="AttackResultInfo" explain="游戏实体战斗结果">
+		<field class="long" name="entityId" explain="实体Id"></field>
+		<field class="long" name="sourceId" explain="攻击来源Id"></field>
+		<field class="int" name="skillId" explain="攻击技能模板Id"></field>
+		<field class="int" name="skillLevel" explain="攻击技能等级"></field>
+		<field class="int" name="fightResult" explain="攻击结果0-成功 1-MISS 2-跳闪 4-暴击 8-格挡
+			6-跳闪+暴击 12-格挡+暴击"></field>
+		<field class="int" name="damage" explain="伤害"></field>
+		<field class="int" name="hit" explain="连击伤害"></field>
+		<field class="int" name="back" explain="反伤"></field>
+	</bean>
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResFightBroadcast" explain="战斗广播">
+		<field class="long" name="fightId" explain="战斗Id"></field>
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="fightDirection" explain="攻击朝向"></field>
+		<field class="int" name="fightType" explain="攻击类型"></field>
+		<field class="long" name="fightTarget" explain="攻击目标"></field>
+	</message>
+	
+	<message id="102" type="SC" name="ResAttackResult" explain="攻击结果">
+		<field class="long" name="fightId" explain="战斗Id"></field>
+		<field class="AttackResultInfo" name="state" explain="攻击结果"></field>
+	</message>
+
+	<message id="103" type="SC" name="ResAttackRange" explain="攻击范围(测试专用)">
+		<list class="int" name="grids" explain="格子列表"></list>
+	</message>
+
+	<message id="104" type="SC" name="ResEffectBroadcast" explain="特效广播">
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="fightDirection" explain="攻击朝向"></field>
+		<field class="int" name="fightType" explain="攻击类型"></field>
+		<field class="long" name="fightTarget" explain="攻击目标"></field>
+	</message>
+	
+	<message id="105" type="SC" name="ResFightFailedBroadcast" explain="战斗失败广播">
+		<field class="long" name="fightId" explain="战斗Id"></field>
+		<field class="long" name="personId" explain="角色Id"></field>
+		<field class="int" name="fightDirection" explain="攻击朝向"></field>
+		<field class="int" name="fightType" explain="攻击类型"></field>
+		<field class="long" name="fightTarget" explain="攻击目标"></field>
+	</message>
+
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqAttackMonster" explain="攻击怪物请求">
+		<field class="int" name="fightType" explain="攻击类型"></field>
+		<field class="int" name="fightDirection" explain="攻击朝向"></field>
+		<field class="long" name="fightTarget" explain="攻击目标"></field>
+	</message>
+
+	<message id="202" type="CS" name="ReqAttackPlayer" explain="攻击玩家请求">
+		<field class="int" name="fightType" explain="攻击类型"></field>
+		<field class="int" name="fightDirection" explain="攻击朝向"></field>
+		<field class="long" name="fightTarget" explain="攻击目标"></field>
+	</message>
+
+	<message id="203" type="CS" name="ReqChangeAttackTarget" explain="切换攻击锁定目标">
+		<field class="int" name="targetType" explain="攻击目标类型 1玩家 2怪物 3侍宠"></field>
+		<field class="long" name="targetId" explain="目标唯一标识" ></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqAttackPet" explain="攻击侍宠请求">
+		<field class="int" name="fightType" explain="攻击类型"></field>
+		<field class="int" name="fightDirection" explain="攻击朝向"></field>
+		<field class="long" name="fightTarget" explain="攻击目标"></field>
+		<field class="long" name="owherId" explain="主人ID"></field>
+	</message>
+</messages>

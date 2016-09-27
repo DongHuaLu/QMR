@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.log" id="201">
+	<!-- bean定义 -->
+		
+	<!-- 服务器发送消息 -->
+		
+	<!-- 服务器接收消息 -->
+	
+	<message id="201" type="CS" name="LogInfo" explain="日志信息">
+		<field class="String" name="info" explain="日志信息"></field>
+	</message>
+	
+</messages>

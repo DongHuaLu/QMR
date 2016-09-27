@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<servers>
+	<server>
+		<server-port>8088</server-port>
+		<server-allow>
+			<allow-ip>127.0.0.1</allow-ip>
+		</server-allow>
+	</server>
+</servers>

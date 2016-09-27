@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<server>
+	<server-name>GamePublic1</server-name>
+	<server-id>10000</server-id>
+	<server-web>37wan</server-web>
+	<gate-servers>
+		<gate-server>
+			<server-id>30000</server-id>
+			<server-ip>127.0.0.1</server-ip>
+			<server-port>8300</server-port>
+		</gate-server>
+	</gate-servers>
+	<world-server>
+		<server-id>20000</server-id>
+		<server-ip>127.0.0.1</server-ip>
+		<server-port>8200</server-port>
+	</world-server>
+</server>

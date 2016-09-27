@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.chestbox" id="156">
+	<!-- bean定义 -->
+	<bean name="ChestBoxInfo" explain="宝箱盒子信息">
+		<field class="int" name="opennum" explain="开启次数"></field>
+		<field class="int" name="autoopen" explain="是否自动"></field>
+		<field class="int" name="inchooseidx" explain="内圈选中编号"></field>
+		<field class="int" name="outchooseidx" explain="外圈选中编号"></field>
+		<list class="ChestGridInfo" name="ingridlist" explain="内圈格子列表"></list>
+		<list class="ChestGridInfo" name="outgridlist" explain="外圈格子列表"></list>
+	</bean>
+	<bean name="ChestGridInfo" explain="宝箱格子信息">
+		<field class="int" name="grididx" explain="格子编号"></field>
+		<field class="int" name="gridtype" explain="格子类型"></field>
+		<field class="com.game.backpack.bean.ItemInfo" name="curiteminfo" explain="当前格子中的物品信息"></field>
+		<list class="com.game.backpack.bean.ItemInfo" name="itemlist" explain="当前格子中的多倍奖励物品信息"></list>
+	</bean>
+	
+
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResChestBoxInfoToClient" explain="宝箱盒子信息发送到客户端">
+		<field class="ChestBoxInfo" name="chestboxinfo" explain="宝箱盒子信息"></field>
+	</message>
+	<message id="102" type="SC" name="ResChestBoxChooseInfoToClient" explain="宝箱盒子选择信息发送到客户端">
+		<field class="int" name="opennum" explain="开启次数"></field>
+		<field class="int" name="inchooseidx" explain="内圈选中编号"></field>
+		<field class="int" name="outchooseidx" explain="外圈选中编号"></field>
+		<field class="int" name="chooseOutSideToInSide" explain="外圈飞入内圈编号"></field>
+	</message>
+	<message id="103" type="SC" name="ResChestBoxNewGridInfoToClient" explain="宝箱盒子生成新物品信息发送到客户端">
+		<list class="ChestGridInfo" name="newingridlist" explain="新内圈格子信息"></list>
+		<list class="ChestGridInfo" name="newoutgridlist" explain="新外圈格子信息"></list>
+	</message>
+	<message id="104" type="SC" name="ResChestBoxAutoSetToClient" explain="宝箱盒子自动开始设置发送到客户端">
+		<field class="int" name="autoset" explain="自动开始设置"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqChestBoxShowPanelToServer" explain="客户端请求打开宝箱盒子信息">
+	</message>
+	<message id="202" type="CS" name="ReqChestBoxOpenToServer" explain="客户端请求开始转动宝箱">
+		<field class="int" name="actiontype" explain="动作类型"></field>
+	</message>
+	<message id="203" type="CS" name="ReqChestBoxGetGridItemToServer" explain="客户端请求领取格子内的物品">
+	</message>
+	<message id="204" type="CS" name="ReqChestBoxAutoSetToServer" explain="客户端请求自动开始设置">
+		<field class="int" name="autoset" explain="自动开始设置"></field>
+	</message>
+</messages>

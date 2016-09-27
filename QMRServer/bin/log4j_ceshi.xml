@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+	<appender name="FileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/QMRserver.log" />
+		<param name="Threshold" value="ALL" />
+		<param name="DatePattern" value="'.'yyyyMMddHH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %p][%c{1}]%m%n" />
+		</layout>
+	</appender>		
+	<!-- 文件输出用异步 -->
+	<appender name="AsyncFileAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="FileAppender" />
+	</appender>
+	
+	
+	<!-- 聊天日志-->
+	<appender name="ChatLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/chat/QMRChat.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy/MM/dd/HH/mm/ss} %p][%c{1}]%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncChatLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="ChatLogFileAppender" />
+	</appender>
+	<logger name="com.game.chat.manager.ChatManager" additivity="false">
+		<level value="info" />  
+        <appender-ref ref="AsyncChatLogAppender"/>    
+	</logger>
+	<!-- 客户端日志-->
+	<appender name="ClientLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/client/QMRClient.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy/MM/dd/HH/mm/ss} %p][%c{1}]%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncClientLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="ClientLogFileAppender" />
+	</appender>
+	<logger name="com.game.log.handler.LogInfoHandler" additivity="false">
+		<level value="info" />  
+        <appender-ref ref="AsyncClientLogAppender"/>    
+	</logger>
+	
+	<!-- 金币消耗日志-->
+	<appender name="GoldLogFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/gold/QMRGold.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}%p][%c{1}]%m%n" />
+		</layout>
+	</appender>
+	<appender name="AsyncGoldLogAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="2048" />
+		<appender-ref ref="GoldLogFileAppender" />
+	</appender>
+	<logger name="com.game.server.thread.SaveGoldThread" additivity="false">
+		<level value="debug" />  
+        <appender-ref ref="AsyncGoldLogAppender"/>    
+	</logger>
+	
+	<logger name="java.sql">
+		<level value="error" />
+	</logger>
+	<logger name="org.quartz">
+		<level value="error" />
+	</logger>
+	<logger name="com.ibatis">
+		<level value="error" />
+	</logger>
+	<logger name="org.apache.mina">
+		<level value="error" />
+	</logger>
+	<logger name="snaq">
+		<level value="error" />
+	</logger>
+	<root>
+		<level value="debug" />
+		<appender-ref ref="AsyncFileAppender" />
+	</root>
+</log4j:configuration>

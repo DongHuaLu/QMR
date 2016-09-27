@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.equip" id="106">
+	<!-- bean定义 -->
+	<bean name="EquipAttribute" explain="装备附加属性类">
+		<field class="byte" name="attributeType" explain="附加属性类型"></field>
+		<field class="byte" name="attributeValue" explain="附加属性值"></field>
+	</bean>
+	
+	<bean name="EquipInfo" explain="装备信息类">
+		<field class="long" name="itemId" explain="角色Id"></field>
+		<field class="int" name="itemModelId" explain="物品模板Id"></field>
+		<field class="byte" name="itemLevel" explain="物品强化等级"></field>
+		<list class="EquipAttribute" name="itemAttributes" explain="物品附加属性"></list>
+		<field class="byte" name="itemBind" explain="物品绑定"></field>
+		<field class="long" name="itemLosttime" explain="物品过期时间"></field>
+	</bean>
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="WearEquipItem" explain="穿着装备信息">
+		<field class="EquipInfo" name="equip" explain="装备信息"></field>
+	</message>
+	
+	<message id="102" type="SC" name="UnwearEquipItem" explain="卸下装备信息">
+		<field class="long" name="itemId" explain="物品Id"></field>
+		<field class="int" name="gridId" explain="格子Id"></field>
+	</message>
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="WearEquip" explain="穿着装备">
+		<field class="long" name="itemId" explain="物品Id"></field>
+	</message>
+	
+	<message id="202" type="CS" name="UnwearEquip" explain="卸下装备">
+		<field class="long" name="itemId" explain="物品Id"></field>
+	</message>
+	
+</messages>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_horse_skill_exp"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_horse_skill_expBean" >
+	<result column="q_skillid" property="q_skillid" jdbcType="VARCHAR" />
+	<result column="q_need_exp" property="q_need_exp" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_horse_skill_exp
+  </select>
+</mapper> 

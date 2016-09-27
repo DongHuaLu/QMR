@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<servers>
+	<server>
+		<country>1</country>
+		<server-id>1</server-id>
+	</server>
+	<server>
+		<country>2</country>
+		<server-id>2</server-id>
+	</server>
+	<server>
+		<country>3</country>
+		<server-id>3</server-id>
+	</server>
+	<server>
+		<country>4</country>
+		<server-id>4</server-id>
+	</server>
+	<server>
+		<country>5</country>
+		<server-id>5</server-id>
+	</server>
+	<server>
+		<country>6</country>
+		<server-id>6</server-id>
+	</server>
+	<server>
+		<country>7</country>
+		<server-id>7</server-id>
+	</server>
+	<server>
+		<country>0</country>
+		<server-id>10000</server-id>
+	</server>
+	<server>
+		<country>1</country>
+		<server-id>8</server-id>
+	</server>
+</servers>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="q_monster"> 
+  <resultMap id="bean" type="com.game.data.bean.Q_monsterBean" >
+	<result column="q_id" property="q_id" jdbcType="INTEGER" />
+	<result column="q_name" property="q_name" jdbcType="VARCHAR" />
+	<result column="q_monster_dropdesc" property="q_monster_dropdesc" jdbcType="VARCHAR" />
+	<result column="q_isminimap" property="q_isminimap" jdbcType="INTEGER" />
+	<result column="q_monster_type" property="q_monster_type" jdbcType="INTEGER" />
+	<result column="q_evasive_style" property="q_evasive_style" jdbcType="INTEGER" />
+	<result column="q_sculpt_resid" property="q_sculpt_resid" jdbcType="VARCHAR" />
+	<result column="q_head_resid" property="q_head_resid" jdbcType="VARCHAR" />
+	<result column="q_fire_soundid" property="q_fire_soundid" jdbcType="VARCHAR" />
+	<result column="q_underfire_soundid" property="q_underfire_soundid" jdbcType="VARCHAR" />
+	<result column="q_die_soundid" property="q_die_soundid" jdbcType="VARCHAR" />
+	<result column="q_tosay_timeinterval" property="q_tosay_timeinterval" jdbcType="INTEGER" />
+	<result column="q_say_condition" property="q_say_condition" jdbcType="VARCHAR" />
+	<result column="q_grade" property="q_grade" jdbcType="INTEGER" />
+	<result column="q_maxhp" property="q_maxhp" jdbcType="INTEGER" />
+	<result column="q_maxmp" property="q_maxmp" jdbcType="INTEGER" />
+	<result column="q_maxsp" property="q_maxsp" jdbcType="INTEGER" />
+	<result column="q_attack" property="q_attack" jdbcType="INTEGER" />
+	<result column="q_ignore_damage" property="q_ignore_damage" jdbcType="INTEGER" />
+	<result column="q_equip_attack" property="q_equip_attack" jdbcType="INTEGER" />
+	<result column="q_defense" property="q_defense" jdbcType="INTEGER" />
+	<result column="q_equip_defense" property="q_equip_defense" jdbcType="INTEGER" />
+	<result column="q_crt" property="q_crt" jdbcType="INTEGER" />
+	<result column="q_dodge" property="q_dodge" jdbcType="INTEGER" />
+	<result column="q_attack_speed" property="q_attack_speed" jdbcType="INTEGER" />
+	<result column="q_speed" property="q_speed" jdbcType="INTEGER" />
+	<result column="q_luck" property="q_luck" jdbcType="INTEGER" />
+	<result column="q_variation" property="q_variation" jdbcType="VARCHAR" />
+	<result column="q_eyeshot" property="q_eyeshot" jdbcType="INTEGER" />
+	<result column="q_patrol" property="q_patrol" jdbcType="INTEGER" />
+	<result column="q_patrol_time" property="q_patrol_time" jdbcType="INTEGER" />
+	<result column="q_patrol_pro" property="q_patrol_pro" jdbcType="INTEGER" />
+	<result column="q_pursuit" property="q_pursuit" jdbcType="INTEGER" />
+	<result column="q_default_skill" property="q_default_skill" jdbcType="VARCHAR" />
+	<result column="q_special_skill" property="q_special_skill" jdbcType="VARCHAR" />
+	<result column="q_fixed_hurt" property="q_fixed_hurt" jdbcType="INTEGER" />
+	<result column="q_fiexd_value" property="q_fiexd_value" jdbcType="INTEGER" />
+	<result column="q_carry_exp" property="q_carry_exp" jdbcType="INTEGER" />
+	<result column="q_ranknum" property="q_ranknum" jdbcType="INTEGER" />
+	<result column="q_extra_ranknum" property="q_extra_ranknum" jdbcType="INTEGER" />
+	<result column="q_isexclude" property="q_isexclude" jdbcType="INTEGER" />
+	<result column="q_intensify_prob" property="q_intensify_prob" jdbcType="VARCHAR" />
+	<result column="q_addition_prob" property="q_addition_prob" jdbcType="VARCHAR" />
+	<result column="q_refreshtime" property="q_refreshtime" jdbcType="VARCHAR" />
+	<result column="q_revive_time" property="q_revive_time" jdbcType="INTEGER" />
+	<result column="q_script_id" property="q_script_id" jdbcType="INTEGER" />
+	<result column="q_info_sync" property="q_info_sync" jdbcType="INTEGER" />
+	<result column="q_monster_ai" property="q_monster_ai" jdbcType="LONGVARCHAR" />
+	<result column="q_passive_skill" property="q_passive_skill" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="select" resultMap="bean">
+  	select * from q_monster
+  </select>
+</mapper> 

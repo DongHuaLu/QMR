@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.longyuan" id="115">
+	<!-- bean定义 -->
+	
+	<bean name="LongYuanInfo" explain="龙元心法信息">
+		<field class="short" name="longyuanexpshare" explain="龙元心法分享经验人数"></field>
+		<field class="byte" name="longyuanlv" explain="龙元心法阶段（星图）"></field>
+		<field class="byte" name="longyuannum" explain="龙元心法星位"></field>
+	</bean>
+	
+	<bean name="LongYuanPosTipsInfo" explain="龙元心法星位Tips信息">
+		<field class="byte" name="longyuanactlv" explain="当前的龙元心法阶段（星图）"></field>
+		<field class="byte" name="longyuanactnum" explain="当前的龙元心法星位"></field>
+		<field class="int" name="successrate" explain="成功率"></field>
+		<field class="short" name="longyuanexpshare" explain="龙元心法分享经验人数"></field>
+		<field class="int" name="longyuanshareexpsum" explain="龙元心法分享经验总量"></field>
+		<field class="byte" name="isachieve" explain="是否已经激活"></field>
+	</bean>
+	
+	<bean name="LongYuanStarMapTipsInfo" explain="龙元心法星图Tips信息">
+		<field class="byte" name="longyuanactlv" explain="当前的龙元心法阶段（星图）"></field>
+		<field class="byte" name="isachieve" explain="是否已经激活"></field>
+	</bean>
+	
+	
+	<bean name="ShowEffectInfo" explain="自定义特效展示（通用）">
+		<field class="byte" name="type" explain="类型，1地面效果，2人物效果，3怪物效果"></field>
+		<field class="long" name="id" explain="怪物ID或者玩家ID"></field>
+		<field class="int" name="effectid" explain="特效ID，和前端定"></field>
+		<field class="short" name="x" explain="坐标X，像素"></field>
+		<field class="short" name="y" explain="坐标Y，像素"></field>
+	</bean>
+	
+	
+	
+	
+	
+	<!-- 服务器发送消息 -->
+	<message id="101" type="SC" name="ResLongYuanOpen" explain="打开龙元心法面板">
+		<field class="int" name="zhenqi" explain="真气值"></field>
+		<field class="LongYuanInfo" name="longyuaninfo" explain="龙元心法信息"></field>
+	</message>
+
+	<message id="102" type="SC" name="ResLongYuanActivation" explain="激活星位">
+		<field class="int" name="zhenqi" explain="真气值"></field>
+		<field class="LongYuanInfo" name="longyuaninfo" explain="龙元心法信息"></field>
+		<field class="byte" name="status" explain="是否成功,0成功，1失败"></field>
+	</message>
+	
+	<message id="103" type="SC" name="ResLongYuanPosTips" explain="鼠标悬停提示信息(星位)">
+		<field class="LongYuanPosTipsInfo" name="longyuanpostipsinfo" explain="龙元心法星位tips"></field>
+	</message>
+	
+	<message id="104" type="SC" name="ResLongYuanStarMapTips" explain="鼠标悬停提示信息(星图)">
+		<field class="LongYuanStarMapTipsInfo" name="starmaptipsinfo" explain="当前的龙元心法星图tips"></field>
+	</message>
+	
+	<message id="105" type="SC" name="ResLongYuanTimer" explain="计时器开始">
+		<field class="byte" name="status" explain="是否播放倒计时特效,1开始播放，0不处理"></field>
+	</message>
+	
+	<message id="106" type="SC" name="ResShowEffectToClient" explain="特效展示">
+		<field class="ShowEffectInfo" name="showeffectinfo" explain="特效信息"></field>
+	</message>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqLongYuanOpen" explain="打开面板开始查询">
+	</message>
+	
+	<message id="202" type="CS" name="ReqLongYuanActivation" explain="激活星位">
+		<field class="byte" name="longyuanactlv" explain="想要激活的龙元心法阶段（星图）"></field>
+		<field class="byte" name="longyuanactnum" explain="想要激活的龙元心法星位"></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqLongYuanTips" explain="请求鼠标悬停提示信息（星位）">
+		<field class="byte" name="longyuanactlv" explain="当前的龙元心法阶段（星图）"></field>
+		<field class="byte" name="longyuanactnum" explain="当前的龙元心法星位"></field>
+	</message>
+	
+	<message id="204" type="CS" name="ReqLongYuanStarMapTips" explain="请求鼠标悬停星图提示信息（星图）">
+		<field class="byte" name="longyuanactlv" explain="当前的龙元心法阶段（星图）"></field>
+	</message>
+
+
+</messages>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

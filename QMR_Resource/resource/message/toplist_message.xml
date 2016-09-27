@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages package="com.game.toplist" id="142">
+	
+	<bean name="TopInfo" explain="排行信息">
+		<field class="long" name="playerid" explain="玩家id" ></field>
+		<field class="int" name="webvip" explain="平台VIP"></field>
+		<field class="String" name="playername" explain="玩家名"></field>
+		<field class="int" name="mapModelId" explain="地图模板id"></field>
+		<field class="byte" name="toptype" explain="排行类型 1等级 2坐骑 3武功 4龙元 5 连斩 6 侍宠 7 战斗力"></field>
+		<field class="byte" name="worship" explain="自己是否膜拜"></field>
+		<field class="byte" name="worshipnum" explain="自己今天膜拜次数"></field>
+		<field class="int" name="allworshipnum" explain="总膜拜次数"></field>
+		<field class="int" name="topidx" explain="名次"></field>
+		<field class="int" name="level" explain="等级"></field>
+		<field class="byte" name="sex" explain="性别"></field>
+		<field class="int" name="country" explain="国家"></field>
+		<field class="long" name="exp" explain="角色经验"></field>
+		<field class="int" name="zhenqi" explain="角色真气"></field>
+		<field class="int" name="avatar" explain="头象ID"></field>
+		<field class="int" name="chapter" explain="当前章节"></field>
+		<field class="int" name="kingcitybuffid" explain="王城BUFFid"></field>
+		<field class="int" name="vipid" explain="VIPid"></field>
+		<field class="int" name="prestige" explain="战场声望"></field>
+		<field class="int" name="money" explain="游戏币"></field>
+		<field class="int" name="totalSkillLevel" explain="技能总层数"></field>
+		<field class="int" name="moziSkillLevel" explain="墨子主动技能总层数"></field>
+		<field class="int" name="mozibackSkillLevel" explain="墨子被动技能总层数"></field>
+		<field class="int" name="longyuanSkillLevel" explain="龙元主动技能总层数"></field>
+		<field class="int" name="longyuanbackSkillLevel" explain="龙元被动技能总层数"></field>
+		<field class="int" name="lysection" explain="龙元阶数"></field>
+		<field class="int" name="lylevel" explain="龙元级数"></field>
+		<field class="int" name="fightPower" explain="战斗力"></field>
+		<field class="int" name="attrfightPower" explain="属性战斗力"></field>
+		<field class="int" name="equipfightPower" explain="装备战斗力"></field>
+		<field class="int" name="skillfightPower" explain="技能战斗力"></field>
+		<field class="int" name="petmodelId" explain="侍宠模板id"></field>
+		<field class="int" name="petlevel" explain="侍宠等级"></field>
+		<field class="int" name="pethtcount" explain="合体次数"></field>
+		<field class="int" name="pethtaddhp" explain="合体增加生命"></field>
+		<field class="int" name="pethtaddmp" explain="合体增加内力"></field>
+		<field class="int" name="pethtaddattack" explain="合体增加攻击"></field>
+		<field class="int" name="pethtadddefence" explain="合体增加防御"></field>
+		<field class="int" name="pethtaddcrit" explain="合体增加暴击"></field>
+		<field class="int" name="pethtadddodge" explain="合体增加闪避"></field>
+		<list class="com.game.skill.bean.SkillInfo" name="petskillinfolist" explain="侍宠技能 天赋技能排在第一个 不能动"></list>
+		<field class="int" name="maxEventcut" explain="历史最大连击数"></field>
+		<field class="int" name="maxEventcutTime" explain="历史最大连击数时间"></field>
+		<field class="int" name="evencutmapid" explain="连斩发生地图ID"></field>
+		<field class="int" name="evencutmonid" explain="最后连斩的怪物ID"></field>
+		<field class="int" name="evencutmapx" explain="连斩发生坐标X"></field>
+		<field class="int" name="evencutmapy" explain="连斩发生坐标Y"></field>
+		<field class="com.game.arrow.bean.ArrowInfo" name="arrowInfo" explain="弓箭信息"></field>
+		<field class="int" name="horselayer" explain="坐骑最高阶层"></field>
+		<field class="int" name="horselevel" explain="坐骑最高阶的当前等级"></field>
+		<list class="com.game.horse.bean.HorseSkillInfo" name="skillinfolist" explain="坐骑技能列表"></list>
+		<list class="com.game.equip.bean.EquipInfo" name="horseequipinfo" explain="坐骑装备列表"></list>
+		<list class="com.game.player.bean.PlayerAttributeItem" name="attributes" explain="属性列表"></list>
+		<field class="com.game.guild.bean.GuildInfo" name="guildinfo" explain="帮会信息"></field>
+		<list class="com.game.equip.bean.EquipInfo" name="itemlist" explain="身上装备"></list>
+		<list class="com.game.gem.bean.PosGemInfo" name="posallgeminfo" explain="装备部位全部宝石信息"></list>
+		
+		<list class="com.game.horseweapon.bean.HorseWeaponSkillInfo" name="horseWeaponSkillInfo" explain="骑战兵器技能信息"></list>
+		<field class="int" name="horseweaponlayer" explain="骑战兵器最高阶层"></field>
+		<field class="int" name="horseweaponlevel" explain="骑战兵器最高阶的当前等级"></field>
+		
+		<list class="com.game.hiddenweapon.bean.HiddenWeaponSkillInfo" name="hiddenWeaponSkillInfo" explain="暗器技能信息"></list>
+		<field class="int" name="hiddenweaponlayer" explain="暗器最高阶层"></field>
+		<field class="int" name="hiddenweaponlevel" explain="暗器最高阶的当前等级"></field>
+		
+		<field class="int" name="realmlevel" explain="境界等级" ></field>
+		<field class="int" name="realmintensifylevel" explain="境界强化等级" ></field>
+		<field class="short" name="horseduangu" explain="坐骑锻骨草使用数量"></field>
+		
+		<field class="String" name="spousename" explain="配偶名字"></field>
+		<field class="int" name="ringmodelid" explain="戒指模版ID"></field>
+		<field class="int" name="marriedtime" explain="结婚时间"></field>
+		
+		<list class="com.game.amulet.bean.AmuletSkillInfo" name="amuletSkillInfo" explain="护身符技能信息"></list>
+		<field class="int" name="amuletModel" explain="护身符model"></field>
+		
+		<list class="com.game.cloak.bean.CloakStoneInfo" name="cloakStoneInfo" explain="披风石头信息"></list>
+		<field class="int" name="cloakModel" explain="披风model"></field>
+	</bean>
+	
+	<bean name="ChestInfo" explain="排行宝箱信息">
+		<field class="int" name="chestid" explain="宝箱id(0-最后一个宝箱)"></field>
+		<field class="int" name="chesttype" explain="宝箱类型(1等级 2坐骑 3武功 4龙元 5 连斩 6 侍宠 7 战斗力)"></field>		
+		<field class="byte" name="canreceive" explain="是否可领取(0-不可领  1-可领)"></field>
+	</bean>
+	
+	<bean name="ArenaTimesInfo" explain="竞技场连胜排行信息">
+		<field class="long" name="playerid" explain="角色id"></field>
+		<field class="String" name="name" explain="名称"></field>
+		<field class="int" name="level" explain="等级"></field>
+		<field class="int" name="fightpower" explain="战斗力"></field>
+		<field class="int" name="wintimes" explain="连胜场次"></field>
+		<field class="int" name="medal" explain="勋章"></field>
+		<field class="com.game.player.bean.PlayerAppearanceInfo" name="appearance" explain="外观"></field>
+	</bean>
+	
+	<!-- 世界服务器发送消息 -->
+	<message id="101" type="WC" name="ResGetTopListToClient" explain="发送给客户端获取排行榜信息">
+		<field class="byte" name="errorcode" explain="错误代码"></field>
+		<field class="byte" name="worshipnum" explain="自己今天膜拜次数"></field>
+		<field class="byte" name="toptype" explain="排行类型 1等级 2坐骑 3武功 4龙元 5 连斩 6 侍宠 7 战斗力"></field>
+		<list class="TopInfo" name="top5infoWorldList" explain="前5排行榜信息列表(世界)" ></list>
+		<list class="TopInfo" name="topselfinfoWorldList" explain="自己排行榜信息列表(世界)" ></list>
+		<list class="TopInfo" name="top5infoCountryList" explain="前5排行榜信息列表(本国)" ></list>
+		<list class="TopInfo" name="topselfinfoCountryList" explain="自己排行榜信息列表(本国)" ></list>
+	</message>
+
+	<message id="102" type="WC" name="ResWorShipToClient" explain="发送给客户端膜拜玩家">
+		<field class="byte" name="errorcode" explain="错误代码"></field>
+		<field class="byte" name="worshipnum" explain="自己今天膜拜次数"></field>
+		<field class="long" name="worshipplayerid" explain="膜拜玩家id" ></field>
+		<field class="int" name="allworshipnum" explain="总膜拜次数"></field>
+	</message>
+	
+	<message id="103" type="WC" name="ResToplistArena" explain="发送给前端竞技场排行"> 
+		<field class="byte" name="errorcode" explain="错误代码"></field>
+		<list class="ArenaTimesInfo" name="infos" explain="排行榜信息" ></list>
+	</message>
+	
+	<message id="104" type="WC" name="ResToplistArenaState" explain="发送给前端竞技场排行状态">
+		<field class="byte" name="giftState" explain="竞技场排行榜领奖状态  0:尚未领取 1:已经领取(不用,生成错了)"></field>
+	</message>
+	
+	<message id="105" type="WC" name="ResToplistPlayerInfo" explain="发送给前端玩家信息,支持离线">
+		<field class="TopInfo" name="playerInfo" explain="玩家信息"></field>
+	</message>
+	
+	<!-- 游戏服务器发送消息 -->
+	<message id="150" type="SC" name="ResGetTopTitleToClient" explain="发送给客户端称号列表">
+		<field class="byte" name="errorcode" explain="错误代码"></field>
+		<list class="int" name="titleidlist" explain="称号id列表" ></list>
+	</message>
+	
+	<message id="151" type="SC" name="ResTopListChestInfoToClient" explain="发送角色宝箱信息">
+		<list class="ChestInfo" name="chestinfolist" explain="玩家当前宝箱列表"></list>
+	</message>
+	
+	<message id="152" type="SC" name="ResToplistArenaGiftState" explain="发送给前端竞技场排行状态">
+		<field class="byte" name="giftState" explain="竞技场排行榜领奖状态  0:尚未领取 1:已经领取"></field>
+	</message> 
+	
+	<!-- 服务器接收消息 -->
+	<message id="201" type="CS" name="ReqGetTopListToServer" explain="获取排行榜信息">
+		<field class="byte" name="toptype" explain="排行类型 1等级 2坐骑 3武功 4龙元 5 连斩 6 侍宠 7 战斗力9竞技场连胜排名"></field>
+	</message>
+
+	<message id="202" type="CS" name="ReqWorShipToServer" explain="膜拜玩家">
+		<field class="long" name="worshipplayerid" explain="膜拜玩家id" ></field>
+	</message>
+	
+	<message id="203" type="CS" name="ReqChangeTitleToServer" explain="改变称号">
+		<field class="int" name="titleid" explain="称号id" ></field>
+	</message>
+
+	<message id="204" type="CS" name="ReqRecieveChestToServer" explain="领取宝箱">
+		<field class="int" name="chestid" explain="宝箱id"></field>
+	</message>	
+	
+	<message id="205" type="CS" name="ReqReceiveArenaGift" explain="请求领取竞技场排行榜奖励">
+	</message>
+	
+	<message id="206" type="CS" name="ReqReceivePlayerInfo" explain="请求角色信息">
+		<field class="long" name="playerid" explain="查询的角色id" ></field>
+	</message>
+	
+	<!-- 服务器内部消息 GAME TO WORLD-->
+	<message id="301" type="SW" name="ReqGetTopListToWorld" explain="通知世界服务器获取排行榜信息" >
+		<field class="long" name="playerid" explain="玩家id" ></field>
+		<field class="byte" name="toptype" explain="排行类型 1等级 2坐骑 3武功 4龙元 5 连斩 6 侍宠 7 战斗力"></field>
+	</message>
+	
+	<message id="302" type="SW" name="ReqWorShipToWorld" explain="通知世界服务器膜拜玩家" >
+		<field class="long" name="playerid" explain="玩家id" ></field>
+		<field class="long" name="worshipplayerid" explain="膜拜玩家id" ></field>
+	</message>
+	
+	<message id="303" type="SW" name="ReqZoneTopToWorld" explain="通知世界服务器副本排行" >
+		<field class="long" name="playerid" explain="玩家id" ></field>
+		<field class="int" name="zonetype" explain="副本类型" ></field>
+		<field class="String" name="zonetopjsonstr" explain="副本排行jsonstr" ></field>
+	</message>
+	
+	<message id="304" type="SW" name="ReqGetArenaGift" explain="请求领取竞技场排行榜奖励">
+		<field class="long" name="playerid" explain="角色ID"></field>
+	</message>
+	
+	<message id="305" type="SW" name="ReqReceivePlayerInfoToWorld" explain="请求角色信息">
+		<field class="long" name="searchPlayerId" explain="查询者ID"></field>
+		<field class="long" name="playerId" explain="被查询者ID"></field>
+	</message>
+	
+	<message id="306" type="SW" name="ReqServerOpenDayRefreshToWorld" explain="根据开服天数的刷新任务">
+		<field class="int" name="country" explain="国家"></field>
+		<field class="int" name="day" explain="开服天数"></field>
+	</message>
+	
+	<!-- 服务器内部消息 WORLD TO GAME-->
+	<message id="351" type="WS" name="ResGetTopAwardToServer" explain="通知游戏服务器获取排行榜膜拜奖励" >
+		<field class="int" name="zonetype" explain="副本类型" ></field>
+		<field class="int" name="zoneid" explain="副本id" ></field>
+		<field class="int" name="exp" explain="经验" ></field>
+		<field class="int" name="money" explain="铜币" ></field>
+	</message>
+	
+	<message id="352" type="WS" name="ResGetTopTitleToServer" explain="通知游戏服务器获取排行榜称号" >
+		<list class="int" name="titleidlist" explain="称号id列表" ></list>
+	</message>
+	
+	<message id="353" type="WS" name="ResGetArenaGift" explain="发放领取竞技场排行榜奖励" >
+		<field class="long" name="playerid" explain="角色ID"></field>
+		<field class="String" name="gift" explain="奖励字符串"></field>
+	</message>
+	
+	<message id="354" type="WS" name="ResToplistArenaStateToServer" explain="竞技场排行状态">
+		<field class="long" name="playerid" explain="玩家ID"></field>
+	</message>
+	
+</messages>
