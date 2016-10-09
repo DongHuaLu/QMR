@@ -1,1 +1,1 @@
-# QMR 唐庆是傻逼
+# QMR QMR server
